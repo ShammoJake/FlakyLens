@@ -97,6 +97,21 @@ def roots_for(src, classes, by_name):
     return roots, matches
 
 
+_FULL_CODE = {}
+
+
+def load_full_code(path):
+    """id -> full_code, read once and shared by every build point."""
+    if not _FULL_CODE:
+        try:
+            for r in csv.DictReader(open(os.path.abspath(path), encoding="utf-8")):
+                _FULL_CODE[r["id"]] = r["full_code"]
+        except Exception as e:
+            print(f"  warning: could not read the dataset for body matching: {e}")
+            _FULL_CODE["__missing__"] = ""
+    return _FULL_CODE
+
+
 def do_build_point(spec_path, tools, args):
     spec = json.load(open(spec_path, encoding="utf-8"))
     key = spec["build_point"]
@@ -153,13 +168,44 @@ def do_build_point(spec_path, tools, args):
             st["steps"].setdefault("spoon", {})["parse_error"] = str(e)
     st["steps"]["model"] = {"records": len(model)}
 
-    resolved = resolve_tests(spec, model)
+    resolved = resolve_tests(spec, model, load_full_code(args.dataset))
     st["status"] = "ok" if model else "no_model"
     return finish(st, bp_dir, src, t0, args, spec, resolved)
 
 
-def resolve_tests(spec, model):
+WS = re.compile(r"\s+")
+
+
+def body_match(extracted, full_code):
+    """Does the source at this commit hold the body FlakeBench labelled?
+
+    FlakeBench ships `full_code`, the test method as it stood when the label was
+    assigned. That is an oracle, and it is needed rather than optional: the
+    recorded SHA is not always the commit the body came from. Over the 10-build-
+    point pilot, 641 tests resolved by name but only 501 carried a matching body,
+    and 110 of the 140 mismatches were in single-SHA projects — so no other commit
+    of that project exists to try.
+
+    The consequence is specific. The body scope is safe either way, because it
+    reads `full_code` directly. The fields, fixtures and production scopes are
+    not: they would attribute a different version of the class to a body
+    FlakeBench labelled at another commit. So this becomes the gate on those
+    scopes rather than a diagnostic.
+
+    Compared ignoring whitespace, and `contains` counts as a match because
+    FlakeBench sometimes carries the method without its annotations.
+    """
+    a, b = WS.sub("", extracted or ""), WS.sub("", full_code or "")
+    if not a or not b:
+        return "unknown"
+    if a == b:
+        return "exact"
+    return "contains" if (a in b or b in a) else "differs"
+
+
+def resolve_tests(spec, model, full_code_by_id=None):
     """Which candidate tests this commit actually declares."""
+    full_code_by_id = full_code_by_id or {}
     by_simple = collections.defaultdict(list)
     for m in model:
         by_simple[m.get("simple_class")].append(m)
@@ -169,6 +215,11 @@ def resolve_tests(spec, model):
         want = rp.BRACKET.sub("", c["test_method"])
         in_class = by_simple.get(c["test_class"], [])
         hits = [m for m in in_class if m.get("method") == want]
+        fc = full_code_by_id.get(c["id"], "")
+        levels = [body_match(m.get("raw_body"), fc) for m in hits]
+        best = ("exact" if "exact" in levels else
+                "contains" if "contains" in levels else
+                "differs" if "differs" in levels else "unknown")
         rows.append({
             "id": c["id"],
             "test_name": c["test_name"],
@@ -182,6 +233,9 @@ def resolve_tests(spec, model):
                 len({m.get("qualified_class") for m in in_class}),
             "method_found": "yes" if hits else "no",
             "qualified_class": hits[0]["qualified_class"] if hits else "",
+            # the gate on the fields/fixtures/production scopes
+            "body_match": best,
+            "usable_for_class_scopes": "yes" if best in ("exact", "contains") else "no",
         })
     return rows
 
@@ -196,6 +250,8 @@ def finish(st, bp_dir, src, t0, args, spec, resolved):
     st["resolved"] = {
         "candidates": len(spec["candidate_tests"]),
         "method_found": sum(1 for r in resolved if r["method_found"] == "yes"),
+        "body_matched": sum(1 for r in resolved
+                            if r.get("usable_for_class_scopes") == "yes"),
         "flaky_found": sum(1 for r in resolved
                            if r["method_found"] == "yes" and r["label"] != "non-flaky"),
     }
@@ -209,6 +265,7 @@ def finish(st, bp_dir, src, t0, args, spec, resolved):
     print(f"  {st['build_point']}: {st.get('status')} "
           f"model={st['steps'].get('model', {}).get('records', 0)} "
           f"found={st['resolved']['method_found']}/{st['resolved']['candidates']} "
+          f"body_ok={st['resolved'].get('body_matched', 0)} "
           f"({st['resolved']['flaky_found']} flaky) {st['seconds']}s")
     return st
 
@@ -218,6 +275,8 @@ def main():
     ap.add_argument("--spec")
     ap.add_argument("--spec-dir")
     ap.add_argument("--tools", default=os.path.join("runs", "tools"))
+    ap.add_argument("--dataset", default=os.path.join(
+        os.path.dirname(HERE), "..", "..", "FlakeBench", "FlakeBench_dataset.csv"))
     ap.add_argument("--out", default="runs_fb")
     ap.add_argument("--jobs", type=int, default=1)
     ap.add_argument("--limit", type=int, default=0)
