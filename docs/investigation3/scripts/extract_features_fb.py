@@ -126,6 +126,9 @@ def main():
         rec = hit[2] if hit else None
         row["located"] = rec["method_found"] if rec else "no"
         row["body_match"] = (rec or {}).get("body_match", "")
+        # kept so the class-scope gate can be re-tuned in analysis without
+        # re-running the sweep; "similar" is a threshold call, not a fact
+        row["body_similarity"] = (rec or {}).get("body_similarity", "")
         usable = bool(rec) and rec.get("usable_for_class_scopes") == "yes"
         row["class_scopes_available"] = "yes" if usable else "no"
 

@@ -246,6 +246,42 @@ def resolve_before_refs(row, mode):
     return ([idoft] if idoft else []), "idoft"
 
 
+# A dropped connection and a commit that does not exist both make `git fetch`
+# exit non-zero, and only the message separates them. Retrying the first is free
+# insurance across a 172-checkout sweep; retrying the second is 60 wasted seconds
+# per absent ref.
+TRANSIENT = ("could not connect", "failed to connect", "connection reset",
+             "connection timed out", "timed out", "temporary failure",
+             "could not resolve host", "unable to access", "ssl_error",
+             "gnutls_handshake", "rpc failed", "early eof", "empty reply",
+             "remote end hung up", "503", "502", "500 internal")
+
+
+def fetch_with_retry(url, ref, dest, log, timeout, attempts=3):
+    """Shallow-fetch one ref, retrying only failures that look like the network.
+
+    Returns (rc, output). Three network outages hit this session, each costing a
+    whole build point: the run reported checkout_failed at ~21s, the connect
+    timeout, and the model was never built. Over 172 checkouts that is the
+    difference between one sweep and several.
+    """
+    delay, out = 5, ""
+    for attempt in range(1, attempts + 1):
+        rc, out = run(["git", "fetch", "-q", "--depth", "1", url, ref],
+                      cwd=dest, log=log, timeout=timeout)
+        if rc == 0:
+            return rc, out
+        low = (out or "").lower()
+        if not any(t in low for t in TRANSIENT):
+            return rc, out                      # a real "no such ref"; do not retry
+        if attempt < attempts:
+            print(f"    transient fetch failure ({attempt}/{attempts}), "
+                  f"retrying in {delay}s: {ref[:12]}")
+            time.sleep(delay)
+            delay *= 3
+    return rc, out
+
+
 def checkout(url, refs, dest, log, timeout, require_pom=True):
     """Shallow-fetch one of `refs` into `dest`.
 
@@ -273,8 +309,7 @@ def checkout(url, refs, dest, log, timeout, require_pom=True):
     run(["git", "config", "core.autocrlf", "false"], cwd=dest, timeout=60)
     run(["git", "config", "core.eol", "lf"], cwd=dest, timeout=60)
     for ref in refs:
-        rc, _ = run(["git", "fetch", "-q", "--depth", "1", url, ref],
-                    cwd=dest, log=log, timeout=timeout)
+        rc, out = fetch_with_retry(url, ref, dest, log, timeout)
         if rc == 0:
             rc2, out = run(["git", "checkout", "-q", "FETCH_HEAD"], cwd=dest, timeout=600)
             if rc2 != 0:

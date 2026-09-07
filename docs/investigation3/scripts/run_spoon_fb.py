@@ -37,6 +37,7 @@ WHAT IT WRITES
 import argparse
 import collections
 import csv
+import difflib
 import json
 import os
 import re
@@ -180,7 +181,8 @@ def do_build_point(spec_path, tools, args):
             st["steps"].setdefault("spoon", {})["parse_error"] = str(e)
     st["steps"]["model"] = {"records": len(model)}
 
-    resolved = resolve_tests(spec, model, load_full_code(args.dataset))
+    resolved = resolve_tests(spec, model, load_full_code(args.dataset),
+                             args.body_threshold)
     st["status"] = "ok" if model else "no_model"
     return finish(st, bp_dir, src, t0, args, spec, resolved)
 
@@ -188,7 +190,12 @@ def do_build_point(spec_path, tools, args):
 WS = re.compile(r"\s+")
 
 
-def body_match(extracted, full_code):
+def body_similarity(a, b, cap=4000):
+    """Ratio in [0,1] over whitespace-stripped bodies, length-capped for cost."""
+    return difflib.SequenceMatcher(None, a[:cap], b[:cap]).ratio()
+
+
+def body_match(extracted, full_code, threshold=0.85):
     """Does the source at this commit hold the body FlakeBench labelled?
 
     FlakeBench ships `full_code`, the test method as it stood when the label was
@@ -209,13 +216,16 @@ def body_match(extracted, full_code):
     """
     a, b = WS.sub("", extracted or ""), WS.sub("", full_code or "")
     if not a or not b:
-        return "unknown"
+        return "unknown", 0.0
     if a == b:
-        return "exact"
-    return "contains" if (a in b or b in a) else "differs"
+        return "exact", 1.0
+    if a in b or b in a:
+        return "contains", 1.0
+    r = body_similarity(a, b)
+    return ("similar" if r >= threshold else "differs"), r
 
 
-def resolve_tests(spec, model, full_code_by_id=None):
+def resolve_tests(spec, model, full_code_by_id=None, threshold=0.85):
     """Which candidate tests this commit actually declares."""
     full_code_by_id = full_code_by_id or {}
     project = spec["project"]
@@ -229,11 +239,10 @@ def resolve_tests(spec, model, full_code_by_id=None):
         in_class = by_simple.get(c["test_class"], [])
         hits = [m for m in in_class if m.get("method") == want]
         variants = full_code_by_id.get((project, c["test_name"]), [])
-        levels = [body_match(m.get("raw_body"), fc)
+        scored = [body_match(m.get("raw_body"), fc, threshold)
                   for m in hits for fc in (variants or [""])]
-        best = ("exact" if "exact" in levels else
-                "contains" if "contains" in levels else
-                "differs" if "differs" in levels else "unknown")
+        rank = {"exact": 4, "contains": 3, "similar": 2, "differs": 1, "unknown": 0}
+        best, sim = max(scored, key=lambda x: (rank[x[0]], x[1])) if scored             else ("unknown", 0.0)
         rows.append({
             "id": c["id"],
             "test_name": c["test_name"],
@@ -249,7 +258,9 @@ def resolve_tests(spec, model, full_code_by_id=None):
             "qualified_class": hits[0]["qualified_class"] if hits else "",
             # the gate on the fields/fixtures/production scopes
             "body_match": best,
-            "usable_for_class_scopes": "yes" if best in ("exact", "contains") else "no",
+            "body_similarity": round(sim, 3),
+            "usable_for_class_scopes":
+                "yes" if best in ("exact", "contains", "similar") else "no",
         })
     return rows
 
@@ -298,6 +309,11 @@ def main():
                     help="keep the checkout (debugging; ~GB per build point)")
     ap.add_argument("--force", action="store_true",
                     help="re-run a build point that already has a model")
+    ap.add_argument("--body-threshold", type=float, default=0.85,
+                    help="similarity at or above which a differing body still "
+                         "counts as the same test at another revision; the raw "
+                         "ratio is stored per test so this can be re-tuned "
+                         "without re-running anything")
     ap.add_argument("--xmx-spoon", default=rp.XMX["spoon"])
     ap.add_argument("--timeout-checkout", type=int, default=1800)
     ap.add_argument("--timeout-spoon", type=int, default=3600)
