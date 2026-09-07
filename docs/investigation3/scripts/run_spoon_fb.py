@@ -173,17 +173,29 @@ def do_build_point(spec_path, tools, args):
         st["steps"]["spoon"] = {"ok": rcs == 0, "rc": rcs,
                                 "summary": (outs or "").strip().splitlines()[-1:]}
 
-    model = []
+    # Stream the model instead of json.load-ing it, and keep only the classes
+    # this build point actually asks about. Loading it whole cost 9x the file
+    # size in Python objects - druid's 34 MB model peaked at 302 MB, so hadoop's
+    # 157 MB would peak near 1.4 GB - and two of those alongside two 2 GB Spoon
+    # JVMs is what got the first full sweep killed for memory at 59 of 172.
+    # A build point names ~100 test classes out of tens of thousands of records,
+    # so the filtered index is negligible.
+    wanted = {c["test_class"] for c in spec["candidate_tests"] if c["test_class"]}
+    by_simple = collections.defaultdict(list)
+    n_records = 0
     if os.path.isfile(spoon_json):
         try:
-            model = json.load(open(spoon_json, encoding="utf-8"))
+            for m in stream_model(spoon_json):
+                n_records += 1
+                if m.get("simple_class") in wanted:
+                    by_simple[m["simple_class"]].append(m)
         except Exception as e:
             st["steps"].setdefault("spoon", {})["parse_error"] = str(e)
-    st["steps"]["model"] = {"records": len(model)}
+    st["steps"]["model"] = {"records": n_records}
 
-    resolved = resolve_tests(spec, model, load_full_code(args.dataset),
+    resolved = resolve_tests(spec, by_simple, load_full_code(args.dataset),
                              args.body_threshold)
-    st["status"] = "ok" if model else "no_model"
+    st["status"] = "ok" if n_records else "no_model"
     return finish(st, bp_dir, src, t0, args, spec, resolved)
 
 
@@ -225,13 +237,34 @@ def body_match(extracted, full_code, threshold=0.85):
     return ("similar" if r >= threshold else "differs"), r
 
 
-def resolve_tests(spec, model, full_code_by_id=None, threshold=0.85):
-    """Which candidate tests this commit actually declares."""
+def stream_model(path):
+    """Yield the model one record at a time.
+
+    SpoonExtract writes exactly one JSON object per line and escapes every
+    newline inside a body, so the file is line-delimited and needs no incremental
+    parser - which keeps peak memory flat regardless of how large the model is.
+    """
+    with open(path, encoding="utf-8") as fh:
+        for line in fh:
+            line = line.strip()
+            if not line or line in ("[", "]"):
+                continue
+            if line.endswith(","):
+                line = line[:-1]
+            try:
+                yield json.loads(line)
+            except json.JSONDecodeError:
+                continue
+
+
+def resolve_tests(spec, by_simple, full_code_by_id=None, threshold=0.85):
+    """Which candidate tests this commit actually declares.
+
+    Takes a prebuilt simple-class index rather than the whole model, so the
+    caller can stream and filter.
+    """
     full_code_by_id = full_code_by_id or {}
     project = spec["project"]
-    by_simple = collections.defaultdict(list)
-    for m in model:
-        by_simple[m.get("simple_class")].append(m)
 
     rows = []
     for c in spec["candidate_tests"]:

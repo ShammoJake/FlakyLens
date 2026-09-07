@@ -42,6 +42,7 @@ import sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 import extract_features as ef                                    # noqa: E402
+from run_spoon_fb import stream_model                            # noqa: E402
 
 ROOT = os.path.abspath(os.path.join(HERE, "..", "..", ".."))
 SCOPES = ["test_body", "fixtures", "fields"]
@@ -98,17 +99,37 @@ def main():
             if k not in best or rank > best[k][0]:
                 best[k] = (rank, bp, r)
 
+    # Which classes each build point is actually asked about. Loading whole
+    # models would repeat the mistake that killed the first sweep: json.load
+    # costs about 9x the file size in Python objects, and caching 172 of them is
+    # far beyond this machine. Stream each model once, keep only the classes
+    # needed, and close over the superclass chain in a couple of extra passes.
+    needed = collections.defaultdict(set)
+    for (_tn,), (_rank, bp, r) in best.items():
+        if r.get("qualified_class"):
+            needed[bp].add(r["qualified_class"])
+
     models = {}
 
     def model_for(bp):
         if bp not in models:
-            p = os.path.join(args.runs, "_bp", bp, "spoon_methods.json")
+            path = os.path.join(args.runs, "_bp", bp, "spoon_methods.json")
             by_class = collections.defaultdict(list)
-            try:
-                for m in json.load(open(p, encoding="utf-8")):
-                    by_class[m.get("qualified_class")].append(m)
-            except Exception:
-                pass
+            want = set(needed.get(bp, ()))
+            for _pass in range(4):
+                if not want:
+                    break
+                try:
+                    for m in stream_model(path):
+                        if m.get("qualified_class") in want:
+                            by_class[m["qualified_class"]].append(m)
+                except Exception:
+                    break
+                # a superclass we have not collected yet is another pass's work
+                supers = {sup for c in list(by_class)
+                          for sup in (rec.get("superclass") for rec in by_class[c])
+                          if sup and sup != "java.lang.Object"}
+                want = supers - set(by_class)
             models[bp] = by_class
         return models[bp]
 
