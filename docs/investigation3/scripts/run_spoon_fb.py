@@ -101,14 +101,26 @@ _FULL_CODE = {}
 
 
 def load_full_code(path):
-    """id -> full_code, read once and shared by every build point."""
+    """(project, test_name) -> [full_code, ...], read once and shared.
+
+    NOT keyed by `id`: 66 ids in FlakeBench_dataset.csv name two different tests
+    (id 281 is both soot's TestDominance.TestSimpleDiamond and hadoop's
+    TestOffsetRange.testConstructor1), so an id-keyed dict silently hands 66 rows
+    somebody else's body and reports a bogus body_match for them.
+
+    The value is a list because 110 (project, test_name) keys appear more than
+    once — the same test at different commits, 107 of them with different bodies.
+    Labels never conflict across those copies, so any copy matching is enough to
+    say this commit holds a version FlakeBench labelled.
+    """
     if not _FULL_CODE:
         try:
             for r in csv.DictReader(open(os.path.abspath(path), encoding="utf-8")):
-                _FULL_CODE[r["id"]] = r["full_code"]
+                _FULL_CODE.setdefault((r["project"], r["test_name"]), []).append(
+                    r["full_code"])
         except Exception as e:
             print(f"  warning: could not read the dataset for body matching: {e}")
-            _FULL_CODE["__missing__"] = ""
+            _FULL_CODE[("__missing__", "")] = [""]
     return _FULL_CODE
 
 
@@ -206,6 +218,7 @@ def body_match(extracted, full_code):
 def resolve_tests(spec, model, full_code_by_id=None):
     """Which candidate tests this commit actually declares."""
     full_code_by_id = full_code_by_id or {}
+    project = spec["project"]
     by_simple = collections.defaultdict(list)
     for m in model:
         by_simple[m.get("simple_class")].append(m)
@@ -215,8 +228,9 @@ def resolve_tests(spec, model, full_code_by_id=None):
         want = rp.BRACKET.sub("", c["test_method"])
         in_class = by_simple.get(c["test_class"], [])
         hits = [m for m in in_class if m.get("method") == want]
-        fc = full_code_by_id.get(c["id"], "")
-        levels = [body_match(m.get("raw_body"), fc) for m in hits]
+        variants = full_code_by_id.get((project, c["test_name"]), [])
+        levels = [body_match(m.get("raw_body"), fc)
+                  for m in hits for fc in (variants or [""])]
         best = ("exact" if "exact" in levels else
                 "contains" if "contains" in levels else
                 "differs" if "differs" in levels else "unknown")
