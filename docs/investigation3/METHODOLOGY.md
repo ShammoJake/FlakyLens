@@ -453,3 +453,180 @@ processed in bulk.
    category has no developer-merged evidence base, not that it has a small one.
 7. **A full 417-point build sweep** has not been run. Until it is, the true corpus size
    is unknown; 2,654 is an upper bound on what is analysable with coverage.
+
+---
+
+## 13. The FlakeBench corpus and the tier-1 measurement
+
+Sections 1–12 describe the before/after pair corpus. This section describes a
+second corpus, added because the pairs cannot answer half the question.
+
+### 13.1 Why a second corpus
+
+The claim under test has two halves, and no single dataset carries both.
+
+*"Detectors learn the hazard"* needs a **negative class**. The pair corpus has
+none — every subject in it is a flaky test — so it can measure neither a false
+positive rate nor precision. FlakeBench supplies 8,294 non-flaky tests against
+280 flaky, and 96 of its 98 projects contain both, which makes the comparison
+controlled rather than confounded by project.
+
+*"…rather than the defect"* needs **before/after**. FlakeBench has no fixes. Only
+the pair corpus can say that a flag survives the repair, which it did on 57 of 57
+pairs (`RUNNER.md` §7.2).
+
+A further reason the pairs cannot stand alone: 2,214 eligible pairs reduce to 672
+distinct commit pairs, and by category those are 523 unordered collections, 109
+order dependency, 26 async, 3 time and **0 concurrency**. The pair corpus is a
+single-category corpus with a tail.
+
+### 13.2 Collection
+
+`build_flakebench_bp.py` turns the dataset into build points; `run_spoon_fb.py`
+processes one. No Maven, no JaCoCo, no test execution: Spoon runs in noclasspath
+mode, so test bodies, fields, fixtures and the superclass chain come from a
+shallow checkout alone. The expensive coverage pass was deliberately deferred
+until this measurement could say whether it was worth its cost (§13.7).
+
+Two things the dataset does not record, and neither is guessed:
+
+- **No commit per test.** `FlakeBench_dataset.csv` carries only a project name;
+  commits live in `project_repos.csv`. Every SHA of a project therefore receives
+  the project's whole test list as *candidates*, and which of them a commit
+  actually contains is observed and written to `tests_resolved.csv`.
+- **No package in `test_name`.** It is `SimpleClass.method`, so classes are
+  matched by simple name and the ambiguity is counted rather than resolved by
+  taking the first hit.
+
+### 13.3 Corpus arithmetic
+
+| | count |
+| --- | ---: |
+| projects in `project_repos.csv` | 98 |
+| SHA entries (the `n_shas` column agrees with the actual entries) | 175 |
+| rejected: a source file path in RxJava's sha column | −1 |
+| rejected: apache_jackrabbit's SVN revisions `1522657`, `1157104` | −2 |
+| **build points** | **172** |
+
+jackrabbit had only those two, so the project drops entirely: 97 projects, and 48
+tests lost. 8,574 rows are 8,245 distinct tests — 110 `(project, test_name)` keys
+recur, 107 of them with different bodies, which is the same test at different
+commits. Labels never conflict across those copies.
+
+**172 is a cost, not a sample.** 8,526 reachable tests over 172 checkouts is 49.6
+tests per checkout. The figure never appears as a denominator in any result.
+
+### 13.4 Six defects found by running it
+
+Each was silent — a status of `ok` over the wrong contents, or a plausible-looking
+loss that was really a refusal to look.
+
+| defect | cost | cause and fix |
+| --- | --- | --- |
+| `no_test_class_found` on 26 of the first 77 build points | 34% of the sweep | the tree was indexed only under `src/{main,test}/java`. Cassandra keeps tests in `test/unit`, CoreNLP in `test/src`, androidx in neither. Source roots are now derived from each file's own `package` declaration, which is layout-independent. Cassandra went from 0/105 to 92/105 |
+| Spoon aborted on every monorepo | all largest projects | `The type package-info is already defined` — two module roots declaring one package. `setIgnoreDuplicateDeclarations(true)`. hadoop went from 0 to 97,501 records |
+| the sweep was killed for memory at 59/172 | whole run | `json.load` costs ~9× file size in Python objects (druid: 34 MB → 302 MB), so hadoop's model peaked near 1.4 GB. The model is line-delimited, so it streams: 302 MB → 0.1 MB |
+| 81 test names rejected as malformed | **29% of the flaky class** | every one of the 81 is flaky. 61 are bare method names, 18 are prefixed with a commit sha, 2 are `pkg.Class.method`. Bare names are resolved by method name and disambiguated by `full_code` — the right class is the one holding the labelled body. Usable flaky: 87 → 147 |
+| bare-method tests reported as "class not in tree" | 47 flaky | a source root cannot be derived from a class name never given, so those modules were never handed to Spoon. androidx named 9 classes plus 16 bare methods (all flaky) and was modelled as ~300 records of a huge repository; with test-looking files scanned for those method names it is 15,860 records and locates 11 flaky. Located flaky: 201 → 231 |
+| 66 `id` values name two different tests | 66 rows | `id` is not a primary key — id 281 is both soot's `TestDominance.TestSimpleDiamond` and hadoop's `TestOffsetRange.testConstructor1`. `full_code` is keyed on `(project, test_name)` |
+
+Final sweep: **161 of 172 build points**. Remaining losses are 8 Spoon parser
+crashes and 3 cdap checkouts blocked by a filename Windows will not create.
+
+### 13.5 The body-match gate, and why it is needed
+
+FlakeBench's recorded SHA is frequently **not** the commit its `full_code` came
+from. Of 641 tests resolved by name in the pilot, 140 carried a different body,
+and 110 of those were in single-SHA projects where no other commit exists to try.
+
+This does not affect the body scope, which reads `full_code` directly. It is
+fatal to the class scopes, which would otherwise attribute one version of a class
+to a body labelled at another commit. So `usable_for_class_scopes` gates them.
+
+Requiring an exact match was too strict: of 203 bodies scored `differs`, 172 were
+0.8 or better similar — the same test at a minor revision.
+`TestPathData.testToFile` scores 0.96, differing only by `@Test` versus
+`@Test(timeout=30000)`. Genuinely different bodies sit far below:
+`TestDelegationTokenRenewer.testAddRemoveRenewAction` is 0.15, at 1,079
+characters against 461. A `similar` level at **0.85** separates them, and
+`body_similarity` is stored per test so the threshold is re-tunable in analysis.
+
+### 13.6 Result
+
+Class scopes resolve for 58.6% of flaky tests and 83.5% of non-flaky, so a pooled
+comparison would hand non-flaky tests more chances to be flagged. The measurement
+is therefore reported on the **availability-matched subset**: 164 flaky against
+6,926 non-flaky, every one of which has all three scopes present.
+
+| scope | flaky | non-flaky | gap | lift over base |
+| --- | ---: | ---: | ---: | ---: |
+| test body | 75.0% | 49.0% | 26.0 | 1.51× |
+| fixtures | 56.1% | 35.3% | 20.8 | 1.57× |
+| **fields** | **39.0%** | **36.5%** | **2.5** | **1.07×** |
+| all three | 93.3% | 69.5% | 23.7 | 1.33× |
+
+Two readings, both central to the investigation.
+
+**A declared field carries essentially no signal.** It is very nearly as likely to
+hold a hazard token in a non-flaky test as in a flaky one — 36.5% against 39.0%.
+
+**Widening the scope does not help and mostly hurts.** Going from the body alone
+to all three scopes takes non-flaky from 49.0% to 69.5% while flaky rises from
+75.0% to 93.3%; lift falls from 1.51× to 1.33×. Hazard evidence accumulates on
+both classes at once, and the separation does not survive it.
+
+The conclusion does not rest on the gate threshold:
+
+| gate | flaky n | non-flaky n | fields lift | all-three lift |
+| ---: | ---: | ---: | ---: | ---: |
+| none | 231 | 7,005 | 0.77× | 1.27× |
+| 0.70 | 193 | 6,969 | 0.92× | 1.29× |
+| 0.85 | 164 | 6,926 | 1.07× | 1.33× |
+| 0.95 | 113 | 6,786 | 0.83× | 1.32× |
+
+The fields lift never rises meaningfully above 1 at any threshold, and 0.85 is its
+most favourable point rather than a chosen one.
+
+### 13.7 What this settles about the coverage pass
+
+The production-closure scope saturated at **99.1%** of sides on the pair corpus,
+flagging identically before and after the fix on 57 of 57 pairs (`RUNNER.md` §7.2).
+Adding it here is predicted to push non-flaky toward 100% and lift toward 1.0. It
+therefore cannot help tier-1 classification.
+
+That is a statement about classification only. Coverage remains irreplaceable for
+localisation: static call-graph reachability recovered 3.8% and 0.0% of the
+covered set on the two pairs measured, and missed the developer's repair site in
+both, because JUnit runners, reflection and dependency injection reach the
+production code that the test body's call chain does not.
+
+### 13.8 What the corpus supports
+
+| | flaky | non-flaky |
+| --- | ---: | ---: |
+| body scope — complete, no checkout needed | **280** | **8,294** |
+| located in source | 231 | 7,008 |
+| class scopes usable | **164** | **6,926** |
+
+Flaky class-scope coverage by category: unordered collections 37/41, order
+dependency 66/93, async wait 36/76, concurrency 16/37, time 9/33.
+
+The aggregate comparison is well powered, and unordered collections and order
+dependency support category-specific claims. **Concurrency at 16 and time at 9 do
+not**, and no additional compute changes that — it is a property of FlakeBench's
+280 flaky tests, not of the collection.
+
+The class imbalance is roughly 42:1, so rates are reported within each class;
+a pooled precision figure is dominated by the negative class and mostly measures
+the base rate.
+
+### 13.9 Artefacts
+
+| file | content |
+| --- | --- |
+| `fb_features.csv` | 8,574 rows, one per test: identity, label, provenance (`located`, `body_match`, `body_similarity`, `class_scopes_available`) and per-scope flags with the families that fired |
+| `runs_fb/_specs/` | 172 build-point specs plus `index.csv` |
+| `runs_fb/_bp/<bp>/` | `spoon_methods.json`, `tests_resolved.csv`, `status.json` per build point |
+| `scripts/build_flakebench_bp.py` | dataset to build points, including the test-name parser |
+| `scripts/run_spoon_fb.py` | one build point: checkout, index, Spoon, resolve, delete |
+| `scripts/extract_features_fb.py` | the tier-1 extractor over both classes |
