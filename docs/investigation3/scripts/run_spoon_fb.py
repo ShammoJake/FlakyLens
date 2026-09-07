@@ -99,12 +99,24 @@ def source_root_of(java_file):
     return d
 
 
-def roots_for(src, classes, by_name):
-    """The module source roots that hold the named test classes.
+TESTISH = re.compile(r"(Test|Tests|TestCase|IT|ITCase|Spec)$")
+
+
+def roots_for(src, classes, by_name, bare_methods=()):
+    """The module source roots that hold the wanted tests.
 
     Returns (roots, per-class match counts). A class matched in two modules keeps
     both — the ambiguity is real (`test_name` carries no package) and is recorded
     rather than resolved by picking one.
+
+    `bare_methods` exists because a root cannot be derived from a class name that
+    FlakeBench never gave. androidx is the clear case: 116 candidates naming only
+    9 classes plus 16 bare method names, and all 16 of those are flaky. Deriving
+    roots from the 9 alone modelled ~300 records of a huge repository and left
+    every one of the 16 invisible — they came back as "class not in tree", which
+    reads as a corpus gap rather than as source we declined to look at. So
+    test-looking files are scanned for those method names and their roots added
+    too. The filename filter keeps this from reading every file in the tree.
     """
     roots, matches = [], {}
     for cls in classes:
@@ -122,6 +134,27 @@ def roots_for(src, classes, by_name):
                     root)), "main", "java")
                 if os.path.isdir(sibling) and sibling not in roots:
                     roots.append(sibling)
+
+    if bare_methods:
+        pat = re.compile(r"\b(" + "|".join(re.escape(m) for m in bare_methods)
+                         + r")\s*\(")
+        found = 0
+        for simple, files in by_name.items():
+            if not TESTISH.search(simple):
+                continue
+            for f in files:
+                try:
+                    with open(f, encoding="utf-8", errors="replace") as fh:
+                        text = fh.read(400000)
+                except Exception:
+                    continue
+                if not pat.search(text):
+                    continue
+                found += 1
+                root = source_root_of(f)
+                if root and root not in roots:
+                    roots.append(root)
+        matches["__bare_method_files__"] = found
     return roots, matches
 
 
@@ -180,12 +213,16 @@ def do_build_point(spec_path, tools, args):
         by_name, _ = index_test_roots(src)
         classes = sorted({c["test_class"] for c in spec["candidate_tests"]
                           if c["test_class"]})
-        roots, matches = roots_for(src, classes, by_name)
+        bare = sorted({rp.BRACKET.sub("", c["test_method"])
+                       for c in spec["candidate_tests"] if not c["test_class"]})
+        roots, matches = roots_for(src, classes, by_name, bare)
         st["steps"]["index"] = {
             "ok": bool(roots),
             "classes_wanted": len(classes),
             "classes_located": sum(1 for c in classes if matches.get(c)),
             "classes_ambiguous": sum(1 for c in classes if matches.get(c, 0) > 1),
+            "bare_methods_wanted": len(bare),
+            "bare_method_files": matches.get("__bare_method_files__", 0),
             "source_roots": len(roots),
         }
         if not roots:
