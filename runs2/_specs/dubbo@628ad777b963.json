@@ -1,0 +1,26 @@
+{
+ "project_url": "https://github.com/apache/dubbo",
+ "ref": "628ad777b963fb450873a5fd38eebf99002bbc68",
+ "ref_kind": "merge_parent",
+ "tests": [
+  {
+   "pair_id": "P0588",
+   "pair_dir": "P0588__dubbo__PortTelnetHandlerTest.testListAllPort",
+   "side": "before",
+   "module": "dubbo-rpc/dubbo-rpc-dubbo",
+   "test_class": "org.apache.dubbo.rpc.protocol.dubbo.telnet.PortTelnetHandlerTest",
+   "test_method": "testListAllPort",
+   "category": "OD-Vic"
+  },
+  {
+   "pair_id": "P0589",
+   "pair_dir": "P0589__dubbo__PortTelnetHandlerTest.testListDetail",
+   "side": "before",
+   "module": "dubbo-rpc/dubbo-rpc-dubbo",
+   "test_class": "org.apache.dubbo.rpc.protocol.dubbo.telnet.PortTelnetHandlerTest",
+   "test_method": "testListDetail",
+   "category": "OD-Vic"
+  }
+ ],
+ "out": "D:\\FSE-2027\\FlakyLens\\runs2"
+}

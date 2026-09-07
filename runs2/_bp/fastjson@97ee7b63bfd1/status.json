@@ -1,0 +1,44 @@
+{
+ "build_point": "fastjson@97ee7b63bfd1",
+ "project_url": "https://github.com/alibaba/fastjson",
+ "ref": "97ee7b63bfd1563d5071fa5a7a55806bb1c3cb85",
+ "ref_kind": "merge_parent",
+ "tests": 1,
+ "started": "2026-09-07T01:10:37",
+ "steps": {
+  "checkout": {
+   "ok": true,
+   "ref": "97ee7b63bfd1563d5071fa5a7a55806bb1c3cb85",
+   "error": null
+  },
+  "build": {
+   "ok": false,
+   "rc": 1,
+   "modules": [
+    "."
+   ],
+   "error": ""
+  },
+  "spoon": {
+   "ok": false,
+   "methods": 0,
+   "roots": [
+    "src\\main\\java",
+    "src\\test\\java",
+    "src\\main\\java"
+   ]
+  }
+ },
+ "isolate_between_tests": false,
+ "status": "build_failed",
+ "results": [
+  {
+   "pair_id": "P0079",
+   "side": "before",
+   "status": "build_failed"
+  }
+ ],
+ "source_removed": true,
+ "seconds": 30.5,
+ "finished": "2026-09-07T01:11:08"
+}

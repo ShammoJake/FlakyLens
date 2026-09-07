@@ -1,0 +1,17 @@
+{
+ "project_url": "https://github.com/jdereg/json-io",
+ "ref": "1d2fb64e2abf8898e2e628533791e090f60f97bf",
+ "ref_kind": "merge_commit",
+ "tests": [
+  {
+   "pair_id": "P1693",
+   "pair_dir": "P1693__json-io__TestGraphComparatorLis.testNewArrayElemen",
+   "side": "after",
+   "module": ".",
+   "test_class": "com.cedarsoftware.io.TestGraphComparatorList",
+   "test_method": "testNewArrayElement",
+   "category": "ID"
+  }
+ ],
+ "out": "D:\\FSE-2027\\FlakyLens\\runs2"
+}

@@ -1,0 +1,35 @@
+{
+ "project_url": "https://github.com/HubSpot/jinjava",
+ "ref": "9f06136b8d043feb132c508334a6f416d4f8d812",
+ "ref_kind": "merge_commit",
+ "tests": [
+  {
+   "pair_id": "P1537",
+   "pair_dir": "P1537__jinjava__ListFilterTest.itConvertsSetsToLi",
+   "side": "after",
+   "module": ".",
+   "test_class": "com.hubspot.jinjava.lib.filter.ListFilterTest",
+   "test_method": "itConvertsSetsToLists",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P1538",
+   "pair_dir": "P1538__jinjava__ToJsonFilterTest.itWritesObjectAsSt",
+   "side": "after",
+   "module": ".",
+   "test_class": "com.hubspot.jinjava.lib.filter.ToJsonFilterTest",
+   "test_method": "itWritesObjectAsString",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P1539",
+   "pair_dir": "P1539__jinjava__ToYamlFilterTest.itWritesObjectAsSt",
+   "side": "after",
+   "module": ".",
+   "test_class": "com.hubspot.jinjava.lib.filter.ToYamlFilterTest",
+   "test_method": "itWritesObjectAsString",
+   "category": "ID"
+  }
+ ],
+ "out": "D:\\FSE-2027\\FlakyLens\\runs2"
+}

@@ -1,0 +1,26 @@
+{
+ "project_url": "https://github.com/karatelabs/karate",
+ "ref": "dbae11816f3ce1b4f62c6bc150af575f3a947438",
+ "ref_kind": "merge_commit",
+ "tests": [
+  {
+   "pair_id": "P1717",
+   "pair_dir": "P1717__karate__JsonUtilsTest.testBeanConversion",
+   "side": "after",
+   "module": "karate-core",
+   "test_class": "com.intuit.karate.JsonUtilsTest",
+   "test_method": "testBeanConversion",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P1718",
+   "pair_dir": "P1718__karate__JsonUtilsTest.testPojoConversion",
+   "side": "after",
+   "module": "karate-core",
+   "test_class": "com.intuit.karate.JsonUtilsTest",
+   "test_method": "testPojoConversion",
+   "category": "ID"
+  }
+ ],
+ "out": "D:\\FSE-2027\\FlakyLens\\runs2"
+}

@@ -1,0 +1,82 @@
+{
+ "pair": {
+  "pair_id": "P0079",
+  "source": "idoft",
+  "tier": "A",
+  "repair_author": "developer",
+  "project_slug": "alibaba/fastjson",
+  "project_url": "https://github.com/alibaba/fastjson",
+  "module_path": ".",
+  "test_class": "com.alibaba.json.bvt.issue_1400.Issue1480",
+  "test_method": "test_for_issue",
+  "fq_test": "com.alibaba.json.bvt.issue_1400.Issue1480.test_for_issue",
+  "before_sha": "e05e9c5e4be580691cc55a59f3256595393203a1",
+  "before_sha_reachable": "yes",
+  "after_type": "pr",
+  "after_ref": "https://github.com/alibaba/fastjson/pull/3025",
+  "source_category": "ID",
+  "idoft_status": "Accepted",
+  "flakebench_label": "unordered collections",
+  "flakebench_category": "3",
+  "label_confidence": "high",
+  "label_candidates": "",
+  "mapping_note": "NonDex-induced iteration order over hash containers or reflection",
+  "build_env": "reproflake",
+  "java_version": "11",
+  "reproflake_zip": "fastjson=.=97ee7b6",
+  "reproflake_url": "https://zenodo.org/records/18634501/files/fastjson=.=97ee7b6.zip",
+  "reproflake_fixed_sha": "0f4379b58cc54e8e4429770f32f8e1c86202a028",
+  "polluter": "",
+  "in_flakebench": "",
+  "flakebench_existing_label": "",
+  "notes": "RepoArchived",
+  "merge_commit_sha": "0f4379b58cc54e8e4429770f32f8e1c86202a028",
+  "merge_parent_sha": "97ee7b63bfd1563d5071fa5a7a55806bb1c3cb85",
+  "merge_kind": "merge",
+  "minimal_pair": "yes",
+  "pr_merged": "true",
+  "pr_merged_at": "2020-02-23T15:13:40Z",
+  "pr_commits": "1",
+  "pr_changed_files": "1",
+  "pr_touch": "test_only",
+  "pr_files_java_main": "0",
+  "pr_files_java_test": "1"
+ },
+ "sides": {
+  "before": {
+   "pair_id": "P0079",
+   "side": "before",
+   "ref_kind": "merge_parent",
+   "build_point": "fastjson@97ee7b63bfd1",
+   "spoon_methods": "_bp\\fastjson@97ee7b63bfd1\\spoon_methods.json",
+   "steps": {
+    "checkout": {
+     "ok": true,
+     "ref": "97ee7b63bfd1563d5071fa5a7a55806bb1c3cb85",
+     "error": null
+    },
+    "build": {
+     "ok": false,
+     "rc": 1,
+     "modules": [
+      "."
+     ],
+     "error": ""
+    },
+    "spoon": {
+     "ok": false,
+     "methods": 0,
+     "roots": [
+      "src\\main\\java",
+      "src\\test\\java",
+      "src\\main\\java"
+     ]
+    },
+    "test_method_found": false
+   },
+   "status": "build_failed"
+  }
+ },
+ "overall": "partial",
+ "finalized": "2026-09-07T01:13:35"
+}

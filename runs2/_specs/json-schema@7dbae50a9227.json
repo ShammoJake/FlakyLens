@@ -1,0 +1,17 @@
+{
+ "project_url": "https://github.com/everit-org/json-schema",
+ "ref": "7dbae50a92279ebd1737e09674755dbb4528a3fd",
+ "ref_kind": "merge_parent",
+ "tests": [
+  {
+   "pair_id": "P1330",
+   "pair_dir": "P1330__json-schema__ObjectSchemaTest.multipleSchemaDepV",
+   "side": "before",
+   "module": "core",
+   "test_class": "org.everit.json.schema.ObjectSchemaTest",
+   "test_method": "multipleSchemaDepViolation",
+   "category": "ID"
+  }
+ ],
+ "out": "D:\\FSE-2027\\FlakyLens\\runs2"
+}

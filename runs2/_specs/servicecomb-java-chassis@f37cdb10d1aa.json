@@ -1,0 +1,44 @@
+{
+ "project_url": "https://github.com/apache/servicecomb-java-chassis",
+ "ref": "f37cdb10d1aa35d14469b7613f99b23348ae5851",
+ "ref_kind": "merge_parent",
+ "tests": [
+  {
+   "pair_id": "P1034",
+   "pair_dir": "P1034__servicecomb-java-c__TestAbstractHttpServle.testAttribute",
+   "side": "before",
+   "module": "foundations/foundation-vertx",
+   "test_class": "org.apache.servicecomb.foundation.vertx.http.TestAbstractHttpServletRequest",
+   "test_method": "testAttribute",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P1035",
+   "pair_dir": "P1035__servicecomb-java-c__TestStandardHttpServle.parameterMap_merge",
+   "side": "before",
+   "module": "foundations/foundation-vertx",
+   "test_class": "org.apache.servicecomb.foundation.vertx.http.TestStandardHttpServletRequestEx",
+   "test_method": "parameterMap_merge",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P1036",
+   "pair_dir": "P1036__servicecomb-java-c__TestStandardHttpServle.setParameter",
+   "side": "before",
+   "module": "foundations/foundation-vertx",
+   "test_class": "org.apache.servicecomb.foundation.vertx.http.TestStandardHttpServletRequestEx",
+   "test_method": "setParameter",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P1037",
+   "pair_dir": "P1037__servicecomb-java-c__TestVertxServerRequest.setParameter",
+   "side": "before",
+   "module": "foundations/foundation-vertx",
+   "test_class": "org.apache.servicecomb.foundation.vertx.http.TestVertxServerRequestToHttpServletRequest",
+   "test_method": "setParameter",
+   "category": "ID"
+  }
+ ],
+ "out": "D:\\FSE-2027\\FlakyLens\\runs2"
+}

@@ -1,0 +1,26 @@
+{
+ "project_url": "https://github.com/apache/cloudstack",
+ "ref": "df4cd2aae42f7fea114b091ee2830ff263e7aaf7",
+ "ref_kind": "merge_parent",
+ "tests": [
+  {
+   "pair_id": "P0318",
+   "pair_dir": "P0318__cloudstack__TungstenApiTest.listTungstenNetwor",
+   "side": "before",
+   "module": "plugins/network-elements/tungsten",
+   "test_class": "org.apache.cloudstack.network.tungsten.service.TungstenApiTest",
+   "test_method": "listTungstenNetworkTest",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P0319",
+   "pair_dir": "P0319__cloudstack__TungstenApiTest.listTungstenPolicy",
+   "side": "before",
+   "module": "plugins/network-elements/tungsten",
+   "test_class": "org.apache.cloudstack.network.tungsten.service.TungstenApiTest",
+   "test_method": "listTungstenPolicyTest",
+   "category": "ID"
+  }
+ ],
+ "out": "D:\\FSE-2027\\FlakyLens\\runs2"
+}

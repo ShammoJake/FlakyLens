@@ -1,0 +1,26 @@
+{
+ "project_url": "https://github.com/spdx/tools",
+ "ref": "1f593e1a45eec2825a85abf1c6dc9df125b9d794",
+ "ref_kind": "merge_parent",
+ "tests": [
+  {
+   "pair_id": "P2172",
+   "pair_dir": "P2172__tools__TestPackageSheet.tesConcludedLicens",
+   "side": "before",
+   "module": ".",
+   "test_class": "org.spdx.compare.TestPackageSheet",
+   "test_method": "tesConcludedLicensetCol",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P2173",
+   "pair_dir": "P2173__tools__TestPackageSheet.testDeclaredLicens",
+   "side": "before",
+   "module": ".",
+   "test_class": "org.spdx.compare.TestPackageSheet",
+   "test_method": "testDeclaredLicenseCol",
+   "category": "ID"
+  }
+ ],
+ "out": "D:\\FSE-2027\\FlakyLens\\runs2"
+}

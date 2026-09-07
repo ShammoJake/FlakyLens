@@ -1,0 +1,102 @@
+$ mvn -B -pl junit4 -am -DskipTests install -Dmaven.javadoc.skip=true -Denforcer.skip=true -Dgpg.skip=true -Drat.skip=true -Dcheckstyle.skip=true -Dlicense.skip=true -Dspotbugs.skip=true -Dpmd.skip=true -Danimal.sniffer.skip=true -Ddependency-check.skip=true -Dmaven.source.skip=true -Dforbiddenapis.skip=true -Djapicmp.skip=true -Drevapi.skip=true -Dmaven.site.skip=true
+
+[INFO] Scanning for projects...
+[WARNING] The project com.google.testparameterinjector:test-parameter-injector-parent:pom:HEAD-SNAPSHOT uses prerequisites which is only intended for maven-plugin projects but not for non maven-plugin projects. For such purposes you should use the maven-enforcer-plugin. See https://maven.apache.org/enforcer/enforcer-rules/requireMavenVersion.html
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] TestParameterInjector parent project for internal use              [pom]
+[INFO] TestParameterInjector for JUnit4                                   [jar]
+[INFO] 
+[INFO] --< com.google.testparameterinjector:test-parameter-injector-parent >---
+[INFO] Building TestParameterInjector parent project for internal use HEAD-SNAPSHOT [1/2]
+[INFO]   from pom.xml
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --- install:3.1.4:install (default-install) @ test-parameter-injector-parent ---
+[INFO] Installing D:\FSE-2027\FlakyLens\runs2\_bp\TestParameterInjector@5d67f8cb6648\source\pom.xml to C:\Users\LENOVO\.m2\repository\com\google\testparameterinjector\test-parameter-injector-parent\HEAD-SNAPSHOT\test-parameter-injector-parent-HEAD-SNAPSHOT.pom
+[INFO] 
+[INFO] ------< com.google.testparameterinjector:test-parameter-injector >------
+[INFO] Building TestParameterInjector for JUnit4 HEAD-SNAPSHOT            [2/2]
+[INFO]   from junit4\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/google/auto/value/auto-value-annotations/1.7.4/auto-value-annotations-1.7.4.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/google/auto/value/auto-value-annotations/1.7.4/auto-value-annotations-1.7.4.pom (2.7 kB at 2.4 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/google/auto/value/auto-value-parent/1.7.4/auto-value-parent-1.7.4.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/google/auto/value/auto-value-parent/1.7.4/auto-value-parent-1.7.4.pom (6.1 kB at 49 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/google/guava/guava/32.0.0-jre/guava-32.0.0-jre.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/google/guava/guava/32.0.0-jre/guava-32.0.0-jre.pom (11 kB at 64 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/google/guava/guava-parent/32.0.0-jre/guava-parent-32.0.0-jre.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/google/guava/guava-parent/32.0.0-jre/guava-parent-32.0.0-jre.pom (21 kB at 71 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/google/truth/truth/1.1.2/truth-1.1.2.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/google/truth/truth/1.1.2/truth-1.1.2.pom (6.4 kB at 28 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/google/truth/truth-parent/1.1.2/truth-parent-1.1.2.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/google/truth/truth-parent/1.1.2/truth-parent-1.1.2.pom (16 kB at 60 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/google/guava/guava/30.1-android/guava-30.1-android.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/google/guava/guava/30.1-android/guava-30.1-android.pom (12 kB at 57 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/google/guava/guava-parent/30.1-android/guava-parent-30.1-android.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/google/guava/guava-parent/30.1-android/guava-parent-30.1-android.pom (13 kB at 61 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/checkerframework/checker-qual/3.9.1/checker-qual-3.9.1.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/checkerframework/checker-qual/3.9.1/checker-qual-3.9.1.pom (2.2 kB at 13 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/google/errorprone/error_prone_annotations/2.5.1/error_prone_annotations-2.5.1.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/google/errorprone/error_prone_annotations/2.5.1/error_prone_annotations-2.5.1.pom (2.1 kB at 17 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/google/errorprone/error_prone_parent/2.5.1/error_prone_parent-2.5.1.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/google/errorprone/error_prone_parent/2.5.1/error_prone_parent-2.5.1.pom (7.0 kB at 31 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/google/protobuf/protobuf-javalite/3.20.3/protobuf-javalite-3.20.3.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/google/protobuf/protobuf-javalite/3.20.3/protobuf-javalite-3.20.3.pom (15 kB at 75 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/google/protobuf/protobuf-parent/3.20.3/protobuf-parent-3.20.3.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/google/protobuf/protobuf-parent/3.20.3/protobuf-parent-3.20.3.pom (9.0 kB at 36 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/google/protobuf/protobuf-bom/3.20.3/protobuf-bom-3.20.3.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/google/protobuf/protobuf-bom/3.20.3/protobuf-bom-3.20.3.pom (3.5 kB at 8.7 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/google/auto/value/auto-value-annotations/1.7.4/auto-value-annotations-1.7.4.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/google/auto/value/auto-value-annotations/1.7.4/auto-value-annotations-1.7.4.jar (6.6 kB at 41 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/google/guava/guava/32.0.0-jre/guava-32.0.0-jre.jar
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/google/truth/truth/1.1.2/truth-1.1.2.jar
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/google/protobuf/protobuf-javalite/3.20.3/protobuf-javalite-3.20.3.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/google/truth/truth/1.1.2/truth-1.1.2.jar (243 kB at 634 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/google/protobuf/protobuf-javalite/3.20.3/protobuf-javalite-3.20.3.jar (704 kB at 1.2 MB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/google/guava/guava/32.0.0-jre/guava-32.0.0-jre.jar (3.0 MB at 4.2 MB/s)
+[INFO] 
+[INFO] --- resources:3.4.0:resources (default-resources) @ test-parameter-injector ---
+[INFO] skip non existing resourceDirectory D:\FSE-2027\FlakyLens\runs2\_bp\TestParameterInjector@5d67f8cb6648\source\junit4\src\main\resources
+[INFO] 
+[INFO] --- compiler:3.8.1:compile (default-compile) @ test-parameter-injector ---
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/google/auto/value/auto-value/1.7.4/auto-value-1.7.4.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/google/auto/value/auto-value/1.7.4/auto-value-1.7.4.jar (1.8 MB at 1.7 MB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/google/auto/value/auto-value/1.7.4/auto-value-1.7.4.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/google/auto/value/auto-value/1.7.4/auto-value-1.7.4.pom (8.2 kB at 59 kB/s)
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 19 source files to D:\FSE-2027\FlakyLens\runs2\_bp\TestParameterInjector@5d67f8cb6648\source\junit4\target\classes
+[INFO] /D:/FSE-2027/FlakyLens/runs2/_bp/TestParameterInjector@5d67f8cb6648/source/junit4/src/main/java/com/google/testing/junit/testparameterinjector/TestParametersMethodProcessor.java: D:\FSE-2027\FlakyLens\runs2\_bp\TestParameterInjector@5d67f8cb6648\source\junit4\src\main\java\com\google\testing\junit\testparameterinjector\TestParametersMethodProcessor.java uses unchecked or unsafe operations.
+[INFO] /D:/FSE-2027/FlakyLens/runs2/_bp/TestParameterInjector@5d67f8cb6648/source/junit4/src/main/java/com/google/testing/junit/testparameterinjector/TestParametersMethodProcessor.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- resources:3.4.0:testResources (default-testResources) @ test-parameter-injector ---
+[INFO] skip non existing resourceDirectory D:\FSE-2027\FlakyLens\runs2\_bp\TestParameterInjector@5d67f8cb6648\source\junit4\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.8.1:testCompile (default-testCompile) @ test-parameter-injector ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 7 source files to D:\FSE-2027\FlakyLens\runs2\_bp\TestParameterInjector@5d67f8cb6648\source\junit4\target\test-classes
+[INFO] 
+[INFO] --- surefire:2.22.2:test (default-test) @ test-parameter-injector ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:3.2.0:jar (default-jar) @ test-parameter-injector ---
+[INFO] Building jar: D:\FSE-2027\FlakyLens\runs2\_bp\TestParameterInjector@5d67f8cb6648\source\junit4\target\test-parameter-injector-HEAD-SNAPSHOT.jar
+[INFO] 
+[INFO] --- install:3.1.4:install (default-install) @ test-parameter-injector ---
+[INFO] Installing D:\FSE-2027\FlakyLens\runs2\_bp\TestParameterInjector@5d67f8cb6648\source\junit4\pom.xml to C:\Users\LENOVO\.m2\repository\com\google\testparameterinjector\test-parameter-injector\HEAD-SNAPSHOT\test-parameter-injector-HEAD-SNAPSHOT.pom
+[INFO] Installing D:\FSE-2027\FlakyLens\runs2\_bp\TestParameterInjector@5d67f8cb6648\source\junit4\target\test-parameter-injector-HEAD-SNAPSHOT.jar to C:\Users\LENOVO\.m2\repository\com\google\testparameterinjector\test-parameter-injector\HEAD-SNAPSHOT\test-parameter-injector-HEAD-SNAPSHOT.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for TestParameterInjector parent project for internal use HEAD-SNAPSHOT:
+[INFO] 
+[INFO] TestParameterInjector parent project for internal use SUCCESS [  1.618 s]
+[INFO] TestParameterInjector for JUnit4 ................... SUCCESS [ 34.636 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  36.868 s
+[INFO] Finished at: 2026-09-06T23:48:15+06:00
+[INFO] ------------------------------------------------------------------------
+
+
+*** rc=0 elapsed=50.2s

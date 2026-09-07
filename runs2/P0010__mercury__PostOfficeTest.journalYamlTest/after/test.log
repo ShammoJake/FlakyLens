@@ -1,0 +1,202 @@
+$ mvn -B -pl system/platform-core org.jacoco:jacoco-maven-plugin:0.8.11:prepare-agent test -Dtest=PostOfficeTest#journalYamlTest -Djacoco.destFile=D:\FSE-2027\FlakyLens\runs2\P0010__mercury__PostOfficeTest.journalYamlTest\after\jacoco.exec -DfailIfNoTests=false -Dsurefire.failIfNoSpecifiedTests=false -Dmaven.javadoc.skip=true -Denforcer.skip=true -Dgpg.skip=true -Drat.skip=true -Dcheckstyle.skip=true -Dlicense.skip=true -Dspotbugs.skip=true -Dpmd.skip=true -Danimal.sniffer.skip=true -Ddependency-check.skip=true -Dmaven.source.skip=true -Dforbiddenapis.skip=true -Djapicmp.skip=true -Drevapi.skip=true -Dmaven.site.skip=true
+
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------< org.platformlambda:platform-core >------------------
+[INFO] Building Mercury platform-core module 3.0.16
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- jacoco:0.8.11:prepare-agent (default-cli) @ platform-core ---
+[INFO] argLine set to -javaagent:C:\\Users\\LENOVO\\.m2\\repository\\org\\jacoco\\org.jacoco.agent\\0.8.11\\org.jacoco.agent-0.8.11-runtime.jar=destfile=D:\\FSE-2027\\FlakyLens\\runs2\\P0010__mercury__PostOfficeTest.journalYamlTest\\after\\jacoco.exec
+[INFO] 
+[INFO] --- jacoco:0.8.11:prepare-agent (default) @ platform-core ---
+[INFO] argLine set to -javaagent:C:\\Users\\LENOVO\\.m2\\repository\\org\\jacoco\\org.jacoco.agent\\0.8.11\\org.jacoco.agent-0.8.11-runtime.jar=destfile=D:\\FSE-2027\\FlakyLens\\runs2\\P0010__mercury__PostOfficeTest.journalYamlTest\\after\\jacoco.exec
+[INFO] 
+[INFO] --- build-helper:3.4.0:add-source (add-source) @ platform-core ---
+[INFO] Source directory: D:\FSE-2027\FlakyLens\runs2\_bp\mercury@2528e2354296\source\system\platform-core\src\main\kotlin added.
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ platform-core ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] Copying 6 resources from src\main\resources to target\classes
+[INFO] 
+[INFO] --- kotlin:1.9.22:compile (compile) @ platform-core ---
+[INFO] 
+[INFO] --- compiler:3.11.0:compile (java-compile) @ platform-core ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ platform-core ---
+[INFO] Copying 19 resources from src\test\resources to target\test-classes
+[INFO] 
+[INFO] --- kotlin:1.9.22:test-compile (test-compile) @ platform-core ---
+[INFO] 
+[INFO] --- compiler:3.11.0:testCompile (java-test-compile) @ platform-core ---
+[INFO] Changes detected - recompiling the module! :dependency
+[INFO] Compiling 49 source files with javac [debug target 1.8] to target\test-classes
+[WARNING] bootstrap class path not set in conjunction with -source 8
+[INFO] 
+[INFO] --- surefire:3.1.0:test (default-test) @ platform-core ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junit4.JUnit4Provider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running org.platformlambda.core.PostOfficeTest
+2026-09-07 01:00:36.846 INFO  org.platformlambda.core.system.Platform:118 - application instance ID set to 20260906b2819d11a2714a22b280b2fc0e2c760a-LENOVO
+2026-09-07 01:00:37.085 INFO  org.platformlambda.core.util.AppConfigReader:69 - Loaded application.properties
+2026-09-07 01:00:37.095 INFO  org.platformlambda.core.util.AppConfigReader:69 - Loaded application.yml
+2026-09-07 01:00:37.114 INFO  org.platformlambda.core.system.AppStarter:84 - Java version = 11.0.32
+2026-09-07 01:00:37.114 INFO  org.platformlambda.core.system.AppStarter:85 - Java VM = 11.0.32+9
+2026-09-07 01:00:37.115 INFO  org.platformlambda.core.system.AppStarter:86 - Java Runtime = 11.0.32+9
+2026-09-07 01:00:37.117 INFO  org.platformlambda.core.system.AppStarter:90 - Max memory = 3,711,959,040
+2026-09-07 01:00:37.118 INFO  org.platformlambda.core.system.AppStarter:91 - Allocated memory = 232,783,872
+2026-09-07 01:00:37.118 INFO  org.platformlambda.core.system.AppStarter:92 - Free memory = 181,783,536
+2026-09-07 01:00:37.941 INFO  org.platformlambda.core.system.AppStarter:180 - Starting org.platformlambda.core.system.AsyncHttpClientLoader
+2026-09-07 01:00:39.330 INFO  org.platformlambda.core.util.SimpleCache:57 - Housekeeper started
+2026-09-07 01:00:39.331 INFO  org.platformlambda.core.util.SimpleCache:80 - Created cache (system.log.cache), expiry 30 seconds
+2026-09-07 01:00:39.335 INFO  org.platformlambda.core.system.Platform:86 - Event system started with up to 100 kernel threads
+2026-09-07 01:00:39.367 INFO  org.platformlambda.automation.services.ServiceGateway:105 - Initialized with HTTP trace headers [X-Correlation-Id, X-Trace-Id]
+2026-09-07 01:00:39.370 INFO  org.platformlambda.automation.services.ServiceGateway:141 - Loaded 18 mime types
+2026-09-07 01:00:39.478 INFO  org.platformlambda.core.system.ServiceQueue:87 - PRIVATE elastic.queue.cleanup started as coroutine
+2026-09-07 01:00:39.481 INFO  org.platformlambda.core.util.ElasticQueue:99 - \tmp\reactive\platform-core-20260906d3d87031cb4d0e55cd98e8d9ac4089ff created
+2026-09-07 01:00:40.716 INFO  org.platformlambda.core.util.ElasticQueue:259 - Created holding area \tmp\reactive\platform-core-20260906d3d87031cb4d0e55cd98e8d9ac4089ff in 1232 ms
+2026-09-07 01:00:40.717 INFO  org.platformlambda.core.util.ElasticQueue:109 - Commit log started
+2026-09-07 01:00:40.720 INFO  org.platformlambda.core.util.ElasticQueue:114 - Housekeeper started
+2026-09-07 01:00:40.757 INFO  org.platformlambda.core.system.ServiceQueue:90 - PRIVATE http.auth.handler with 200 instances started as coroutine
+2026-09-07 01:00:40.759 INFO  org.platformlambda.automation.http.AsyncHttpClient:123 - Housekeeper started
+2026-09-07 01:00:40.826 INFO  org.platformlambda.core.system.ServiceQueue:90 - PRIVATE async.http.request with 200 instances started as coroutine
+2026-09-07 01:00:40.830 INFO  org.platformlambda.core.system.ServiceQueue:87 - PRIVATE distributed.tracing started as coroutine
+2026-09-07 01:00:40.843 INFO  org.platformlambda.core.system.AppStarter:203 - Preloading started - 20260906d3d87031cb4d0e55cd98e8d9ac4089ff
+2026-09-07 01:00:40.843 INFO  org.platformlambda.core.system.EventEmitter:104 - Loading journal config from classpath:/journal.yaml
+2026-09-07 01:00:40.843 INFO  org.platformlambda.core.system.EventEmitter:90 - Loading multicast config from classpath:/multicast.yaml
+2026-09-07 01:00:40.843 INFO  org.platformlambda.core.system.EventEmitter:118 - Loading event-over-http config from classpath:/event-over-http.yaml
+2026-09-07 01:00:40.847 INFO  org.platformlambda.core.system.EventEmitter:335 - Loading route substitutions from classpath:/route-substitution.yaml
+2026-09-07 01:00:40.848 INFO  org.platformlambda.core.system.EventEmitter:321 - Route substitution: hello.test -> hello.world
+2026-09-07 01:00:40.848 INFO  org.platformlambda.core.system.EventEmitter:182 - Total 2 routes will be recorded in journal
+2026-09-07 01:00:40.854 INFO  org.platformlambda.core.system.EventEmitter:246 - Event-over-HTTP event.http.test -> http://127.0.0.1:8085/api/event with 1 header
+2026-09-07 01:00:40.855 INFO  org.platformlambda.core.system.EventEmitter:246 - Event-over-HTTP event.save.get -> http://127.0.0.1:8085/api/event with 1 header
+2026-09-07 01:00:40.856 INFO  org.platformlambda.core.system.LocalPubSub:56 - Topic v1.hello.world created
+2026-09-07 01:00:40.856 INFO  org.platformlambda.core.system.EventEmitter:256 - Total 2 event-over-http targets configured
+2026-09-07 01:00:40.860 INFO  org.platformlambda.core.system.ServiceQueue:87 - PRIVATE v1.hello.world started as coroutine
+2026-09-07 01:00:40.862 INFO  org.platformlambda.core.system.LocalPubSub:103 - v1.hello.service.1 subscribed to v1.hello.world
+2026-09-07 01:00:40.862 INFO  org.platformlambda.core.system.LocalPubSub:103 - v1.hello.service.2 subscribed to v1.hello.world
+2026-09-07 01:00:40.863 INFO  org.platformlambda.core.system.LocalPubSub:103 - v1.hello.service.3 subscribed to v1.hello.world
+2026-09-07 01:00:41.098 INFO  org.platformlambda.core.system.AppStarter:212 - Loading service org.platformlambda.automation.service.GetRequestFilter
+2026-09-07 01:00:41.114 INFO  org.platformlambda.core.system.ServiceQueue:90 - PRIVATE http.request.filter with 100 instances started as coroutine
+2026-09-07 01:00:41.115 INFO  org.platformlambda.core.system.AppStarter:212 - Loading service org.platformlambda.core.actuator.ActuatorServices
+2026-09-07 01:00:41.213 INFO  org.platformlambda.core.util.SimpleCache:80 - Created cache (health.info), expiry 5 seconds
+2026-09-07 01:00:41.214 INFO  org.platformlambda.core.actuator.HealthService:41 - Mandatory service dependencies - [cloud.connector.health]
+2026-09-07 01:00:41.225 INFO  org.platformlambda.core.system.ServiceQueue:81 - PRIVATE actuator.services with 10 instances started as suspend function
+2026-09-07 01:00:41.228 INFO  org.platformlambda.core.system.AppStarter:212 - Loading service org.platformlambda.core.mock.CustomSerializerJavaService
+2026-09-07 01:00:41.709 INFO  org.platformlambda.core.system.ServiceQueue:87 - PRIVATE custom.serializer.service.java started as coroutine
+2026-09-07 01:00:41.709 INFO  org.platformlambda.core.system.Platform:443 - Serializer class org.platformlambda.common.JacksonSerializer assigned to custom.serializer.service.java
+2026-09-07 01:00:41.711 INFO  org.platformlambda.core.system.AppStarter:212 - Loading service org.platformlambda.core.mock.CustomSerializerKotlinService
+2026-09-07 01:00:41.715 INFO  org.platformlambda.core.system.ServiceQueue:79 - PRIVATE custom.serializer.service.kotlin started as suspend function
+2026-09-07 01:00:41.716 INFO  org.platformlambda.core.system.Platform:443 - Serializer class org.platformlambda.common.JacksonSerializer assigned to custom.serializer.service.kotlin
+2026-09-07 01:00:41.716 INFO  org.platformlambda.core.system.AppStarter:212 - Loading service org.platformlambda.core.mock.EventApiAuth
+2026-09-07 01:00:41.721 INFO  org.platformlambda.core.system.ServiceQueue:87 - PRIVATE event.api.auth started as coroutine
+2026-09-07 01:00:41.721 INFO  org.platformlambda.core.system.AppStarter:212 - Loading service org.platformlambda.core.mock.HelloInputMapping
+2026-09-07 01:00:41.729 INFO  org.platformlambda.core.system.ServiceQueue:90 - PRIVATE hello.input.mapping with 10 instances started using kernel thread pool
+2026-09-07 01:00:41.730 INFO  org.platformlambda.core.system.AppStarter:212 - Loading service org.platformlambda.core.mock.HelloWorld
+2026-09-07 01:00:41.738 INFO  org.platformlambda.core.system.ServiceQueue:81 - PUBLIC hello.world with 15 instances started as suspend function
+2026-09-07 01:00:41.740 INFO  org.platformlambda.core.system.ServiceQueue:81 - PUBLIC hello.alias with 15 instances started as suspend function
+2026-09-07 01:00:41.741 INFO  org.platformlambda.core.system.AppStarter:212 - Loading service org.platformlambda.core.mock.RpcTimeoutCheck
+2026-09-07 01:00:41.746 INFO  org.platformlambda.core.system.ServiceQueue:90 - PRIVATE rpc.timeout.check with 50 instances started as coroutine
+2026-09-07 01:00:41.746 INFO  org.platformlambda.core.system.AppStarter:212 - Loading service org.platformlambda.core.mock.SaveAndGet
+2026-09-07 01:00:41.750 INFO  org.platformlambda.core.system.ServiceQueue:87 - PUBLIC event.save.get started as coroutine
+2026-09-07 01:00:41.751 INFO  org.platformlambda.core.system.AppStarter:212 - Loading service org.platformlambda.core.mock.TraceDetector
+2026-09-07 01:00:41.756 INFO  org.platformlambda.core.system.ServiceQueue:79 - PRIVATE coroutine.trace.detector started as suspend function
+2026-09-07 01:00:41.756 INFO  org.platformlambda.core.system.AppStarter:212 - Loading service org.platformlambda.core.services.ArtificialDelay
+2026-09-07 01:00:41.774 INFO  org.platformlambda.core.system.ServiceQueue:81 - PRIVATE artificial.delay with 200 instances started as suspend function
+2026-09-07 01:00:41.775 INFO  org.platformlambda.core.system.AppStarter:212 - Loading service org.platformlambda.core.services.EventApiForwarder
+2026-09-07 01:00:41.780 INFO  org.platformlambda.core.system.ServiceQueue:81 - PRIVATE event.api.forwarder with 10 instances started as suspend function
+2026-09-07 01:00:41.781 INFO  org.platformlambda.core.system.AppStarter:212 - Loading service org.platformlambda.core.services.EventApiService
+2026-09-07 01:00:41.789 INFO  org.platformlambda.core.system.ServiceQueue:90 - PRIVATE event.api.service with 50 instances started as coroutine
+2026-09-07 01:00:41.790 INFO  org.platformlambda.core.system.AppStarter:212 - Loading service org.platformlambda.core.services.MultiLevelTrace
+2026-09-07 01:00:41.795 INFO  org.platformlambda.core.system.ServiceQueue:81 - PRIVATE hello.level.1 with 10 instances started as suspend function
+2026-09-07 01:00:41.796 INFO  org.platformlambda.core.system.AppStarter:212 - Loading service org.platformlambda.core.services.RpcForwarder
+2026-09-07 01:00:41.811 INFO  org.platformlambda.core.system.ServiceQueue:81 - PRIVATE rpc.forwarder with 200 instances started as suspend function
+2026-09-07 01:00:41.811 INFO  org.platformlambda.core.system.AppStarter:212 - Loading service org.platformlambda.core.services.StreamToBytes
+2026-09-07 01:00:41.819 INFO  org.platformlambda.core.system.ServiceQueue:81 - PRIVATE stream.to.bytes with 50 instances started as suspend function
+2026-09-07 01:00:41.821 INFO  org.platformlambda.core.system.AppStarter:278 - Preloading completed
+2026-09-07 01:00:42.079 INFO  org.platformlambda.core.system.AppStarter:399 - org.platformlambda.core.mock.WsEcho loaded as WEBSOCKET SERVER endpoint /ws/hello/{handle}
+2026-09-07 01:00:42.170 WARN  org.platformlambda.core.system.AppStarter:422 - Skipping file:/tmp/config/rest.yaml - file:/tmp/config/rest.yaml not found
+2026-09-07 01:00:42.198 INFO  org.platformlambda.core.system.AppStarter:419 - Loading config from classpath:/rest.yaml
+2026-09-07 01:00:42.209 INFO  org.platformlambda.automation.config.RoutingEntry:259 - static-content.filter loaded: [/, /assets/*, *.html, *.js] -> http.request.filter, exclusion [*.css]
+2026-09-07 01:00:42.211 INFO  org.platformlambda.automation.config.RoutingEntry:215 - static-content.no-cache-pages loaded: [/, /index.html]
+2026-09-07 01:00:42.214 INFO  org.platformlambda.automation.config.RoutingEntry:816 - Loaded header_1, request headers, add=0, drop=4, keep=0
+2026-09-07 01:00:42.215 INFO  org.platformlambda.automation.config.RoutingEntry:816 - Loaded header_1, response headers, add=4, drop=0, keep=0
+2026-09-07 01:00:42.218 INFO  org.platformlambda.automation.config.RoutingEntry:704 - Loaded cors_1 cors headers (*)
+2026-09-07 01:00:42.222 INFO  org.platformlambda.automation.config.RoutingEntry:577 - POST /api/event -> event.api.auth -> [event.api.service], timeout=60s, tracing=true
+2026-09-07 01:00:42.222 INFO  org.platformlambda.automation.config.RoutingEntry:575 - OPTIONS /api/event -> [event.api.service], timeout=60s
+2026-09-07 01:00:42.223 INFO  org.platformlambda.automation.config.RoutingEntry:577 - DELETE /api/hello/world -> v1.api.auth -> [hello.mock], timeout=10s, tracing=true
+2026-09-07 01:00:42.224 INFO  org.platformlambda.automation.config.RoutingEntry:577 - GET /api/hello/world -> v1.api.auth -> [hello.mock], timeout=10s, tracing=true
+2026-09-07 01:00:42.225 INFO  org.platformlambda.automation.config.RoutingEntry:577 - HEAD /api/hello/world -> v1.api.auth -> [hello.mock], timeout=10s, tracing=true
+2026-09-07 01:00:42.225 INFO  org.platformlambda.automation.config.RoutingEntry:577 - PATCH /api/hello/world -> v1.api.auth -> [hello.mock], timeout=10s, tracing=true
+2026-09-07 01:00:42.225 INFO  org.platformlambda.automation.config.RoutingEntry:577 - POST /api/hello/world -> v1.api.auth -> [hello.mock], timeout=10s, tracing=true
+2026-09-07 01:00:42.226 INFO  org.platformlambda.automation.config.RoutingEntry:577 - PUT /api/hello/world -> v1.api.auth -> [hello.mock], timeout=10s, tracing=true
+2026-09-07 01:00:42.226 INFO  org.platformlambda.automation.config.RoutingEntry:575 - OPTIONS /api/hello/world -> [hello.mock], timeout=10s
+2026-09-07 01:00:42.229 INFO  org.platformlambda.automation.config.RoutingEntry:580 - POST /api/upload/demo -> [hello.mock], timeout=15s, tracing=false
+2026-09-07 01:00:42.230 INFO  org.platformlambda.automation.config.RoutingEntry:575 - OPTIONS /api/upload/demo -> [hello.mock], timeout=15s
+2026-09-07 01:00:42.230 INFO  org.platformlambda.automation.config.RoutingEntry:580 - POST /api/hello/list -> [hello.list], timeout=15s, tracing=false
+2026-09-07 01:00:42.230 INFO  org.platformlambda.automation.config.RoutingEntry:575 - OPTIONS /api/hello/list -> [hello.list], timeout=15s
+2026-09-07 01:00:42.230 INFO  org.platformlambda.automation.config.RoutingEntry:580 - GET /api/simple/{task}/* -> [hello.world], timeout=12s, tracing=false
+2026-09-07 01:00:42.230 INFO  org.platformlambda.automation.config.RoutingEntry:580 - POST /api/simple/{task}/* -> [hello.world], timeout=12s, tracing=false
+2026-09-07 01:00:42.231 INFO  org.platformlambda.automation.config.RoutingEntry:580 - PUT /api/simple/{task}/* -> [hello.world], timeout=12s, tracing=false
+2026-09-07 01:00:42.231 INFO  org.platformlambda.automation.config.RoutingEntry:575 - OPTIONS /api/simple/{task}/* -> [hello.world], timeout=12s
+2026-09-07 01:00:42.232 WARN  org.platformlambda.automation.config.RoutingEntry:540 - trust_all_cert=true for http://127.0.0.1:8085 is not relevant - Do you meant https?
+2026-09-07 01:00:42.234 INFO  org.platformlambda.automation.config.RoutingEntry:580 - GET /api/v1/* -> [http://127.0.0.1:8085], timeout=20s, tracing=true
+2026-09-07 01:00:42.234 INFO  org.platformlambda.automation.config.RoutingEntry:580 - POST /api/v1/* -> [http://127.0.0.1:8085], timeout=20s, tracing=true
+2026-09-07 01:00:42.235 INFO  org.platformlambda.automation.config.RoutingEntry:580 - PUT /api/v1/* -> [http://127.0.0.1:8085], timeout=20s, tracing=true
+2026-09-07 01:00:42.235 INFO  org.platformlambda.automation.config.RoutingEntry:575 - OPTIONS /api/v1/* -> [http://127.0.0.1:8085], timeout=20s
+2026-09-07 01:00:42.235 INFO  org.platformlambda.automation.config.RoutingEntry:580 - GET /api/hello/download -> [hello.download], timeout=20s, tracing=false
+2026-09-07 01:00:42.236 INFO  org.platformlambda.automation.config.RoutingEntry:575 - OPTIONS /api/hello/download -> [hello.download], timeout=20s
+2026-09-07 01:00:42.236 INFO  org.platformlambda.automation.config.RoutingEntry:341 - Exact API paths [/api/event, /api/hello/download, /api/hello/list, /api/hello/world, /api/upload/demo]
+2026-09-07 01:00:42.236 INFO  org.platformlambda.automation.config.RoutingEntry:359 - Wildcard API paths [/api/simple/{task}/*, /api/v1/*]
+2026-09-07 01:00:42.248 INFO  org.platformlambda.core.websocket.server.WsRequestHandler:183 - Websocket server idle expiry 30 seconds
+2026-09-07 01:00:42.249 INFO  org.platformlambda.core.websocket.server.WsRequestHandler:71 - Housekeeper started
+2026-09-07 01:00:42.253 INFO  org.platformlambda.core.system.ServiceQueue:87 - PRIVATE system.ws.server.cleanup started as coroutine
+2026-09-07 01:00:42.652 INFO  org.platformlambda.core.system.AppStarter:379 - Modules loaded in 5,533 ms
+2026-09-07 01:00:42.662 INFO  org.platformlambda.core.system.ServiceQueue:90 - PRIVATE async.http.response with 200 instances started as coroutine
+2026-09-07 01:00:42.670 INFO  org.platformlambda.core.system.AppStarter:365 - AsyncHttpContext housekeeper started
+2026-09-07 01:00:42.671 INFO  org.platformlambda.core.system.AppStarter:366 - Reactive HTTP server running on port-8085
+2026-09-07 01:00:42.672 INFO  org.platformlambda.core.system.AppStarter:369 - Websocket server running on port-8085
+2026-09-07 01:00:42.855 INFO  org.platformlambda.core.system.AppStarter:180 - Starting org.platformlambda.core.mock.MockApp
+2026-09-07 01:00:43.033 INFO  org.platformlambda.core.system.Platform:301 - Starting cloud connector mock.cloud using org.platformlambda.core.mock.MockCloud
+2026-09-07 01:00:43.033 INFO  org.platformlambda.core.mock.MockApp:38 - Started
+2026-09-07 01:00:43.038 INFO  org.platformlambda.core.system.ServerPersonality:55 - Setting personality as REST
+2026-09-07 01:00:43.219 INFO  org.platformlambda.core.system.Platform:301 - Starting cloud service mock.cloud.service using org.platformlambda.core.mock.MockCloudService
+2026-09-07 01:00:43.219 INFO  org.platformlambda.core.system.Platform:236 - Cloud services [mock.cloud.service] started
+2026-09-07 01:00:43.219 INFO  org.platformlambda.core.mock.MockCloudService:32 - Mock cloud service started
+2026-09-07 01:00:43.221 INFO  org.platformlambda.core.system.ServiceQueue:87 - PRIVATE cloud.connector started as coroutine
+2026-09-07 01:00:43.223 INFO  org.platformlambda.core.system.ServiceQueue:90 - PRIVATE system.service.query with 10 instances started as coroutine
+2026-09-07 01:00:43.225 INFO  org.platformlambda.core.system.ServiceQueue:90 - PRIVATE system.service.registry with 10 instances started as coroutine
+2026-09-07 01:00:43.228 INFO  org.platformlambda.core.system.ServiceQueue:90 - PRIVATE cloud.connector.health with 2 instances started as coroutine
+2026-09-07 01:00:45.060 INFO  org.platformlambda.common.TestBase:84 - Mock cloud ready
+2026-09-07 01:00:45.064 INFO  org.platformlambda.core.system.ServiceQueue:90 - PRIVATE hello.mock with 10 instances started as coroutine
+2026-09-07 01:00:45.070 INFO  org.platformlambda.core.system.ServiceQueue:81 - PRIVATE long.running.rpc with 15 instances started as suspend function
+2026-09-07 01:00:45.072 INFO  org.platformlambda.core.system.ServiceQueue:81 - PUBLIC long.running.rpc.alias with 10 instances started as suspend function
+2026-09-07 01:00:45.085 INFO  org.platformlambda.core.util.SimpleCache:80 - Created cache (java.class.cache), expiry 5 minutes
+2026-09-07 01:00:45.111 INFO  org.platformlambda.core.system.ServiceQueue:90 - PRIVATE hello.list with 5 instances started as coroutine
+2026-09-07 01:00:45.112 INFO  org.platformlambda.core.system.Platform:409 - Converted hello.mock to PUBLIC
+2026-09-07 01:00:45.164 INFO  org.platformlambda.core.system.ServiceQueue:87 - PRIVATE http.service.loaded started as coroutine
+2026-09-07 01:00:47.172 INFO  org.platformlambda.common.TestBase:116 - Unit test loaded with org.platformlambda.core.system.EventEmitter@4a848b8e. Journal ready? true
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 12.355 s - in org.platformlambda.core.PostOfficeTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- jacoco:0.8.11:report (report) @ platform-core ---
+[INFO] Loading execution data file D:\FSE-2027\FlakyLens\runs2\_bp\mercury@2528e2354296\source\system\platform-core\target\jacoco.exec
+[INFO] Analyzed bundle 'Mercury platform-core module' with 119 classes
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  58.287 s
+[INFO] Finished at: 2026-09-07T01:00:49+06:00
+[INFO] ------------------------------------------------------------------------
+
+
+*** rc=0 elapsed=63.8s

@@ -1,0 +1,17 @@
+{
+ "project_url": "https://github.com/jmeter-maven-plugin/jmeter-maven-plugin",
+ "ref": "6636cd7cf376f23ed49a2cdcc91d7b4b9ff66ec5",
+ "ref_kind": "merge_commit",
+ "tests": [
+  {
+   "pair_id": "P1699",
+   "pair_dir": "P1699__jmeter-maven-plugi__TestConfigTest.createConfigFromRe",
+   "side": "after",
+   "module": ".",
+   "test_class": "com.lazerycode.jmeter.json.TestConfigTest",
+   "test_method": "createConfigFromResourceFile",
+   "category": "ID"
+  }
+ ],
+ "out": "D:\\FSE-2027\\FlakyLens\\runs2"
+}

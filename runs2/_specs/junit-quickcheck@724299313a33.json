@@ -1,0 +1,26 @@
+{
+ "project_url": "https://github.com/pholser/junit-quickcheck",
+ "ref": "724299313a3308872188f53d91265803befb5017",
+ "ref_kind": "merge_commit",
+ "tests": [
+  {
+   "pair_id": "P1997",
+   "pair_dir": "P1997__junit-quickcheck__SetOfSuperFloatPropert.producesExpectedRa",
+   "side": "after",
+   "module": "generators",
+   "test_class": "com.pholser.junit.quickcheck.generator.java.util.SetOfSuperFloatPropertyParameterTest",
+   "test_method": "producesExpectedRandomValues",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P1998",
+   "pair_dir": "P1998__junit-quickcheck__SetOfSuperFloatPropert.verifyInteractionW",
+   "side": "after",
+   "module": "generators",
+   "test_class": "com.pholser.junit.quickcheck.generator.java.util.SetOfSuperFloatPropertyParameterTest",
+   "test_method": "verifyInteractionWithRandomness",
+   "category": "ID"
+  }
+ ],
+ "out": "D:\\FSE-2027\\FlakyLens\\runs2"
+}

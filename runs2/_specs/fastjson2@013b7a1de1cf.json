@@ -1,0 +1,188 @@
+{
+ "project_url": "https://github.com/alibaba/fastjson2",
+ "ref": "013b7a1de1cf8d52beb8162204aa2cca424adac9",
+ "ref_kind": "merge_parent",
+ "tests": [
+  {
+   "pair_id": "P0120",
+   "pair_dir": "P0120__fastjson2__MapSortFieldTest.test",
+   "side": "before",
+   "module": "core",
+   "test_class": "com.alibaba.fastjson2.features.MapSortFieldTest",
+   "test_method": "test",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P0121",
+   "pair_dir": "P0121__fastjson2__FeatureCollectionTest.test_geo",
+   "side": "before",
+   "module": "extension",
+   "test_class": "com.alibaba.fastjson2.geo.FeatureCollectionTest",
+   "test_method": "test_geo",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P0127",
+   "pair_dir": "P0127__fastjson2__Issue1411.test5",
+   "side": "before",
+   "module": "core",
+   "test_class": "com.alibaba.fastjson2.issues.Issue1411",
+   "test_method": "test5",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P0128",
+   "pair_dir": "P0128__fastjson2__Issue273.test",
+   "side": "before",
+   "module": "core",
+   "test_class": "com.alibaba.fastjson2.issues.Issue273",
+   "test_method": "test",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P0130",
+   "pair_dir": "P0130__fastjson2__Issue507.test1",
+   "side": "before",
+   "module": "core",
+   "test_class": "com.alibaba.fastjson2.issues.Issue507",
+   "test_method": "test1",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P0131",
+   "pair_dir": "P0131__fastjson2__Issue586.test",
+   "side": "before",
+   "module": "core",
+   "test_class": "com.alibaba.fastjson2.issues.Issue586",
+   "test_method": "test",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P0132",
+   "pair_dir": "P0132__fastjson2__Issue1269.test",
+   "side": "before",
+   "module": "core",
+   "test_class": "com.alibaba.fastjson2.issues_1000.Issue1269",
+   "test_method": "test",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P0133",
+   "pair_dir": "P0133__fastjson2__Issue1401.test",
+   "side": "before",
+   "module": "core",
+   "test_class": "com.alibaba.fastjson2.issues_1000.Issue1401",
+   "test_method": "test",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P0134",
+   "pair_dir": "P0134__fastjson2__Issue1479.test",
+   "side": "before",
+   "module": "core",
+   "test_class": "com.alibaba.fastjson2.issues_1000.Issue1479",
+   "test_method": "test",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P0135",
+   "pair_dir": "P0135__fastjson2__Issue1494.test",
+   "side": "before",
+   "module": "core",
+   "test_class": "com.alibaba.fastjson2.issues_1000.Issue1494",
+   "test_method": "test",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P0136",
+   "pair_dir": "P0136__fastjson2__Issue1745.test",
+   "side": "before",
+   "module": "core",
+   "test_class": "com.alibaba.fastjson2.issues_1700.Issue1745",
+   "test_method": "test",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P0141",
+   "pair_dir": "P0141__fastjson2__JsonIncludeTest.test1",
+   "side": "before",
+   "module": "core",
+   "test_class": "com.alibaba.fastjson2.jackson_support.JsonIncludeTest",
+   "test_method": "test1",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P0148",
+   "pair_dir": "P0148__fastjson2__FeatureCollectionTest.test_geo",
+   "side": "before",
+   "module": "core",
+   "test_class": "com.alibaba.fastjson2.v1issues.geo.FeatureCollectionTest",
+   "test_method": "test_geo",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P0149",
+   "pair_dir": "P0149__fastjson2__Issue1177_2.test_for_issue",
+   "side": "before",
+   "module": "core",
+   "test_class": "com.alibaba.fastjson2.v1issues.issue_1100.Issue1177_2",
+   "test_method": "test_for_issue",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P0150",
+   "pair_dir": "P0150__fastjson2__Issue2182.test_for_issue",
+   "side": "before",
+   "module": "core",
+   "test_class": "com.alibaba.fastjson2.v1issues.issue_2100.Issue2182",
+   "test_method": "test_for_issue",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P0151",
+   "pair_dir": "P0151__fastjson2__Issue2430.testForIssue",
+   "side": "before",
+   "module": "core",
+   "test_class": "com.alibaba.fastjson2.v1issues.issue_2400.Issue2430",
+   "test_method": "testForIssue",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P0152",
+   "pair_dir": "P0152__fastjson2__Issue2430.testForIssue2",
+   "side": "before",
+   "module": "core",
+   "test_class": "com.alibaba.fastjson2.v1issues.issue_2400.Issue2430",
+   "test_method": "testForIssue2",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P0153",
+   "pair_dir": "P0153__fastjson2__Issue3824.test_for_issue3824",
+   "side": "before",
+   "module": "core",
+   "test_class": "com.alibaba.fastjson2.v1issues.issue_3800.Issue3824",
+   "test_method": "test_for_issue3824",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P0155",
+   "pair_dir": "P0155__fastjson2__Issue4008.test_for_issue4008",
+   "side": "before",
+   "module": "core",
+   "test_class": "com.alibaba.fastjson2.v1issues.issue_4000.Issue4008",
+   "test_method": "test_for_issue4008",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P0156",
+   "pair_dir": "P0156__fastjson2__ObjectWriterSetTest.testJsonbSet",
+   "side": "before",
+   "module": "core",
+   "test_class": "com.alibaba.fastjson2.writer.ObjectWriterSetTest",
+   "test_method": "testJsonbSet",
+   "category": "ID"
+  }
+ ],
+ "out": "D:\\FSE-2027\\FlakyLens\\runs2"
+}

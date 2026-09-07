@@ -1,0 +1,35 @@
+{
+ "project_url": "https://github.com/alibaba/fastjson2",
+ "ref": "b4e69f91879afbc3c39aaa3bdc4e3d743d22e056",
+ "ref_kind": "merge_parent",
+ "tests": [
+  {
+   "pair_id": "P0138",
+   "pair_dir": "P0138__fastjson2__Issue2672.test",
+   "side": "before",
+   "module": "core",
+   "test_class": "com.alibaba.fastjson2.issues_2600.Issue2672",
+   "test_method": "test",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P0142",
+   "pair_dir": "P0142__fastjson2__JsonManagedReferenceTe.test1",
+   "side": "after",
+   "module": "core",
+   "test_class": "com.alibaba.fastjson2.jackson_support.JsonManagedReferenceTest",
+   "test_method": "test1",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P0143",
+   "pair_dir": "P0143__fastjson2__JsonManagedReferenceTe.testJsonBackRefere",
+   "side": "after",
+   "module": "core",
+   "test_class": "com.alibaba.fastjson2.jackson_support.JsonManagedReferenceTest",
+   "test_method": "testJsonBackReference",
+   "category": "ID"
+  }
+ ],
+ "out": "D:\\FSE-2027\\FlakyLens\\runs2"
+}

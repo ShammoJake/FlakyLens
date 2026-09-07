@@ -1,0 +1,71 @@
+{
+ "project_url": "https://github.com/SAP/pair-distribution-app",
+ "ref": "0be329d2897f6d5fbb634e46e0ef3d283282dc93",
+ "ref_kind": "merge_parent",
+ "tests": [
+  {
+   "pair_id": "P2133",
+   "pair_dir": "P2133__pair-distribution-__DayPairsHelperTest.testGenerateNewDay",
+   "side": "before",
+   "module": ".",
+   "test_class": "pair.distribution.app.helpers.DayPairsHelperTest",
+   "test_method": "testGenerateNewDayPairs",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P2134",
+   "pair_dir": "P2134__pair-distribution-__DayPairsHelperTest.testGenerateNewDay",
+   "side": "before",
+   "module": ".",
+   "test_class": "pair.distribution.app.helpers.DayPairsHelperTest",
+   "test_method": "testGenerateNewDayPairsNoPastState",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P2135",
+   "pair_dir": "P2135__pair-distribution-__DayPairsHelperTest.testGenerateNewDay",
+   "side": "before",
+   "module": ".",
+   "test_class": "pair.distribution.app.helpers.DayPairsHelperTest",
+   "test_method": "testGenerateNewDayPairsNoPastStateAndRotationNeeded",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P2136",
+   "pair_dir": "P2136__pair-distribution-__DayPairsHelperTest.testGenerateNewDay",
+   "side": "before",
+   "module": ".",
+   "test_class": "pair.distribution.app.helpers.DayPairsHelperTest",
+   "test_method": "testGenerateNewDayPairsOnlyOldDevAvailableForStory",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P2137",
+   "pair_dir": "P2137__pair-distribution-__DayPairsHelperTest.testGenerateNewDay",
+   "side": "before",
+   "module": ".",
+   "test_class": "pair.distribution.app.helpers.DayPairsHelperTest",
+   "test_method": "testGenerateNewDayPairsSoloRequired",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P2138",
+   "pair_dir": "P2138__pair-distribution-__DayPairsHelperTest.testGenerateNewDay",
+   "side": "before",
+   "module": ".",
+   "test_class": "pair.distribution.app.helpers.DayPairsHelperTest",
+   "test_method": "testGenerateNewDayPairsWithEverydayRotation",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P2139",
+   "pair_dir": "P2139__pair-distribution-__DayPairsHelperTest.testGenerateNewDay",
+   "side": "before",
+   "module": ".",
+   "test_class": "pair.distribution.app.helpers.DayPairsHelperTest",
+   "test_method": "testGenerateNewDayPairsWithSmallestWeight",
+   "category": "ID"
+  }
+ ],
+ "out": "D:\\FSE-2027\\FlakyLens\\runs2"
+}

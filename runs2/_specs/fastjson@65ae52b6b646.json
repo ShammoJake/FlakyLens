@@ -1,0 +1,17 @@
+{
+ "project_url": "https://github.com/alibaba/fastjson",
+ "ref": "65ae52b6b646560dbdeb33991ebb49d0e4f91eea",
+ "ref_kind": "merge_commit",
+ "tests": [
+  {
+   "pair_id": "P0075",
+   "pair_dir": "P0075__fastjson__Issue1177_2.test_for_issue",
+   "side": "after",
+   "module": ".",
+   "test_class": "com.alibaba.json.bvt.issue_1100.Issue1177_2",
+   "test_method": "test_for_issue",
+   "category": "ID"
+  }
+ ],
+ "out": "D:\\FSE-2027\\FlakyLens\\runs2"
+}

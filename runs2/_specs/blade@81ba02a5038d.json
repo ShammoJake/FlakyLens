@@ -1,0 +1,17 @@
+{
+ "project_url": "https://github.com/lets-blade/blade",
+ "ref": "81ba02a5038dc14c4c149f36ea83ce1274731c8d",
+ "ref_kind": "merge_commit",
+ "tests": [
+  {
+   "pair_id": "P1739",
+   "pair_dir": "P1739__blade__BladeTest.testAddStatics",
+   "side": "after",
+   "module": "blade-core",
+   "test_class": "com.hellokaton.blade.BladeTest",
+   "test_method": "testAddStatics",
+   "category": "ID"
+  }
+ ],
+ "out": "D:\\FSE-2027\\FlakyLens\\runs2"
+}

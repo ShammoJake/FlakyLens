@@ -1,0 +1,17 @@
+{
+ "project_url": "https://github.com/apolloconfig/apollo",
+ "ref": "b00f23873bd2306df1fb7ae6d7b9b2e2230f401e",
+ "ref_kind": "merge_commit",
+ "tests": [
+  {
+   "pair_id": "P1189",
+   "pair_dir": "P1189__apollo__ConfigPropertySourceTe.testGetPropertyNam",
+   "side": "after",
+   "module": "apollo-client",
+   "test_class": "com.ctrip.framework.apollo.spring.config.ConfigPropertySourceTest",
+   "test_method": "testGetPropertyNames",
+   "category": "ID"
+  }
+ ],
+ "out": "D:\\FSE-2027\\FlakyLens\\runs2"
+}

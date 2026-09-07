@@ -1,0 +1,35 @@
+{
+ "project_url": "https://github.com/snakeyaml/snakeyaml",
+ "ref": "626340b5bcd50a8eb12413478e935be077c6b39c",
+ "ref_kind": "merge_parent",
+ "tests": [
+  {
+   "pair_id": "P2157",
+   "pair_dir": "P2157__snakeyaml__LowLevelApiTest.testLowLevel",
+   "side": "before",
+   "module": ".",
+   "test_class": "org.yaml.snakeyaml.lowlevel.LowLevelApiTest",
+   "test_method": "testLowLevel",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P2158",
+   "pair_dir": "P2158__snakeyaml__BoolTagTest.testBoolOutAsEmpty",
+   "side": "before",
+   "module": ".",
+   "test_class": "org.yaml.snakeyaml.types.BoolTagTest",
+   "test_method": "testBoolOutAsEmpty2",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P2159",
+   "pair_dir": "P2159__snakeyaml__BoolTagTest.testBoolOutAsEmpty",
+   "side": "before",
+   "module": ".",
+   "test_class": "org.yaml.snakeyaml.types.BoolTagTest",
+   "test_method": "testBoolOutAsEmpty3",
+   "category": "ID"
+  }
+ ],
+ "out": "D:\\FSE-2027\\FlakyLens\\runs2"
+}

@@ -1,0 +1,56 @@
+$ mvn -B -pl core org.jacoco:jacoco-maven-plugin:0.8.11:prepare-agent test -Dtest=AssetRenditionsZipperImplTest#getZipEntryName_GenerateUniqueZipFileNameEntry -Djacoco.destFile=D:\FSE-2027\FlakyLens\runs2\P0020__asset-share-common__AssetRenditionsZipperI.getZipEntryName_Ge\after\jacoco.exec -DfailIfNoTests=false -Dsurefire.failIfNoSpecifiedTests=false -Dmaven.javadoc.skip=true -Denforcer.skip=true -Dgpg.skip=true -Drat.skip=true -Dcheckstyle.skip=true -Dlicense.skip=true -Dspotbugs.skip=true -Dpmd.skip=true -Danimal.sniffer.skip=true -Ddependency-check.skip=true -Dmaven.source.skip=true -Dforbiddenapis.skip=true -Djapicmp.skip=true -Drevapi.skip=true -Dmaven.site.skip=true
+
+[INFO] Scanning for projects...
+[INFO] Inspecting build with total of 1 modules...
+[INFO] Installing Nexus Staging features:
+[INFO]   ... total of 1 executions of maven-deploy-plugin replaced with nexus-staging-maven-plugin
+[INFO] 
+[INFO] ---------------< com.adobe.aem.commons:assetshare.core >----------------
+[INFO] Building Asset Share Commons - Core 2.2.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[WARNING] 1 problem was encountered while building the effective model for org.javassist:javassist:jar:3.18.2-GA during dependency collection step for project (use -X to see details)
+[INFO] 
+[INFO] --- jacoco:0.8.11:prepare-agent (default-cli) @ assetshare.core ---
+[INFO] argLine set to -javaagent:C:\\Users\\LENOVO\\.m2\\repository\\org\\jacoco\\org.jacoco.agent\\0.8.11\\org.jacoco.agent-0.8.11-runtime.jar=destfile=D:\\FSE-2027\\FlakyLens\\runs2\\P0020__asset-share-common__AssetRenditionsZipperI.getZipEntryName_Ge\\after\\jacoco.exec
+[INFO] 
+[INFO] --- enforcer:3.0.0-M3:enforce (enforce-maven) @ assetshare.core ---
+[INFO] Skipping Rule Enforcement.
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ assetshare.core ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory D:\FSE-2027\FlakyLens\runs2\_bp\asset-share-commons@a7b1dece99b3\source\core\src\main\resources
+[INFO] 
+[INFO] --- compiler:3.6.1:compile (default-compile) @ assetshare.core ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- bnd:4.2.0:bnd-process (bnd-process) @ assetshare.core ---
+[INFO] 
+[INFO] --- resources:3.0.2:testResources (default-testResources) @ assetshare.core ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 25 resources
+[INFO] 
+[INFO] --- compiler:3.6.1:testCompile (default-testCompile) @ assetshare.core ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- surefire:2.21.0:test (default-test) @ assetshare.core ---
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.adobe.aem.commons.assetshare.content.renditions.download.impl.AssetRenditionsZipperImplTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.808 s - in com.adobe.aem.commons.assetshare.content.renditions.download.impl.AssetRenditionsZipperImplTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  18.947 s
+[INFO] Finished at: 2026-09-07T01:06:39+06:00
+[INFO] ------------------------------------------------------------------------
+
+
+*** rc=0 elapsed=24.2s

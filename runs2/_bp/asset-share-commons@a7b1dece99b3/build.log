@@ -1,0 +1,84 @@
+$ mvn -B -pl core -am -DskipTests install -Dmaven.javadoc.skip=true -Denforcer.skip=true -Dgpg.skip=true -Drat.skip=true -Dcheckstyle.skip=true -Dlicense.skip=true -Dspotbugs.skip=true -Dpmd.skip=true -Danimal.sniffer.skip=true -Ddependency-check.skip=true -Dmaven.source.skip=true -Dforbiddenapis.skip=true -Djapicmp.skip=true -Drevapi.skip=true -Dmaven.site.skip=true
+
+[INFO] Scanning for projects...
+[INFO] Inspecting build with total of 2 modules...
+[INFO] Installing Nexus Staging features:
+[INFO]   ... total of 2 executions of maven-deploy-plugin replaced with nexus-staging-maven-plugin
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] Asset Share Commons - Reactor Project                              [pom]
+[INFO] Asset Share Commons - Core                                         [jar]
+[INFO] 
+[INFO] ------------------< com.adobe.aem.commons:assetshare >------------------
+[INFO] Building Asset Share Commons - Reactor Project 2.2.0-SNAPSHOT      [1/2]
+[INFO]   from pom.xml
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.0.0-M3:enforce (enforce-maven) @ assetshare ---
+[INFO] Skipping Rule Enforcement.
+[INFO] 
+[INFO] --- install:2.5.2:install (default-install) @ assetshare ---
+[INFO] Installing D:\FSE-2027\FlakyLens\runs2\_bp\asset-share-commons@a7b1dece99b3\source\pom.xml to C:\Users\LENOVO\.m2\repository\com\adobe\aem\commons\assetshare\2.2.0-SNAPSHOT\assetshare-2.2.0-SNAPSHOT.pom
+[INFO] 
+[INFO] ---------------< com.adobe.aem.commons:assetshare.core >----------------
+[INFO] Building Asset Share Commons - Core 2.2.0-SNAPSHOT                 [2/2]
+[INFO]   from core\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[WARNING] 1 problem was encountered while building the effective model for org.javassist:javassist:jar:3.18.2-GA during dependency collection step for project (use -X to see details)
+[INFO] 
+[INFO] --- enforcer:3.0.0-M3:enforce (enforce-maven) @ assetshare.core ---
+[INFO] Skipping Rule Enforcement.
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ assetshare.core ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory D:\FSE-2027\FlakyLens\runs2\_bp\asset-share-commons@a7b1dece99b3\source\core\src\main\resources
+[INFO] 
+[INFO] --- compiler:3.6.1:compile (default-compile) @ assetshare.core ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 224 source files to D:\FSE-2027\FlakyLens\runs2\_bp\asset-share-commons@a7b1dece99b3\source\core\target\classes
+[INFO] /D:/FSE-2027/FlakyLens/runs2/_bp/asset-share-commons@a7b1dece99b3/source/core/src/main/java/com/adobe/aem/commons/assetshare/util/impl/EmailServiceImpl.java: Some input files use or override a deprecated API.
+[INFO] /D:/FSE-2027/FlakyLens/runs2/_bp/asset-share-commons@a7b1dece99b3/source/core/src/main/java/com/adobe/aem/commons/assetshare/util/impl/EmailServiceImpl.java: Recompile with -Xlint:deprecation for details.
+[INFO] /D:/FSE-2027/FlakyLens/runs2/_bp/asset-share-commons@a7b1dece99b3/source/core/src/main/java/com/adobe/aem/commons/assetshare/content/properties/impl/ComputedPropertiesImpl.java: Some input files use unchecked or unsafe operations.
+[INFO] /D:/FSE-2027/FlakyLens/runs2/_bp/asset-share-commons@a7b1dece99b3/source/core/src/main/java/com/adobe/aem/commons/assetshare/content/properties/impl/ComputedPropertiesImpl.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- bnd:4.2.0:bnd-process (bnd-process) @ assetshare.core ---
+[INFO] 
+[INFO] --- resources:3.0.2:testResources (default-testResources) @ assetshare.core ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 25 resources
+[INFO] 
+[INFO] --- compiler:3.6.1:testCompile (default-testCompile) @ assetshare.core ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 41 source files to D:\FSE-2027\FlakyLens\runs2\_bp\asset-share-commons@a7b1dece99b3\source\core\target\test-classes
+[INFO] /D:/FSE-2027/FlakyLens/runs2/_bp/asset-share-commons@a7b1dece99b3/source/core/src/test/java/com/adobe/aem/commons/assetshare/components/actions/download/impl/DownloadImplTest.java: D:\FSE-2027\FlakyLens\runs2\_bp\asset-share-commons@a7b1dece99b3\source\core\src\test\java\com\adobe\aem\commons\assetshare\components\actions\download\impl\DownloadImplTest.java uses or overrides a deprecated API.
+[INFO] /D:/FSE-2027/FlakyLens/runs2/_bp/asset-share-commons@a7b1dece99b3/source/core/src/test/java/com/adobe/aem/commons/assetshare/components/actions/download/impl/DownloadImplTest.java: Recompile with -Xlint:deprecation for details.
+[INFO] 
+[INFO] --- surefire:2.21.0:test (default-test) @ assetshare.core ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:3.1.2:jar (default-jar) @ assetshare.core ---
+[INFO] Building jar: D:\FSE-2027\FlakyLens\runs2\_bp\asset-share-commons@a7b1dece99b3\source\core\target\assetshare.core-2.2.0-SNAPSHOT.jar
+[INFO] 
+[INFO] --- bnd-baseline:4.2.0:baseline (baseline) @ assetshare.core ---
+[INFO] Determining the baseline version for com.adobe.aem.commons:assetshare.core:jar:(,2.2.0-SNAPSHOT) using repositories [adobe-public-releases (https://repo.adobe.com/nexus/content/groups/public, default, releases), central (https://repo.maven.apache.org/maven2, default, releases)]
+[INFO] The baseline version was found to be 2.1.12
+[INFO] Baselining check succeeded checking com.adobe.aem.commons:assetshare.core:jar:2.2.0-SNAPSHOT against com.adobe.aem.commons:assetshare.core:jar:2.1.12
+[INFO] 
+[INFO] --- install:2.5.2:install (default-install) @ assetshare.core ---
+[INFO] Installing D:\FSE-2027\FlakyLens\runs2\_bp\asset-share-commons@a7b1dece99b3\source\core\target\assetshare.core-2.2.0-SNAPSHOT.jar to C:\Users\LENOVO\.m2\repository\com\adobe\aem\commons\assetshare.core\2.2.0-SNAPSHOT\assetshare.core-2.2.0-SNAPSHOT.jar
+[INFO] Installing D:\FSE-2027\FlakyLens\runs2\_bp\asset-share-commons@a7b1dece99b3\source\core\pom.xml to C:\Users\LENOVO\.m2\repository\com\adobe\aem\commons\assetshare.core\2.2.0-SNAPSHOT\assetshare.core-2.2.0-SNAPSHOT.pom
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for Asset Share Commons - Reactor Project 2.2.0-SNAPSHOT:
+[INFO] 
+[INFO] Asset Share Commons - Reactor Project .............. SUCCESS [  0.629 s]
+[INFO] Asset Share Commons - Core ......................... SUCCESS [ 13.541 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  17.852 s
+[INFO] Finished at: 2026-09-07T01:04:53+06:00
+[INFO] ------------------------------------------------------------------------
+
+
+*** rc=0 elapsed=21.7s

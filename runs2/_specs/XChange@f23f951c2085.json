@@ -1,0 +1,17 @@
+{
+ "project_url": "https://github.com/knowm/XChange",
+ "ref": "f23f951c20855f07a6c28913112c0e7246396240",
+ "ref_kind": "merge_commit",
+ "tests": [
+  {
+   "pair_id": "P1721",
+   "pair_dir": "P1721__xchange__KrakenUtilsTest.testAdaptTradeHist",
+   "side": "after",
+   "module": "xchange-kraken",
+   "test_class": "org.knowm.xchange.kraken.KrakenUtilsTest",
+   "test_method": "testAdaptTradeHistoryByCurrencyPair",
+   "category": "ID"
+  }
+ ],
+ "out": "D:\\FSE-2027\\FlakyLens\\runs2"
+}

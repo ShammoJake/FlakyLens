@@ -1,0 +1,26 @@
+{
+ "project_url": "https://github.com/intel/jndn-utils",
+ "ref": "b4f2fb28e48d8a4bc18410ec6c932c0c229f8884",
+ "ref_kind": "merge_parent",
+ "tests": [
+  {
+   "pair_id": "P1570",
+   "pair_dir": "P1570__jndn-utils__DefaultSegmentedClient.testGetSegmentsAsy",
+   "side": "before",
+   "module": ".",
+   "test_class": "com.intel.jndn.utils.client.impl.DefaultSegmentedClientTest",
+   "test_method": "testGetSegmentsAsync",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P1571",
+   "pair_dir": "P1571__jndn-utils__DefaultSegmentedClient.verifyThatSegments",
+   "side": "before",
+   "module": ".",
+   "test_class": "com.intel.jndn.utils.client.impl.DefaultSegmentedClientTest",
+   "test_method": "verifyThatSegmentsAreRetrievedOnlyOnce",
+   "category": "ID"
+  }
+ ],
+ "out": "D:\\FSE-2027\\FlakyLens\\runs2"
+}

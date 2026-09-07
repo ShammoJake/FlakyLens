@@ -1,0 +1,17 @@
+{
+ "project_url": "https://github.com/stleary/JSON-java",
+ "ref": "d677a99f4ef56666a9f2ee6cc61fc36abadb8291",
+ "ref_kind": "merge_commit",
+ "tests": [
+  {
+   "pair_id": "P2270",
+   "pair_dir": "P2270__json-java__XMLTest.testIndentComplica",
+   "side": "after",
+   "module": ".",
+   "test_class": "org.json.junit.XMLTest",
+   "test_method": "testIndentComplicatedJsonObjectWithArrayAndWithConfig",
+   "category": "ID"
+  }
+ ],
+ "out": "D:\\FSE-2027\\FlakyLens\\runs2"
+}

@@ -1,0 +1,26 @@
+{
+ "project_url": "https://github.com/alibaba/nacos",
+ "ref": "68811a7ad92d20cdb1de5c415aab5cc48ed15e2c",
+ "ref_kind": "merge_commit",
+ "tests": [
+  {
+   "pair_id": "P0216",
+   "pair_dir": "P0216__nacos__JacksonUtilsTest.testToJson1",
+   "side": "after",
+   "module": "common",
+   "test_class": "com.alibaba.nacos.common.utils.JacksonUtilsTest",
+   "test_method": "testToJson1",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P0218",
+   "pair_dir": "P0218__nacos__JacksonUtilsTest.testToJsonBytes1",
+   "side": "after",
+   "module": "common",
+   "test_class": "com.alibaba.nacos.common.utils.JacksonUtilsTest",
+   "test_method": "testToJsonBytes1",
+   "category": "ID"
+  }
+ ],
+ "out": "D:\\FSE-2027\\FlakyLens\\runs2"
+}

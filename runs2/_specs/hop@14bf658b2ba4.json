@@ -1,0 +1,17 @@
+{
+ "project_url": "https://github.com/apache/hop",
+ "ref": "14bf658b2ba427d9671c9f2efc531c0c2ab360b7",
+ "ref_kind": "merge_commit",
+ "tests": [
+  {
+   "pair_id": "P0663",
+   "pair_dir": "P0663__hop__ValueMetaAvroRecordTes.testStoreLoadMetaI",
+   "side": "after",
+   "module": "core",
+   "test_class": "org.apache.hop.core.row.value.ValueMetaAvroRecordTest",
+   "test_method": "testStoreLoadMetaInJson",
+   "category": "ID"
+  }
+ ],
+ "out": "D:\\FSE-2027\\FlakyLens\\runs2"
+}

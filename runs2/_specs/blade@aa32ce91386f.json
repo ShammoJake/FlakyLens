@@ -1,0 +1,44 @@
+{
+ "project_url": "https://github.com/lets-blade/blade",
+ "ref": "aa32ce91386f491a3d0cb174beb190be1505ca27",
+ "ref_kind": "merge_parent",
+ "tests": [
+  {
+   "pair_id": "P1740",
+   "pair_dir": "P1740__blade__ANYBuilderTest.testCreateRouteBui",
+   "side": "before",
+   "module": "blade-core",
+   "test_class": "com.hellokaton.blade.mvc.route.ANYBuilderTest",
+   "test_method": "testCreateRouteBuilder",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P1741",
+   "pair_dir": "P1741__blade__ANYMatcherTest.testAddMultiParame",
+   "side": "before",
+   "module": "blade-core",
+   "test_class": "com.hellokaton.blade.mvc.route.ANYMatcherTest",
+   "test_method": "testAddMultiParameter",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P1742",
+   "pair_dir": "P1742__blade__ANYMatcherTest.testAddRoute",
+   "side": "before",
+   "module": "blade-core",
+   "test_class": "com.hellokaton.blade.mvc.route.ANYMatcherTest",
+   "test_method": "testAddRoute",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P1743",
+   "pair_dir": "P1743__blade__ANYMatcherTest.testRouteMatcher",
+   "side": "before",
+   "module": "blade-core",
+   "test_class": "com.hellokaton.blade.mvc.route.ANYMatcherTest",
+   "test_method": "testRouteMatcher",
+   "category": "ID"
+  }
+ ],
+ "out": "D:\\FSE-2027\\FlakyLens\\runs2"
+}

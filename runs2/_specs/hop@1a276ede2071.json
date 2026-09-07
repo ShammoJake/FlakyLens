@@ -1,0 +1,26 @@
+{
+ "project_url": "https://github.com/apache/hop",
+ "ref": "1a276ede2071b8e6b360191de949fc4a99e7bc22",
+ "ref_kind": "merge_commit",
+ "tests": [
+  {
+   "pair_id": "P0666",
+   "pair_dir": "P0666__hop__DatabaseLookupMetaTest.testProvidesModele",
+   "side": "after",
+   "module": "plugins/transforms/databaselookup",
+   "test_class": "org.apache.hop.pipeline.transforms.databaselookup.DatabaseLookupMetaTest",
+   "test_method": "testProvidesModelerMeta",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P0667",
+   "pair_dir": "P0667__hop__PropertyInputContentPa.testDefaultOptions",
+   "side": "before",
+   "module": "plugins/transforms/propertyinput",
+   "test_class": "org.apache.hop.pipeline.transforms.propertyinput.PropertyInputContentParsingTest",
+   "test_method": "testDefaultOptions",
+   "category": "ID"
+  }
+ ],
+ "out": "D:\\FSE-2027\\FlakyLens\\runs2"
+}

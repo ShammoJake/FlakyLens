@@ -1,0 +1,34 @@
+test,truth,pred,wrong,status,body_lines,static_mutable,beforeclass,per_test_reset,fixture_calls_test,shared_cluster,global_static_write,sibling_touch_static,helpers_called,helper_sorts,body_sorts,n_tests,evidence_location,evidence_detail
+TestDelegationTokenRenewer.testAddRemoveRenewAction,async,async,False,ok,35.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,5.0,body / n-a,
+TestPathData.testToFile,OD,UC,True,ok,8.0,0.0,0.0,1.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,12.0,class fixture,@Before mutates shared cached FileSystem working dir; static TEST_ROOT_DIR
+TestLocalDirAllocator.testRemoveContext,OD,OD,False,ok,15.0,4.0,0.0,0.0,0.0,0.0,0.0,10.0,2.0,0.0,0.0,12.0,body / n-a,
+TestRMContainerAllocator.testSimple,async,async,False,ok,81.0,2.0,0.0,1.0,0.0,0.0,0.0,1.0,6.0,0.0,0.0,34.0,body / n-a,
+TestDelegationToken.testDelegationTokenSecretManager,conc,async,True,ok,52.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,5.0,0.0,0.0,15.0,production callee (depth 1),startThreads() spawns expiry thread over synchronized shared state in AbstractDelegationTokenSecretManager
+TestDFSIO.testReadSkip,OD,time,True,ok,6.0,2.0,1.0,0.0,0.0,1.0,0.0,5.0,3.0,0.0,0.0,6.0,class fixture + sibling test,shared static bench.getConf() key test.io.skip.size set by sibling test
+TestDFSIO.testReadBackward,OD,time,True,ok,6.0,2.0,1.0,0.0,0.0,1.0,0.0,5.0,3.0,0.0,0.0,6.0,class fixture + sibling test,same shared static conf key
+TestDFSIO.testReadRandom,OD,time,True,ok,6.0,2.0,1.0,0.0,0.0,1.0,0.0,5.0,3.0,0.0,0.0,6.0,class fixture + sibling test,writes test.io.skip.size=0 into shared static bench
+TestPeerCache.testEviction,OD,async,True,ok,32.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,3.0,0.0,0.0,5.0,production callee (depth 1),"PeerCache starts Daemon thread, Thread.sleep(expiryPeriod), all methods synchronized"
+TestHftpFileSystem.testHftpDefaultPorts,OD,OD,False,UNRESOLVED,,,,,,,,,,,,,body / n-a,
+TestPathData.testUnqualifiedUriContents,OD,UC,True,ok,9.0,0.0,0.0,1.0,0.0,0.0,1.0,0.0,1.0,0.0,0.0,12.0,same-file helper + fixture,same
+TestBlockFixer.testGeneratedBlock,conc,async,True,UNRESOLVED,,,,,,,,,,,,,body / n-a,
+TestRPCCompatibility.testVersion2ClientVersion2Server,OD,async,True,ok,18.0,3.0,0.0,1.0,0.0,0.0,0.0,6.0,3.0,0.0,0.0,8.0,class fixture,"@Before calls ProtocolSignature.resetCache(), a global static cache; static server/addr/conf"
+TestDelegationTokenForProxyUser.testDelegationTokenWithRealUser,OD,conc,True,ok,20.0,5.0,1.0,0.0,0.0,1.0,1.0,1.0,0.0,0.0,0.0,2.0,class fixture + static field,same
+TestPathData.testWithStringAndConfForBuggyPath,OD,OD,False,ok,11.0,0.0,0.0,1.0,0.0,0.0,1.0,0.0,1.0,0.0,0.0,12.0,body / n-a,
+TestModTime.testModTime,time,time,False,ok,109.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,2.0,0.0,0.0,2.0,body / n-a,
+TestPathData.testWithDirStringAndConf,OD,OD,False,ok,11.0,0.0,0.0,1.0,0.0,0.0,1.0,0.0,1.0,0.0,0.0,12.0,body / n-a,
+testPendingAndInvalidate,conc,async,True,UNRESOLVED,,,,,,,,,,,,,body / n-a,
+TestPathData.testQualifiedUriContents,OD,UC,True,ok,9.0,0.0,0.0,1.0,0.0,0.0,1.0,0.0,1.0,0.0,0.0,12.0,same-file helper + fixture,same
+TestPathData.testCwdContents,OD,UC,True,ok,9.0,0.0,0.0,1.0,0.0,0.0,1.0,0.0,1.0,0.0,0.0,12.0,same-file helper + fixture,"helper sortedString() calls Arrays.sort, refuting UC; OD from @Before working dir"
+TestHftpFileSystem.testHftpCustomDefaultPorts,OD,time,True,UNRESOLVED,,,,,,,,,,,,,body / n-a,
+TestSecurityUtil.testBuildDTServiceName,OD,OD,False,ok,18.0,0.0,1.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,20.0,body / n-a,
+TestUnderReplicatedBlocks.testSetrepIncWithUnderReplicatedBlocks,async,async,False,ok,36.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,2.0,body / n-a,
+TestDelegationTokenForProxyUser.testWebHdfsDoAs,OD,conc,True,ok,38.0,5.0,1.0,0.0,0.0,1.0,1.0,1.0,0.0,0.0,0.0,2.0,class fixture + static field,"5 static fields; @BeforeClass sets token lifetime, FileSystem.setDefaultUri, ProxyUsers.refresh"
+TestMetricsSystemImpl.testInitFirstVerifyCallBacks,UC,async,True,ok,1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,4.0,helper + production callee,helper indexes recs.get(0); MetricsSystemImpl uses Maps.newHashMap() and iterates values()
+TestFairScheduler.testContinuousScheduling,async,async,False,UNRESOLVED,,,,,,,,,,,,,body / n-a,
+TestWritableName.testSetName,OD,OD,False,ok,7.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,4.0,body / n-a,
+TestPeerCache.testAddAndRetrieve,OD,async,True,ok,13.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,3.0,0.0,0.0,5.0,production callee (depth 1),same
+TestDFSIO.testRead,OD,time,True,ok,5.0,2.0,1.0,0.0,0.0,1.0,0.0,5.0,2.0,0.0,0.0,6.0,class fixture + static field,"reads files written by testWrite() in @BeforeClass; static cluster, no @Before"
+TestHftpFileSystem.testHftpCustomUriPortWithDefaultPorts,OD,OD,False,UNRESOLVED,,,,,,,,,,,,,body / n-a,
+TestPeerCache.testExpiry,OD,async,True,ok,30.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,3.0,0.0,0.0,5.0,production callee (depth 1),same
+TestSecurityUtil.testBuildTokenServiceSockAddr,OD,OD,False,ok,16.0,0.0,1.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,20.0,body / n-a,
+TestDFSIO.testWrite,OD,time,True,ok,5.0,2.0,1.0,0.0,0.0,1.0,0.0,6.0,3.0,0.0,0.0,6.0,class fixture + static field,"@BeforeClass builds static MiniDFSCluster and calls testWrite(); comment ""required for other tests"""

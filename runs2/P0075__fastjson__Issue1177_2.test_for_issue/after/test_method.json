@@ -1,0 +1,28 @@
+[
+ {
+  "qualified_class": "com.alibaba.json.bvt.issue_1100.Issue1177_2",
+  "simple_class": "Issue1177_2",
+  "method": "test_for_issue",
+  "descriptor": "()V",
+  "signature": "test_for_issue()",
+  "arity": 0,
+  "is_anonymous": false,
+  "is_test": true,
+  "file": "D:\\FSE-2027\\FlakyLens\\runs2\\_bp\\fastjson@65ae52b6b646\\source\\src\\test\\java\\com\\alibaba\\json\\bvt\\issue_1100\\Issue1177_2.java",
+  "line_start": 16,
+  "line_end": 25,
+  "modifiers": [
+   "public"
+  ],
+  "invokes": [
+   "com.alibaba.fastjson.JSON#parseObject",
+   "com.alibaba.fastjson.TypeReference#<init>",
+   "java.io.PrintStream#println",
+   "com.alibaba.fastjson.JSON#toJSONString",
+   "com.alibaba.fastjson.JSONPath#set",
+   "?#assertEquals"
+  ],
+  "body": "{\r\n    java.lang.String text = \"{\\\"a\\\":{\\\"x\\\":\\\"y\\\"},\\\"b\\\":{\\\"x\\\":\\\"y\\\"}}\";\r\n    java.util.Map<java.lang.String, com.alibaba.json.bvt.issue_1100.Issue1177_2.Model> jsonObject = com.alibaba.fastjson.JSONObject.parseObject(text, new com.alibaba.fastjson.TypeReference<java.util.LinkedHashMap<java.lang.String, com.alibaba.json.bvt.issue_1100.Issue1177_2.Model>>() {});\r\n    java.lang.System.out.println(com.alibaba.fastjson.JSON.toJSONString(jsonObject));\r\n    java.lang.String jsonpath = \"$..x\";\r\n    java.lang.String value = \"y2\";\r\n    com.alibaba.fastjson.JSONPath.set(jsonObject, jsonpath, value);\r\n    assertEquals(\"{\\\"a\\\":{\\\"x\\\":\\\"y2\\\"},\\\"b\\\":{\\\"x\\\":\\\"y2\\\"}}\", com.alibaba.fastjson.JSON.toJSONString(jsonObject));\r\n}",
+  "raw_body": "public void test_for_issue() throws Exception {\n        String text = \"{\\\"a\\\":{\\\"x\\\":\\\"y\\\"},\\\"b\\\":{\\\"x\\\":\\\"y\\\"}}\";\n        Map<String, Model> jsonObject = JSONObject.parseObject(text, new TypeReference<LinkedHashMap<String, Model>>(){});\n        System.out.println(JSON.toJSONString(jsonObject));\n        String jsonpath = \"$..x\";\n        String value=\"y2\";\n        JSONPath.set(jsonObject, jsonpath, value);\n        assertEquals(\"{\\\"a\\\":{\\\"x\\\":\\\"y2\\\"},\\\"b\\\":{\\\"x\\\":\\\"y2\\\"}}\", JSON.toJSONString(jsonObject));\n\n    }"
+ }
+]

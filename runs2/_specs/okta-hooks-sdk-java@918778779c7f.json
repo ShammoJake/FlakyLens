@@ -1,0 +1,53 @@
+{
+ "project_url": "https://github.com/okta/okta-hooks-sdk-java",
+ "ref": "918778779c7f07ddd61bf86e1a22ace1ee279649",
+ "ref_kind": "merge_parent",
+ "tests": [
+  {
+   "pair_id": "P1835",
+   "pair_dir": "P1835__okta-hooks-sdk-jav__ImportHooksTest.createUserTest",
+   "side": "before",
+   "module": "hooks",
+   "test_class": "com.okta.hooks.sdk.ImportHooksTest",
+   "test_method": "createUserTest",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P1836",
+   "pair_dir": "P1836__okta-hooks-sdk-jav__ImportHooksTest.linkUserTest",
+   "side": "before",
+   "module": "hooks",
+   "test_class": "com.okta.hooks.sdk.ImportHooksTest",
+   "test_method": "linkUserTest",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P1837",
+   "pair_dir": "P1837__okta-hooks-sdk-jav__ImportHooksTest.passwordImportUnve",
+   "side": "before",
+   "module": "hooks",
+   "test_class": "com.okta.hooks.sdk.ImportHooksTest",
+   "test_method": "passwordImportUnverifiedTest",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P1838",
+   "pair_dir": "P1838__okta-hooks-sdk-jav__ImportHooksTest.passwordImportVeri",
+   "side": "before",
+   "module": "hooks",
+   "test_class": "com.okta.hooks.sdk.ImportHooksTest",
+   "test_method": "passwordImportVerifiedTest",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P1839",
+   "pair_dir": "P1839__okta-hooks-sdk-jav__ImportHooksTest.updateUserProfile",
+   "side": "before",
+   "module": "hooks",
+   "test_class": "com.okta.hooks.sdk.ImportHooksTest",
+   "test_method": "updateUserProfile",
+   "category": "ID"
+  }
+ ],
+ "out": "D:\\FSE-2027\\FlakyLens\\runs2"
+}

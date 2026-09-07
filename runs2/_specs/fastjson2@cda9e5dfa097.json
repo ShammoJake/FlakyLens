@@ -1,0 +1,35 @@
+{
+ "project_url": "https://github.com/alibaba/fastjson2",
+ "ref": "cda9e5dfa097790f04050aa909784af51d4e0675",
+ "ref_kind": "merge_parent",
+ "tests": [
+  {
+   "pair_id": "P0122",
+   "pair_dir": "P0122__fastjson2__MapTest.test",
+   "side": "before",
+   "module": "codegen-test",
+   "test_class": "com.alibaba.fastjson2.internal.processor.annotation.MapTest",
+   "test_method": "test",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P0123",
+   "pair_dir": "P0123__fastjson2__MapTest.test1",
+   "side": "before",
+   "module": "codegen-test",
+   "test_class": "com.alibaba.fastjson2.internal.processor.annotation.MapTest",
+   "test_method": "test1",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P0124",
+   "pair_dir": "P0124__fastjson2__MapTest.test2",
+   "side": "before",
+   "module": "codegen-test",
+   "test_class": "com.alibaba.fastjson2.internal.processor.annotation.MapTest",
+   "test_method": "test2",
+   "category": "ID"
+  }
+ ],
+ "out": "D:\\FSE-2027\\FlakyLens\\runs2"
+}

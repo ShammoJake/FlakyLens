@@ -1,0 +1,20 @@
+{
+ "before": {
+  "executed_methods": 387,
+  "anonymous": 5,
+  "matched": 338,
+  "with_body": 338
+ },
+ "after": {
+  "executed_methods": 387,
+  "anonymous": 5,
+  "matched": 338,
+  "with_body": 338
+ },
+ "delta": {
+  "executed_methods": 0,
+  "anonymous": 0,
+  "matched": 0,
+  "with_body": 0
+ }
+}

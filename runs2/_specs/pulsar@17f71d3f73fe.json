@@ -1,0 +1,35 @@
+{
+ "project_url": "https://github.com/apache/pulsar",
+ "ref": "17f71d3f73fe1bcb6723c8b0718d9a6e05574146",
+ "ref_kind": "merge_commit",
+ "tests": [
+  {
+   "pair_id": "P0996",
+   "pair_dir": "P0996__pulsar__JSONSchemaTest.testAllowNullSchem",
+   "side": "after",
+   "module": "pulsar-client",
+   "test_class": "org.apache.pulsar.client.impl.schema.JSONSchemaTest",
+   "test_method": "testAllowNullSchema",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P0997",
+   "pair_dir": "P0997__pulsar__JSONSchemaTest.testNotAllowNullSc",
+   "side": "after",
+   "module": "pulsar-client",
+   "test_class": "org.apache.pulsar.client.impl.schema.JSONSchemaTest",
+   "test_method": "testNotAllowNullSchema",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P0998",
+   "pair_dir": "P0998__pulsar__KeyValueSchemaInfoTest.testKeyValueSchema",
+   "side": "after",
+   "module": "pulsar-client",
+   "test_class": "org.apache.pulsar.client.impl.schema.KeyValueSchemaInfoTest",
+   "test_method": "testKeyValueSchemaInfoToString",
+   "category": "ID"
+  }
+ ],
+ "out": "D:\\FSE-2027\\FlakyLens\\runs2"
+}

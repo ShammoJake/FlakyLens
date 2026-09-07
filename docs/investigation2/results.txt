@@ -1,0 +1,295 @@
+Tests analysed: 80 across 5 projects (39 misclassified by FlakyLens)
+truth
+OD       46
+UC        2
+async    18
+conc     10
+time      4
+
+A. Coverage of the TRUE category, by slice
+------------------------------------------
+     slice all model_wrong model_right
+      body 48%         51%         44%
+    fields 31%         51%         12%
+  fixtures 51%         56%         46%
+  siblings 75%         74%         76%
+   helpers 15%         23%          7%
+   callees 19%         33%          5%
+   context 92%         95%         90%
+contextall 92%         95%         90%
+
+True category absent from body but present in context: 39 of 80 (49%)
+Absent from both:                                       3 (4%)
+
+B. Zero-training argmax over lexicon families
+---------------------------------------------
+body only                accuracy  22.5%   macro-F1 0.211   (35 ties)
+body + fields            accuracy  36.2%   macro-F1 0.319   (28 ties)
+body + fixtures          accuracy  52.5%   macro-F1 0.410   (22 ties)
+body + siblings          accuracy  26.2%   macro-F1 0.263   (18 ties)
+body + helpers           accuracy  25.0%   macro-F1 0.237   (29 ties)
+body + callees           accuracy  11.2%   macro-F1 0.122   (28 ties)
+body + fields/fixtures   accuracy  57.5%   macro-F1 0.442   (14 ties)
+body + fld/fix + siblings accuracy  41.2%   macro-F1 0.317   (18 ties)
+all slices, separate     accuracy  37.5%   macro-F1 0.271   (13 ties)
+body + context (merged)  accuracy  38.8%   macro-F1 0.326   (22 ties)
+body + contextall (merged) accuracy  37.5%   macro-F1 0.345   (21 ties)
+FlakyLens                accuracy  51.2%   macro-F1 0.368   <- the shipped model
+
+B2. Per-category recall
+-----------------------
+             category  n body fields fixtures siblings helpers callees fields/fixtures fld/fix + siblings all slices, separate context (merged) contextall (merged)
+           async wait 18  39%    33%      28%      33%     39%     22%             33%                17%                  11%              28%                 28%
+          concurrency 10  10%    10%      20%       0%     10%     10%             20%                10%                  20%              10%                 20%
+                 time  4  50%    50%      50%      50%     50%     25%             50%                50%                  25%              50%                 50%
+unordered collections  2  50%    50%      50%       0%     50%     50%             50%                 0%                   0%               0%                  0%
+test order dependency 46  15%    41%      70%      28%     20%      4%             76%                59%                  54%              50%                 46%
+
+C. Effect on the tests the shipped model got wrong
+--------------------------------------------------
+Among the 39 misclassified tests, the body-only proxy already gets 8.
+
+body + fields
+  correct on misclassified tests    15
+  gained over body only             7
+  lost   against body only          0
+    + TestDFSIO.testReadSkip                                   OD (model said time)
+    + TestDFSIO.testReadBackward                               OD (model said time)
+    + TestDFSIO.testReadRandom                                 OD (model said time)
+    + TestRPCCompatibility.testVersion2ClientVersion2Server    OD (model said async)
+    + TestDelegationTokenForProxyUser.testDelegationTokenWithR OD (model said conc)
+    + TestDFSIO.testRead                                       OD (model said time)
+    + TestDFSIO.testWrite                                      OD (model said time)
+  holds 14 of the 41 the model already gets right
+
+body + fixtures
+  correct on misclassified tests    19
+  gained over body only             12
+  lost   against body only          1
+    + MetadataHttpHandlerTestRun.testSystemMetadataRetrieval   async (model said time)
+    + TestDFSIO.testReadSkip                                   OD (model said time)
+    + TestDFSIO.testReadBackward                               OD (model said time)
+    + TestDFSIO.testReadRandom                                 OD (model said time)
+    + TestPathData.testUnqualifiedUriContents                  OD (model said UC)
+    + TestRPCCompatibility.testVersion2ClientVersion2Server    OD (model said async)
+    + TestDelegationTokenForProxyUser.testDelegationTokenWithR OD (model said conc)
+    + TestPathData.testQualifiedUriContents                    OD (model said UC)
+    + TestPathData.testCwdContents                             OD (model said UC)
+    + TestDFSIO.testRead                                       OD (model said time)
+    + TestDFSIO.testWrite                                      OD (model said time)
+    + AntiAffinityNamespaceGroupTest.testBrokerSelectionForAnt conc (model said async)
+    - DiscoveryServiceTest.testBrokerDiscoveryRoundRobin       async
+  holds 23 of the 41 the model already gets right
+
+body + siblings
+  correct on misclassified tests    13
+  gained over body only             6
+  lost   against body only          1
+    + TestDFSIO.testReadSkip                                   OD (model said time)
+    + TestDFSIO.testReadBackward                               OD (model said time)
+    + TestDFSIO.testReadRandom                                 OD (model said time)
+    + TestDelegationTokenForProxyUser.testDelegationTokenWithR OD (model said conc)
+    + TestDFSIO.testRead                                       OD (model said time)
+    + TestDFSIO.testWrite                                      OD (model said time)
+    - TestFrameworkTestRun.testAppWithServices                 conc
+  holds 8 of the 41 the model already gets right
+
+body + helpers
+  correct on misclassified tests    9
+  gained over body only             1
+  lost   against body only          0
+    + TestDFSIO.testWrite                                      OD (model said time)
+  holds 11 of the 41 the model already gets right
+
+body + callees
+  correct on misclassified tests    1
+  gained over body only             0
+  lost   against body only          7
+    - PreviewDataPipelineTest.testLogicalTypePreviewRun        time
+    - TestPathData.testToFile                                  OD
+    - TestPeerCache.testEviction                               OD
+    - TestDelegationTokenForProxyUser.testWebHdfsDoAs          OD
+    - TestPeerCache.testAddAndRetrieve                         OD
+    - TestPeerCache.testExpiry                                 OD
+    - DiscoveryServiceTest.testBrokerDiscoveryRoundRobin       async
+  holds 8 of the 41 the model already gets right
+
+body + fields/fixtures
+  correct on misclassified tests    21
+  gained over body only             13
+  lost   against body only          0
+    + ProvisioningServiceTest.testCancelDeprovision            OD (model said async)
+    + MetadataHttpHandlerTestRun.testSystemMetadataRetrieval   async (model said time)
+    + TestDFSIO.testReadSkip                                   OD (model said time)
+    + TestDFSIO.testReadBackward                               OD (model said time)
+    + TestDFSIO.testReadRandom                                 OD (model said time)
+    + TestPathData.testUnqualifiedUriContents                  OD (model said UC)
+    + TestRPCCompatibility.testVersion2ClientVersion2Server    OD (model said async)
+    + TestDelegationTokenForProxyUser.testDelegationTokenWithR OD (model said conc)
+    + TestPathData.testQualifiedUriContents                    OD (model said UC)
+    + TestPathData.testCwdContents                             OD (model said UC)
+    + TestDFSIO.testRead                                       OD (model said time)
+    + TestDFSIO.testWrite                                      OD (model said time)
+    + AntiAffinityNamespaceGroupTest.testBrokerSelectionForAnt conc (model said async)
+  holds 25 of the 41 the model already gets right
+
+body + fld/fix + siblings
+  correct on misclassified tests    18
+  gained over body only             11
+  lost   against body only          1
+    + TestDFSIO.testReadSkip                                   OD (model said time)
+    + TestDFSIO.testReadBackward                               OD (model said time)
+    + TestDFSIO.testReadRandom                                 OD (model said time)
+    + TestPathData.testUnqualifiedUriContents                  OD (model said UC)
+    + TestRPCCompatibility.testVersion2ClientVersion2Server    OD (model said async)
+    + TestDelegationTokenForProxyUser.testDelegationTokenWithR OD (model said conc)
+    + TestPathData.testQualifiedUriContents                    OD (model said UC)
+    + TestPathData.testCwdContents                             OD (model said UC)
+    + TestDFSIO.testRead                                       OD (model said time)
+    + TestDFSIO.testWrite                                      OD (model said time)
+    + AntiAffinityNamespaceGroupTest.testBrokerSelectionForAnt conc (model said async)
+    - TestFrameworkTestRun.testAppWithServices                 conc
+  holds 15 of the 41 the model already gets right
+
+all slices, separate
+  correct on misclassified tests    18
+  gained over body only             11
+  lost   against body only          1
+    + TestDFSIO.testReadSkip                                   OD (model said time)
+    + TestDFSIO.testReadBackward                               OD (model said time)
+    + TestDFSIO.testReadRandom                                 OD (model said time)
+    + TestPathData.testUnqualifiedUriContents                  OD (model said UC)
+    + TestRPCCompatibility.testVersion2ClientVersion2Server    OD (model said async)
+    + TestDelegationTokenForProxyUser.testDelegationTokenWithR OD (model said conc)
+    + TestPathData.testQualifiedUriContents                    OD (model said UC)
+    + TestPathData.testCwdContents                             OD (model said UC)
+    + TestDFSIO.testRead                                       OD (model said time)
+    + TestDFSIO.testWrite                                      OD (model said time)
+    + AntiAffinityNamespaceGroupTest.testBrokerSelectionForAnt conc (model said async)
+    - PreviewDataPipelineTest.testLogicalTypePreviewRun        time
+  holds 12 of the 41 the model already gets right
+
+body + context (merged)
+  correct on misclassified tests    15
+  gained over body only             8
+  lost   against body only          1
+    + TestDFSIO.testReadSkip                                   OD (model said time)
+    + TestDFSIO.testReadBackward                               OD (model said time)
+    + TestDFSIO.testReadRandom                                 OD (model said time)
+    + TestRPCCompatibility.testVersion2ClientVersion2Server    OD (model said async)
+    + TestDelegationTokenForProxyUser.testDelegationTokenWithR OD (model said conc)
+    + TestDFSIO.testRead                                       OD (model said time)
+    + TestDFSIO.testWrite                                      OD (model said time)
+    + AntiAffinityNamespaceGroupTest.testBrokerSelectionForAnt conc (model said async)
+    - TestFrameworkTestRun.testAppWithServices                 conc
+  holds 16 of the 41 the model already gets right
+
+body + contextall (merged)
+  correct on misclassified tests    16
+  gained over body only             8
+  lost   against body only          0
+    + TestDFSIO.testReadSkip                                   OD (model said time)
+    + TestDFSIO.testReadBackward                               OD (model said time)
+    + TestDFSIO.testReadRandom                                 OD (model said time)
+    + TestRPCCompatibility.testVersion2ClientVersion2Server    OD (model said async)
+    + TestDelegationTokenForProxyUser.testDelegationTokenWithR OD (model said conc)
+    + TestDFSIO.testRead                                       OD (model said time)
+    + TestDFSIO.testWrite                                      OD (model said time)
+    + AntiAffinityNamespaceGroupTest.testBrokerSelectionForAnt conc (model said async)
+  holds 14 of the 41 the model already gets right
+
+
+D0. Hand-rolled numpy model vs scikit-learn
+-------------------------------------------
+body only                numpy 0.303   sklearn 0.276   diff -0.027
+body + fields            numpy 0.358   sklearn 0.444   diff +0.087
+body + fixtures          numpy 0.367   sklearn 0.436   diff +0.069
+body + siblings          numpy 0.326   sklearn 0.370   diff +0.044
+body + helpers           numpy 0.305   sklearn 0.285   diff -0.020
+body + callees           numpy 0.300   sklearn 0.267   diff -0.032
+body + fields/fixtures   numpy 0.381   sklearn 0.394   diff +0.013
+body + fld/fix + siblings numpy 0.347   sklearn 0.431   diff +0.084
+all slices, separate     numpy 0.323   sklearn 0.340   diff +0.017
+body + context (merged)  numpy 0.341   sklearn 0.415   diff +0.074
+body + contextall (merged) numpy 0.307   sklearn 0.357   diff +0.050
+
+The reported numbers come from scikit-learn. The numpy model is kept
+only as this cross-check.
+
+D. Trained classifier on family-presence vectors
+------------------------------------------------
+engine: scikit-learn  |  protocol: StratifiedShuffleSplit, 50 train / 30 test, 40 splits
+  k-fold would cap at 2 folds, i.e. 40/40, because uc has 2 examples;
+  50/30 is the largest training set keeping all 5 classes in the test half.
+body only                macro-F1 0.253  (sd 0.078, 40 fits, 5 features)
+body + fields            macro-F1 0.358  (sd 0.102, 40 fits, 10 features)
+body + fixtures          macro-F1 0.397  (sd 0.083, 40 fits, 10 features)
+body + siblings          macro-F1 0.338  (sd 0.077, 40 fits, 10 features)
+body + helpers           macro-F1 0.267  (sd 0.068, 40 fits, 10 features)
+body + callees           macro-F1 0.273  (sd 0.066, 40 fits, 10 features)
+body + fields/fixtures   macro-F1 0.391  (sd 0.080, 40 fits, 15 features)
+body + fld/fix + siblings macro-F1 0.397  (sd 0.081, 40 fits, 20 features)
+all slices, separate     macro-F1 0.347  (sd 0.072, 40 fits, 30 features)
+body + context (merged)  macro-F1 0.382  (sd 0.084, 40 fits, 10 features)
+body + contextall (merged) macro-F1 0.331  (sd 0.071, 40 fits, 10 features)
+delta vs body only, body + fields          +0.106   95% CI [+0.080, +0.133]  (scipy BCa)
+delta vs body only, body + fixtures        +0.145   95% CI [+0.117, +0.171]  (scipy BCa)
+delta vs body only, body + siblings        +0.085   95% CI [+0.060, +0.107]  (scipy BCa)
+delta vs body only, body + helpers         +0.014   95% CI [-0.013, +0.037]  (scipy BCa)
+delta vs body only, body + callees         +0.020   95% CI [-0.001, +0.042]  (scipy BCa)
+delta vs body only, body + fields/fixtures +0.138   95% CI [+0.109, +0.164]  (scipy BCa)
+delta vs body only, body + fld/fix + siblings +0.145   95% CI [+0.111, +0.177]  (scipy BCa)
+delta vs body only, all slices, separate   +0.095   95% CI [+0.065, +0.129]  (scipy BCa)
+delta vs body only, body + context (merged) +0.129   95% CI [+0.102, +0.157]  (scipy BCa)
+delta vs body only, body + contextall (merged) +0.078   95% CI [+0.055, +0.103]  (scipy BCa)
+
+That interval resamples fold scores, which are correlated because they
+come from the same 80 tests. It is therefore optimistic. The permutation
+test below does not depend on it.
+
+D2. Label-permutation null (does the model beat chance at n=80?)
+----------------------------------------------------------------
+body only                observed 0.272   null mean 0.150   p = 0.0100
+body + fields            observed 0.350   null mean 0.164   p = 0.0066
+body + fixtures          observed 0.350   null mean 0.165   p = 0.0066
+body + siblings          observed 0.343   null mean 0.169   p = 0.0033
+body + helpers           observed 0.278   null mean 0.168   p = 0.0266
+body + callees           observed 0.271   null mean 0.169   p = 0.0299
+body + fields/fixtures   observed 0.379   null mean 0.174   p = 0.0066
+body + fld/fix + siblings observed 0.360   null mean 0.181   p = 0.0033
+all slices, separate     observed 0.341   null mean 0.186   p = 0.0100
+body + context (merged)  observed 0.364   null mean 0.171   p = 0.0066
+body + contextall (merged) observed 0.312   null mean 0.171   p = 0.0100
+
+E. Baselines and tie-breaking
+-----------------------------
+majority-class baseline      accuracy  57.5%   macro-F1 0.146
+uniform-random baseline      accuracy  20.0%   macro-F1 0.156
+
+Argmax with ties broken at random, mean of 2000 draws:
+  body only              accuracy  28.5%   macro-F1 0.218
+  body + fields          accuracy  40.6%   macro-F1 0.273
+  body + fixtures        accuracy  54.5%   macro-F1 0.337
+  body + siblings        accuracy  27.9%   macro-F1 0.220
+  body + helpers         accuracy  31.5%   macro-F1 0.243
+  body + callees         accuracy  20.5%   macro-F1 0.167
+  body + fields/fixtures accuracy  54.3%   macro-F1 0.331
+  body + fld/fix + siblings accuracy  46.7%   macro-F1 0.297
+  all slices, separate   accuracy  42.3%   macro-F1 0.264
+  body + context (merged) accuracy  44.2%   macro-F1 0.287
+  body + contextall (merged) accuracy  43.0%   macro-F1 0.310
+
+E2. Binary task: order dependency vs everything else
+----------------------------------------------------
+positives 46 of 80
+  body only              AUC 0.723   best accuracy  72.5% at margin > -2   Mann-Whitney p = 1.99e-04
+  body + fields          AUC 0.697   best accuracy  68.8% at margin > -1   Mann-Whitney p = 1.11e-03
+  body + fixtures        AUC 0.834   best accuracy  77.5% at margin > -1   Mann-Whitney p = 1.10e-07
+  body + siblings        AUC 0.824   best accuracy  78.8% at margin > -4   Mann-Whitney p = 3.23e-07
+  body + helpers         AUC 0.728   best accuracy  73.8% at margin > -2   Mann-Whitney p = 1.97e-04
+  body + callees         AUC 0.658   best accuracy  66.2% at margin > -3   Mann-Whitney p = 6.91e-03
+  body + fields/fixtures AUC 0.801   best accuracy  71.2% at margin > 0   Mann-Whitney p = 1.81e-06
+  body + fld/fix + siblings AUC 0.863   best accuracy  81.2% at margin > -3   Mann-Whitney p = 1.37e-08
+  all slices, separate   AUC 0.818   best accuracy  78.8% at margin > -2   Mann-Whitney p = 5.87e-07
+  body + context (merged) AUC 0.873   best accuracy  83.8% at margin > -3   Mann-Whitney p = 5.41e-09
+  body + contextall (merged) AUC 0.828   best accuracy  80.0% at margin > -1   Mann-Whitney p = 2.57e-07

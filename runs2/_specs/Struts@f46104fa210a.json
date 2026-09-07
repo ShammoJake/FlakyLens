@@ -1,0 +1,17 @@
+{
+ "project_url": "https://github.com/Apache/Struts",
+ "ref": "f46104fa210a38243b2fe2914c3ea88553c2b313",
+ "ref_kind": "merge_parent",
+ "tests": [
+  {
+   "pair_id": "P1102",
+   "pair_dir": "P1102__struts__FreemarkerResultMocked.testDynamicAttribu",
+   "side": "before",
+   "module": "core",
+   "test_class": "org.apache.struts2.views.freemarker.FreemarkerResultMockedTest",
+   "test_method": "testDynamicAttributesSupport",
+   "category": "ID"
+  }
+ ],
+ "out": "D:\\FSE-2027\\FlakyLens\\runs2"
+}

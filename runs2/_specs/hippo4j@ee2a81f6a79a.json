@@ -1,0 +1,17 @@
+{
+ "project_url": "https://github.com/opengoofy/hippo4j",
+ "ref": "ee2a81f6a79afe07df595fbc5c9ab94940930d42",
+ "ref_kind": "merge_parent",
+ "tests": [
+  {
+   "pair_id": "P1892",
+   "pair_dir": "P1892__hippo4j__HttpUtilsTest.buildUrl",
+   "side": "before",
+   "module": "infra/common",
+   "test_class": "cn.hippo4j.common.toolkit.http.HttpUtilsTest",
+   "test_method": "buildUrl",
+   "category": "ID"
+  }
+ ],
+ "out": "D:\\FSE-2027\\FlakyLens\\runs2"
+}

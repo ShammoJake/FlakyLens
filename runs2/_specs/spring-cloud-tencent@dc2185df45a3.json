@@ -1,0 +1,26 @@
+{
+ "project_url": "https://github.com/Tencent/spring-cloud-tencent",
+ "ref": "dc2185df45a3cd8263874be1dfe3cc9d75abc96c",
+ "ref_kind": "merge_parent",
+ "tests": [
+  {
+   "pair_id": "P2298",
+   "pair_dir": "P2298__spring-cloud-tence__Metadata2HeaderFeignIn.test1",
+   "side": "before",
+   "module": "spring-cloud-tencent-starters/spring-cloud-tencent-metadata",
+   "test_class": "com.tencent.cloud.metadata.core.intercepter.feign.Metadata2HeaderFeignInterceptorTest",
+   "test_method": "test1",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P2299",
+   "pair_dir": "P2299__spring-cloud-tence__MetadataRestTemplateIn.test1",
+   "side": "before",
+   "module": "spring-cloud-tencent-starters/spring-cloud-tencent-metadata",
+   "test_class": "com.tencent.cloud.metadata.core.intercepter.resttemplate.MetadataRestTemplateInterceptorTest",
+   "test_method": "test1",
+   "category": "ID"
+  }
+ ],
+ "out": "D:\\FSE-2027\\FlakyLens\\runs2"
+}

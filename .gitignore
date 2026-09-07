@@ -1,0 +1,12 @@
+# Added by code-review-graph
+.code-review-graph/
+
+# investigation 3 evidence runs (large, regenerable)
+runs/
+
+# working checkouts inside a build point: regenerable with `git fetch <sha>`
+runs2/_bp/*/source/
+
+# scratch / tool config
+.claude/
+.code-review-graph/

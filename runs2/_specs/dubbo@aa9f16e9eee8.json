@@ -1,0 +1,17 @@
+{
+ "project_url": "https://github.com/apache/dubbo",
+ "ref": "aa9f16e9eee8181b1619fd77c621d5fd57b27e82",
+ "ref_kind": "merge_parent",
+ "tests": [
+  {
+   "pair_id": "P0587",
+   "pair_dir": "P0587__dubbo__ChangeTelnetHandlerTes.testChangeServiceN",
+   "side": "before",
+   "module": "dubbo-rpc/dubbo-rpc-dubbo",
+   "test_class": "org.apache.dubbo.rpc.protocol.dubbo.telnet.ChangeTelnetHandlerTest",
+   "test_method": "testChangeServiceNotExport",
+   "category": "OD-Vic"
+  }
+ ],
+ "out": "D:\\FSE-2027\\FlakyLens\\runs2"
+}

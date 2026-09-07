@@ -1,0 +1,179 @@
+{
+ "project_url": "https://github.com/okta/okta-hooks-sdk-java",
+ "ref": "8bf25c84b54e788040ae2272e1578bc625e871d4",
+ "ref_kind": "merge_commit",
+ "tests": [
+  {
+   "pair_id": "P1835",
+   "pair_dir": "P1835__okta-hooks-sdk-jav__ImportHooksTest.createUserTest",
+   "side": "after",
+   "module": "hooks",
+   "test_class": "com.okta.hooks.sdk.ImportHooksTest",
+   "test_method": "createUserTest",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P1836",
+   "pair_dir": "P1836__okta-hooks-sdk-jav__ImportHooksTest.linkUserTest",
+   "side": "after",
+   "module": "hooks",
+   "test_class": "com.okta.hooks.sdk.ImportHooksTest",
+   "test_method": "linkUserTest",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P1837",
+   "pair_dir": "P1837__okta-hooks-sdk-jav__ImportHooksTest.passwordImportUnve",
+   "side": "after",
+   "module": "hooks",
+   "test_class": "com.okta.hooks.sdk.ImportHooksTest",
+   "test_method": "passwordImportUnverifiedTest",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P1838",
+   "pair_dir": "P1838__okta-hooks-sdk-jav__ImportHooksTest.passwordImportVeri",
+   "side": "after",
+   "module": "hooks",
+   "test_class": "com.okta.hooks.sdk.ImportHooksTest",
+   "test_method": "passwordImportVerifiedTest",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P1839",
+   "pair_dir": "P1839__okta-hooks-sdk-jav__ImportHooksTest.updateUserProfile",
+   "side": "after",
+   "module": "hooks",
+   "test_class": "com.okta.hooks.sdk.ImportHooksTest",
+   "test_method": "updateUserProfile",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P1840",
+   "pair_dir": "P1840__okta-hooks-sdk-jav__SamlHooksTest.basicAdd",
+   "side": "before",
+   "module": "hooks",
+   "test_class": "com.okta.hooks.sdk.SamlHooksTest",
+   "test_method": "basicAdd",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P1841",
+   "pair_dir": "P1841__okta-hooks-sdk-jav__SamlHooksTest.complexAddRemove",
+   "side": "before",
+   "module": "hooks",
+   "test_class": "com.okta.hooks.sdk.SamlHooksTest",
+   "test_method": "complexAddRemove",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P1842",
+   "pair_dir": "P1842__okta-hooks-sdk-jav__SamlHooksTest.replaceBasic",
+   "side": "before",
+   "module": "hooks",
+   "test_class": "com.okta.hooks.sdk.SamlHooksTest",
+   "test_method": "replaceBasic",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P1843",
+   "pair_dir": "P1843__okta-hooks-sdk-jav__SamlHooksTest.replaceComplex",
+   "side": "before",
+   "module": "hooks",
+   "test_class": "com.okta.hooks.sdk.SamlHooksTest",
+   "test_method": "replaceComplex",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P1844",
+   "pair_dir": "P1844__okta-hooks-sdk-jav__TokenHooksTest.addClaim",
+   "side": "before",
+   "module": "hooks",
+   "test_class": "com.okta.hooks.sdk.TokenHooksTest",
+   "test_method": "addClaim",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P1845",
+   "pair_dir": "P1845__okta-hooks-sdk-jav__TokenHooksTest.addClaims",
+   "side": "before",
+   "module": "hooks",
+   "test_class": "com.okta.hooks.sdk.TokenHooksTest",
+   "test_method": "addClaims",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P1846",
+   "pair_dir": "P1846__okta-hooks-sdk-jav__TokenHooksTest.removeClaims",
+   "side": "before",
+   "module": "hooks",
+   "test_class": "com.okta.hooks.sdk.TokenHooksTest",
+   "test_method": "removeClaims",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P1847",
+   "pair_dir": "P1847__okta-hooks-sdk-jav__TokenHooksTest.replaceClaims",
+   "side": "before",
+   "module": "hooks",
+   "test_class": "com.okta.hooks.sdk.TokenHooksTest",
+   "test_method": "replaceClaims",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P1848",
+   "pair_dir": "P1848__okta-hooks-sdk-jav__TokenHooksTest.tokenExpiration",
+   "side": "before",
+   "module": "hooks",
+   "test_class": "com.okta.hooks.sdk.TokenHooksTest",
+   "test_method": "tokenExpiration",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P1849",
+   "pair_dir": "P1849__okta-hooks-sdk-jav__UserRegHooksTest.allow",
+   "side": "before",
+   "module": "hooks",
+   "test_class": "com.okta.hooks.sdk.UserRegHooksTest",
+   "test_method": "allow",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P1850",
+   "pair_dir": "P1850__okta-hooks-sdk-jav__UserRegHooksTest.complexError",
+   "side": "before",
+   "module": "hooks",
+   "test_class": "com.okta.hooks.sdk.UserRegHooksTest",
+   "test_method": "complexError",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P1851",
+   "pair_dir": "P1851__okta-hooks-sdk-jav__UserRegHooksTest.deny",
+   "side": "before",
+   "module": "hooks",
+   "test_class": "com.okta.hooks.sdk.UserRegHooksTest",
+   "test_method": "deny",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P1852",
+   "pair_dir": "P1852__okta-hooks-sdk-jav__UserRegHooksTest.errorWithDebugCont",
+   "side": "before",
+   "module": "hooks",
+   "test_class": "com.okta.hooks.sdk.UserRegHooksTest",
+   "test_method": "errorWithDebugContext",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P1853",
+   "pair_dir": "P1853__okta-hooks-sdk-jav__UserRegHooksTest.updateProfile",
+   "side": "before",
+   "module": "hooks",
+   "test_class": "com.okta.hooks.sdk.UserRegHooksTest",
+   "test_method": "updateProfile",
+   "category": "ID"
+  }
+ ],
+ "out": "D:\\FSE-2027\\FlakyLens\\runs2"
+}

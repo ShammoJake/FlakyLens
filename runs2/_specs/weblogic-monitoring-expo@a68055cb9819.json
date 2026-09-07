@@ -1,0 +1,53 @@
+{
+ "project_url": "https://github.com/oracle/weblogic-monitoring-exporter",
+ "ref": "a68055cb9819eb9e2b3865f49d731ca889a44ef6",
+ "ref_kind": "merge_parent",
+ "tests": [
+  {
+   "pair_id": "P1925",
+   "pair_dir": "P1925__weblogic-monitorin__ExporterConfigTest.whenYamlContainsMe",
+   "side": "before",
+   "module": "wls-exporter-core",
+   "test_class": "com.oracle.wls.exporter.domain.ExporterConfigTest",
+   "test_method": "whenYamlContainsMergeableQueries_MergeThem",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P1926",
+   "pair_dir": "P1926__weblogic-monitorin__MBeanSelectorTest.generateJsonReques",
+   "side": "before",
+   "module": "wls-exporter-core",
+   "test_class": "com.oracle.wls.exporter.domain.MBeanSelectorTest",
+   "test_method": "generateJsonRequest",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P1927",
+   "pair_dir": "P1927__weblogic-monitorin__MBeanSelectorTest.whenNoValuesListed",
+   "side": "before",
+   "module": "wls-exporter-core",
+   "test_class": "com.oracle.wls.exporter.domain.MBeanSelectorTest",
+   "test_method": "whenNoValuesListedForSerlvets_generateJsonRequest",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P1928",
+   "pair_dir": "P1928__weblogic-monitorin__WebClient8ImplTest.whenUnprotected_se",
+   "side": "before",
+   "module": "wls-exporter-core",
+   "test_class": "com.oracle.wls.exporter.WebClient8ImplTest",
+   "test_method": "whenUnprotected_sendPutToServer",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P1929",
+   "pair_dir": "P1929__weblogic-monitorin__WebClientImplTest.whenUnprotected_se",
+   "side": "before",
+   "module": "wls-exporter-core",
+   "test_class": "com.oracle.wls.exporter.WebClientImplTest",
+   "test_method": "whenUnprotected_sendPutToServer",
+   "category": "ID"
+  }
+ ],
+ "out": "D:\\FSE-2027\\FlakyLens\\runs2"
+}

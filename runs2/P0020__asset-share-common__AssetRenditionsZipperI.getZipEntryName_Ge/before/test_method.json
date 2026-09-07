@@ -1,0 +1,31 @@
+[
+ {
+  "qualified_class": "com.adobe.aem.commons.assetshare.content.renditions.download.impl.AssetRenditionsZipperImplTest",
+  "simple_class": "AssetRenditionsZipperImplTest",
+  "method": "getZipEntryName_GenerateUniqueZipFileNameEntry",
+  "descriptor": "()V",
+  "signature": "getZipEntryName_GenerateUniqueZipFileNameEntry()",
+  "arity": 0,
+  "is_anonymous": false,
+  "is_test": true,
+  "file": "D:\\FSE-2027\\FlakyLens\\runs2\\_bp\\asset-share-commons@79fcce8819b1\\source\\core\\src\\test\\java\\com\\adobe\\aem\\commons\\assetshare\\content\\renditions\\download\\impl\\AssetRenditionsZipperImplTest.java",
+  "line_start": 192,
+  "line_end": 209,
+  "modifiers": [
+   "public"
+  ],
+  "invokes": [
+   "java.util.Set#add",
+   "io.wcm.testing.mock.aem.junit.AemContext#registerInjectActivateService",
+   "io.wcm.testing.mock.aem.junit.AemContext#getService",
+   "org.apache.sling.models.factory.ModelFactory#getModelFromWrappedRequest",
+   "io.wcm.testing.mock.aem.junit.AemContext#request",
+   "?#getResource",
+   "io.wcm.testing.mock.aem.junit.AemContext#resourceResolver",
+   "com.adobe.aem.commons.assetshare.content.renditions.download.impl.AssetRenditionsZipperImpl#getZipEntryName",
+   "?#assertEquals"
+  ],
+  "body": "{\r\n    final java.lang.String expected = \"1-test__my-rendition.png\";\r\n    final java.util.Set<java.lang.String> zipEntryFileNames = new java.util.HashSet<>();\r\n    zipEntryFileNames.add(\"test__my-rendition.png\");\r\n    ctx.registerInjectActivateService(new com.adobe.aem.commons.assetshare.content.renditions.download.impl.AssetRenditionsZipperImpl(), \"rendition.filename.expression\", (((com.adobe.aem.commons.assetshare.content.renditions.download.impl.AssetRenditionsZipperImpl.VAR_ASSET_NAME + \"__\") + com.adobe.aem.commons.assetshare.content.renditions.download.impl.AssetRenditionsZipperImpl.VAR_RENDITION_NAME) + \".\") + com.adobe.aem.commons.assetshare.content.renditions.download.impl.AssetRenditionsZipperImpl.VAR_ASSET_EXTENSION);\r\n    com.adobe.aem.commons.assetshare.content.renditions.download.impl.AssetRenditionsZipperImpl zipper = ((com.adobe.aem.commons.assetshare.content.renditions.download.impl.AssetRenditionsZipperImpl) (ctx.getService(com.adobe.aem.commons.assetshare.content.renditions.download.AssetRenditionsDownloadOrchestrator.class)));\r\n    com.adobe.aem.commons.assetshare.content.AssetModel asset = modelFactory.getModelFromWrappedRequest(ctx.request(), ctx.resourceResolver().getResource(\"/content/dam/test.png\"), com.adobe.aem.commons.assetshare.content.AssetModel.class);\r\n    final java.lang.String actual = zipper.getZipEntryName(\"\", asset, \"my-rendition\", \"image/png\", zipEntryFileNames);\r\n    assertEquals(expected, actual);\r\n}",
+  "raw_body": "@Test\n    public void getZipEntryName_GenerateUniqueZipFileNameEntry() {\n        final String expected = \"1-test__my-rendition.png\";\n\n        final Set<String> zipEntryFileNames = new HashSet<>();\n        zipEntryFileNames.add(\"test__my-rendition.png\");\n\n        ctx.registerInjectActivateService(new AssetRenditionsZipperImpl(),\n                \"rendition.filename.expression\",\n                AssetRenditionsZipperImpl.VAR_ASSET_NAME + \"__\" +  AssetRenditionsZipperImpl.VAR_RENDITION_NAME + \".\" + AssetRenditionsZipperImpl.VAR_ASSET_EXTENSION );\n\n        AssetRenditionsZipperImpl zipper = (AssetRenditionsZipperImpl) ctx.getService(AssetRenditionsDownloadOrchestrator.class);\n\n        AssetModel asset = modelFactory.getModelFromWrappedRequest(ctx.request(), ctx.resourceResolver().getResource(\"/content/dam/test.png\"), AssetModel.class);\n\n        final String actual = zipper.getZipEntryName(\"\", asset, \"my-rendition\", \"image/png\", zipEntryFileNames);\n\n        assertEquals( expected, actual);\n    }"
+ }
+]

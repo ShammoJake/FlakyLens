@@ -1,0 +1,17 @@
+{
+ "project_url": "https://github.com/apolloconfig/apollo-java",
+ "ref": "21259e5dcef3960b2162ae9c62b6acd6b99e59fd",
+ "ref_kind": "merge_commit",
+ "tests": [
+  {
+   "pair_id": "P1190",
+   "pair_dir": "P1190__apollo-java__ItemOpenApiServiceTest.testFindItemsByNam",
+   "side": "after",
+   "module": "apollo-openapi",
+   "test_class": "com.ctrip.framework.apollo.openapi.client.service.ItemOpenApiServiceTest",
+   "test_method": "testFindItemsByNamespace",
+   "category": "ID"
+  }
+ ],
+ "out": "D:\\FSE-2027\\FlakyLens\\runs2"
+}

@@ -1,0 +1,17 @@
+{
+ "project_url": "https://github.com/fabiomaffioletti/jsondoc",
+ "ref": "3b3907f455ba8b8ee17c3700b4e5ca0334b15f6f",
+ "ref_kind": "merge_commit",
+ "tests": [
+  {
+   "pair_id": "P1334",
+   "pair_dir": "P1334__jsondoc__JSONDocApiAuthBuilderT.testApiAuthToken",
+   "side": "after",
+   "module": "jsondoc-core",
+   "test_class": "org.jsondoc.core.scanner.builder.JSONDocApiAuthBuilderTest",
+   "test_method": "testApiAuthToken",
+   "category": "ID"
+  }
+ ],
+ "out": "D:\\FSE-2027\\FlakyLens\\runs2"
+}

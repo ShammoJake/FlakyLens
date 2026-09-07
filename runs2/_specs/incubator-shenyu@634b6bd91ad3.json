@@ -1,0 +1,26 @@
+{
+ "project_url": "https://github.com/apache/incubator-shenyu",
+ "ref": "634b6bd91ad3c51352c6bfa09212a57935178411",
+ "ref_kind": "merge_commit",
+ "tests": [
+  {
+   "pair_id": "P0869",
+   "pair_dir": "P0869__incubator-shenyu__GsonUtilsTest.testToJson",
+   "side": "after",
+   "module": "shenyu-common",
+   "test_class": "org.apache.shenyu.common.utils.GsonUtilsTest",
+   "test_method": "testToJson",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P0870",
+   "pair_dir": "P0870__incubator-shenyu__JsonUtilsTest.toJson",
+   "side": "after",
+   "module": "shenyu-common",
+   "test_class": "org.apache.shenyu.common.utils.JsonUtilsTest",
+   "test_method": "toJson",
+   "category": "ID"
+  }
+ ],
+ "out": "D:\\FSE-2027\\FlakyLens\\runs2"
+}

@@ -1,0 +1,17 @@
+{
+ "project_url": "https://github.com/apache/servicecomb-java-chassis",
+ "ref": "5f02b0a33b51dcc93fe96c833311cc0fc8d444e7",
+ "ref_kind": "merge_parent",
+ "tests": [
+  {
+   "pair_id": "P1045",
+   "pair_dir": "P1045__servicecomb-java-c__TestOperationGenerator.apiOperationThenRe",
+   "side": "before",
+   "module": "swagger/swagger-generator",
+   "test_class": "org.apache.servicecomb.swagger.generator.core.TestOperationGenerator",
+   "test_method": "apiOperationThenResponse",
+   "category": "ID"
+  }
+ ],
+ "out": "D:\\FSE-2027\\FlakyLens\\runs2"
+}

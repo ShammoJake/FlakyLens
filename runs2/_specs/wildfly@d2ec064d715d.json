@@ -1,0 +1,98 @@
+{
+ "project_url": "https://github.com/wildfly/wildfly",
+ "ref": "d2ec064d715d7aaab7035a4493912cb324170214",
+ "ref_kind": "merge_parent",
+ "tests": [
+  {
+   "pair_id": "P2462",
+   "pair_dir": "P2462__wildfly__UndertowSubsystem100Te.testRuntime",
+   "side": "before",
+   "module": "undertow",
+   "test_class": "org.wildfly.extension.undertow.UndertowSubsystem100TestCase",
+   "test_method": "testRuntime",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P2463",
+   "pair_dir": "P2463__wildfly__UndertowSubsystem110Te.testRuntime",
+   "side": "before",
+   "module": "undertow",
+   "test_class": "org.wildfly.extension.undertow.UndertowSubsystem110TestCase",
+   "test_method": "testRuntime",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P2464",
+   "pair_dir": "P2464__wildfly__UndertowSubsystem30Tes.testRuntime",
+   "side": "before",
+   "module": "undertow",
+   "test_class": "org.wildfly.extension.undertow.UndertowSubsystem30TestCase",
+   "test_method": "testRuntime",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P2465",
+   "pair_dir": "P2465__wildfly__UndertowSubsystem31Tes.testRuntime",
+   "side": "before",
+   "module": "undertow",
+   "test_class": "org.wildfly.extension.undertow.UndertowSubsystem31TestCase",
+   "test_method": "testRuntime",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P2466",
+   "pair_dir": "P2466__wildfly__UndertowSubsystem40Tes.testRuntime",
+   "side": "before",
+   "module": "undertow",
+   "test_class": "org.wildfly.extension.undertow.UndertowSubsystem40TestCase",
+   "test_method": "testRuntime",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P2467",
+   "pair_dir": "P2467__wildfly__UndertowSubsystem50Tes.testRuntime",
+   "side": "before",
+   "module": "undertow",
+   "test_class": "org.wildfly.extension.undertow.UndertowSubsystem50TestCase",
+   "test_method": "testRuntime",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P2468",
+   "pair_dir": "P2468__wildfly__UndertowSubsystem60Tes.testRuntime",
+   "side": "before",
+   "module": "undertow",
+   "test_class": "org.wildfly.extension.undertow.UndertowSubsystem60TestCase",
+   "test_method": "testRuntime",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P2469",
+   "pair_dir": "P2469__wildfly__UndertowSubsystem70Tes.testRuntime",
+   "side": "before",
+   "module": "undertow",
+   "test_class": "org.wildfly.extension.undertow.UndertowSubsystem70TestCase",
+   "test_method": "testRuntime",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P2470",
+   "pair_dir": "P2470__wildfly__UndertowSubsystem80Tes.testRuntime",
+   "side": "before",
+   "module": "undertow",
+   "test_class": "org.wildfly.extension.undertow.UndertowSubsystem80TestCase",
+   "test_method": "testRuntime",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P2471",
+   "pair_dir": "P2471__wildfly__UndertowSubsystem90Tes.testRuntime",
+   "side": "before",
+   "module": "undertow",
+   "test_class": "org.wildfly.extension.undertow.UndertowSubsystem90TestCase",
+   "test_method": "testRuntime",
+   "category": "ID"
+  }
+ ],
+ "out": "D:\\FSE-2027\\FlakyLens\\runs2"
+}

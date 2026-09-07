@@ -1,0 +1,7 @@
+$ java -jar D:/FSE-2027/FlakyLens/runs/tools/jacococli.jar report D:\FSE-2027\FlakyLens\runs2\P1466__testparameterinjec__ParameterValueParsingT.parseYamlStringToJ\before\jacoco.exec --classfiles D:\FSE-2027\FlakyLens\runs2\_bp\TestParameterInjector@5d67f8cb6648\source\junit4\target\classes --sourcefiles D:\FSE-2027\FlakyLens\runs2\_bp\TestParameterInjector@5d67f8cb6648\source\junit4\src\main\java --xml D:\FSE-2027\FlakyLens\runs2\P1466__testparameterinjec__ParameterValueParsingT.parseYamlStringToJ\before\coverage.xml
+
+[INFO] Loading execution data file D:\FSE-2027\FlakyLens\runs2\P1466__testparameterinjec__ParameterValueParsingT.parseYamlStringToJ\before\jacoco.exec.
+[INFO] Analyzing 44 classes.
+
+
+*** rc=0 elapsed=1.0s

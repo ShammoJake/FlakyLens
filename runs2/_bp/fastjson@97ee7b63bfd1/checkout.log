@@ -1,0 +1,5 @@
+$ git fetch -q --depth 1 https://github.com/alibaba/fastjson 97ee7b63bfd1563d5071fa5a7a55806bb1c3cb85
+
+
+
+*** rc=0 elapsed=3.8s

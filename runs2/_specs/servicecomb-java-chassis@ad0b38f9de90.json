@@ -1,0 +1,26 @@
+{
+ "project_url": "https://github.com/apache/servicecomb-java-chassis",
+ "ref": "ad0b38f9de90c73526fed719fd5dba6430e653b2",
+ "ref_kind": "merge_commit",
+ "tests": [
+  {
+   "pair_id": "P1024",
+   "pair_dir": "P1024__servicecomb-java-c__TestRestClientRequestI.testCookie",
+   "side": "after",
+   "module": "core",
+   "test_class": "org.apache.servicecomb.common.rest.codec.param.TestRestClientRequestImpl",
+   "test_method": "testCookie",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P1032",
+   "pair_dir": "P1032__servicecomb-java-c__TestInvocation.traceIdGeneratorIn",
+   "side": "after",
+   "module": "common/common-rest",
+   "test_class": "org.apache.servicecomb.core.TestInvocation",
+   "test_method": "traceIdGeneratorInit",
+   "category": "ID"
+  }
+ ],
+ "out": "D:\\FSE-2027\\FlakyLens\\runs2"
+}

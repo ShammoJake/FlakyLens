@@ -1,0 +1,58 @@
+{
+ "build_point": "asset-share-commons@a7b1dece99b3",
+ "project_url": "https://github.com/adobe/asset-share-commons",
+ "ref": "a7b1dece99b3123934a5830b024c9a5d62411841",
+ "ref_kind": "merge_commit",
+ "tests": 4,
+ "started": "2026-09-07T01:04:20",
+ "steps": {
+  "checkout": {
+   "ok": true,
+   "ref": "a7b1dece99b3123934a5830b024c9a5d62411841",
+   "error": null
+  },
+  "build": {
+   "ok": true,
+   "rc": 0,
+   "modules": [
+    "core"
+   ],
+   "error": ""
+  },
+  "spoon": {
+   "ok": true,
+   "methods": 1770,
+   "roots": [
+    "core\\src\\main\\java",
+    "core\\src\\test\\java"
+   ]
+  }
+ },
+ "isolate_between_tests": false,
+ "status": "ok",
+ "results": [
+  {
+   "pair_id": "P0018",
+   "side": "after",
+   "status": "ok"
+  },
+  {
+   "pair_id": "P0019",
+   "side": "after",
+   "status": "ok"
+  },
+  {
+   "pair_id": "P0020",
+   "side": "after",
+   "status": "ok"
+  },
+  {
+   "pair_id": "P0021",
+   "side": "after",
+   "status": "ok"
+  }
+ ],
+ "source_removed": false,
+ "seconds": 175.1,
+ "finished": "2026-09-07T01:07:15"
+}

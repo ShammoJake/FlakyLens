@@ -1,0 +1,58 @@
+{
+ "pair_id": "P0010",
+ "side": "before",
+ "ref_kind": "merge_parent",
+ "build_point": "mercury@e659caf000c2",
+ "spoon_methods": "_bp\\mercury@e659caf000c2\\spoon_methods.json",
+ "steps": {
+  "checkout": {
+   "ok": true,
+   "ref": "e659caf000c2a714d921a52cbc85e13f56cef981",
+   "error": null
+  },
+  "build": {
+   "ok": true,
+   "rc": 0,
+   "modules": [
+    "system/platform-core"
+   ],
+   "error": ""
+  },
+  "spoon": {
+   "ok": true,
+   "methods": 1486,
+   "roots": [
+    "system\\platform-core\\src\\main\\java",
+    "system\\platform-core\\src\\test\\java",
+    "system\\platform-core\\src\\main\\java"
+   ]
+  },
+  "test_method_found": true,
+  "test": {
+   "ok": true,
+   "rc": 0,
+   "note": "",
+   "argline_fallback": false,
+   "test_passed": true
+  },
+  "report": {
+   "ok": true,
+   "error": "",
+   "classfile_dirs": 1,
+   "sourcefile_dirs": 1
+  },
+  "collect_coverage": {
+   "ok": true,
+   "summary": [
+    "executed=340 of seen=1131 top-level=327 nested=12 anonymous=1"
+   ]
+  },
+  "join": {
+   "ok": true,
+   "summary": [
+    "joined=340 matched=279 of 290 (96.2%) exact=269 arity=10 simple=0 synthetic=50 unmatched=11"
+   ]
+  }
+ },
+ "status": "ok"
+}

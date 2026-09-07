@@ -1,0 +1,17 @@
+{
+ "project_url": "https://github.com/flowable/flowable-engine",
+ "ref": "32376804f6793371d6647ed65aad038f83fb7d4d",
+ "ref_kind": "merge_commit",
+ "tests": [
+  {
+   "pair_id": "P1437",
+   "pair_dir": "P1437__flowable-engine__ChangeStateForGateways.testSetCurrentActi",
+   "side": "after",
+   "module": "modules/flowable-engine",
+   "test_class": "org.flowable.engine.test.api.runtime.changestate.ChangeStateForGatewaysTest",
+   "test_method": "testSetCurrentActivityToMultipleActivitiesForParallelGateway",
+   "category": "ID"
+  }
+ ],
+ "out": "D:\\FSE-2027\\FlakyLens\\runs2"
+}

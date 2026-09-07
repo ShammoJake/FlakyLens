@@ -1,0 +1,53 @@
+{
+ "project_url": "https://github.com/immutables/immutables",
+ "ref": "033039a2d11c1caa306e09def7a81145e4322370",
+ "ref_kind": "merge_commit",
+ "tests": [
+  {
+   "pair_id": "P1555",
+   "pair_dir": "P1555__immutables__BugsTest.roundtrip353",
+   "side": "after",
+   "module": "value-fixture",
+   "test_class": "org.immutables.fixture.jackson.BugsTest",
+   "test_method": "roundtrip353",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P1556",
+   "pair_dir": "P1556__immutables__ObjectMappedTest.anyGetterSetter",
+   "side": "after",
+   "module": "value-fixture",
+   "test_class": "org.immutables.fixture.jackson.ObjectMappedTest",
+   "test_method": "anyGetterSetter",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P1557",
+   "pair_dir": "P1557__immutables__ObjectMappedTest.jacksonMetaAnnotat",
+   "side": "after",
+   "module": "value-fixture",
+   "test_class": "org.immutables.fixture.jackson.ObjectMappedTest",
+   "test_method": "jacksonMetaAnnotated",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P1559",
+   "pair_dir": "P1559__immutables__ObjectMappedTest.keywordNames",
+   "side": "after",
+   "module": "value-fixture",
+   "test_class": "org.immutables.fixture.jackson.ObjectMappedTest",
+   "test_method": "keywordNames",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P1560",
+   "pair_dir": "P1560__immutables__ModifiablesTest.modifiableImmutabl",
+   "side": "after",
+   "module": "value-fixture",
+   "test_class": "org.immutables.fixture.modifiable.ModifiablesTest",
+   "test_method": "modifiableImmutableCollections",
+   "category": "ID"
+  }
+ ],
+ "out": "D:\\FSE-2027\\FlakyLens\\runs2"
+}

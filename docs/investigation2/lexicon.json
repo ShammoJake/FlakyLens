@@ -1,0 +1,85 @@
+{
+  "version": "2.0",
+  "note": "Category-discriminative token families for the five FlakeBench flaky categories. Version 2.0 removes identifiers naming a specific product or project convention (MiniDFSCluster, MiniYARN, TestingServer, GenericTestUtils, TEST_ROOT, HashMultiset, DaylightSaving), which inflated results on a Hadoop-heavy sample and would not transfer, replacing them with shape-based patterns. It adds three families mined from FlakeBench test bodies held out from the study sample: time.now_call, uc.list_container and conc.thread_lifecycle. See mine_lexicon.py. Families remain grounded in the standard empirical taxonomy of flaky-test root causes; the same lexicon is applied identically to the test body and to the surrounding context, so any difference between the two is a property of the code, not of the lexicon.",
+  "matching": "Case-sensitive regular expressions, matched against source with comments and string literals stripped. Each family counts at most once per occurrence.",
+  "categories": {
+    "async": {
+      "label": "async wait",
+      "families": {
+        "sleep": "\\bThread\\s*\\.\\s*sleep\\s*\\(|\\bTimeUnit\\.\\w+\\.sleep\\s*\\(",
+        "latch_await": "\\.await\\s*\\(|CountDownLatch|CyclicBarrier\\b",
+        "future_get": "\\bFuture\\b|\\.get\\s*\\(\\s*\\d+\\s*,|CompletableFuture|\\.join\\s*\\(\\s*\\)",
+        "explicit_wait": "waitFor\\w*|\\bAwaitility\\b|\\bawaitility\\b|assertEventually|\\beventually\\b|\\bawaitAtMost\\b",
+        "poll_loop": "\\bpoll\\s*\\(|\\bretry\\w*|\\battempts?\\b|while\\s*\\([^)]*\\)\\s*\\{[^{}]*sleep",
+        "timeout_param": "\\btimeout\\s*[=(]|@Test\\s*\\(\\s*timeout|withTimeout|TIMEOUT\\b",
+        "callback": "\\bonComplete\\b|\\bonSuccess\\b|\\bonFailure\\b|\\bListener\\b|\\bcallback\\b|\\bnotifyAll?\\s*\\("
+      }
+    },
+    "conc": {
+      "label": "concurrency",
+      "families": {
+        "thread_obj": "\\bnew\\s+Thread\\b|\\bRunnable\\b|\\bCallable\\b|\\bDaemon\\b|\\.start\\s*\\(\\s*\\)",
+        "executor": "ExecutorService|Executors\\.new|\\.submit\\s*\\(|\\.execute\\s*\\(|ThreadPool|ForkJoinPool",
+        "sync_kw": "\\bsynchronized\\b|\\bvolatile\\b|ReentrantLock|\\bSemaphore\\b|\\.lock\\s*\\(|\\bmonitor\\b",
+        "atomic": "\\bAtomic(Integer|Long|Boolean|Reference|IntegerArray)\\b",
+        "concurrent_coll": "ConcurrentHashMap|ConcurrentLinkedQueue|CopyOnWriteArray|BlockingQueue|ConcurrentMap",
+        "interrupt": "\\.interrupt\\s*\\(|Thread\\.interrupted|InterruptedException",
+        "parallel": "\\bparallel\\w*|\\bconcurrent\\w*|\\brace\\b|\\bthreadCount\\b|\\bnumThreads\\b",
+        "thread_lifecycle": "\\.start\\s*\\(\\s*\\)|\\.join\\s*\\(|InterruptedException|\\.isAlive\\s*\\(|Thread\\.currentThread"
+      }
+    },
+    "time": {
+      "label": "time",
+      "families": {
+        "wall_clock": "currentTimeMillis|nanoTime|monotonicNow|System\\.currentTime",
+        "date_obj": "\\bnew\\s+Date\\s*\\(|\\bCalendar\\b|LocalDate|LocalDateTime|LocalTime|\\bInstant\\b|ZonedDateTime",
+        "format": "SimpleDateFormat|DateTimeFormatter|DateFormat\\b|\\bformat\\s*\\(\\s*(new\\s+)?Date",
+        "zone": "TimeZone|ZoneId|ZoneOffset|\\bUTC\\b|withZone",
+        "duration": "\\bDuration\\.|\\bPeriod\\.|\\bClock\\b|\\belapsed\\w*|\\bgetTime\\s*\\(\\s*\\)",
+        "timestamp": "\\btimestamp\\w*|\\bmtime\\b|\\bctime\\b|lastModified|\\bexpiry\\w*|\\bexpire\\w*",
+        "now_call": "\\b\\w*\\.now\\s*\\(\\s*\\)|\\bnow\\s*\\(\\s*\\)"
+      }
+    },
+    "uc": {
+      "label": "unordered collections",
+      "families": {
+        "hash_container": "\\bHashMap\\b|\\bHashSet\\b|\\bHashtable\\b|\\bLinkedHashMap\\b|Maps\\.newHashMap|Sets\\.newHashSet|\\bMultiset\\b",
+        "unordered_iter": "\\.keySet\\s*\\(|\\.values\\s*\\(|\\.entrySet\\s*\\(|\\.iterator\\s*\\(",
+        "map_set_type": "\\bMap\\s*<|\\bSet\\s*<|\\bProperties\\b|\\bCollection\\s*<",
+        "listing": "listFiles|listStatus|\\.list\\s*\\(|\\.listAll\\b|getDirectoryContents|\\.glob\\s*\\(",
+        "index_access": "\\.get\\s*\\(\\s*[0-9]\\s*\\)|\\[\\s*[0-9]\\s*\\]",
+        "to_sequence": "toArray|Arrays\\.asList|Collectors\\.toList|\\bStringBuilder\\b|String\\.join",
+        "sequence_assert": "assertArrayEquals|assertIterableEquals|containsExactly|\\bcontains\\s*\\(",
+        "list_container": "\\bArrayList\\b|\\bLinkedList\\b|\\bList\\s*<|Lists\\.newArrayList"
+      }
+    },
+    "od": {
+      "label": "test order dependency",
+      "families": {
+        "static_field": "^\\s*(?:private|protected|public)?\\s*static\\s+(?!final\\s+(?:int|long|String|boolean|double|float|char|byte|short)\\b)[\\w<>\\[\\],\\s.]+\\s+\\w+\\s*[;=]",
+        "class_fixture": "@BeforeClass|@AfterClass|@BeforeAll|@AfterAll|@ClassRule",
+        "order_annot": "@FixMethodOrder|MethodSorters|@TestMethodOrder|@Order\\b|dependsOnMethods",
+        "global_write": "System\\.setProperty|setDefault\\w*|\\.setConf\\b|refresh\\w*Configuration|\\bregister\\w*\\(|Provider\\.set",
+        "singleton_cache": "getInstance\\s*\\(|\\bsingleton\\b|\\bCACHE\\b|\\bcache\\b|resetCache|\\.clear\\s*\\(\\s*\\)|\\.reset\\s*\\(",
+        "shared_resource": "\\bcluster\\b|\\bserver\\b|\\bMini[A-Z]\\w*|\\bEmbedded[A-Z]\\w*|\\bInMemory[A-Z]\\w*|\\bshared[A-Z]\\w*",
+        "fs_state": "mkdirs?\\s*\\(|createNewFile|deleteOnExit|\\.delete\\s*\\(|new\\s+File\\s*\\(|tempDir|TempDir|TemporaryFolder|TMP_?DIR|TEST_?ROOT",
+        "lifecycle": "\\.shutdown\\s*\\(|\\.close\\s*\\(|\\.stop\\s*\\(|tearDown|cleanup"
+      }
+    }
+  },
+  "changes_from_1_0": {
+    "generalised": [
+      "async.explicit_wait",
+      "time.zone",
+      "uc.hash_container",
+      "od.shared_resource",
+      "od.fs_state"
+    ],
+    "added": [
+      "time.now_call",
+      "uc.list_container",
+      "conc.thread_lifecycle"
+    ],
+    "mining": "log-odds against the rest of the flaky pool, minimum 5 projects and 6 tests"
+  }
+}

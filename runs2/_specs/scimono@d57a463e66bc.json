@@ -1,0 +1,80 @@
+{
+ "project_url": "https://github.com/SAP/scimono",
+ "ref": "d57a463e66bce713413f9de6d3f74d529d4bd9e6",
+ "ref_kind": "merge_commit",
+ "tests": [
+  {
+   "pair_id": "P2141",
+   "pair_dir": "P2141__scimono__ResourcePageQueryTest.testCreateCustomId",
+   "side": "after",
+   "module": "scimono-client",
+   "test_class": "com.sap.scimono.client.ResourcePageQueryTest",
+   "test_method": "testCreateCustomIdentityFilter",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P2142",
+   "pair_dir": "P2142__scimono__ResourcePageQueryTest.testCreateCustomIn",
+   "side": "after",
+   "module": "scimono-client",
+   "test_class": "com.sap.scimono.client.ResourcePageQueryTest",
+   "test_method": "testCreateCustomIndexFilter",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P2143",
+   "pair_dir": "P2143__scimono__ResourcePageQueryTest.testCreateDefaultI",
+   "side": "after",
+   "module": "scimono-client",
+   "test_class": "com.sap.scimono.client.ResourcePageQueryTest",
+   "test_method": "testCreateDefaultIdentityFilter",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P2144",
+   "pair_dir": "P2144__scimono__ResourcePageQueryTest.testCreateDefaultI",
+   "side": "after",
+   "module": "scimono-client",
+   "test_class": "com.sap.scimono.client.ResourcePageQueryTest",
+   "test_method": "testCreateDefaultIndexFilter",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P2146",
+   "pair_dir": "P2146__scimono__SCIMResourceResponseHa.testReadAllUsers",
+   "side": "after",
+   "module": "scimono-client",
+   "test_class": "com.sap.scimono.client.SCIMResourceResponseHandlingTest",
+   "test_method": "testReadAllUsers",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P2147",
+   "pair_dir": "P2147__scimono__SCIMResourceResponseHa.testReadMultipleUs",
+   "side": "after",
+   "module": "scimono-client",
+   "test_class": "com.sap.scimono.client.SCIMResourceResponseHandlingTest",
+   "test_method": "testReadMultipleUsersDefaultFilter",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P2148",
+   "pair_dir": "P2148__scimono__SCIMResourceResponseHa.testReadMultipleUs",
+   "side": "after",
+   "module": "scimono-client",
+   "test_class": "com.sap.scimono.client.SCIMResourceResponseHandlingTest",
+   "test_method": "testReadMultipleUsersIndexFilter",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P2150",
+   "pair_dir": "P2150__scimono__UserRequestTest.testReadUsersWithP",
+   "side": "after",
+   "module": "scimono-client",
+   "test_class": "com.sap.scimono.client.UserRequestTest",
+   "test_method": "testReadUsersWithPagedByIdentityResponse",
+   "category": "ID"
+  }
+ ],
+ "out": "D:\\FSE-2027\\FlakyLens\\runs2"
+}

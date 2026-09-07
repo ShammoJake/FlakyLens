@@ -1,0 +1,26 @@
+{
+ "project_url": "https://github.com/apache/pulsar",
+ "ref": "45e4f4a62754abdff02f184d46a31baed65888d5",
+ "ref_kind": "merge_parent",
+ "tests": [
+  {
+   "pair_id": "P0994",
+   "pair_dir": "P0994__pulsar__AvroSchemaTest.testAllowNullSchem",
+   "side": "before",
+   "module": "pulsar-client",
+   "test_class": "org.apache.pulsar.client.impl.schema.AvroSchemaTest",
+   "test_method": "testAllowNullSchema",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P0995",
+   "pair_dir": "P0995__pulsar__AvroSchemaTest.testNotAllowNullSc",
+   "side": "before",
+   "module": "pulsar-client",
+   "test_class": "org.apache.pulsar.client.impl.schema.AvroSchemaTest",
+   "test_method": "testNotAllowNullSchema",
+   "category": "ID"
+  }
+ ],
+ "out": "D:\\FSE-2027\\FlakyLens\\runs2"
+}

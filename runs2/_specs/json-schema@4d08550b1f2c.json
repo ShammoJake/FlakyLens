@@ -1,0 +1,35 @@
+{
+ "project_url": "https://github.com/everit-org/json-schema",
+ "ref": "4d08550b1f2cc7f0e6129b44908eea87bc65909c",
+ "ref_kind": "merge_commit",
+ "tests": [
+  {
+   "pair_id": "P1331",
+   "pair_dir": "P1331__json-schema__ObjectSchemaTest.toStringNoExplicit",
+   "side": "after",
+   "module": "core",
+   "test_class": "org.everit.json.schema.ObjectSchemaTest",
+   "test_method": "toStringNoExplicitType",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P1332",
+   "pair_dir": "P1332__json-schema__ObjectSchemaTest.toStringTest",
+   "side": "after",
+   "module": "core",
+   "test_class": "org.everit.json.schema.ObjectSchemaTest",
+   "test_method": "toStringTest",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P1333",
+   "pair_dir": "P1333__json-schema__ObjectSchemaTest.toStringWithUnproc",
+   "side": "after",
+   "module": "core",
+   "test_class": "org.everit.json.schema.ObjectSchemaTest",
+   "test_method": "toStringWithUnprocessedProps",
+   "category": "ID"
+  }
+ ],
+ "out": "D:\\FSE-2027\\FlakyLens\\runs2"
+}

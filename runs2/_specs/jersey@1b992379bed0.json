@@ -1,0 +1,17 @@
+{
+ "project_url": "https://github.com/eclipse-ee4j/jersey",
+ "ref": "1b992379bed082b2a8ae42f8ec2994d5aa89d714",
+ "ref_kind": "merge_parent",
+ "tests": [
+  {
+   "pair_id": "P1289",
+   "pair_dir": "P1289__jersey__DefaultJsonJacksonProv.testDisabledModule",
+   "side": "before",
+   "module": "media/json-jackson",
+   "test_class": "org.glassfish.jersey.jackson.internal.DefaultJsonJacksonProviderForBothModulesTest",
+   "test_method": "testDisabledModule",
+   "category": "ID"
+  }
+ ],
+ "out": "D:\\FSE-2027\\FlakyLens\\runs2"
+}

@@ -1,0 +1,17 @@
+{
+ "project_url": "https://github.com/apolloconfig/apollo",
+ "ref": "a882f3e8a0fec0e36d2cfcbc1ca44f0818d7b1cd",
+ "ref_kind": "merge_parent",
+ "tests": [
+  {
+   "pair_id": "P1179",
+   "pair_dir": "P1179__apollo__ReleaseControllerTest.testReleaseBuild",
+   "side": "before",
+   "module": "apollo-adminservice",
+   "test_class": "com.ctrip.framework.apollo.adminservice.controller.ReleaseControllerTest",
+   "test_method": "testReleaseBuild",
+   "category": "ID"
+  }
+ ],
+ "out": "D:\\FSE-2027\\FlakyLens\\runs2"
+}

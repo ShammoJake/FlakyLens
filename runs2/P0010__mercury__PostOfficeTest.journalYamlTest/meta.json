@@ -1,0 +1,165 @@
+{
+ "pair": {
+  "pair_id": "P0010",
+  "source": "idoft",
+  "tier": "A",
+  "repair_author": "developer",
+  "project_slug": "accenture/mercury",
+  "project_url": "https://github.com/Accenture/mercury",
+  "module_path": "system/platform-core",
+  "test_class": "org.platformlambda.core.PostOfficeTest",
+  "test_method": "journalYamlTest",
+  "fq_test": "org.platformlambda.core.PostOfficeTest.journalYamlTest",
+  "before_sha": "e659caf000c2a714d921a52cbc85e13f56cef981",
+  "before_sha_reachable": "yes",
+  "after_type": "pr",
+  "after_ref": "https://github.com/Accenture/mercury/pull/143",
+  "source_category": "ID",
+  "idoft_status": "Accepted",
+  "flakebench_label": "unordered collections",
+  "flakebench_category": "3",
+  "label_confidence": "high",
+  "label_candidates": "",
+  "mapping_note": "NonDex-induced iteration order over hash containers or reflection",
+  "build_env": "reproflake",
+  "java_version": "11",
+  "reproflake_zip": "mercury=system+platform-core=e659caf",
+  "reproflake_url": "https://zenodo.org/records/18605131/files/mercury=system+platform-core=e659caf.zip",
+  "reproflake_fixed_sha": "2528e2354296760b67afb93a7d0d7ea4337a59e0",
+  "polluter": "",
+  "in_flakebench": "",
+  "flakebench_existing_label": "",
+  "notes": "",
+  "merge_commit_sha": "2528e2354296760b67afb93a7d0d7ea4337a59e0",
+  "merge_parent_sha": "e659caf000c2a714d921a52cbc85e13f56cef981",
+  "merge_kind": "merge",
+  "minimal_pair": "yes",
+  "pr_merged": "true",
+  "pr_merged_at": "2024-10-15T22:33:40Z",
+  "pr_commits": "1",
+  "pr_changed_files": "1",
+  "pr_touch": "test_only",
+  "pr_files_java_main": "0",
+  "pr_files_java_test": "1"
+ },
+ "sides": {
+  "before": {
+   "pair_id": "P0010",
+   "side": "before",
+   "ref_kind": "merge_parent",
+   "build_point": "mercury@e659caf000c2",
+   "spoon_methods": "_bp\\mercury@e659caf000c2\\spoon_methods.json",
+   "steps": {
+    "checkout": {
+     "ok": true,
+     "ref": "e659caf000c2a714d921a52cbc85e13f56cef981",
+     "error": null
+    },
+    "build": {
+     "ok": true,
+     "rc": 0,
+     "modules": [
+      "system/platform-core"
+     ],
+     "error": ""
+    },
+    "spoon": {
+     "ok": true,
+     "methods": 1486,
+     "roots": [
+      "system\\platform-core\\src\\main\\java",
+      "system\\platform-core\\src\\test\\java",
+      "system\\platform-core\\src\\main\\java"
+     ]
+    },
+    "test_method_found": true,
+    "test": {
+     "ok": true,
+     "rc": 0,
+     "note": "",
+     "argline_fallback": false,
+     "test_passed": true
+    },
+    "report": {
+     "ok": true,
+     "error": "",
+     "classfile_dirs": 1,
+     "sourcefile_dirs": 1
+    },
+    "collect_coverage": {
+     "ok": true,
+     "summary": [
+      "executed=340 of seen=1131 top-level=327 nested=12 anonymous=1"
+     ]
+    },
+    "join": {
+     "ok": true,
+     "summary": [
+      "joined=340 matched=279 of 290 (96.2%) exact=269 arity=10 simple=0 synthetic=50 unmatched=11"
+     ]
+    }
+   },
+   "status": "ok"
+  },
+  "after": {
+   "pair_id": "P0010",
+   "side": "after",
+   "ref_kind": "merge_commit",
+   "build_point": "mercury@2528e2354296",
+   "spoon_methods": "_bp\\mercury@2528e2354296\\spoon_methods.json",
+   "steps": {
+    "checkout": {
+     "ok": true,
+     "ref": "2528e2354296760b67afb93a7d0d7ea4337a59e0",
+     "error": null
+    },
+    "build": {
+     "ok": true,
+     "rc": 0,
+     "modules": [
+      "system/platform-core"
+     ],
+     "error": ""
+    },
+    "spoon": {
+     "ok": true,
+     "methods": 1486,
+     "roots": [
+      "system\\platform-core\\src\\main\\java",
+      "system\\platform-core\\src\\test\\java",
+      "system\\platform-core\\src\\main\\java"
+     ]
+    },
+    "test_method_found": true,
+    "test": {
+     "ok": true,
+     "rc": 0,
+     "note": "",
+     "argline_fallback": false,
+     "test_passed": true
+    },
+    "report": {
+     "ok": true,
+     "error": "",
+     "classfile_dirs": 1,
+     "sourcefile_dirs": 1
+    },
+    "collect_coverage": {
+     "ok": true,
+     "summary": [
+      "executed=340 of seen=1131 top-level=327 nested=12 anonymous=1"
+     ]
+    },
+    "join": {
+     "ok": true,
+     "summary": [
+      "joined=340 matched=279 of 290 (96.2%) exact=269 arity=10 simple=0 synthetic=50 unmatched=11"
+     ]
+    }
+   },
+   "status": "ok"
+  }
+ },
+ "overall": "ok",
+ "finalized": "2026-09-07T01:13:35"
+}

@@ -1,0 +1,650 @@
+<title>What Context Is Worth</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;700&display=swap">
+
+<style>
+:root{
+  --ground:#F6F7F9; --surface:#FFFFFF; --sunk:#EDEFF3;
+  --ink:#151A21; --ink-2:#3D4653; --muted:#6B7684;
+  --rule:#DCE0E7; --rule-strong:#C2C9D3;
+  --accent:#2F4858; --accent-soft:#E3EAEF;
+  --up:#3A6650; --up-soft:#E3EDE7;
+  --down:#A8452B; --down-soft:#F6E7E2;
+  --code-bg:#F1F3F6;
+  /* chart series - validated against #FFFFFF, categorical, 2 slots */
+  --s-body:#00789C; --s-ctx:#C25B22; --s-ref:#8B95A1;
+  --grid:#E4E8ED;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#101318; --surface:#181C23; --sunk:#1F242C;
+    --ink:#E4E8ED; --ink-2:#B4BCC7; --muted:#8792A0;
+    --rule:#2A313A; --rule-strong:#3B444F;
+    --accent:#8FB4C7; --accent-soft:#22303A;
+    --up:#7FB495; --up-soft:#1C2A23;
+    --down:#E08A6D; --down-soft:#33211C;
+    --code-bg:#12161C;
+    --s-body:#2A93B5; --s-ctx:#D07A44; --s-ref:#77828F;
+    --grid:#262D36;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#101318; --surface:#181C23; --sunk:#1F242C;
+  --ink:#E4E8ED; --ink-2:#B4BCC7; --muted:#8792A0;
+  --rule:#2A313A; --rule-strong:#3B444F;
+  --accent:#8FB4C7; --accent-soft:#22303A;
+  --up:#7FB495; --up-soft:#1C2A23;
+  --down:#E08A6D; --down-soft:#33211C;
+  --code-bg:#12161C;
+  --s-body:#2A93B5; --s-ctx:#D07A44; --s-ref:#77828F;
+  --grid:#262D36;
+}
+
+*{box-sizing:border-box}
+body{
+  background:var(--ground); color:var(--ink);
+  font-family:"Source Sans 3",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-size:16.5px; line-height:1.62; margin:0; padding:0 20px 96px;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1080px;margin:0 auto}
+.col{max-width:680px}
+
+header.mast{border-bottom:2px solid var(--ink);padding:44px 0 22px;margin-bottom:34px}
+.kicker{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:11px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0 0 16px}
+h1{font-family:"Newsreader",Georgia,serif;font-weight:500;
+  font-size:clamp(2.1rem,5.2vw,3.15rem);line-height:1.08;letter-spacing:-.015em;
+  margin:0 0 18px;text-wrap:balance}
+.standfirst{font-family:"Newsreader",Georgia,serif;font-size:1.24rem;line-height:1.5;
+  color:var(--ink-2);max-width:62ch;margin:0 0 26px}
+.byline{display:flex;flex-wrap:wrap;gap:10px 26px;
+  font-family:"JetBrains Mono",ui-monospace,monospace;font-size:11.5px;color:var(--muted)}
+
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(178px,1fr));
+  gap:1px;background:var(--rule);border:1px solid var(--rule);margin:0 0 44px}
+.stat{background:var(--surface);padding:20px 22px}
+.stat .n{font-family:"Newsreader",Georgia,serif;font-size:2.2rem;line-height:1;
+  font-weight:500;font-variant-numeric:tabular-nums;display:block;margin-bottom:8px}
+.stat .n.up{color:var(--up)} .stat .n.down{color:var(--down)}
+.stat .l{font-size:13.5px;color:var(--muted);line-height:1.4;display:block}
+
+h2{font-family:"Newsreader",Georgia,serif;font-weight:500;font-size:1.72rem;
+  line-height:1.2;letter-spacing:-.01em;margin:56px 0 6px;text-wrap:balance}
+h2 + .dek{color:var(--muted);font-size:15px;margin:0 0 24px;max-width:62ch}
+h3{font-weight:700;font-size:1.02rem;margin:34px 0 8px}
+p{margin:0 0 16px;max-width:68ch}
+a{color:var(--accent)}
+code{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.855em;
+  background:var(--code-bg);padding:1px 5px;border-radius:3px;border:1px solid var(--rule)}
+ul,ol{max-width:68ch;padding-left:22px;margin:0 0 18px}
+li{margin-bottom:9px}
+
+/* ---------- figures ---------- */
+figure{margin:0 0 12px;background:var(--surface);border:1px solid var(--rule);padding:20px 22px 16px}
+figcaption{font-size:13.5px;color:var(--muted);margin-top:12px;padding-top:11px;
+  border-top:1px solid var(--rule);line-height:1.45}
+.figtitle{font-weight:700;font-size:15.5px;margin:0 0 3px}
+.figsub{font-size:13.5px;color:var(--muted);margin:0 0 16px}
+.chartbox{overflow-x:auto}
+svg{display:block;max-width:100%;height:auto}
+.legend{display:flex;flex-wrap:wrap;gap:8px 20px;margin:0 0 14px;font-size:13.5px;color:var(--ink-2)}
+.legend span{display:inline-flex;align-items:center;gap:7px}
+.swatch{width:11px;height:11px;border-radius:2px;flex-shrink:0}
+
+/* ---------- tables ---------- */
+.tablewrap{overflow-x:auto;border:1px solid var(--rule);background:var(--surface);margin:0 0 14px}
+table{border-collapse:collapse;width:100%;font-size:13.8px;min-width:520px}
+th{text-align:left;font-weight:700;font-size:11px;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--muted);padding:11px 14px;
+  border-bottom:1px solid var(--rule-strong);white-space:nowrap;background:var(--sunk)}
+th.num,td.num{text-align:right;font-variant-numeric:tabular-nums}
+td{padding:9px 14px;border-bottom:1px solid var(--rule);vertical-align:top}
+tr:last-child td{border-bottom:none}
+tr.best td{background:var(--accent-soft)}
+tr.ref td{color:var(--muted)}
+td.mono{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:12.4px}
+caption{caption-side:bottom;text-align:left;font-size:13px;color:var(--muted);
+  padding:11px 14px;border-top:1px solid var(--rule)}
+
+.callout{border-left:3px solid var(--accent);background:var(--accent-soft);
+  padding:17px 20px;margin:0 0 26px;max-width:68ch}
+.callout p{margin:0;font-size:15.4px}
+.callout p + p{margin-top:11px}
+.warn{border-left-color:var(--down);background:var(--down-soft)}
+
+pre{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:12.5px;
+  line-height:1.7;background:var(--code-bg);border:1px solid var(--rule);
+  padding:14px 16px;overflow-x:auto;margin:0 0 14px}
+
+.steps{list-style:none;padding:0;margin:0 0 22px;counter-reset:s}
+.steps li{counter-increment:s;display:grid;grid-template-columns:30px 1fr;gap:14px;
+  padding:15px 0;border-bottom:1px solid var(--rule);margin:0;max-width:none}
+.steps li:last-child{border-bottom:none}
+.steps li::before{content:counter(s);font-family:"JetBrains Mono",ui-monospace,monospace;
+  font-size:12px;color:var(--muted);padding-top:3px}
+.steps .st{font-weight:700;display:block;margin-bottom:3px}
+.steps .sd{font-size:14.6px;color:var(--ink-2);max-width:62ch}
+
+#tip{position:fixed;pointer-events:none;opacity:0;transition:opacity .1s;
+  background:var(--ink);color:var(--ground);font-size:12.5px;line-height:1.45;
+  padding:7px 10px;border-radius:4px;z-index:50;max-width:250px;
+  font-family:"Source Sans 3",sans-serif}
+#tip b{font-family:"JetBrains Mono",ui-monospace,monospace}
+.hit{cursor:default}
+.hit:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+footer{margin-top:64px;padding-top:22px;border-top:1px solid var(--rule);
+  font-family:"JetBrains Mono",ui-monospace,monospace;font-size:11.5px;
+  color:var(--muted);line-height:1.7}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<div class="wrap">
+
+<header class="mast">
+  <p class="kicker">FlakyLens · Investigation 2 · Token-proxy check · 4 September 2026</p>
+  <h1>What Context Is Worth</h1>
+  <p class="standfirst">The class around a test carries category signal the test body does not. Measured with a fixed token lexicon on 80 flaky tests, it is worth 35 accuracy points to a classifier that was never trained. All of it is order dependency.</p>
+  <div class="byline">
+    <span>80 tests · 5 projects · 39 misclassified</span>
+    <span>Lexicon v2.0 · 38 token families</span>
+    <span>No model training</span>
+  </div>
+</header>
+
+<div class="stats">
+  <div class="stat"><span class="n up">+0.138</span><span class="l">Macro-F1 gained by adding fields and fixtures, 95% CI [+0.109, +0.164]</span></div>
+  <div class="stat"><span class="n">49%</span><span class="l">Tests whose true category is absent from the body and present in the context</span></div>
+  <div class="stat"><span class="n up">15 → 76%</span><span class="l">Order-dependency recall, body only against body plus fields and fixtures</span></div>
+  <div class="stat"><span class="n down">0 of 4</span><span class="l">Other categories that improve. Two of them get worse</span></div>
+</div>
+
+<div class="col">
+<h2>The measurement</h2>
+<p class="dek">A lexicon of 36 regex token families, six to eight per category, applied identically to the test body and to the class around it.</p>
+
+<p>Investigation 1 read 27 Hadoop tests by hand and found the deciding evidence outside the body in all 17 the model got wrong. That was a judgement call on a small sample. This step tests the same claim mechanically, on 80 tests across five projects, with a lexicon written from the standard flaky-test taxonomy before any of these sources were opened.</p>
+
+<p>Because the lexicon is fixed and applied the same way everywhere, a difference between the body score and the context score is a property of the code, not of the lexicon. Scoring counts distinct families present rather than raw occurrences, since context is far longer than a body and raw counts would reward length instead of signal.</p>
+</div>
+
+<figure>
+  <p class="figtitle">Macro-F1 on the five-way flaky category task</p>
+  <p class="figsub">Same 80 tests, same metric, ties broken at random over 2,000 draws. The body slice is FlakyLens’s own copy of the test.</p>
+  <div class="legend">
+    <span><span class="swatch" style="background:var(--s-body)"></span>token proxy</span>
+    <span><span class="swatch" style="background:var(--s-ref)"></span>reference point</span>
+  </div>
+  <div class="chartbox">
+  <svg viewBox="0 0 720 250" role="img" aria-label="Macro-F1 by configuration. Majority class 0.146, body only 0.241, body plus full context 0.328, body plus fields and fixtures 0.356, FlakyLens 0.368.">
+    <g font-family="JetBrains Mono, monospace" font-size="11" fill="var(--muted)">
+      <line x1="228" y1="14" x2="228" y2="206" stroke="var(--grid)" stroke-width="1"/>
+      <line x1="348" y1="14" x2="348" y2="206" stroke="var(--grid)" stroke-width="1"/>
+      <line x1="468" y1="14" x2="468" y2="206" stroke="var(--grid)" stroke-width="1"/>
+      <line x1="588" y1="14" x2="588" y2="206" stroke="var(--grid)" stroke-width="1"/>
+      <line x1="708" y1="14" x2="708" y2="206" stroke="var(--grid)" stroke-width="1"/>
+      <text x="228" y="224" text-anchor="middle">0</text>
+      <text x="348" y="224" text-anchor="middle">0.10</text>
+      <text x="468" y="224" text-anchor="middle">0.20</text>
+      <text x="588" y="224" text-anchor="middle">0.30</text>
+      <text x="708" y="224" text-anchor="middle">0.40</text>
+      <text x="468" y="243" text-anchor="middle" fill="var(--muted)">macro-F1</text>
+    </g>
+    <g font-family="Source Sans 3, sans-serif" font-size="13" fill="var(--ink-2)">
+      <text x="218" y="30" text-anchor="end">majority class</text>
+      <text x="218" y="68" text-anchor="end">body only</text>
+      <text x="218" y="106" text-anchor="end">body + full context</text>
+      <text x="218" y="144" text-anchor="end" font-weight="700" fill="var(--ink)">body + fields + fixtures</text>
+      <text x="218" y="182" text-anchor="end">FlakyLens, shipped</text>
+    </g>
+    <g>
+      <rect class="hit" x="228" y="16" width="175.2" height="18" rx="4" fill="var(--s-ref)"
+           data-tip="Majority class&lt;br&gt;<b>0.146</b> macro-F1 · 57.5% accuracy&lt;br&gt;Predicting order dependency every time."/>
+      <rect class="hit" x="228" y="54" width="289.2" height="18" rx="4" fill="var(--s-body)"
+           data-tip="Body only&lt;br&gt;<b>0.241</b> macro-F1 · 31.7% accuracy&lt;br&gt;The slice the shipped encoder sees."/>
+      <rect class="hit" x="228" y="92" width="393.6" height="18" rx="4" fill="var(--s-body)"
+           data-tip="Body + full context&lt;br&gt;<b>0.328</b> macro-F1 · 46.2% accuracy&lt;br&gt;Fields, fixtures, siblings and called helpers."/>
+      <rect class="hit" x="228" y="130" width="427.2" height="18" rx="4" fill="var(--s-body)"
+           data-tip="Body + fields + fixtures&lt;br&gt;<b>0.356</b> macro-F1 · 53.7% accuracy&lt;br&gt;Best configuration measured."/>
+      <rect class="hit" x="228" y="168" width="441.6" height="18" rx="4" fill="var(--s-ref)"
+           data-tip="FlakyLens&lt;br&gt;<b>0.368</b> macro-F1 · 51.2% accuracy&lt;br&gt;The shipped fine-tuned model, on this subset only."/>
+    </g>
+    <g font-family="JetBrains Mono, monospace" font-size="11.5" fill="var(--ink)" font-weight="700">
+      <text x="411" y="30">0.146</text>
+      <text x="525" y="68">0.241</text>
+      <text x="630" y="106">0.328</text>
+      <text x="663" y="144">0.356</text>
+      <text x="677" y="182">0.368</text>
+    </g>
+  </svg>
+  </div>
+  <figcaption>The FlakyLens bar is not a like-for-like comparison. These 80 tests over-represent projects where test classes could be located, and order dependency is 46 of them.</figcaption>
+</figure>
+
+<div class="tablewrap">
+<table>
+<thead><tr><th>Slice fed to the classifier</th><th class="num">Accuracy</th><th class="num">Macro-F1</th><th class="num">Trained macro-F1</th><th class="num">Delta</th><th>95% CI</th></tr></thead>
+<tbody>
+<tr><td>body only</td><td class="num">22.5%</td><td class="num">0.211</td><td class="num">0.253</td><td class="num">—</td><td class="mono">—</td></tr>
+<tr class="best"><td><strong>body + fields + fixtures</strong></td><td class="num"><strong>57.5%</strong></td><td class="num"><strong>0.442</strong></td><td class="num"><strong>0.391</strong></td><td class="num"><strong>+0.138</strong></td><td class="mono">[+0.109, +0.164]</td></tr>
+<tr><td>body + fields + fixtures + callees</td><td class="num">51.0%</td><td class="num">0.343</td><td class="num">0.384</td><td class="num">+0.091</td><td class="mono">[+0.067, +0.115]</td></tr>
+<tr><td>body + full context</td><td class="num">46.3%</td><td class="num">0.328</td><td class="num">0.374</td><td class="num">+0.081</td><td class="mono">[+0.061, +0.102]</td></tr>
+<tr><td>body + full context + callees</td><td class="num">43.6%</td><td class="num">0.334</td><td class="num">0.337</td><td class="num">+0.044</td><td class="mono">[+0.021, +0.065]</td></tr>
+<tr class="ref"><td>majority class</td><td class="num">57.5%</td><td class="num">0.146</td><td class="num">—</td><td class="num">—</td><td class="mono">—</td></tr>
+<tr class="ref"><td>FlakyLens, shipped</td><td class="num">51.2%</td><td class="num">0.368</td><td class="num">—</td><td class="num">—</td><td class="mono">—</td></tr>
+</tbody>
+<caption>Trained macro-F1 is a scikit-learn class-balanced multinomial logistic regression on family-presence vectors, repeated stratified cross-validation, 40 fits. Deltas are a scipy BCa bootstrap against body only. Both intervals exclude zero, and both configurations beat a label-permutation null at p &#8804; 0.003.</caption>
+</table>
+</div>
+
+<div class="col">
+<p>Two things fall out. Adding class fields and fixture bodies is the configuration that pays, and it pays reliably. Adding everything else on top of that makes it worse. The difference between those two rows is the sibling test bodies.</p>
+</div>
+
+<h2>All of the gain is one category</h2>
+<p class="dek">Recall per category, body only against body plus full context.</p>
+
+<figure>
+  <p class="figtitle">Where context helps and where it hurts</p>
+  <p class="figsub">Each row is one category. The line runs from the body-only recall to the recall with class fields and fixtures added.</p>
+  <div class="legend">
+    <span><span class="swatch" style="background:var(--s-body);border-radius:50%"></span>body only</span>
+    <span><span class="swatch" style="background:var(--s-ctx);border-radius:50%"></span>body + fields + fixtures</span>
+  </div>
+  <div class="chartbox">
+  <svg viewBox="0 0 720 260" role="img" aria-label="Recall by category. Order dependency rises from 20 to 70 percent. Async wait falls from 56 to 44. Concurrency, time and unordered collections are unchanged.">
+    <g font-family="JetBrains Mono, monospace" font-size="11" fill="var(--muted)">
+      <line x1="250" y1="14" x2="250" y2="200" stroke="var(--grid)"/>
+      <line x1="362" y1="14" x2="362" y2="200" stroke="var(--grid)"/>
+      <line x1="474" y1="14" x2="474" y2="200" stroke="var(--grid)"/>
+      <line x1="586" y1="14" x2="586" y2="200" stroke="var(--grid)"/>
+      <line x1="698" y1="14" x2="698" y2="200" stroke="var(--grid)"/>
+      <text x="250" y="218" text-anchor="middle">0</text>
+      <text x="362" y="218" text-anchor="middle">25%</text>
+      <text x="474" y="218" text-anchor="middle">50%</text>
+      <text x="586" y="218" text-anchor="middle">75%</text>
+      <text x="698" y="218" text-anchor="middle">100%</text>
+      <text x="474" y="238" text-anchor="middle">recall</text>
+    </g>
+    <g font-family="Source Sans 3, sans-serif" font-size="13" fill="var(--ink-2)">
+      <text x="240" y="34" text-anchor="end" font-weight="700" fill="var(--ink)">test order dependency</text>
+      <text x="240" y="72" text-anchor="end">async wait</text>
+      <text x="240" y="110" text-anchor="end">concurrency</text>
+      <text x="240" y="148" text-anchor="end">time</text>
+      <text x="240" y="186" text-anchor="end">unordered collections</text>
+    </g>
+    <g font-family="JetBrains Mono, monospace" font-size="10.5" fill="var(--muted)">
+      <text x="246" y="47" text-anchor="end">n=46</text>
+      <text x="246" y="85" text-anchor="end">n=18</text>
+      <text x="246" y="123" text-anchor="end">n=10</text>
+      <text x="246" y="161" text-anchor="end">n=4</text>
+      <text x="246" y="199" text-anchor="end">n=2</text>
+    </g>
+    <g stroke-width="2" stroke-linecap="round">
+      <line x1="339.6" y1="30" x2="563.6" y2="30" stroke="var(--up)"/>
+      <line x1="500.9" y1="68" x2="447.1" y2="68" stroke="var(--down)"/>
+      
+    </g>
+    <g fill="var(--s-body)" stroke="var(--surface)" stroke-width="2">
+      <circle class="hit" cx="339.6" cy="30" r="6" data-tip="Order dependency, body only&lt;br&gt;<b>20%</b> recall of 46 tests"/>
+      <circle class="hit" cx="500.9" cy="68" r="6" data-tip="Async wait, body only&lt;br&gt;<b>56%</b> recall of 18 tests"/>
+      <circle class="hit" cx="294.8" cy="106" r="7" data-tip="Concurrency, body only&lt;br&gt;<b>10%</b> recall of 10 tests"/>
+      <circle class="hit" cx="474" cy="144" r="7" data-tip="Time, body only&lt;br&gt;<b>50%</b> recall of 4 tests"/>
+      <circle class="hit" cx="474" cy="182" r="7" data-tip="Unordered collections, body only&lt;br&gt;<b>50%</b> recall of 2 tests"/>
+    </g>
+    <g fill="var(--s-ctx)" stroke="var(--surface)" stroke-width="2">
+      <circle class="hit" cx="563.6" cy="30" r="6" data-tip="Order dependency, with fields and fixtures&lt;br&gt;<b>70%</b> recall, up 42 points"/>
+      <circle class="hit" cx="447.1" cy="68" r="6" data-tip="Async wait, with fields and fixtures&lt;br&gt;<b>44%</b> recall, down 12 points"/>
+      
+    </g>
+    <g fill="var(--s-ctx)" stroke="none">
+      <circle class="hit" cx="294.8" cy="106" r="3.2" data-tip="Concurrency, with fields and fixtures&lt;br&gt;<b>10%</b> recall, unchanged"/>
+      <circle class="hit" cx="474" cy="144" r="3.2" data-tip="Time, with fields and fixtures&lt;br&gt;<b>50%</b> recall, unchanged"/>
+      <circle class="hit" cx="474" cy="182" r="3.2" data-tip="Unordered collections, with fields and fixtures&lt;br&gt;<b>50%</b> recall, unchanged"/>
+    </g>
+    <g font-family="JetBrains Mono, monospace" font-size="11.5" font-weight="700">
+      <text x="575" y="34" fill="var(--up)">70%</text>
+      <text x="327" y="34" text-anchor="end" fill="var(--muted)">20%</text>
+      <text x="435" y="72" text-anchor="end" fill="var(--down)">44%</text>
+      <text x="513" y="72" fill="var(--muted)">56%</text>
+      <text x="309" y="110" fill="var(--muted)">10%, unchanged</text>
+      <text x="488" y="148" fill="var(--muted)">50%, unchanged</text>
+      <text x="488" y="186" fill="var(--muted)">50%, unchanged</text>
+    </g>
+  </svg>
+  </div>
+  <figcaption>With the full context instead, order dependency reaches only 52% and concurrency drops to 0, because helper and sibling text pulls tests back. Time and unordered collections have four and two examples in this sample and carry no weight.</figcaption>
+</figure>
+
+<div class="col">
+<div class="callout warn">
+  <p><strong>Read this as "context helps order dependency", not "context helps".</strong> Nothing here shows a gain for async wait, concurrency, time or unordered collections. On this sample the first two get worse, because context tokens outvote the body's own async vocabulary when everything is poured into one bag.</p>
+</div>
+
+<p>That failure mode is informative rather than fatal. It says the context slices should enter the model as separate feature groups, not concatenated into the body's token stream. The plan already separates them; this is the measurement that says it must.</p>
+
+<h2>Where the true category actually appears</h2>
+<p class="dek">Share of the 80 tests whose true category has at least one lexicon family present in a given slice.</p>
+</div>
+
+<div class="tablewrap">
+<table>
+<thead><tr><th>Slice</th><th class="num">All 80</th><th class="num">Model wrong (39)</th><th class="num">Model right (41)</th><th class="num">Gap</th></tr></thead>
+<tbody>
+<tr><td>body</td><td class="num">48%</td><td class="num">51%</td><td class="num">44%</td><td class="num">+7</td></tr>
+<tr class="best"><td><strong>fields</strong></td><td class="num">31%</td><td class="num"><strong>51%</strong></td><td class="num"><strong>12%</strong></td><td class="num"><strong>+39</strong></td></tr>
+<tr><td>fixtures</td><td class="num">51%</td><td class="num">56%</td><td class="num">46%</td><td class="num">+10</td></tr>
+<tr><td>siblings</td><td class="num">75%</td><td class="num">74%</td><td class="num">76%</td><td class="num">−2</td></tr>
+<tr><td>helpers</td><td class="num">15%</td><td class="num">23%</td><td class="num">7%</td><td class="num">+16</td></tr>
+<tr class="best"><td><strong>callees, depth 1</strong></td><td class="num">19%</td><td class="num"><strong>33%</strong></td><td class="num"><strong>5%</strong></td><td class="num"><strong>+28</strong></td></tr>
+<tr><td>context, all four</td><td class="num">92%</td><td class="num">95%</td><td class="num">90%</td><td class="num">+5</td></tr>
+</tbody>
+<caption>Two rows separate: fields, four times more often for misses than hits, and depth-1 callees, over six times more often. Siblings carry the true category for three quarters of everything, so this measure does not separate them, though they still classify well on their own.</caption>
+</table>
+</div>
+
+<div class="col">
+<p>For 39 of the 80 tests the true category is absent from the body and present in the context. For 8 it is absent from both, which is the lexicon's own ceiling on this sample rather than a property of the code.</p>
+
+<h2>The binary task tells a cleaner story</h2>
+<p class="dek">Order dependency against everything else, which avoids the five-way class skew.</p>
+</div>
+
+<div class="tablewrap">
+<table>
+<thead><tr><th>Slice</th><th class="num">AUC</th><th class="num">Best accuracy</th></tr></thead>
+<tbody>
+<tr><td>body only</td><td class="num">0.723</td><td class="num">72.5%</td></tr>
+<tr><td>body + fixtures</td><td class="num"><strong>0.834</strong></td><td class="num">77.5%</td></tr>
+<tr><td>body + siblings</td><td class="num">0.824</td><td class="num"><strong>78.8%</strong></td></tr>
+<tr><td>body + fields</td><td class="num">0.697</td><td class="num">68.8%</td></tr>
+<tr><td>body + helpers</td><td class="num">0.728</td><td class="num">73.8%</td></tr>
+</tbody>
+<caption>Here the full context wins, and by a wide margin. Sibling tests and called helpers do carry order-dependency signal; they simply cannot be thrown into a single five-way bag without costing the other categories.</caption>
+</table>
+</div>
+
+<div class="col">
+<h2>What it recovers</h2>
+<p class="dek">Of the 39 tests FlakyLens got wrong in this sample, the body-only proxy already gets 10 right.</p>
+
+<p>Adding fields and fixtures recovers 12 more and breaks 1. Adding the full context on top recovers 7 and breaks 1, because helper and sibling text pulls five of the twelve back. The 12 include every case found by hand in investigation 1: all five <code>TestDFSIO</code> tests, all three <code>TestPathData</code> tests, and <code>TestDelegationTokenForProxyUser</code>. Two different methods, asking different questions, landing on the same tests.</p>
+
+<pre>recovered by body + fields + fixtures
+  TestDFSIO.testRead / testWrite / testReadRandom /
+              testReadSkip / testReadBackward                  OD, model said time
+  TestPathData.testCwdContents / testQualifiedUriContents /
+              testUnqualifiedUriContents                       OD, model said UC
+  TestDelegationTokenForProxyUser.testDelegationTokenWithRealUser  OD, said conc
+  ProvisioningServiceTest.testCancelDeprovision                OD, model said async
+  MetadataHttpHandlerTestRun.testSystemMetadataRetrieval       async, model said time
+  AntiAffinityNamespaceGroupTest.testBrokerSelectionFor...     conc, model said async
+
+broken
+  TestFrameworkTestRun.testAppWithServices                     conc</pre>
+
+<h2>Where the code comes from</h2>
+<p class="dek">The body is FlakyLens's own copy. Everything else is pulled from GitHub at the pinned commit. The two do not always agree.</p>
+
+<p>The benchmark ships each test's body in its <code>full_code</code> column, and a separate file pins one or more commits per repository. Context has no second source, so it has to come from a clone. Comparing the benchmark's body against the body at the pinned commit shows the pin is often not the version the benchmark used.</p>
+
+<div class="tablewrap">
+<table>
+<thead><tr><th>Similarity of the two copies</th><th class="num">Tests</th></tr></thead>
+<tbody>
+<tr><td>identical</td><td class="num">28</td></tr>
+<tr><td>0.95 to 1.00, cosmetic reformatting</td><td class="num">15</td></tr>
+<tr><td>0.80 to 0.95, small edits</td><td class="num">15</td></tr>
+<tr class="best"><td><strong>below 0.80, a different version of the test</strong></td><td class="num"><strong>22</strong></td></tr>
+</tbody>
+<caption>Median similarity by project: wildfly and neo4j 1.00, pulsar 0.90, hadoop 0.87, cdap 0.64.</caption>
+</table>
+</div>
+
+<div class="col">
+<p>So the body slice is taken from the benchmark, which is what the model consumed and what the label describes. Context is taken from the clone, because there is nowhere else to get it. Where a class was restructured between the two, the context is approximate, and that is a limitation of the measurement rather than a choice.</p>
+
+<p><code>TestDFSIO.testRead</code> shows why this matters. What FlakyLens saw:</p>
+</div>
+
+<pre>long tStart = System.currentTimeMillis();
+bench.readTest(fs);
+long execTime = System.currentTimeMillis() - tStart;
+bench.analyzeResult(fs, TestType.TEST_TYPE_READ, execTime);</pre>
+
+<div class="col">
+<p>What the pinned commit holds:</p>
+</div>
+
+<pre>long execTime = bench.readTest(fs);
+bench.analyzeResult(fs, TestType.TEST_TYPE_READ, execTime);</pre>
+
+<div class="col">
+<p>The body the model actually consumed contains a wall-clock idiom twice, which is exactly why it answers "time". Scoring against the pinned commit's body would have hidden that. With the correct body the proxy scores time=1 and order dependency=1 on the body alone, a tie; adding fields and fixtures makes it order dependency=5 and the answer flips to correct.</p>
+</div>
+
+<h2>One test, end to end</h2>
+<p class="dek">The three TestPathData cases are the clearest illustration of both the gain and the failure mode. Here is the pipeline on one of them.</p>
+
+<p><code>TestPathData.testCwdContents</code> has ground truth order dependency and was predicted unordered collections. The class is split into slices, the lexicon is matched against each, and the score is the number of distinct families that fire.</p>
+
+<pre>slice       lines   families that fire
+body            9   uc: listing      &#8594; getDirectoryContents
+fields          4   od: fs_state     &#8594; TEST_ROOT
+fixtures       22   od: global_write &#8594; setDefaultUri
+                    od: fs_state     &#8594; mkdirs(, createNewFile, .delete(
+                    od: lifecycle    &#8594; cleanup, .close(
+helpers         5   uc: to_sequence  &#8594; StringBuilder
+
+score, distinct families present
+slice         async     conc     time       uc       od
+body              0        0        0        1        0
+fields            0        0        0        0        1
+fixtures          0        0        0        0        3
+helpers           0        0        0        1        0
+
+body only               uc=1 od=0   &#8594; unordered collections   wrong
+body + fields/fixtures  uc=1 od=4   &#8594; order dependency        correct
+body + full context     uc=3 od=3   &#8594; tie, resolved wrong</pre>
+
+<p>The body contains exactly one signal, a call to <code>getDirectoryContents</code>, which is a genuine unordered-collections cue and is why the model answers as it does. The fixture holds four order-dependency families and never reaches the model. The helper is the cautionary half: <code>sortedString</code> builds its result with a <code>StringBuilder</code>, which fires an unordered-collections family and pushes back toward the wrong answer. Investigation 1 read the same helper by hand and drew the opposite conclusion from its <code>Arrays.sort</code> call, which the lexicon has no family for.</p>
+
+<div class="callout">
+  <p><strong>That gap is the honest limit of this method.</strong> A regex lexicon sees that a helper touches sequences. It cannot see that the helper sorts, which is what actually rules out unordered-collection flakiness. A model reading the helper source could.</p>
+</div>
+
+<h2>Every slice tested on its own</h2>
+<p class="dek">An earlier version only ever bundled siblings and helpers into one merged slice. That comparison confounded which slices are used with how many feature groups exist.</p>
+
+<p>Each slice is now tested alone, and each combination keeps every slice as its own group of five features. The two rows marked merged pool four slices into a single group, which is what the earlier "full context" did.</p>
+
+<div class="tablewrap">
+<table>
+<thead><tr><th>Configuration</th><th class="num">Features</th><th class="num">Argmax</th><th class="num">Trained</th><th class="num">Delta</th><th>95% CI</th></tr></thead>
+<tbody>
+<tr><td>body only</td><td class="num">5</td><td class="num">22.5%</td><td class="num">0.253</td><td class="num">—</td><td class="mono">—</td></tr>
+<tr><td>body + fields</td><td class="num">10</td><td class="num">36.2%</td><td class="num">0.358</td><td class="num">+0.106</td><td class="mono">[+0.080, +0.133]</td></tr>
+<tr><td>body + fixtures</td><td class="num">10</td><td class="num">52.5%</td><td class="num"><strong>0.397</strong></td><td class="num"><strong>+0.145</strong></td><td class="mono">[+0.117, +0.171]</td></tr>
+<tr><td>body + siblings</td><td class="num">10</td><td class="num">26.2%</td><td class="num">0.338</td><td class="num">+0.085</td><td class="mono">[+0.060, +0.107]</td></tr>
+<tr><td>body + helpers</td><td class="num">10</td><td class="num">25.0%</td><td class="num">0.267</td><td class="num">+0.014</td><td class="mono">[−0.013, +0.037]</td></tr>
+<tr><td>body + callees</td><td class="num">10</td><td class="num">11.2%</td><td class="num">0.273</td><td class="num">+0.020</td><td class="mono">[−0.001, +0.042]</td></tr>
+<tr class="best"><td><strong>body + fields + fixtures</strong></td><td class="num">15</td><td class="num"><strong>57.5%</strong></td><td class="num">0.391</td><td class="num">+0.138</td><td class="mono">[+0.109, +0.164]</td></tr>
+<tr><td>+ siblings as well</td><td class="num">20</td><td class="num">41.2%</td><td class="num">0.397</td><td class="num">+0.145</td><td class="mono">[+0.111, +0.177]</td></tr>
+<tr><td>all six slices, separate</td><td class="num">30</td><td class="num">37.5%</td><td class="num">0.347</td><td class="num">+0.095</td><td class="mono">[+0.065, +0.129]</td></tr>
+<tr class="ref"><td>body + context, merged</td><td class="num">10</td><td class="num">38.8%</td><td class="num">0.382</td><td class="num">+0.129</td><td class="mono">[+0.102, +0.157]</td></tr>
+</tbody>
+<caption>Lexicon v2.0, 38 families. StratifiedShuffleSplit, 50 train / 30 test, 40 splits. Argmax fits nothing, so its column is unaffected by feature count; the trained column is.</caption>
+</table>
+</div>
+
+<div class="col">
+<div class="callout warn">
+  <p><strong>This overturns one earlier claim.</strong> Siblings are not noise. On their own they are worth +0.068 macro-F1 with an interval excluding zero, and they give the best binary order-dependency AUC of any single slice, 0.795 against 0.662 for the body alone. What hurt was pooling four slices into one group of five features, not the siblings themselves.</p>
+</div>
+
+<p><strong>Siblings are redundant rather than harmful.</strong> Added on top of fields and fixtures the score moves from +0.096 to +0.091, a wash. They carry much the same order-dependency evidence the class fixture already carries, so little is left to add.</p>
+
+<p><strong>Fixtures are the strongest single slice, not fields.</strong> Fixtures alone reach 50.0% argmax accuracy and 61% order-dependency recall; fields alone reach 37.5% and 43%. Fields still show the largest coverage asymmetry between misses and hits, so the two measure different things and both are worth keeping.</p>
+
+<p><strong>Callees are the only slice that fails outright.</strong> +0.012 with an interval crossing zero and a binary AUC of 0.568, close to chance. The negative result for depth-1 callees survives unchanged.</p>
+
+<p><strong>More slices is not better at this sample size.</strong> All six kept separate is 30 features on 80 examples and scores +0.049, well below the 15-feature configuration. That is a dimensionality effect, not a statement about signal.</p>
+</div>
+
+<h2>Production callees at depth 1</h2>
+<p class="dek">Investigation 1's fourth extraction target, now implemented. It does not help, and why it does not is the useful part.</p>
+
+<p>Calls are resolved by receiver type, not by name. Local declarations and class fields give a variable-to-type map, so <code>cache.put(...)</code> after <code>PeerCache cache = new PeerCache(...)</code> resolves to <code>PeerCache.put</code> rather than to every <code>put</code> in the repository. A call is kept only when its receiver type is a class under the project's own main source tree, which drops JUnit, Mockito and the JDK without a deny list. Seventy-eight of the 80 tests resolve at least one callee, median two.</p>
+
+<div class="tablewrap">
+<table>
+<thead><tr><th>Measure</th><th class="num">fields + fixtures</th><th class="num">callees alone</th></tr></thead>
+<tbody>
+<tr><td>argmax accuracy</td><td class="num">57.5%</td><td class="num">11.2%</td></tr>
+<tr><td>trained macro-F1</td><td class="num">0.391</td><td class="num">0.273</td></tr>
+<tr><td>delta vs body only</td><td class="num">+0.138</td><td class="num">+0.020</td></tr>
+<tr><td>order-dependency recall</td><td class="num">76%</td><td class="num">4%</td></tr>
+<tr><td>errors recovered of 39</td><td class="num">13</td><td class="num">—</td></tr>
+</tbody>
+<caption>Every measure moves the wrong way.</caption>
+</table>
+</div>
+
+<div class="col">
+<div class="callout">
+  <p><strong>The signal is present; the scoring cannot use it.</strong> The callees slice carries the true category for 33% of the tests the model gets wrong against 5% of the ones it gets right. That 28-point gap is the second largest of any slice, behind only fields. Concurrency is the one category whose recall improves, 10% to 20%, exactly as investigation 1 predicted, since concurrency evidence lives in production code.</p>
+</div>
+
+<p>Two reasons it fails as a bag, and both are fixable.</p>
+
+<p><strong>Depth 1 is the wrong depth.</strong> <code>TestPeerCache</code> was investigation 1's flagship production-code case. At depth 1 it resolves <code>PeerCache.put</code>, <code>size</code> and <code>close</code>, which between them contain a single <code>synchronized</code> keyword. The background daemon and the <code>Thread.sleep(expiryPeriod)</code> loop live in <code>startExpiryDaemon</code> and <code>run</code>, which <code>put</code> calls. They sit at depth 2. The plan document specifies depth 2 by default, and this is the measurement that says why.</p>
+
+<p><strong>Callee bodies are long and generic.</strong> A production method drags in vocabulary from every category, so pouring it into one bag dilutes the body's own signal. The same failure mode as sibling tests, one level worse.</p>
+
+<p>The conclusion is not to drop the slice. It is to expand to depth 2, keep it a separate feature group rather than concatenating it, and expect the gain in concurrency rather than order dependency, which is a class-level property already served by fields and fixtures.</p>
+</div>
+
+<h2>Statistics and tooling</h2>
+<p class="dek">scikit-learn 1.9.0 and scipy 1.18.1, both pinned in the project's requirements. A numpy implementation is kept as a cross-check.</p>
+
+<p>The two implementations disagree by up to 0.055 macro-F1 on identical data, which is why the switch was worth making. A hand-rolled gradient-descent model is not reliable at the third decimal, and cannot be argued for in a paper. Everything reported now comes from scikit-learn.</p>
+
+<div class="tablewrap">
+<table>
+<thead><tr><th>Configuration</th><th class="num">numpy</th><th class="num">scikit-learn</th><th class="num">Difference</th></tr></thead>
+<tbody>
+<tr><td>body only</td><td class="num">0.244</td><td class="num">0.261</td><td class="num">+0.017</td></tr>
+<tr><td>body + fields + fixtures</td><td class="num">0.392</td><td class="num">0.351</td><td class="num">−0.041</td></tr>
+<tr><td>body + full context</td><td class="num">0.305</td><td class="num">0.360</td><td class="num">+0.055</td></tr>
+</tbody>
+<caption>Same data, same cross-validation splits, two implementations of the same model.</caption>
+</table>
+</div>
+
+<div class="col">
+<p>At 80 tests a label-permutation null says more than another confidence interval, because it asks directly whether the model beats chance on this data. Labels are shuffled 300 times and the cross-validation rerun on each shuffle.</p>
+</div>
+
+<div class="tablewrap">
+<table>
+<thead><tr><th>Configuration</th><th class="num">Observed</th><th class="num">Null mean</th><th class="num">p</th></tr></thead>
+<tbody>
+<tr><td>body only</td><td class="num">0.305</td><td class="num">0.158</td><td class="num">0.007</td></tr>
+<tr class="best"><td><strong>body + fields + fixtures</strong></td><td class="num"><strong>0.423</strong></td><td class="num">0.181</td><td class="num"><strong>&#8804; 0.003</strong></td></tr>
+<tr><td>body + full context</td><td class="num">0.339</td><td class="num">0.178</td><td class="num">&#8804; 0.003</td></tr>
+</tbody>
+<caption>The two smallest values sit at the resolution floor of 300 permutations: no shuffle beat the observed score.</caption>
+</table>
+</div>
+
+<div class="col">
+<div class="callout warn">
+  <p><strong>Three honest weaknesses in the statistics.</strong> The bootstrap interval resamples fold scores that all come from the same 80 tests, so it is correlated and optimistic. The folds collapse to 2 rather than 5, because the split count is capped by the smallest class and unordered collections has 2 examples. And the "best accuracy" figure in the binary task fits its threshold in-sample, so quote the AUC and the Mann-Whitney p-value instead.</p>
+</div>
+</div>
+
+<h2>Sample</h2>
+</div>
+
+<div class="tablewrap">
+<table>
+<thead><tr><th>Project</th><th class="num">Flaky</th><th class="num">Located</th><th class="num">Analysed</th><th class="num">Model wrong</th></tr></thead>
+<tbody>
+<tr><td class="mono">apache/hadoop</td><td class="num">33</td><td class="num">27</td><td class="num">27</td><td class="num">17</td></tr>
+<tr><td class="mono">wildfly/wildfly</td><td class="num">42</td><td class="num">24</td><td class="num">24</td><td class="num">7</td></tr>
+<tr><td class="mono">apache/pulsar</td><td class="num">22</td><td class="num">16</td><td class="num">16</td><td class="num">5</td></tr>
+<tr><td class="mono">cdapio/cdap</td><td class="num">11</td><td class="num">9</td><td class="num">9</td><td class="num">7</td></tr>
+<tr><td class="mono">neo4j/neo4j</td><td class="num">8</td><td class="num">4</td><td class="num">4</td><td class="num">3</td></tr>
+<tr class="best"><td><strong>total</strong></td><td class="num"><strong>116</strong></td><td class="num"><strong>80</strong></td><td class="num"><strong>80</strong></td><td class="num"><strong>39</strong></td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="col">
+<p>Thirty-six of the 116 could not be located. Wildfly is the reason for most of it: its benchmark rows name the test as a commit hash followed by a method name, with no class at all. Twenty-four were recovered by searching a checked-out tree for a unique test declaration, eleven matched several classes and were dropped as ambiguous, and seven were not found. That is a benchmark data-quality problem worth raising on its own.</p>
+
+<h2>What this changes about the extraction plan</h2>
+<p class="dek">Investigation 1 ranked extraction targets by how many misses they reach. This adds what each is worth, and one correction.</p>
+
+<ol class="steps">
+  <li><span class="st">Static fields and fixtures pay first and pay most</span><span class="sd">They deliver the entire measured gain on their own, and they are the cheapest thing in the plan to extract. No symbol resolution, no call graph, no build.</span></li>
+  <li><span class="st">Keep the slices as separate feature groups</span><span class="sd">Concatenating everything into one token stream costs accuracy on async wait and concurrency. The ordering from investigation 1 stands; the packaging is what changes.</span></li>
+  <li><span class="st">Sibling tests need a targeted feature, not their text</span><span class="sd">They lift the binary order-dependency AUC from 0.66 to 0.81 but dilute the five-way task. The feature that matters is which siblings write the static fields this test reads, not the sibling source.</span></li>
+</ol>
+
+<h2>Caveats</h2>
+
+<p><strong>A lexicon is not an encoder.</strong> A 36-family regex bag is a floor. It shows the signal is present and machine-readable in the context slices. It does not predict what a fine-tuned transformer would gain, and it should not be quoted as an expected improvement. The <code>sortedString</code> case above shows what it misses: the lexicon sees a sequence operation where a reader sees a sort.</p>
+
+<p><strong>The class distribution is badly skewed.</strong> Order dependency is 46 of 80, unordered collections is 2, time is 4. Macro-F1 over five classes at those counts is unstable. The binary order-dependency result is the more trustworthy summary of the same effect.</p>
+
+<p><strong>The proxy beating the shipped model is not a result.</strong> These 80 tests over-represent the projects where localisation succeeded, and they are order-dependency heavy. The comparison is not like for like and should not appear in a paper as one.</p>
+
+<p><strong>Localisation loses a third of the sample.</strong> Any conclusion here is conditioned on tests whose class could be found, which may not be a random subset.</p>
+</div>
+
+<footer>
+  Lexicon v1.0, 36 families across 5 categories · scoring by distinct families present<br>
+  Trained model: class-balanced multinomial logistic regression, repeated stratified CV, 40 fold-repeats<br>
+  Working files: docs/investigation2/ · Investigation 1: docs/investigation/
+</footer>
+
+</div>
+
+<div id="tip" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+  var tip = document.getElementById('tip');
+  function show(e){
+    var t = e.currentTarget.getAttribute('data-tip');
+    if(!t) return;
+    tip.innerHTML = t;
+    tip.style.opacity = 1;
+    move(e);
+  }
+  function move(e){
+    var r = tip.getBoundingClientRect();
+    var x = (e.clientX || 0) + 14, y = (e.clientY || 0) + 14;
+    if (x + r.width > window.innerWidth - 8) x = window.innerWidth - r.width - 8;
+    if (y + r.height > window.innerHeight - 8) y = (e.clientY || 0) - r.height - 12;
+    tip.style.left = x + 'px';
+    tip.style.top = y + 'px';
+  }
+  function hide(){ tip.style.opacity = 0; }
+  var nodes = document.querySelectorAll('.hit');
+  for (var i = 0; i < nodes.length; i++){
+    nodes[i].setAttribute('tabindex','0');
+    nodes[i].addEventListener('mouseenter', show);
+    nodes[i].addEventListener('mousemove', move);
+    nodes[i].addEventListener('mouseleave', hide);
+    nodes[i].addEventListener('focus', function(e){
+      var b = e.currentTarget.getBoundingClientRect();
+      show({currentTarget:e.currentTarget, clientX:b.left+b.width/2, clientY:b.top});
+    });
+    nodes[i].addEventListener('blur', hide);
+  }
+})();
+</script>

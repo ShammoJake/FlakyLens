@@ -1,0 +1,17 @@
+{
+ "project_url": "https://github.com/bpsm/edn-java",
+ "ref": "9990787136aade05c229d185687ea13da8a8ab2b",
+ "ref_kind": "merge_commit",
+ "tests": [
+  {
+   "pair_id": "P1221",
+   "pair_dir": "P1221__edn-java__PrinterTest.testPrettyPrinting",
+   "side": "after",
+   "module": ".",
+   "test_class": "us.bpsm.edn.printer.PrinterTest",
+   "test_method": "testPrettyPrinting",
+   "category": "ID"
+  }
+ ],
+ "out": "D:\\FSE-2027\\FlakyLens\\runs2"
+}

@@ -1,0 +1,17 @@
+{
+ "project_url": "https://github.com/moquette-io/moquette",
+ "ref": "79053a360f266f1305aa87a663def00bc4169f6c",
+ "ref_kind": "merge_commit",
+ "tests": [
+  {
+   "pair_id": "P1778",
+   "pair_dir": "P1778__moquette__MemoryRetainedReposito.testRetainedOnTopi",
+   "side": "after",
+   "module": "broker",
+   "test_class": "io.moquette.broker.MemoryRetainedRepositoryTest",
+   "test_method": "testRetainedOnTopicReturnsWildcardTopicMatch",
+   "category": "ID"
+  }
+ ],
+ "out": "D:\\FSE-2027\\FlakyLens\\runs2"
+}

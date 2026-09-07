@@ -1,0 +1,57 @@
+{
+ "pair_id": "P1455",
+ "side": "after",
+ "ref_kind": "merge_commit",
+ "build_point": "TestParameterInjector@a46bb948ef8b",
+ "spoon_methods": "_bp\\TestParameterInjector@a46bb948ef8b\\spoon_methods.json",
+ "steps": {
+  "checkout": {
+   "ok": true,
+   "ref": "a46bb948ef8b74ff1c848ee920463b18310f8fc6",
+   "error": null
+  },
+  "build": {
+   "ok": true,
+   "rc": 0,
+   "modules": [
+    "junit4"
+   ],
+   "error": ""
+  },
+  "spoon": {
+   "ok": true,
+   "methods": 528,
+   "roots": [
+    "junit4\\src\\main\\java",
+    "junit4\\src\\test\\java"
+   ]
+  },
+  "test_method_found": false,
+  "test": {
+   "ok": true,
+   "rc": 0,
+   "note": "",
+   "argline_fallback": false,
+   "test_passed": true
+  },
+  "report": {
+   "ok": true,
+   "error": "",
+   "classfile_dirs": 1,
+   "sourcefile_dirs": 1
+  },
+  "collect_coverage": {
+   "ok": true,
+   "summary": [
+    "executed=216 of seen=358 top-level=172 nested=38 anonymous=6"
+   ]
+  },
+  "join": {
+   "ok": true,
+   "summary": [
+    "joined=216 matched=135 of 172 (78.5%) exact=133 arity=2 simple=0 synthetic=44 unmatched=37"
+   ]
+  }
+ },
+ "status": "ok"
+}

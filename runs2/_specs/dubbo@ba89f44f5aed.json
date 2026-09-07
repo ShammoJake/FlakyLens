@@ -1,0 +1,26 @@
+{
+ "project_url": "https://github.com/apache/dubbo",
+ "ref": "ba89f44f5aeddd2d06024232a15e355c2e8dc5cd",
+ "ref_kind": "merge_parent",
+ "tests": [
+  {
+   "pair_id": "P0592",
+   "pair_dir": "P0592__dubbo__JavassistProxyFactoryT.testGetInvoker",
+   "side": "before",
+   "module": "dubbo-rpc/dubbo-rpc-api",
+   "test_class": "org.apache.dubbo.rpc.proxy.javassist.JavassistProxyFactoryTest",
+   "test_method": "testGetInvoker",
+   "category": "OD-Vic"
+  },
+  {
+   "pair_id": "P0593",
+   "pair_dir": "P0593__dubbo__JdkProxyFactoryTest.testGetInvoker",
+   "side": "before",
+   "module": "dubbo-rpc/dubbo-rpc-api",
+   "test_class": "org.apache.dubbo.rpc.proxy.jdk.JdkProxyFactoryTest",
+   "test_method": "testGetInvoker",
+   "category": "OD-Vic"
+  }
+ ],
+ "out": "D:\\FSE-2027\\FlakyLens\\runs2"
+}

@@ -1,0 +1,35 @@
+{
+ "project_url": "https://github.com/apache/incubator-hugegraph-toolchain",
+ "ref": "1c47673eb9511d3eff0d0901012a69d7a0148cdc",
+ "ref_kind": "merge_parent",
+ "tests": [
+  {
+   "pair_id": "P0720",
+   "pair_dir": "P0720__incubator-hugegrap__IndexLabelTest.testIndexLabel",
+   "side": "before",
+   "module": "hugegraph-client",
+   "test_class": "org.apache.hugegraph.unit.IndexLabelTest",
+   "test_method": "testIndexLabel",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P0721",
+   "pair_dir": "P0721__incubator-hugegrap__IndexLabelTest.testIndexLabelV49",
+   "side": "before",
+   "module": "hugegraph-client",
+   "test_class": "org.apache.hugegraph.unit.IndexLabelTest",
+   "test_method": "testIndexLabelV49",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P0722",
+   "pair_dir": "P0722__incubator-hugegrap__IndexLabelTest.testIndexLabelV56",
+   "side": "before",
+   "module": "hugegraph-client",
+   "test_class": "org.apache.hugegraph.unit.IndexLabelTest",
+   "test_method": "testIndexLabelV56",
+   "category": "ID"
+  }
+ ],
+ "out": "D:\\FSE-2027\\FlakyLens\\runs2"
+}

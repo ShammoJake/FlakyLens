@@ -1,0 +1,26 @@
+{
+ "project_url": "https://github.com/apache/avro",
+ "ref": "a6a0346b4aae937f8e19e928d7c45f85cde09ba2",
+ "ref_kind": "merge_commit",
+ "tests": [
+  {
+   "pair_id": "P0285",
+   "pair_dir": "P0285__avro__TestReflect.testAvroDoc",
+   "side": "after",
+   "module": "lang/java/avro",
+   "test_class": "org.apache.avro.reflect.TestReflect",
+   "test_method": "testAvroDoc",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P0287",
+   "pair_dir": "P0287__avro__TestReflect.testRecord",
+   "side": "after",
+   "module": "lang/java/avro",
+   "test_class": "org.apache.avro.reflect.TestReflect",
+   "test_method": "testRecord",
+   "category": "ID"
+  }
+ ],
+ "out": "D:\\FSE-2027\\FlakyLens\\runs2"
+}

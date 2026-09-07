@@ -1,0 +1,17 @@
+{
+ "project_url": "https://github.com/GoogleCloudPlatform/appengine-plugins-core",
+ "ref": "d3160f0e47ca001d2c35b2b2d3b90bcb6438613b",
+ "ref_kind": "merge_commit",
+ "tests": [
+  {
+   "pair_id": "P1502",
+   "pair_dir": "P1502__appengine-plugins-__InstallerTest.testCall_withOverr",
+   "side": "after",
+   "module": ".",
+   "test_class": "com.google.cloud.tools.managedcloudsdk.install.InstallerTest",
+   "test_method": "testCall_withOverrideComponents",
+   "category": "ID"
+  }
+ ],
+ "out": "D:\\FSE-2027\\FlakyLens\\runs2"
+}

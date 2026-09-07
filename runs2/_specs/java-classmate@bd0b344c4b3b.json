@@ -1,0 +1,17 @@
+{
+ "project_url": "https://github.com/FasterXML/java-classmate",
+ "ref": "bd0b344c4b3b2cbfa06d4c685d90b71851c0c043",
+ "ref_kind": "merge_commit",
+ "tests": [
+  {
+   "pair_id": "P1418",
+   "pair_dir": "P1418__java-classmate__GhostTypeParameterInFi.testGhostTypeParam",
+   "side": "after",
+   "module": ".",
+   "test_class": "com.fasterxml.classmate.members.GhostTypeParameterInFieldTest",
+   "test_method": "testGhostTypeParameterWithInterface",
+   "category": "ID"
+  }
+ ],
+ "out": "D:\\FSE-2027\\FlakyLens\\runs2"
+}

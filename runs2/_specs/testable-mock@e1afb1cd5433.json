@@ -1,0 +1,17 @@
+{
+ "project_url": "https://github.com/alibaba/testable-mock",
+ "ref": "e1afb1cd54334148086466a52f864470cdaac79b",
+ "ref_kind": "merge_commit",
+ "tests": [
+  {
+   "pair_id": "P0223",
+   "pair_dir": "P0223__testable-mock__OmniAccessorTest.should_generate_me",
+   "side": "after",
+   "module": "testable-core",
+   "test_class": "com.alibaba.testable.core.tool.OmniAccessorTest",
+   "test_method": "should_generate_member_index",
+   "category": "ID"
+  }
+ ],
+ "out": "D:\\FSE-2027\\FlakyLens\\runs2"
+}

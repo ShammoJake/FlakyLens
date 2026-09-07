@@ -1,0 +1,17 @@
+{
+ "project_url": "https://github.com/apache/shiro",
+ "ref": "9888e876215c7469bb6ec583b68a7221ab0f5c4b",
+ "ref_kind": "merge_commit",
+ "tests": [
+  {
+   "pair_id": "P1084",
+   "pair_dir": "P1084__shiro__AnnotatedTypeWrapperTe.removeAnnotations",
+   "side": "after",
+   "module": "support/cdi",
+   "test_class": "org.apache.shiro.cdi.AnnotatedTypeWrapperTest",
+   "test_method": "removeAnnotations",
+   "category": "ID"
+  }
+ ],
+ "out": "D:\\FSE-2027\\FlakyLens\\runs2"
+}

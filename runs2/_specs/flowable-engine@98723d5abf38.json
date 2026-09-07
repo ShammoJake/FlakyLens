@@ -1,0 +1,26 @@
+{
+ "project_url": "https://github.com/flowable/flowable-engine",
+ "ref": "98723d5abf38e7558b035fc3f9022d3616584e11",
+ "ref_kind": "merge_parent",
+ "tests": [
+  {
+   "pair_id": "P1438",
+   "pair_dir": "P1438__flowable-engine__ChangeStateTest.testSetCurrentActi",
+   "side": "before",
+   "module": "modules/flowable-engine",
+   "test_class": "org.flowable.engine.test.api.runtime.changestate.ChangeStateTest",
+   "test_method": "testSetCurrentActivityForSubProcessWithVariables",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P1439",
+   "pair_dir": "P1439__flowable-engine__ChangeStateTest.testSetCurrentExec",
+   "side": "before",
+   "module": "modules/flowable-engine",
+   "test_class": "org.flowable.engine.test.api.runtime.changestate.ChangeStateTest",
+   "test_method": "testSetCurrentExecutionForSubProcessWithVariables",
+   "category": "ID"
+  }
+ ],
+ "out": "D:\\FSE-2027\\FlakyLens\\runs2"
+}

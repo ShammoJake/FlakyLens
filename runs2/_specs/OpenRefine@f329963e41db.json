@@ -1,0 +1,26 @@
+{
+ "project_url": "https://github.com/OpenRefine/OpenRefine",
+ "ref": "f329963e41db4b19a3a99d66686296af9cfbdd2d",
+ "ref_kind": "merge_commit",
+ "tests": [
+  {
+   "pair_id": "P1914",
+   "pair_dir": "P1914__openrefine__ListFacetTests.serializeListFacet",
+   "side": "after",
+   "module": "main",
+   "test_class": "com.google.refine.browsing.facets.ListFacetTests",
+   "test_method": "serializeListFacet",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P1915",
+   "pair_dir": "P1915__openrefine__ListFacetTests.testSelectedEmptyC",
+   "side": "after",
+   "module": "main",
+   "test_class": "com.google.refine.browsing.facets.ListFacetTests",
+   "test_method": "testSelectedEmptyChoice",
+   "category": "ID"
+  }
+ ],
+ "out": "D:\\FSE-2027\\FlakyLens\\runs2"
+}

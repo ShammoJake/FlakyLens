@@ -1,0 +1,27 @@
+[
+ {
+  "qualified_class": "org.platformlambda.core.PostOfficeTest",
+  "simple_class": "PostOfficeTest",
+  "method": "journalYamlTest",
+  "descriptor": "()V",
+  "signature": "journalYamlTest()",
+  "arity": 0,
+  "is_anonymous": false,
+  "is_test": true,
+  "file": "D:\\FSE-2027\\FlakyLens\\runs2\\_bp\\mercury@e659caf000c2\\source\\system\\platform-core\\src\\test\\java\\org\\platformlambda\\core\\PostOfficeTest.java",
+  "line_start": 504,
+  "line_end": 512,
+  "modifiers": [
+   "public"
+  ],
+  "invokes": [
+   "org.platformlambda.core.system.EventEmitter#getInstance",
+   "org.platformlambda.core.system.EventEmitter#getJournaledRoutes",
+   "org.junit.Assert#assertEquals",
+   "java.util.List#size",
+   "java.util.List#get"
+  ],
+  "body": "{\r\n    java.lang.String MY_FUNCTION = \"my.test.function\";\r\n    java.lang.String ANOTHER_FUNCTION = \"another.function\";\r\n    org.platformlambda.core.system.EventEmitter po = org.platformlambda.core.system.EventEmitter.getInstance();\r\n    java.util.List<java.lang.String> routes = po.getJournaledRoutes();\r\n    org.junit.Assert.assertEquals(2, routes.size());\r\n    org.junit.Assert.assertEquals(ANOTHER_FUNCTION, routes.get(0));\r\n    org.junit.Assert.assertEquals(MY_FUNCTION, routes.get(1));\r\n}",
+  "raw_body": "@Test\n    public void journalYamlTest() {\n        String MY_FUNCTION = \"my.test.function\";\n        String ANOTHER_FUNCTION = \"another.function\";\n        EventEmitter po = EventEmitter.getInstance();\n        List<String> routes = po.getJournaledRoutes();\n        Assert.assertEquals(2, routes.size());\n        Assert.assertEquals(ANOTHER_FUNCTION, routes.get(0));\n        Assert.assertEquals(MY_FUNCTION, routes.get(1));\n    }"
+ }
+]

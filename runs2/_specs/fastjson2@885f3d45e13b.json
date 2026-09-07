@@ -1,0 +1,44 @@
+{
+ "project_url": "https://github.com/alibaba/fastjson2",
+ "ref": "885f3d45e13b6c84510cde4672a0bfaa7ef42acd",
+ "ref_kind": "merge_parent",
+ "tests": [
+  {
+   "pair_id": "P0106",
+   "pair_dir": "P0106__fastjson2__Issue1177_1.test_for_issue",
+   "side": "before",
+   "module": "fastjson1-compatible",
+   "test_class": "com.alibaba.fastjson.issue_1100.Issue1177_1",
+   "test_method": "test_for_issue",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P0111",
+   "pair_dir": "P0111__fastjson2__Issue2182.test_for_issue",
+   "side": "before",
+   "module": "fastjson1-compatible",
+   "test_class": "com.alibaba.fastjson.issue_2100.Issue2182",
+   "test_method": "test_for_issue",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P0112",
+   "pair_dir": "P0112__fastjson2__Issue2428.test_for_issue",
+   "side": "before",
+   "module": "fastjson1-compatible",
+   "test_class": "com.alibaba.fastjson.issue_2400.Issue2428",
+   "test_method": "test_for_issue",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P0113",
+   "pair_dir": "P0113__fastjson2__Issue2447.test_for_issue",
+   "side": "before",
+   "module": "fastjson1-compatible",
+   "test_class": "com.alibaba.fastjson.issue_2400.Issue2447",
+   "test_method": "test_for_issue",
+   "category": "ID"
+  }
+ ],
+ "out": "D:\\FSE-2027\\FlakyLens\\runs2"
+}

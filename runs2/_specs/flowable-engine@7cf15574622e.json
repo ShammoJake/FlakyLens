@@ -1,0 +1,71 @@
+{
+ "project_url": "https://github.com/flowable/flowable-engine",
+ "ref": "7cf15574622e04fbf2789f0a31e99ada3ff3f63f",
+ "ref_kind": "merge_parent",
+ "tests": [
+  {
+   "pair_id": "P1434",
+   "pair_dir": "P1434__flowable-engine__ProcessTaskTest.testExitAvailableP",
+   "side": "before",
+   "module": "modules/flowable-cmmn-engine-configurator",
+   "test_class": "org.flowable.cmmn.test.ProcessTaskTest",
+   "test_method": "testExitAvailableProcessTaskThroughExitSentryOnStage",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P1440",
+   "pair_dir": "P1440__flowable-engine__ProcessInstanceMigrati.testMigrateActivit",
+   "side": "before",
+   "module": "modules/flowable-engine",
+   "test_class": "org.flowable.engine.test.api.runtime.migration.ProcessInstanceMigrationGatewaysTest",
+   "test_method": "testMigrateActivityInsideExclusiveGatewayToActivityOutside",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P1442",
+   "pair_dir": "P1442__flowable-engine__ProcessInstanceMigrati.testMigrateActivit",
+   "side": "before",
+   "module": "modules/flowable-engine",
+   "test_class": "org.flowable.engine.test.api.runtime.migration.ProcessInstanceMigrationGatewaysTest",
+   "test_method": "testMigrateActivityToExclusiveGatewayStartInsideEmbeddedSubProcessDefaultFlow",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P1443",
+   "pair_dir": "P1443__flowable-engine__ProcessInstanceMigrati.testMigrateActivit",
+   "side": "before",
+   "module": "modules/flowable-engine",
+   "test_class": "org.flowable.engine.test.api.runtime.migration.ProcessInstanceMigrationGatewaysTest",
+   "test_method": "testMigrateActivityToExclusiveGatewayStartWithConditionSpecifiedAsProcessVariableDuringMigration",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P1444",
+   "pair_dir": "P1444__flowable-engine__ProcessInstanceMigrati.testMigrateActivit",
+   "side": "before",
+   "module": "modules/flowable-engine",
+   "test_class": "org.flowable.engine.test.api.runtime.migration.ProcessInstanceMigrationGatewaysTest",
+   "test_method": "testMigrateActivityToExclusiveGatewayStartWithConditionSpecifiedBeforeMigration",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P1445",
+   "pair_dir": "P1445__flowable-engine__ProcessInstanceMigrati.testMigrateActivit",
+   "side": "before",
+   "module": "modules/flowable-engine",
+   "test_class": "org.flowable.engine.test.api.runtime.migration.ProcessInstanceMigrationGatewaysTest",
+   "test_method": "testMigrateActivityToExclusiveGatewayStartWithConditionSpecifiedDuringMigration",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P1447",
+   "pair_dir": "P1447__flowable-engine__VariableExpressionFunc.testGetVariableEqu",
+   "side": "before",
+   "module": "modules/flowable-engine",
+   "test_class": "org.flowable.engine.test.el.function.VariableExpressionFunctionsTest",
+   "test_method": "testGetVariableEquals",
+   "category": "ID"
+  }
+ ],
+ "out": "D:\\FSE-2027\\FlakyLens\\runs2"
+}

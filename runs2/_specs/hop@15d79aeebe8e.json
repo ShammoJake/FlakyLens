@@ -1,0 +1,35 @@
+{
+ "project_url": "https://github.com/apache/hop",
+ "ref": "15d79aeebe8e81e37552e34278316083b7c73729",
+ "ref_kind": "merge_commit",
+ "tests": [
+  {
+   "pair_id": "P0668",
+   "pair_dir": "P0668__hop__XmlInputStreamTest.testParseXmlWithou",
+   "side": "after",
+   "module": "plugins/transforms/xml",
+   "test_class": "org.apache.hop.pipeline.transforms.xml.xmlinputstream.XmlInputStreamTest",
+   "test_method": "testParseXmlWithoutPrefixes_WhenSetEnableNamespaceAsTrue",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P0669",
+   "pair_dir": "P0669__hop__XmlInputStreamTest.testParseXmlWithPr",
+   "side": "after",
+   "module": "plugins/transforms/xml",
+   "test_class": "org.apache.hop.pipeline.transforms.xml.xmlinputstream.XmlInputStreamTest",
+   "test_method": "testParseXmlWithPrefixes_WhenSetEnableNamespaceAsFalse",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P0670",
+   "pair_dir": "P0670__hop__XmlInputStreamTest.testParseXmlWithPr",
+   "side": "after",
+   "module": "plugins/transforms/xml",
+   "test_class": "org.apache.hop.pipeline.transforms.xml.xmlinputstream.XmlInputStreamTest",
+   "test_method": "testParseXmlWithPrefixes_WhenSetEnableNamespaceAsTrue",
+   "category": "ID"
+  }
+ ],
+ "out": "D:\\FSE-2027\\FlakyLens\\runs2"
+}

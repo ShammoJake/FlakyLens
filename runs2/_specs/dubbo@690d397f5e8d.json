@@ -1,0 +1,17 @@
+{
+ "project_url": "https://github.com/apache/dubbo",
+ "ref": "690d397f5e8da2968fe9fe65cd56e63aa81827d3",
+ "ref_kind": "merge_parent",
+ "tests": [
+  {
+   "pair_id": "P0448",
+   "pair_dir": "P0448__dubbo__AnnotationUtilsTest.testGetAllDeclared",
+   "side": "before",
+   "module": "dubbo-common",
+   "test_class": "org.apache.dubbo.common.utils.AnnotationUtilsTest",
+   "test_method": "testGetAllDeclaredAnnotations",
+   "category": "ID"
+  }
+ ],
+ "out": "D:\\FSE-2027\\FlakyLens\\runs2"
+}

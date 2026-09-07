@@ -1,0 +1,35 @@
+{
+ "project_url": "https://github.com/apache/cloudstack",
+ "ref": "2bb182c3e1eb18f4e4496152aabcea9e1c71ff96",
+ "ref_kind": "merge_parent",
+ "tests": [
+  {
+   "pair_id": "P0311",
+   "pair_dir": "P0311__cloudstack__NiciraRestClientTest.testExecuteLiveLoc",
+   "side": "before",
+   "module": "plugins/network-elements/nicira-nvp",
+   "test_class": "com.cloud.network.nicira.NiciraRestClientTest",
+   "test_method": "testExecuteLiveLockWhenControllerAllowsLoginAndFollowsWithUnauthorizedButDoesNotRediect",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P0312",
+   "pair_dir": "P0312__cloudstack__NiciraRestClientTest.testExecuteTwoCons",
+   "side": "before",
+   "module": "plugins/network-elements/nicira-nvp",
+   "test_class": "com.cloud.network.nicira.NiciraRestClientTest",
+   "test_method": "testExecuteTwoConsecutiveUnauthorizedExecutions",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P0313",
+   "pair_dir": "P0313__cloudstack__NiciraRestClientTest.testExecuteUnautho",
+   "side": "before",
+   "module": "plugins/network-elements/nicira-nvp",
+   "test_class": "com.cloud.network.nicira.NiciraRestClientTest",
+   "test_method": "testExecuteUnauthorizedThenSuccess",
+   "category": "ID"
+  }
+ ],
+ "out": "D:\\FSE-2027\\FlakyLens\\runs2"
+}

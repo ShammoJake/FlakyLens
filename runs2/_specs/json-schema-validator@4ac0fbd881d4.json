@@ -1,0 +1,17 @@
+{
+ "project_url": "https://github.com/networknt/json-schema-validator",
+ "ref": "4ac0fbd881d41252e43a321d0ea7ad5ead20ffa1",
+ "ref_kind": "merge_commit",
+ "tests": [
+  {
+   "pair_id": "P1814",
+   "pair_dir": "P1814__json-schema-valida__CollectorContextTest.testCollectorConte",
+   "side": "after",
+   "module": ".",
+   "test_class": "com.networknt.schema.CollectorContextTest",
+   "test_method": "testCollectorContextWithKeyword",
+   "category": "ID"
+  }
+ ],
+ "out": "D:\\FSE-2027\\FlakyLens\\runs2"
+}

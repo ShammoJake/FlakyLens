@@ -1,0 +1,26 @@
+{
+ "project_url": "https://github.com/apache/hop",
+ "ref": "25508de9a387f8c21d07f85ce005d04f7624768c",
+ "ref_kind": "merge_parent",
+ "tests": [
+  {
+   "pair_id": "P0664",
+   "pair_dir": "P0664__hop__HopSvgGraphics2DTest.testNewDocumentSim",
+   "side": "before",
+   "module": "core",
+   "test_class": "org.apache.hop.core.svg.HopSvgGraphics2DTest",
+   "test_method": "testNewDocumentSimpleXml",
+   "category": "ID"
+  },
+  {
+   "pair_id": "P0665",
+   "pair_dir": "P0665__hop__HopSvgGraphics2DTest.testNewDocumentXml",
+   "side": "before",
+   "module": "core",
+   "test_class": "org.apache.hop.core.svg.HopSvgGraphics2DTest",
+   "test_method": "testNewDocumentXml",
+   "category": "ID"
+  }
+ ],
+ "out": "D:\\FSE-2027\\FlakyLens\\runs2"
+}

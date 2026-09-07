@@ -1,0 +1,17 @@
+{
+ "project_url": "https://github.com/smooks/smooks",
+ "ref": "986f4314e0e07951611f0de14fa2e09d60bd372f",
+ "ref_kind": "merge_parent",
+ "tests": [
+  {
+   "pair_id": "P2156",
+   "pair_dir": "P2156__smooks__DefaultContentDelivery.testUnsupportedVis",
+   "side": "before",
+   "module": "core",
+   "test_class": "org.smooks.engine.delivery.DefaultContentDeliveryConfigBuilderTestCase",
+   "test_method": "testUnsupportedVisitor",
+   "category": "ID"
+  }
+ ],
+ "out": "D:\\FSE-2027\\FlakyLens\\runs2"
+}
