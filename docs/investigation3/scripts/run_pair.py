@@ -224,7 +224,16 @@ def resolve_before_refs(row, mode):
     return ([idoft] if idoft else []), "idoft"
 
 
-def checkout(url, refs, dest, log, timeout):
+def checkout(url, refs, dest, log, timeout, require_pom=True):
+    """Shallow-fetch one of `refs` into `dest`.
+
+    `require_pom` is the Maven pipeline's sanity check — a tree with no pom.xml
+    at the root cannot be built by anything downstream, so failing here is
+    better than failing three steps later. It has to be switchable, because the
+    Spoon-only pass needs no build system at all: FlakeBench includes Gradle
+    projects (swankjesse/dex, androidx), and rejecting them for a missing pom
+    would drop source trees Spoon reads perfectly well.
+    """
     if os.path.exists(dest) and not rmtree_hard(dest):
         return None, f"could not clear previous checkout at {dest}"
     os.makedirs(dest, exist_ok=True)
@@ -246,10 +255,10 @@ def checkout(url, refs, dest, log, timeout):
                     cwd=dest, log=log, timeout=timeout)
         if rc == 0:
             rc2, out = run(["git", "checkout", "-q", "FETCH_HEAD"], cwd=dest, timeout=600)
-            if rc2 == 0 and os.path.isfile(os.path.join(dest, "pom.xml")):
-                return ref, None
             if rc2 != 0:
                 return None, "checkout failed: " + out[-300:]
+            if not require_pom or os.path.isfile(os.path.join(dest, "pom.xml")):
+                return ref, None
             return None, "checked out but no pom.xml at root"
     return None, "none of the refs could be fetched: " + ",".join(refs)
 
