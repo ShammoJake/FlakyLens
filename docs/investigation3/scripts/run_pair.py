@@ -118,28 +118,50 @@ def _force_writable(func, path, _exc):
         pass
 
 
+def long_path(p):
+    r"""Windows extended-length form of a path, so MAX_PATH does not apply.
+
+    `git config core.longpaths true` lets git *create* paths past 260 characters,
+    and real projects do: apache/hadoop checks out files at 333. Python's own file
+    operations still refuse them unless the path carries the \\?\ prefix, so a
+    checkout git made happily was one shutil.rmtree could not delete — 427 files
+    survived, and the leftover tree then failed the next checkout with "could not
+    clear previous checkout". Same MAX_PATH family as core.longpaths itself, one
+    layer down.
+    """
+    if os.name != "nt":
+        return p
+    p = os.path.abspath(p)
+    if p.startswith("\\\\?\\"):
+        return p
+    if p.startswith("\\\\"):                       # UNC share
+        return "\\\\?\\UNC\\" + p[2:]
+    return "\\\\?\\" + p
+
+
 def rmtree_hard(path, attempts=3):
     """Remove a checkout, and say whether it worked.
 
     shutil.rmtree(ignore_errors=True) leaves files behind when a JVM still holds a
     handle, and reports success anyway; a leftover working tree then makes the next
     checkout fail with 'untracked working tree files would be overwritten'. This
-    retries, clears read-only bits, and never raises — the caller decides what a
-    failed cleanup means."""
+    retries, clears read-only bits, lifts MAX_PATH, and never raises — the caller
+    decides what a failed cleanup means."""
+    target = long_path(path)
     for _ in range(attempts):
-        if not os.path.exists(path):
+        if not os.path.exists(target):
             return True
         try:
             try:
-                shutil.rmtree(path, onexc=_force_writable)       # Python >= 3.12
+                shutil.rmtree(target, onexc=_force_writable)     # Python >= 3.12
             except TypeError:
-                shutil.rmtree(path, onerror=_force_writable)     # older
+                shutil.rmtree(target, onerror=_force_writable)   # older
         except Exception:
             pass
-        if not os.path.exists(path):
+        if not os.path.exists(target):
             return True
         time.sleep(1.0)
-    return not os.path.exists(path)
+    return not os.path.exists(target)
 
 
 # ------------------------------------------------------------------- ref handling

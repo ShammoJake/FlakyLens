@@ -74,6 +74,14 @@ public class SpoonExtract {
         Launcher launcher = new Launcher();
         launcher.getEnvironment().setNoClasspath(true);          // sources only
         launcher.getEnvironment().setIgnoreSyntaxErrors(true);   // survive one bad file
+        // A monorepo hands us many module source roots at once, and two of them
+        // routinely declare the same package — so the same `package-info.java`
+        // package appears twice and Spoon aborts the whole model with
+        // "The type package-info is already defined". That killed apache/hadoop
+        // outright (14 roots, 0 records) while every single-module project was
+        // fine, which is exactly the shape of failure that would have silently
+        // dropped the largest projects from the corpus.
+        launcher.getEnvironment().setIgnoreDuplicateDeclarations(true);
         launcher.getEnvironment().setCommentEnabled(true);
         launcher.getEnvironment().setComplianceLevel(11);
         launcher.getEnvironment().setLevel("OFF");
