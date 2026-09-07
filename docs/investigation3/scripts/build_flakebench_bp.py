@@ -44,6 +44,39 @@ ROOT = os.path.abspath(os.path.join(HERE, "..", "..", ".."))
 
 WELL_FORMED = re.compile(r"^[A-Za-z_$][\w$]*\.[A-Za-z_$][\w$]*(\[.*\])?$")
 SHA40 = re.compile(r"\b[0-9a-f]{40}\b")
+SHA_PREFIX = re.compile(r"^[0-9a-f]{40}\.")
+
+
+def parse_test_name(name):
+    """(test_class, test_method, shape) out of FlakeBench's `test_name`.
+
+    The common shape is `SimpleClass.method`, but 81 rows are not — and every one
+    of those 81 is flaky, so rejecting them cost 29% of the positive class.
+    Three other shapes exist and all are recoverable:
+
+        <40-hex sha>.method       18 rows. The prefix is a commit, not a class,
+                                  so the class is unknown and the method is the
+                                  suffix.
+        pkgfragment.Class.method  2 rows, e.g.
+                                  schema.IndexPopulationIT.shutdownDatabase...
+                                  The last two segments are what is wanted.
+        method                    61 rows: a bare method name, no class at all.
+
+    A bare method name leaves the class to be found in the model. That is
+    ambiguous by nature, and the disambiguator is FlakeBench's own full_code —
+    the right class is the one whose method body matches it.
+    """
+    n = (name or "").strip()
+    shape = "class.method"
+    if SHA_PREFIX.match(n):
+        n = n[41:]
+        shape = "sha-prefixed"
+    parts = n.split(".")
+    if len(parts) >= 3:
+        return parts[-2], parts[-1], "qualified"
+    if len(parts) == 2:
+        return parts[0], parts[1], shape
+    return "", n, "bare-method"
 
 
 def normalize_shas(raw):
@@ -116,18 +149,20 @@ def main():
         candidates = []
         for t in rows:
             name = t["test_name"].strip()
-            ok = bool(WELL_FORMED.match(name))
-            if not ok:
+            cls, meth, shape = parse_test_name(name)
+            if shape != "class.method":
                 n_malformed += 1
-            cls, _, meth = name.rpartition(".")
             candidates.append({
                 "id": t["id"],
                 "test_name": name,
                 "test_class": cls,          # simple name; FlakeBench carries no package
                 "test_method": meth,
+                "name_shape": shape,
                 "label": t["label"],
                 "category": t["category"],
-                "malformed": "yes" if not ok else "",
+                # kept for continuity: "malformed" now means "not the plain shape",
+                # not "unusable" - these resolve, just by a different route
+                "malformed": "" if shape == "class.method" else shape,
             })
 
         for sha in shas:

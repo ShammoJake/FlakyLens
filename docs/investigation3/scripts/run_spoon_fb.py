@@ -208,7 +208,11 @@ def do_build_point(spec_path, tools, args):
     # A build point names ~100 test classes out of tens of thousands of records,
     # so the filtered index is negligible.
     wanted = {c["test_class"] for c in spec["candidate_tests"] if c["test_class"]}
+    # names that arrived without a class have to be found by method name instead
+    bare = {rp.BRACKET.sub("", c["test_method"])
+            for c in spec["candidate_tests"] if not c["test_class"]}
     by_simple = collections.defaultdict(list)
+    by_method = collections.defaultdict(list)
     n_records = 0
     if os.path.isfile(spoon_json):
         try:
@@ -216,12 +220,14 @@ def do_build_point(spec_path, tools, args):
                 n_records += 1
                 if m.get("simple_class") in wanted:
                     by_simple[m["simple_class"]].append(m)
+                if bare and m.get("method") in bare and m.get("kind") == "method":
+                    by_method[m["method"]].append(m)
         except Exception as e:
             st["steps"].setdefault("spoon", {})["parse_error"] = str(e)
     st["steps"]["model"] = {"records": n_records}
 
-    resolved = resolve_tests(spec, by_simple, load_full_code(args.dataset),
-                             args.body_threshold)
+    resolved = resolve_tests(spec, by_simple, by_method,
+                             load_full_code(args.dataset), args.body_threshold)
     st["status"] = "ok" if n_records else "no_model"
     return finish(st, bp_dir, src, t0, args, spec, resolved)
 
@@ -284,30 +290,51 @@ def stream_model(path):
                 continue
 
 
-def resolve_tests(spec, by_simple, full_code_by_id=None, threshold=0.85):
+def resolve_tests(spec, by_simple, by_method=None, full_code_by_id=None,
+                  threshold=0.85):
     """Which candidate tests this commit actually declares.
 
     Takes a prebuilt simple-class index rather than the whole model, so the
     caller can stream and filter.
     """
     full_code_by_id = full_code_by_id or {}
+    by_method = by_method or {}
     project = spec["project"]
 
+    RANK = {"exact": 4, "contains": 3, "similar": 2, "differs": 1, "unknown": 0}
     rows = []
     for c in spec["candidate_tests"]:
         want = rp.BRACKET.sub("", c["test_method"])
-        in_class = by_simple.get(c["test_class"], [])
-        hits = [m for m in in_class if m.get("method") == want]
+
+        # A name FlakeBench gave without a class (61 bare method names and 18
+        # prefixed with a commit sha, all of them flaky) is looked up by method
+        # name across the model instead. That is ambiguous on purpose: the
+        # disambiguation is the body comparison below, which picks whichever
+        # candidate class actually holds the body FlakeBench labelled.
+        if c["test_class"]:
+            in_class = by_simple.get(c["test_class"], [])
+            hits = [m for m in in_class if m.get("method") == want]
+        else:
+            in_class = by_method.get(want, [])
+            hits = in_class
+
         variants = full_code_by_id.get((project, c["test_name"]), [])
-        scored = [body_match(m.get("raw_body"), fc, threshold)
-                  for m in hits for fc in (variants or [""])]
-        rank = {"exact": 4, "contains": 3, "similar": 2, "differs": 1, "unknown": 0}
-        best, sim = max(scored, key=lambda x: (rank[x[0]], x[1])) if scored             else ("unknown", 0.0)
+        scored = []
+        for m in hits:
+            for fc in (variants or [""]):
+                lvl, sim = body_match(m.get("raw_body"), fc, threshold)
+                scored.append((RANK[lvl], sim, lvl, m))
+        if scored:
+            _, sim, best, winner = max(scored, key=lambda x: (x[0], x[1]))
+        else:
+            sim, best, winner = 0.0, "unknown", None
+
         rows.append({
             "id": c["id"],
             "test_name": c["test_name"],
-            "test_class": c["test_class"],
+            "test_class": c["test_class"] or (winner or {}).get("simple_class", ""),
             "test_method": c["test_method"],
+            "name_shape": c.get("name_shape", ""),
             "label": c["label"],
             "category": c["category"],
             "malformed": c["malformed"],
@@ -315,7 +342,8 @@ def resolve_tests(spec, by_simple, full_code_by_id=None, threshold=0.85):
             "classes_matching_simple_name":
                 len({m.get("qualified_class") for m in in_class}),
             "method_found": "yes" if hits else "no",
-            "qualified_class": hits[0]["qualified_class"] if hits else "",
+            "qualified_class": (winner or hits[0] if hits else {}).get(
+                "qualified_class", "") if hits else "",
             # the gate on the fields/fixtures/production scopes
             "body_match": best,
             "body_similarity": round(sim, 3),

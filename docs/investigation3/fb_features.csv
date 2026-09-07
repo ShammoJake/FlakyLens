@@ -11,8 +11,8 @@ id,project,test_name,label,category,is_flaky,located,body_match,body_similarity,
 12,Ericsson_ecchronos,TestRepairGroup.testGetPartialRepairTasks,unordered collections,3,yes,yes,similar,0.976,yes,1,2,15,yes,uc.hash_container;uc.map_set_type;uc.sequence_assert;uc.unordered_iter,no,,no,,yes,4
 13,androidx_androidx,testTimer_withListenerAndCleanUp,async wait,0,yes,no,unknown,0.0,no,0,0,0,yes,async.sleep;conc.interrupt;conc.thread_lifecycle,no,,no,,yes,3
 14,neo4j_neo4j,RobustJobSchedulerWrapperTest.recurringJobWithExceptionShouldKeepRunning,concurrency,1,yes,yes,similar,0.985,yes,1,1,4,yes,async.explicit_wait;async.timeout_param;conc.atomic,no,,no,,yes,3
-15,MundaneImmortal_pair-distribution-app,testGenerateNewDayPairs,unordered collections,3,yes,no,unknown,0.0,no,0,0,0,yes,uc.list_container;uc.map_set_type;uc.sequence_assert;uc.to_sequence,no,,no,,yes,4
-16,wildfly_wildfly,b19048b72669fc0e96665b1b125dc1fda21f5993.testFireObjectEvent,test order dependency,4,yes,no,unknown,0.0,no,0,0,0,yes,async.latch_await,no,,no,,yes,1
+15,MundaneImmortal_pair-distribution-app,testGenerateNewDayPairs,unordered collections,3,yes,yes,similar,0.996,yes,1,1,2,yes,uc.list_container;uc.map_set_type;uc.sequence_assert;uc.to_sequence,no,,no,,yes,4
+16,wildfly_wildfly,b19048b72669fc0e96665b1b125dc1fda21f5993.testFireObjectEvent,test order dependency,4,yes,yes,exact,1.0,yes,1,1,1,yes,async.latch_await,yes,od.shared_resource,no,,yes,2
 17,camunda-cloud_zeebe,PriorityElectionTimerTest.shouldHighPriorityNodeStartElectionFirst,async wait,0,yes,yes,similar,0.99,yes,1,1,2,yes,async.explicit_wait;async.latch_await;conc.atomic;od.singleton_cache;time.duration,yes,od.lifecycle,no,,yes,6
 18,alibaba_fastjson,MultiMapTes.test_multimap,unordered collections,3,yes,yes,contains,1.0,yes,1,0,0,yes,uc.map_set_type,no,,no,,yes,1
 19,apache_camel,KafkaConsumerTopicIsPatternIT.kafkaTopicIsPattern,test order dependency,4,yes,yes,differs,0.82,no,0,0,0,yes,uc.index_access,no,,no,,yes,1
@@ -21,62 +21,62 @@ id,project,test_name,label,category,is_flaky,located,body_match,body_similarity,
 22,apache_pulsar,TopicReaderTest.testMultiReaderIsAbleToSeekWithTimeOnMiddleOfTopic,time,2,yes,yes,differs,0.831,no,0,0,0,yes,od.lifecycle;time.wall_clock;uc.hash_container;uc.map_set_type,no,,no,,yes,4
 23,fabiomaffioletti_jsondoc,JSONDocApiAuthBuilderTest.testApiAuthToken,unordered collections,3,yes,yes,similar,0.992,yes,1,0,1,yes,uc.sequence_assert;uc.unordered_iter,no,,no,,yes,2
 24,trinodb_trino,TestExchangeClient.testAddLocation,async wait,0,yes,yes,differs,0.118,no,0,0,0,yes,async.explicit_wait;async.future_get;od.lifecycle;uc.index_access;uc.sequence_assert,no,,no,,yes,5
-25,apache_hadoop,TestDelegationToken.testDelegationTokenSecretManager,concurrency,1,yes,yes,similar,0.881,yes,1,0,2,yes,async.sleep;od.shared_resource,no,,yes,od.static_field,yes,3
+25,apache_hadoop,TestDelegationToken.testDelegationTokenSecretManager,concurrency,1,yes,yes,similar,0.881,yes,1,2,4,yes,async.sleep;od.shared_resource,yes,od.lifecycle;od.shared_resource,yes,od.shared_resource,yes,3
 26,cloudfoundry_uaa,testMatchesSpeedTest,time,2,yes,no,unknown,0.0,no,0,0,0,yes,time.wall_clock,no,,no,,yes,1
 27,apache_ozone,TestSCMUpdateServiceGrpcServer.testClientUpdateWithDelayedRevoke,async wait,0,yes,yes,similar,0.931,yes,1,2,5,yes,async.explicit_wait;conc.thread_lifecycle;conc.thread_obj;od.lifecycle;od.shared_resource;time.date_obj;time.duration;time.now_call;uc.index_access;uc.list_container,yes,od.fs_state;od.lifecycle,yes,async.timeout_param;od.fs_state;od.static_field,yes,13
 28,apache_hadoop,TestDFSIO.testReadSkip,test order dependency,4,yes,yes,similar,0.977,yes,1,3,11,yes,od.shared_resource;time.wall_clock,yes,od.class_fixture;od.lifecycle;od.shared_resource,yes,od.shared_resource;od.static_field,yes,5
-29,wildfly_wildfly,b19048b72669fc0e96665b1b125dc1fda21f5993.testCreateSubcontext,test order dependency,4,yes,no,unknown,0.0,no,0,0,0,no,,no,,no,,no,0
+29,wildfly_wildfly,b19048b72669fc0e96665b1b125dc1fda21f5993.testCreateSubcontext,test order dependency,4,yes,yes,similar,0.944,yes,1,3,2,no,,yes,od.class_fixture;od.lifecycle;od.shared_resource,no,,yes,3
 30,apache_pulsar,ZKSessionTest.testReacquireLocksAfterSessionLost,async wait,0,yes,yes,similar,0.924,yes,2,2,1,yes,async.explicit_wait;async.future_get;async.latch_await;async.poll_loop;conc.concurrent_coll;conc.thread_lifecycle;od.global_write;time.timestamp,yes,od.class_fixture;od.lifecycle,no,,yes,10
 31,looly_hutool,EnumUtilTest.getFieldNamesTest,unordered collections,3,yes,yes,exact,1.0,yes,1,0,0,yes,uc.list_container,no,,no,,yes,1
 32,apache_druid,ResponseContextTest.serializeWithTruncateArrayTest,unordered collections,3,yes,yes,similar,0.85,yes,1,1,7,yes,uc.to_sequence,yes,od.global_write,yes,od.static_field,yes,3
 33,apache_kafka,shouldTogglePrepareForBulkLoadDuringRestoreCalls,concurrency,1,yes,no,unknown,0.0,no,0,0,0,yes,conc.atomic;conc.thread_lifecycle;conc.thread_obj;uc.list_container,no,,no,,yes,4
-35,wildfly_wildfly,b19048b72669fc0e96665b1b125dc1fda21f5993.testLookupContextLink,test order dependency,4,yes,no,unknown,0.0,no,0,0,0,yes,uc.to_sequence,no,,no,,yes,1
+35,wildfly_wildfly,b19048b72669fc0e96665b1b125dc1fda21f5993.testLookupContextLink,test order dependency,4,yes,yes,similar,0.97,yes,1,3,2,yes,uc.to_sequence,yes,od.class_fixture;od.lifecycle;od.shared_resource,no,,yes,4
 36,apache_pulsar,BacklogQuotaManagerTest.testConsumerBacklogEvictionTimeQuotaWithEmptyLedger,async wait,0,yes,yes,similar,0.914,yes,1,0,8,yes,async.explicit_wait;async.latch_await;async.sleep;od.lifecycle;time.duration;uc.hash_container;uc.index_access,no,,no,,yes,7
 37,apache_pulsar,InactiveTopicDeleteTest.testTopicLevelInActiveTopicApi,async wait,0,yes,yes,differs,0.692,no,0,0,0,yes,async.sleep,no,,no,,yes,1
 38,apache_hadoop,TestDFSIO.testReadBackward,test order dependency,4,yes,yes,similar,0.979,yes,1,3,11,yes,od.shared_resource;time.wall_clock,yes,od.class_fixture;od.lifecycle;od.shared_resource,yes,od.shared_resource;od.static_field,yes,5
 39,quarkusio_quarkus,testTimedMethod,time,2,yes,no,unknown,0.0,no,0,0,0,yes,async.latch_await;conc.interrupt;conc.thread_lifecycle,no,,no,,yes,3
 40,apache_hadoop,TestDFSIO.testReadRandom,test order dependency,4,yes,yes,similar,0.978,yes,1,3,11,yes,od.shared_resource;time.wall_clock,yes,od.class_fixture;od.lifecycle;od.shared_resource,yes,od.shared_resource;od.static_field,yes,5
 41,Ericsson_ecchronos,TestRepairTask.testRepairSuccessfully,unordered collections,3,yes,yes,similar,0.931,yes,1,2,11,yes,async.latch_await;conc.interrupt;conc.thread_lifecycle;conc.thread_obj;uc.list_container;uc.map_set_type;uc.sequence_assert,no,,yes,conc.concurrent_coll;uc.hash_container;uc.map_set_type,yes,9
-43,spring-projects_spring-data-envers,5637994be37747e82b2d6d5b34555e2bee791fe6.testWithRevisions,test order dependency,4,yes,no,unknown,0.0,no,0,0,0,yes,uc.unordered_iter,no,,no,,yes,1
-44,wildfly_wildfly,b19048b72669fc0e96665b1b125dc1fda21f5993.testLookupEmptyName,test order dependency,4,yes,no,unknown,0.0,no,0,0,0,no,,no,,no,,no,0
+43,spring-projects_spring-data-envers,5637994be37747e82b2d6d5b34555e2bee791fe6.testWithRevisions,test order dependency,4,yes,yes,exact,1.0,yes,1,1,1,yes,uc.unordered_iter,no,,no,,yes,1
+44,wildfly_wildfly,b19048b72669fc0e96665b1b125dc1fda21f5993.testLookupEmptyName,test order dependency,4,yes,yes,similar,0.968,yes,1,3,2,no,,yes,od.class_fixture;od.lifecycle;od.shared_resource,no,,yes,3
 45,Tencent_Firestorm,HealthCheckCoordinatorGrpcTest.healthCheckTest,async wait,0,yes,yes,similar,0.98,yes,4,6,19,yes,async.explicit_wait;od.fs_state;uc.hash_container;uc.index_access;uc.list_container,yes,async.timeout_param;od.class_fixture;od.fs_state;od.lifecycle;od.shared_resource;uc.list_container,yes,od.class_fixture;od.fs_state;od.shared_resource;od.static_field;uc.list_container,yes,10
 46,networknt_json-schema-validator,CollectorContextTest.testCollectorContextWithKeyword,unordered collections,3,yes,yes,similar,0.957,yes,1,2,4,yes,uc.index_access;uc.list_container,yes,od.lifecycle;od.singleton_cache,no,,yes,4
 47,apache_hadoop,TestPeerCache.testEviction,test order dependency,4,yes,yes,similar,0.895,yes,1,0,1,yes,od.lifecycle;od.singleton_cache;uc.index_access,no,,yes,od.static_field,yes,4
 48,cdapio_cdap,PreviewDataPipelineTest.testLogicalTypePreviewRun,time,2,yes,no,,,no,0,0,0,yes,async.explicit_wait;conc.thread_obj;time.date_obj;time.zone;uc.index_access;uc.list_container,no,,no,,yes,6
-49,opensearch-project_OpenSearch,testReplicaThreadedThroughputDegradationAndRejection,concurrency,1,yes,no,unknown,0.0,no,0,0,0,no,,no,,no,,no,0
-50,wildfly_wildfly,b19048b72669fc0e96665b1b125dc1fda21f5993.testCompositeBindingOps,test order dependency,4,yes,no,unknown,0.0,no,0,0,0,no,,no,,no,,no,0
+49,opensearch-project_OpenSearch,testReplicaThreadedThroughputDegradationAndRejection,concurrency,1,yes,yes,differs,0.794,no,0,0,0,no,,no,,no,,no,0
+50,wildfly_wildfly,b19048b72669fc0e96665b1b125dc1fda21f5993.testCompositeBindingOps,test order dependency,4,yes,yes,differs,0.836,no,0,0,0,no,,no,,no,,no,0
 51,apache_hadoop,TestHftpFileSystem.testHftpDefaultPorts,test order dependency,4,yes,no,unknown,0.0,no,0,0,0,no,,no,,no,,no,0
-52,dropwizard_dropwizard,07dfaed697427e208d65049f80a5d1949833b7cd.testLogbackStatusPrinterPrintStreamIsRestoredToSystemOut,test order dependency,4,yes,no,unknown,0.0,no,0,0,0,no,,no,,no,,no,0
+52,dropwizard_dropwizard,07dfaed697427e208d65049f80a5d1949833b7cd.testLogbackStatusPrinterPrintStreamIsRestoredToSystemOut,test order dependency,4,yes,yes,similar,0.988,yes,1,2,2,no,,yes,od.lifecycle;od.singleton_cache,no,,yes,2
 54,androidx_androidx,testGenerateCleanupCallback_deletesOldFinishedWork,time,2,yes,no,unknown,0.0,no,0,0,0,no,,no,,no,,no,0
 55,pholser_junit-quickcheck,ReflectionTest.findingAnnotationsRecursively,unordered collections,3,yes,yes,exact,1.0,yes,1,0,1,yes,uc.index_access;uc.list_container,no,,no,,yes,2
 57,androidx_androidx,testMenuInvalidationAfterDestroy,async wait,0,yes,no,unknown,0.0,no,0,0,0,yes,async.sleep;conc.thread_obj;od.singleton_cache,no,,no,,yes,3
-58,wildfly_wildfly,b19048b72669fc0e96665b1b125dc1fda21f5993.testBindAndRetrieveObjectFactoryFromNamingContext,test order dependency,4,yes,no,unknown,0.0,no,0,0,0,no,,no,,no,,no,0
+58,wildfly_wildfly,b19048b72669fc0e96665b1b125dc1fda21f5993.testBindAndRetrieveObjectFactoryFromNamingContext,test order dependency,4,yes,yes,exact,1.0,yes,1,3,2,no,,yes,od.class_fixture;od.lifecycle;od.shared_resource,no,,yes,3
 59,apache_beam,testBacklogLimiter,time,2,yes,no,unknown,0.0,no,0,0,0,no,,no,,no,,no,0
 60,apache_zookeeper,BookieClientTest.testWriteGaps,async wait,0,yes,no,unknown,0.0,no,0,0,0,yes,conc.sync_kw,no,,no,,yes,1
-61,graylog2_graylog2-server,indexCreationDateReturnsIndexCreationDateOfExistingIndexAsDateTime,time,2,yes,no,unknown,0.0,no,0,0,0,yes,time.zone,no,,no,,yes,1
-62,wildfly_wildfly,b19048b72669fc0e96665b1b125dc1fda21f5993.testJavaContext,test order dependency,4,yes,no,unknown,0.0,no,0,0,0,yes,od.global_write,no,,no,,yes,1
-63,wildfly_wildfly,b19048b72669fc0e96665b1b125dc1fda21f5993.testLookupWithContinuation,test order dependency,4,yes,no,unknown,0.0,no,0,0,0,yes,uc.to_sequence,no,,no,,yes,1
-64,apache_ignite,testFlowNoConflictsWithClients,concurrency,1,yes,no,unknown,0.0,no,0,0,0,yes,async.sleep;conc.interrupt;conc.thread_lifecycle;conc.thread_obj;uc.map_set_type,no,,no,,yes,5
-65,wildfly_wildfly,b19048b72669fc0e96665b1b125dc1fda21f5993.testInitialFactory,test order dependency,4,yes,no,unknown,0.0,no,0,0,0,yes,od.global_write,no,,no,,yes,1
+61,graylog2_graylog2-server,indexCreationDateReturnsIndexCreationDateOfExistingIndexAsDateTime,time,2,yes,yes,similar,0.886,yes,2,2,7,yes,time.zone,no,,yes,time.date_obj;time.now_call,yes,3
+62,wildfly_wildfly,b19048b72669fc0e96665b1b125dc1fda21f5993.testJavaContext,test order dependency,4,yes,yes,exact,1.0,yes,1,1,0,yes,od.global_write,yes,od.shared_resource,no,,yes,2
+63,wildfly_wildfly,b19048b72669fc0e96665b1b125dc1fda21f5993.testLookupWithContinuation,test order dependency,4,yes,yes,similar,0.973,yes,1,3,2,yes,uc.to_sequence,yes,od.class_fixture;od.lifecycle;od.shared_resource,no,,yes,4
+64,apache_ignite,testFlowNoConflictsWithClients,concurrency,1,yes,yes,similar,0.979,yes,3,1,38,yes,async.sleep;conc.interrupt;conc.thread_lifecycle;conc.thread_obj;uc.map_set_type,yes,async.timeout_param;conc.thread_lifecycle;conc.thread_obj;od.global_write,yes,async.latch_await;async.timeout_param;conc.atomic;conc.concurrent_coll;conc.sync_kw;od.singleton_cache;time.wall_clock;uc.map_set_type,yes,13
+65,wildfly_wildfly,b19048b72669fc0e96665b1b125dc1fda21f5993.testInitialFactory,test order dependency,4,yes,yes,similar,0.969,yes,1,1,0,yes,od.global_write,yes,od.shared_resource,no,,yes,2
 66,palantir_atlasdb,incrementUpperLimitIfOneMinuteElapsedSinceLastUpdate,async wait,0,yes,no,unknown,0.0,no,0,0,0,yes,async.sleep;conc.interrupt;conc.thread_lifecycle;time.duration;time.timestamp,no,,no,,yes,5
 68,androidx_androidx,testUnsubscribeWithSubscriptionCallbackForMultipleSubscriptions,async wait,0,yes,no,unknown,0.0,no,0,0,0,yes,async.callback;async.latch_await;async.sleep;conc.interrupt;conc.thread_lifecycle;od.singleton_cache;uc.list_container,no,,no,,yes,7
 69,apache_samza,TestContainerAllocatorWithHostAffinity.testExpiredRequestAllocationOnAnyHost,async wait,0,yes,yes,differs,0.581,no,0,0,0,yes,async.callback;async.sleep;conc.thread_lifecycle;conc.thread_obj;od.lifecycle;time.timestamp;uc.hash_container,no,,no,,yes,7
 70,OpenLCB_OpenLCB_Java,MemoryConfigurationServiceInterfaceTest.testReadWithTimeoutInterleaved,async wait,0,yes,yes,differs,0.786,no,0,0,0,no,,no,,no,,no,0
 71,androidx_androidx,testOneTimeWorkRequest_backedOff,time,2,yes,no,unknown,0.0,no,0,0,0,yes,time.now_call;time.wall_clock,no,,no,,yes,2
-72,strapdata_elassandra,testTokenExpiry,time,2,yes,no,unknown,0.0,no,0,0,0,no,,no,,no,,no,0
+72,strapdata_elassandra,testTokenExpiry,time,2,yes,yes,differs,0.655,no,0,0,0,no,,no,,no,,no,0
 74,wildfly_wildfly,b19048b72669fc0e96665b1b125dc1fda21f5993.testBind.2,test order dependency,4,yes,no,unknown,0.0,no,0,0,0,no,,no,,no,,no,0
 75,apache_hadoop,TestPathData.testUnqualifiedUriContents,test order dependency,4,yes,yes,similar,0.94,yes,1,2,4,yes,uc.listing,yes,od.fs_state;od.global_write;od.lifecycle,yes,od.fs_state,yes,4
 76,swankjesse_dex,assertDurationIsInRange,time,2,yes,no,unknown,0.0,no,0,0,0,no,,no,,no,,no,0
 77,apache_kylin,CoordinatorTest.testReassignFailOnStopAndSync,unordered collections,3,yes,yes,similar,0.942,yes,3,3,29,yes,uc.hash_container;uc.list_container;uc.map_set_type,yes,conc.thread_lifecycle;conc.thread_obj;od.global_write;od.lifecycle,yes,od.static_field,yes,8
-78,apache_pulsar,testTransactionMetaStoreAssignAndFailover,async wait,0,yes,no,unknown,0.0,no,0,0,0,yes,async.sleep;conc.interrupt;conc.thread_lifecycle;od.lifecycle;uc.list_container,no,,no,,yes,5
+78,apache_pulsar,testTransactionMetaStoreAssignAndFailover,async wait,0,yes,yes,exact,1.0,yes,2,1,7,yes,async.sleep;conc.interrupt;conc.thread_lifecycle;od.lifecycle;uc.list_container,yes,async.sleep;conc.thread_lifecycle;conc.thread_obj;od.class_fixture;od.global_write;uc.index_access,yes,od.static_field,yes,10
 79,wildfly_wildfly,b19048b72669fc0e96665b1b125dc1fda21f5993.testRejectionEAP6,test order dependency,4,yes,no,unknown,0.0,no,0,0,0,no,,no,,no,,no,0
 80,FasterXML_jackson-databind,TestGenerateJsonSchema.testUnwrapping,unordered collections,3,yes,yes,differs,0.312,no,0,0,0,no,,no,,no,,no,0
 81,apache_dubbo,737f7a7ea67832d7f17517326fb2491d0a086dd7.testEmptyByteArrayForEmptyInput,test order dependency,4,yes,no,unknown,0.0,no,0,0,0,no,,no,,no,,no,0
-82,wildfly_wildfly,b19048b72669fc0e96665b1b125dc1fda21f5993.testLookupLink,test order dependency,4,yes,no,unknown,0.0,no,0,0,0,yes,od.global_write;uc.to_sequence,no,,no,,yes,2
+82,wildfly_wildfly,b19048b72669fc0e96665b1b125dc1fda21f5993.testLookupLink,test order dependency,4,yes,yes,similar,0.963,yes,1,3,2,yes,od.global_write;uc.to_sequence,yes,od.class_fixture;od.lifecycle;od.shared_resource,no,,yes,5
 83,square_okhttp,CallTest.legalToExecuteTwiceCloning_Async,async wait,0,yes,yes,differs,0.612,no,0,0,0,yes,async.callback;async.latch_await;od.shared_resource,no,,no,,yes,3
-84,ktuukkan_marine-api,af0003847db9ba822f67d4f1dceb8de3fe63250a.testSequenceListenerWithIncorrectOrder,test order dependency,4,yes,no,unknown,0.0,no,0,0,0,no,,no,,no,,no,0
+84,ktuukkan_marine-api,af0003847db9ba822f67d4f1dceb8de3fe63250a.testSequenceListenerWithIncorrectOrder,test order dependency,4,yes,yes,exact,1.0,yes,1,0,7,no,,no,,yes,od.singleton_cache,yes,1
 88,togglz_togglz,ZookeeperStateRepositoryTest.testZkNodeChangesUpdateFeatureState,async wait,0,yes,yes,similar,0.971,yes,1,1,3,yes,async.latch_await;async.sleep;conc.thread_lifecycle;conc.thread_obj,no,,no,,yes,4
-89,wildfly_wildfly,b19048b72669fc0e96665b1b125dc1fda21f5993.testLookupReference,test order dependency,4,yes,no,unknown,0.0,no,0,0,0,no,,no,,no,,no,0
+89,wildfly_wildfly,b19048b72669fc0e96665b1b125dc1fda21f5993.testLookupReference,test order dependency,4,yes,yes,similar,0.964,yes,1,3,2,no,,yes,od.class_fixture;od.lifecycle;od.shared_resource,no,,yes,3
 92,apache_pulsar,KeySharedSubscriptionTest.testRemoveFirstConsumer,async wait,0,yes,yes,similar,0.855,yes,3,0,27,yes,od.lifecycle,no,,yes,od.static_field;time.wall_clock;uc.list_container;uc.map_set_type;uc.to_sequence,yes,6
 94,apache_pulsar,PersistentFailoverE2ETest.testSimpleConsumerEventsWithoutPartition,concurrency,1,yes,yes,differs,0.771,no,0,0,0,yes,async.explicit_wait;async.future_get;async.sleep;od.fs_state;od.lifecycle;od.singleton_cache;uc.list_container,no,,no,,yes,7
 96,apache_hadoop,TestBlockFixer.testGeneratedBlock,concurrency,1,yes,no,unknown,0.0,no,0,0,0,yes,async.explicit_wait;async.future_get;async.sleep;conc.interrupt;conc.thread_lifecycle;od.lifecycle;time.wall_clock;uc.index_access,no,,no,,yes,8
@@ -84,8 +84,8 @@ id,project,test_name,label,category,is_flaky,located,body_match,body_similarity,
 98,cdapio_cdap,ProgramLifecycleHttpHandlerTest.testStartProgramWithDisabledRuntimeArgs,async wait,0,yes,no,,,no,0,0,0,no,,no,,no,,no,0
 99,stanfordnlp_CoreNLP,DirectedMultiGraphTest.testConnectedComponents,unordered collections,3,yes,yes,differs,0.448,no,0,0,0,yes,uc.index_access;uc.list_container;uc.map_set_type;uc.to_sequence,no,,no,,yes,4
 100,androidx_androidx,playbackRate,async wait,0,yes,no,unknown,0.0,no,0,0,0,yes,async.future_get;async.sleep;od.singleton_cache,no,,no,,yes,3
-101,apache_avro,testRecordWithJsr310LogicalTypes,time,2,yes,no,unknown,0.0,no,0,0,0,yes,time.date_obj;time.now_call;uc.index_access;uc.list_container,no,,no,,yes,4
-104,wildfly_wildfly,b19048b72669fc0e96665b1b125dc1fda21f5993.testListNameNotFound,test order dependency,4,yes,no,unknown,0.0,no,0,0,0,yes,uc.listing,no,,no,,yes,1
+101,apache_avro,testRecordWithJsr310LogicalTypes,time,2,yes,yes,similar,0.948,yes,1,0,2,yes,time.date_obj;time.now_call;uc.index_access;uc.list_container,no,,yes,od.fs_state;od.static_field;time.format,yes,7
+104,wildfly_wildfly,b19048b72669fc0e96665b1b125dc1fda21f5993.testListNameNotFound,test order dependency,4,yes,yes,similar,0.959,yes,1,3,2,yes,uc.listing,yes,od.class_fixture;od.lifecycle;od.shared_resource,no,,yes,4
 105,apache_hadoop,TestRPCCompatibility.testVersion2ClientVersion2Server,test order dependency,4,yes,yes,similar,0.858,yes,1,2,6,yes,conc.thread_lifecycle;conc.thread_obj;od.shared_resource;od.singleton_cache,yes,od.lifecycle;od.shared_resource;od.singleton_cache,yes,od.shared_resource,yes,5
 107,apache_hadoop,TestDelegationTokenForProxyUser.testDelegationTokenWithRealUser,test order dependency,4,yes,yes,differs,0.779,no,0,0,0,yes,conc.interrupt;conc.thread_lifecycle;od.shared_resource;uc.index_access,no,,no,,yes,4
 109,apache_pulsar,ServerCnxTest.testDuplicateConcurrentSubscribeCommand,concurrency,1,yes,yes,differs,0.783,no,0,0,0,yes,async.future_get,no,,no,,yes,1
@@ -105,7 +105,7 @@ id,project,test_name,label,category,is_flaky,located,body_match,body_similarity,
 132,androidx_androidx,testInterruption,async wait,0,yes,no,unknown,0.0,no,0,0,0,yes,async.sleep;conc.executor;conc.interrupt;conc.thread_lifecycle,no,,no,,yes,4
 133,ONSdigital_rm-collection-exercise-service,SampleSummaryServiceTest.testActivateSamples,time,2,yes,yes,differs,0.59,no,0,0,0,yes,time.wall_clock;uc.list_container,no,,no,,yes,2
 134,nutzam_nutz,JsonTest.test_empty_obj_toJson,unordered collections,3,yes,yes,exact,1.0,yes,1,0,0,no,,no,,no,,no,0
-135,apache_hadoop,testPendingAndInvalidate,concurrency,1,yes,no,unknown,0.0,no,0,0,0,yes,async.poll_loop;async.sleep;od.fs_state;od.lifecycle;od.shared_resource;uc.index_access,no,,no,,yes,6
+135,apache_hadoop,testPendingAndInvalidate,concurrency,1,yes,yes,differs,0.748,no,0,0,0,yes,async.poll_loop;async.sleep;od.fs_state;od.lifecycle;od.shared_resource;uc.index_access,no,,no,,yes,6
 136,graylog2_graylog2-server,KafkaJournalTest.serverStatusUnthrottledIfJournalUtilizationIsLowerThanThreshold,concurrency,1,yes,yes,similar,0.964,yes,1,2,5,yes,od.lifecycle;time.duration,yes,conc.executor;od.lifecycle,yes,conc.executor;od.fs_state,yes,4
 139,cdapio_cdap,WorkflowClientTestRun.testWorkflowClient,async wait,0,yes,no,,,no,0,0,0,yes,async.explicit_wait;od.fs_state;time.wall_clock;uc.index_access;uc.list_container;uc.map_set_type,no,,no,,yes,6
 143,apache_cassandra,ColumnFamilyStoreTest.testRemoveSuperColumn,async wait,0,yes,no,unknown,0.0,no,0,0,0,yes,conc.interrupt;conc.thread_lifecycle;od.fs_state;time.timestamp;uc.index_access;uc.list_container;uc.map_set_type;uc.unordered_iter,no,,no,,yes,8
@@ -113,25 +113,25 @@ id,project,test_name,label,category,is_flaky,located,body_match,body_similarity,
 145,apache_pinot,SegmentGenerationWithTimeColumnTest.testMinAllowedValue,time,2,yes,yes,similar,0.963,yes,1,1,14,yes,time.date_obj;time.zone,yes,od.class_fixture,yes,time.wall_clock,yes,4
 146,Alluxio_alluxio,FileSystemMasterIntegrationTest.lastModificationTimeAddCheckpointTest,time,2,yes,no,unknown,0.0,no,0,0,0,yes,time.wall_clock,no,,no,,yes,1
 147,pholser_junit-quickcheck,ExhaustingAGivenSetTest.manyParameters,unordered collections,3,yes,yes,exact,1.0,yes,1,0,0,no,,no,,no,,no,0
-148,Wikidata_wikidata-toolkit,20de6f7f12319f54eb962ff6e8357b3f5695d54d.createDefaultDirectoryManagerPath,test order dependency,4,yes,no,unknown,0.0,no,0,0,0,no,,no,,no,,no,0
-149,wildfly_wildfly,b19048b72669fc0e96665b1b125dc1fda21f5993.testCompositeBindingUpdate,test order dependency,4,yes,no,unknown,0.0,no,0,0,0,no,,no,,no,,no,0
+148,Wikidata_wikidata-toolkit,20de6f7f12319f54eb962ff6e8357b3f5695d54d.createDefaultDirectoryManagerPath,test order dependency,4,yes,yes,exact,1.0,yes,1,0,0,no,,no,,no,,no,0
+149,wildfly_wildfly,b19048b72669fc0e96665b1b125dc1fda21f5993.testCompositeBindingUpdate,test order dependency,4,yes,yes,differs,0.834,no,0,0,0,no,,no,,no,,no,0
 152,apache_dubbo,737f7a7ea67832d7f17517326fb2491d0a086dd7.testListAllPort,test order dependency,4,yes,no,unknown,0.0,no,0,0,0,no,,no,,no,,no,0
 153,androidx_androidx,testOneTimeRequest_noInitialDelay_withConstraintNetworkConnected,time,2,yes,no,unknown,0.0,no,0,0,0,yes,time.now_call;time.wall_clock,no,,no,,yes,2
 154,cdapio_cdap,TestFrameworkTestRun.testWorkerInstances,async wait,0,yes,no,,,no,0,0,0,yes,async.explicit_wait;conc.thread_lifecycle;conc.thread_obj;od.lifecycle,no,,no,,yes,4
 156,opensource4you_astraea,MetricsTest.testBytes,concurrency,1,yes,yes,differs,0.403,no,0,0,0,yes,async.future_get;async.latch_await;conc.interrupt;conc.thread_lifecycle;conc.thread_obj,no,,no,,yes,5
-157,wildfly_wildfly,b19048b72669fc0e96665b1b125dc1fda21f5993.testStoredContext,test order dependency,4,yes,no,unknown,0.0,no,0,0,0,yes,uc.hash_container,no,,no,,yes,1
-158,wildfly_wildfly,b19048b72669fc0e96665b1b125dc1fda21f5993.testBindAndRetrieveObjectFactoryFromInitialContext,test order dependency,4,yes,no,unknown,0.0,no,0,0,0,no,,no,,no,,no,0
-159,wildfly_wildfly,b19048b72669fc0e96665b1b125dc1fda21f5993.testFireOneLevelEvent,test order dependency,4,yes,no,unknown,0.0,no,0,0,0,yes,async.latch_await,no,,no,,yes,1
+157,wildfly_wildfly,b19048b72669fc0e96665b1b125dc1fda21f5993.testStoredContext,test order dependency,4,yes,yes,exact,1.0,yes,1,2,2,yes,uc.hash_container,yes,conc.interrupt;conc.thread_lifecycle;od.lifecycle,no,,yes,4
+158,wildfly_wildfly,b19048b72669fc0e96665b1b125dc1fda21f5993.testBindAndRetrieveObjectFactoryFromInitialContext,test order dependency,4,yes,yes,exact,1.0,yes,1,3,2,no,,yes,od.class_fixture;od.lifecycle;od.shared_resource,no,,yes,3
+159,wildfly_wildfly,b19048b72669fc0e96665b1b125dc1fda21f5993.testFireOneLevelEvent,test order dependency,4,yes,yes,exact,1.0,yes,1,1,1,yes,async.latch_await,yes,od.shared_resource,no,,yes,2
 161,camunda-cloud_zeebe,AtomixTransportTest.shouldOnlyHandleRequestsOfSubscribedTypes,async wait,0,yes,yes,similar,0.911,yes,1,4,13,yes,async.future_get;async.timeout_param;conc.thread_lifecycle,yes,async.future_get;conc.thread_lifecycle;conc.thread_obj;od.class_fixture;od.lifecycle;od.shared_resource,yes,async.timeout_param;od.class_fixture;od.shared_resource;time.duration,yes,8
-162,wildfly_wildfly,b19048b72669fc0e96665b1b125dc1fda21f5993.testLookupWitResolveResult,test order dependency,4,yes,no,unknown,0.0,no,0,0,0,yes,uc.to_sequence,no,,no,,yes,1
+162,wildfly_wildfly,b19048b72669fc0e96665b1b125dc1fda21f5993.testLookupWitResolveResult,test order dependency,4,yes,yes,similar,0.973,yes,1,3,2,yes,uc.to_sequence,yes,od.class_fixture;od.lifecycle;od.shared_resource,no,,yes,4
 163,pushtorefresh_storio,NotifyAboutChangesTest.notifyAboutChangesConcurrently,concurrency,1,yes,yes,differs,0.794,no,0,0,0,yes,async.latch_await;conc.interrupt;conc.thread_lifecycle;conc.thread_obj;time.duration;uc.hash_container;uc.list_container;uc.map_set_type;uc.unordered_iter,no,,no,,yes,9
 164,apache_ignite,GridCacheRebalancingWithAsyncClearingTest.testCorrectRebalancingCurrentlyRentingPartitions,concurrency,1,yes,yes,differs,0.684,no,0,0,0,yes,od.shared_resource;od.singleton_cache,no,,no,,yes,2
 166,wildfly_wildfly,b19048b72669fc0e96665b1b125dc1fda21f5993.testRejectionEAP7,test order dependency,4,yes,no,unknown,0.0,no,0,0,0,no,,no,,no,,no,0
 167,neo4j_neo4j,RaftMessageProcessingMetricTest.shouldBeAbleToUpdateAllMessageTypes,time,2,yes,yes,differs,0.849,no,0,0,0,yes,time.duration;uc.unordered_iter,no,,no,,yes,2
-168,apache_shardingsphere-elasticjob,b022898ef1b8c984e17efb2a422ee45f6b13e46e.assertPersistEphemeralSequential,test order dependency,4,yes,no,unknown,0.0,no,0,0,0,yes,conc.thread_lifecycle;conc.thread_obj;od.lifecycle;uc.list_container,no,,no,,yes,4
-169,wildfly_wildfly,b19048b72669fc0e96665b1b125dc1fda21f5993.testBindNested,test order dependency,4,yes,no,unknown,0.0,no,0,0,0,no,,no,,no,,no,0
+168,apache_shardingsphere-elasticjob,b022898ef1b8c984e17efb2a422ee45f6b13e46e.assertPersistEphemeralSequential,test order dependency,4,yes,yes,exact,1.0,yes,1,2,2,yes,conc.thread_lifecycle;conc.thread_obj;od.lifecycle;uc.list_container,yes,conc.thread_lifecycle;conc.thread_obj;od.class_fixture;od.lifecycle,yes,od.static_field,yes,6
+169,wildfly_wildfly,b19048b72669fc0e96665b1b125dc1fda21f5993.testBindNested,test order dependency,4,yes,yes,exact,1.0,yes,1,2,4,no,,yes,async.latch_await;conc.interrupt;conc.thread_lifecycle;od.lifecycle,no,,yes,4
 170,apache_pulsar,AntiAffinityNamespaceGroupTest.testBrokerSelectionForAntiAffinityGroup,concurrency,1,yes,yes,similar,0.892,yes,1,0,13,yes,async.sleep;od.shared_resource;uc.hash_container,no,,yes,conc.executor,yes,4
-171,tbsalling_aismessages,7b0c4c708b6bb9a6da3d5737bcad1857ade8a931.canHandleFragmentedMessageReceived,test order dependency,4,yes,no,unknown,0.0,no,0,0,0,no,,no,,no,,no,0
+171,tbsalling_aismessages,7b0c4c708b6bb9a6da3d5737bcad1857ade8a931.canHandleFragmentedMessageReceived,test order dependency,4,yes,yes,exact,1.0,yes,1,1,3,no,,yes,od.class_fixture,no,,yes,1
 173,apache_hadoop,TestPathData.testQualifiedUriContents,test order dependency,4,yes,yes,similar,0.952,yes,1,2,4,yes,uc.listing,yes,od.fs_state;od.global_write;od.lifecycle,yes,od.fs_state,yes,4
 174,hwang-pku_ormlite-core,DatabaseFieldConfigTest.testFromDbField,unordered collections,3,yes,yes,similar,0.942,yes,2,2,7,yes,uc.index_access,yes,od.lifecycle,no,,yes,2
 175,apache_beam,testRateLimitingMax,time,2,yes,no,unknown,0.0,no,0,0,0,no,,no,,no,,no,0
@@ -140,102 +140,102 @@ id,project,test_name,label,category,is_flaky,located,body_match,body_similarity,
 178,salesforce_reactive-grpc,ChainedCallIntegrationTest.servicesCanCallOtherServices,concurrency,1,yes,yes,similar,0.927,yes,1,2,2,yes,conc.interrupt;conc.thread_lifecycle;time.duration,yes,conc.interrupt;conc.thread_lifecycle;conc.thread_obj;od.shared_resource,yes,od.shared_resource,yes,5
 180,finos_symphony-wdk,SendMessageIntegrationTest.sendMessageOnMessage,async wait,0,yes,yes,similar,0.873,yes,2,3,12,yes,async.timeout_param,yes,async.sleep;conc.interrupt;conc.thread_lifecycle;od.global_write,no,,yes,5
 181,spring-projects_spring-data-couchbase,MappingCouchbaseConverterTests.writesAndReadsCustomFieldsConvertedClass,unordered collections,3,yes,yes,similar,0.955,yes,1,1,2,yes,uc.hash_container;uc.index_access;uc.list_container;uc.map_set_type,no,,yes,od.static_field,yes,5
-182,apache_shardingsphere-elasticjob,b022898ef1b8c984e17efb2a422ee45f6b13e46e.assertGetLocalFailoverItemsIfShutdown,test order dependency,4,yes,no,unknown,0.0,no,0,0,0,no,,no,,no,,no,0
-184,apache_pulsar,testTopicLevelInactivePolicyUpdateAndClean,async wait,0,yes,no,unknown,0.0,no,0,0,0,yes,async.sleep;uc.list_container;uc.to_sequence,no,,no,,yes,3
+182,apache_shardingsphere-elasticjob,b022898ef1b8c984e17efb2a422ee45f6b13e46e.assertGetLocalFailoverItemsIfShutdown,test order dependency,4,yes,yes,exact,1.0,yes,1,1,5,no,,yes,od.singleton_cache,no,,yes,1
+184,apache_pulsar,testTopicLevelInactivePolicyUpdateAndClean,async wait,0,yes,yes,differs,0.7,no,0,0,0,yes,async.sleep;uc.list_container;uc.to_sequence,no,,no,,yes,3
 185,apache_struts,13d9053050c9e4fb2ef049db6a37d3f6eebf48fa.testProcessAction_ok.2,test order dependency,4,yes,no,unknown,0.0,no,0,0,0,yes,uc.hash_container;uc.map_set_type,no,,no,,yes,2
 186,apache_struts,13d9053050c9e4fb2ef049db6a37d3f6eebf48fa.testRender_ok,test order dependency,4,yes,no,unknown,0.0,no,0,0,0,yes,uc.hash_container;uc.map_set_type,no,,no,,yes,2
 187,apache_pulsar,ManagedLedgerTest.testMaximumRolloverTime,async wait,0,yes,yes,similar,0.982,yes,2,2,8,yes,async.sleep,yes,conc.executor;conc.parallel;od.class_fixture;od.lifecycle,yes,conc.executor;od.static_field,yes,6
-188,wildfly_wildfly,b19048b72669fc0e96665b1b125dc1fda21f5993.testLookupBindingUsingNestedContext,test order dependency,4,yes,no,unknown,0.0,no,0,0,0,no,,no,,no,,no,0
+188,wildfly_wildfly,b19048b72669fc0e96665b1b125dc1fda21f5993.testLookupBindingUsingNestedContext,test order dependency,4,yes,yes,exact,1.0,yes,1,2,2,no,,yes,conc.interrupt;conc.thread_lifecycle;od.lifecycle,no,,yes,3
 190,apache_dubbo,737f7a7ea67832d7f17517326fb2491d0a086dd7.testChangeServiceNotExport,test order dependency,4,yes,no,unknown,0.0,no,0,0,0,no,,no,,no,,no,0
 191,apache_pulsar,DiscoveryServiceTest.testBrokerDiscoveryRoundRobin,async wait,0,yes,yes,contains,1.0,yes,2,0,8,no,,no,,yes,async.future_get,yes,1
 192,aws_aws-sdk-java-v2,S3TransferManagerListenerTest.upload_success_shouldInvokeListener,async wait,0,yes,yes,similar,0.951,yes,1,2,4,yes,async.future_get;conc.thread_lifecycle,yes,od.lifecycle,no,,yes,3
 194,netty_netty,testAutomaticStartStop,async wait,0,yes,no,unknown,0.0,no,0,0,0,yes,async.sleep;conc.executor;conc.thread_lifecycle,no,,no,,yes,3
-195,Wikidata_wikidata-toolkit,20de6f7f12319f54eb962ff6e8357b3f5695d54d.createDirectoryManagerIoException,test order dependency,4,yes,no,unknown,0.0,no,0,0,0,no,,no,,no,,no,0
-196,wildfly_wildfly,b19048b72669fc0e96665b1b125dc1fda21f5993.testBind,test order dependency,4,yes,no,unknown,0.0,no,0,0,0,no,,no,,no,,no,0
+195,Wikidata_wikidata-toolkit,20de6f7f12319f54eb962ff6e8357b3f5695d54d.createDirectoryManagerIoException,test order dependency,4,yes,yes,similar,0.923,yes,1,0,0,no,,no,,no,,no,0
+196,wildfly_wildfly,b19048b72669fc0e96665b1b125dc1fda21f5993.testBind,test order dependency,4,yes,yes,similar,0.956,yes,1,3,2,no,,yes,od.class_fixture;od.lifecycle;od.shared_resource,no,,yes,3
 197,apache_pulsar,PrometheusMetricsTest.testPerTopicStats,concurrency,1,yes,yes,differs,0.388,no,0,0,0,yes,od.lifecycle;uc.index_access;uc.list_container;uc.to_sequence;uc.unordered_iter,no,,no,,yes,5
 198,apache_hadoop,TestPathData.testCwdContents,test order dependency,4,yes,yes,similar,0.935,yes,1,2,4,yes,uc.listing,yes,od.fs_state;od.global_write;od.lifecycle,yes,od.fs_state,yes,4
-199,apache_shardingsphere-elasticjob,b022898ef1b8c984e17efb2a422ee45f6b13e46e.assertGetCurrentShardingTotalCountIfNull,test order dependency,4,yes,no,unknown,0.0,no,0,0,0,yes,od.singleton_cache,no,,no,,yes,1
+199,apache_shardingsphere-elasticjob,b022898ef1b8c984e17efb2a422ee45f6b13e46e.assertGetCurrentShardingTotalCountIfNull,test order dependency,4,yes,yes,exact,1.0,yes,1,0,0,yes,od.singleton_cache,no,,no,,yes,1
 201,wildfly_wildfly,b19048b72669fc0e96665b1b125dc1fda21f5993.testLookupBinding.2.,test order dependency,4,yes,no,unknown,0.0,no,0,0,0,no,,no,,no,,no,0
 202,cdapio_cdap,ProvisioningServiceTest.testCancelDeprovision,test order dependency,4,yes,no,,,no,0,0,0,yes,async.explicit_wait;conc.executor;conc.thread_obj,no,,no,,yes,3
-203,apache_cassandra,testTimeWindows,time,2,yes,no,unknown,0.0,no,0,0,0,no,,no,,no,,no,0
-204,ktuukkan_marine-api,af0003847db9ba822f67d4f1dceb8de3fe63250a.testCreateWithTwo,test order dependency,4,yes,no,unknown,0.0,no,0,0,0,no,,no,,no,,no,0
+203,apache_cassandra,testTimeWindows,time,2,yes,yes,differs,0.735,no,0,0,0,no,,no,,no,,no,0
+204,ktuukkan_marine-api,af0003847db9ba822f67d4f1dceb8de3fe63250a.testCreateWithTwo,test order dependency,4,yes,yes,exact,1.0,yes,1,0,8,no,,no,,yes,od.singleton_cache,yes,1
 206,apache_kafka,testGracefulClose,async wait,0,yes,no,unknown,0.0,no,0,0,0,yes,async.poll_loop;od.shared_resource;uc.unordered_iter,no,,no,,yes,3
 207,apache_pulsar,testAsyncFunction,concurrency,1,yes,no,unknown,0.0,no,0,0,0,yes,async.future_get;async.sleep;conc.executor;od.lifecycle,no,,no,,yes,4
 208,vespa-engine_vespa,testNodeMetricsDb,time,2,yes,no,unknown,0.0,no,0,0,0,yes,time.duration;uc.list_container,no,,no,,yes,2
 209,apache_hadoop,TestHftpFileSystem.testHftpCustomDefaultPorts,test order dependency,4,yes,no,unknown,0.0,no,0,0,0,no,,no,,no,,no,0
-210,wildfly_wildfly,b19048b72669fc0e96665b1b125dc1fda21f5993.testBindReferenceable,test order dependency,4,yes,no,unknown,0.0,no,0,0,0,no,,no,,no,,no,0
-211,apache_pulsar,testLedgerReachMaximumRolloverTime,async wait,0,yes,no,unknown,0.0,no,0,0,0,yes,async.explicit_wait;async.latch_await,no,,no,,yes,2
+210,wildfly_wildfly,b19048b72669fc0e96665b1b125dc1fda21f5993.testBindReferenceable,test order dependency,4,yes,yes,similar,0.971,yes,1,3,2,no,,yes,od.class_fixture;od.lifecycle;od.shared_resource,no,,yes,3
+211,apache_pulsar,testLedgerReachMaximumRolloverTime,async wait,0,yes,yes,similar,0.916,yes,2,2,9,yes,async.explicit_wait;async.latch_await,yes,conc.executor;conc.parallel;od.class_fixture;od.lifecycle,yes,conc.executor;od.static_field,yes,7
 212,square_okhttp,HttpOverHttp2Test.recoverFromCancelReusesConnection,async wait,0,yes,yes,differs,0.59,no,0,0,0,yes,async.latch_await;conc.executor;conc.interrupt;conc.thread_lifecycle;od.shared_resource,no,,no,,yes,5
 214,cdapio_cdap,MetadataSubscriberServiceTest.testSubscriber,async wait,0,yes,no,,,no,0,0,0,yes,async.explicit_wait;conc.interrupt;conc.thread_lifecycle;od.global_write;od.singleton_cache;uc.hash_container;uc.list_container;uc.map_set_type;uc.to_sequence,no,,no,,yes,9
 215,neo4j_neo4j,shouldPickANewServerToWriteToOnLeaderSwitch,concurrency,1,yes,no,unknown,0.0,no,0,0,0,yes,async.future_get;async.latch_await;async.sleep;conc.interrupt;conc.thread_lifecycle;conc.thread_obj;od.shared_resource;time.wall_clock;uc.hash_container;uc.map_set_type,no,,no,,yes,10
 216,julianghionoiu_dpnt-coverage,CoverageDatapointAcceptanceTest.create_repo_and_uploads_commits,async wait,0,yes,yes,similar,0.943,yes,1,2,11,yes,async.explicit_wait;uc.index_access,yes,od.lifecycle;uc.list_container,yes,od.fs_state;od.static_field;uc.list_container,yes,6
-217,wildfly_wildfly,b19048b72669fc0e96665b1b125dc1fda21f5993.testFireAllEvent,test order dependency,4,yes,no,unknown,0.0,no,0,0,0,yes,async.latch_await,no,,no,,yes,1
+217,wildfly_wildfly,b19048b72669fc0e96665b1b125dc1fda21f5993.testFireAllEvent,test order dependency,4,yes,yes,exact,1.0,yes,1,1,1,yes,async.latch_await,yes,od.shared_resource,no,,yes,2
 218,alibaba_fastjson,JSONObjectTest_readObject.test_6,unordered collections,3,yes,yes,similar,0.98,yes,1,0,0,no,,no,,no,,no,0
 219,graylog2_graylog2-server,KafkaJournalTest.serverStatusThrottledIfJournalUtilizationIsHigherThanThreshold,concurrency,1,yes,yes,similar,0.966,yes,1,2,5,yes,od.lifecycle;time.duration,yes,conc.executor;od.lifecycle,yes,conc.executor;od.fs_state,yes,4
-220,wildfly_wildfly,b19048b72669fc0e96665b1b125dc1fda21f5993.testRebind,test order dependency,4,yes,no,unknown,0.0,no,0,0,0,no,,no,,no,,no,0
+220,wildfly_wildfly,b19048b72669fc0e96665b1b125dc1fda21f5993.testRebind,test order dependency,4,yes,yes,similar,0.962,yes,1,3,2,no,,yes,od.class_fixture;od.lifecycle;od.shared_resource,no,,yes,3
 221,commercetools-project-sync,InventoryEntrySyncerTest.syncWithError_ShouldCallErrorCallback,test order dependency,4,yes,yes,similar,0.878,yes,1,1,2,yes,async.future_get;conc.executor;conc.thread_lifecycle;time.duration;uc.index_access;uc.list_container,no,,no,,yes,6
 222,apache_struts,13d9053050c9e4fb2ef049db6a37d3f6eebf48fa.testProcessAction_ok,test order dependency,4,yes,no,unknown,0.0,no,0,0,0,yes,uc.hash_container;uc.map_set_type,no,,no,,yes,2
-223,wildfly_wildfly,b19048b72669fc0e96665b1b125dc1fda21f5993.testList,test order dependency,4,yes,no,unknown,0.0,no,0,0,0,yes,uc.listing,no,,no,,yes,1
+223,wildfly_wildfly,b19048b72669fc0e96665b1b125dc1fda21f5993.testList,test order dependency,4,yes,yes,similar,0.905,yes,1,3,2,yes,uc.listing,yes,od.class_fixture;od.lifecycle;od.shared_resource,no,,yes,4
 225,Alluxio_alluxio,BlockMasterJournalIntegrationTest.journalBlockDeletion,async wait,0,yes,yes,similar,0.982,yes,1,1,2,yes,od.fs_state;uc.index_access,no,,no,,yes,2
 227,cdancy_jenkins-rest,JobsApiLiveTest.testGetJobListFromRoot,test order dependency,4,yes,yes,differs,0.333,no,0,0,0,yes,od.order_annot,no,,no,,yes,1
 229,apache_pulsar,AvroSchemaTest.testNotAllowNullSchema,unordered collections,3,yes,yes,similar,0.977,yes,1,0,0,yes,uc.index_access,no,,no,,yes,1
 230,alibaba_fastjson,Issue1492.test_for_issue,unordered collections,3,yes,yes,similar,0.965,yes,1,0,0,no,,no,,no,,no,0
-231,wildfly_wildfly,b19048b72669fc0e96665b1b125dc1fda21f5993.testListBindings,test order dependency,4,yes,no,unknown,0.0,no,0,0,0,no,,no,,no,,no,0
-232,wildfly_wildfly,b19048b72669fc0e96665b1b125dc1fda21f5993.testListWithContinuation,test order dependency,4,yes,no,unknown,0.0,no,0,0,0,yes,uc.listing;uc.to_sequence,no,,no,,yes,2
+231,wildfly_wildfly,b19048b72669fc0e96665b1b125dc1fda21f5993.testListBindings,test order dependency,4,yes,yes,similar,0.908,yes,1,3,2,no,,yes,od.class_fixture;od.lifecycle;od.shared_resource,no,,yes,3
+232,wildfly_wildfly,b19048b72669fc0e96665b1b125dc1fda21f5993.testListWithContinuation,test order dependency,4,yes,yes,similar,0.931,yes,1,3,2,yes,uc.listing;uc.to_sequence,yes,od.class_fixture;od.lifecycle;od.shared_resource,no,,yes,5
 235,CorfuDB_CorfuDB,StreamingIT.testStreamingPrevValue,async wait,0,yes,yes,differs,0.287,no,0,0,0,yes,async.sleep,no,,no,,yes,1
-237,undertow-io_undertow,d0efffad5d2034bb07525cac9b299dac72c3045d.testCloseReason,test order dependency,4,yes,no,unknown,0.0,no,0,0,0,yes,od.singleton_cache,no,,no,,yes,1
+237,undertow-io_undertow,d0efffad5d2034bb07525cac9b299dac72c3045d.testCloseReason,test order dependency,4,yes,yes,exact,1.0,yes,1,2,1,yes,od.singleton_cache,yes,conc.thread_lifecycle;conc.thread_obj;od.class_fixture,yes,od.static_field,yes,5
 238,apache_pulsar,ReplicatorTest.testReplicatorProducerName,async wait,0,yes,yes,similar,0.91,yes,2,2,29,yes,async.explicit_wait;async.latch_await;uc.map_set_type;uc.sequence_assert;uc.unordered_iter,yes,od.class_fixture;od.lifecycle,yes,conc.executor,yes,8
 239,Netflix_Hystrix,HealthCountsStreamTest.testShortCircuited,async wait,0,yes,yes,differs,0.784,no,0,0,0,yes,async.latch_await;async.sleep;conc.interrupt;conc.thread_lifecycle;od.singleton_cache,no,,no,,yes,5
 240,nutzam_nutz,JsonTest.test_enum,unordered collections,3,yes,yes,similar,0.992,yes,1,0,0,no,,no,,no,,no,0
-243,alibaba_fastjson,test_date,time,2,yes,no,unknown,0.0,no,0,0,0,yes,time.duration,no,,no,,yes,1
+243,alibaba_fastjson,test_date,time,2,yes,yes,contains,1.0,yes,1,0,0,yes,time.duration,no,,no,,yes,1
 244,kiwiproject_dropwizard-service-utilities,SystemExecutionerTest.shouldExitBeforeGivenWaitTime_WhenWaitingThreadInterrupted,time,2,yes,yes,similar,0.922,yes,1,0,0,yes,conc.atomic;conc.executor;od.lifecycle;time.duration;time.wall_clock,no,,no,,yes,5
 245,doanduyhai_Achilles,TestEntityWithStaticAnnotations.should_insert_using_static_strategy_an_consistency_level,async wait,0,yes,no,unknown,0.0,no,0,0,0,yes,conc.executor,no,,no,,yes,1
-246,wildfly_wildfly,b19048b72669fc0e96665b1b125dc1fda21f5993.testLookupNameNotFound,test order dependency,4,yes,no,unknown,0.0,no,0,0,0,no,,no,,no,,no,0
+246,wildfly_wildfly,b19048b72669fc0e96665b1b125dc1fda21f5993.testLookupNameNotFound,test order dependency,4,yes,yes,similar,0.96,yes,1,3,2,no,,yes,od.class_fixture;od.lifecycle;od.shared_resource,no,,yes,3
 247,apache_hadoop,TestSecurityUtil.testBuildDTServiceName,test order dependency,4,yes,yes,differs,0.574,no,0,0,0,no,,no,,no,,no,0
 248,apache_ignite,SystemCacheNotConfiguredTest.test,async wait,0,yes,yes,similar,0.955,yes,3,1,23,yes,async.sleep;conc.thread_lifecycle;conc.thread_obj;uc.sequence_assert,yes,async.timeout_param;conc.thread_lifecycle;conc.thread_obj;od.global_write,yes,async.timeout_param;conc.concurrent_coll;od.singleton_cache;time.wall_clock;uc.map_set_type,yes,10
-249,spring-projects_spring-framework,validUsage,time,2,yes,no,unknown,0.0,no,0,0,0,yes,async.sleep;od.lifecycle;uc.sequence_assert,no,,no,,yes,3
+249,spring-projects_spring-framework,validUsage,time,2,yes,yes,differs,0.548,no,0,0,0,yes,async.sleep;od.lifecycle;uc.sequence_assert,no,,no,,yes,3
 251,apache_hadoop,TestUnderReplicatedBlocks.testSetrepIncWithUnderReplicatedBlocks,async wait,0,yes,yes,differs,0.604,no,0,0,0,yes,od.lifecycle;od.shared_resource,no,,no,,yes,2
 253,neo4j_neo4j,RobustJobSchedulerWrapperTest.recurringJobWithErrorShouldStop,concurrency,1,yes,yes,similar,0.945,yes,1,1,4,yes,async.explicit_wait;async.sleep;async.timeout_param;conc.atomic,no,,no,,yes,4
 255,alibaba_fastjson,Issue1584.test_for_issue,unordered collections,3,yes,yes,similar,0.994,yes,1,0,0,yes,uc.unordered_iter,no,,no,,yes,1
 256,apache_hadoop,TestDelegationTokenForProxyUser.testWebHdfsDoAs,test order dependency,4,yes,yes,differs,0.12,no,0,0,0,yes,od.lifecycle;od.shared_resource;uc.map_set_type,no,,no,,yes,3
 258,apache_hadoop,TestMetricsSystemImpl.testInitFirstVerifyCallBacks,unordered collections,3,yes,yes,similar,0.944,yes,1,1,4,yes,async.timeout_param;conc.thread_lifecycle;conc.thread_obj;od.global_write;od.lifecycle;uc.list_container,no,,yes,od.static_field,yes,7
 259,microsoft_botbuilder-java,AdditionalPropertiesSerializerTests.canSerializeAdditionalProperties,unordered collections,3,yes,yes,similar,0.959,yes,1,0,0,yes,uc.hash_container;uc.list_container,no,,no,,yes,2
-260,wildfly_wildfly,b19048b72669fc0e96665b1b125dc1fda21f5993.testRebindReferenceable,test order dependency,4,yes,no,unknown,0.0,no,0,0,0,no,,no,,no,,no,0
+260,wildfly_wildfly,b19048b72669fc0e96665b1b125dc1fda21f5993.testRebindReferenceable,test order dependency,4,yes,yes,similar,0.976,yes,1,3,2,no,,yes,od.class_fixture;od.lifecycle;od.shared_resource,no,,yes,3
 262,cdapio_cdap,WorkflowHttpHandlerTest.testWorkflowTokenPut,async wait,0,yes,no,,,no,0,0,0,yes,od.fs_state;uc.list_container,no,,no,,yes,2
 265,apache_hive,testCleanup,async wait,0,yes,no,unknown,0.0,no,0,0,0,yes,async.sleep;od.global_write;uc.index_access;uc.list_container,no,,no,,yes,4
 267,alibaba_fastjson,SortFieldTest.test_1,unordered collections,3,yes,yes,differs,0.847,no,0,0,0,no,,no,,no,,no,0
 268,wildfly_wildfly,b19048b72669fc0e96665b1b125dc1fda21f5993.testRebind.2,test order dependency,4,yes,no,unknown,0.0,no,0,0,0,no,,no,,no,,no,0
-269,wildfly_wildfly,b19048b72669fc0e96665b1b125dc1fda21f5993.testUnbind,test order dependency,4,yes,no,unknown,0.0,no,0,0,0,no,,no,,no,,no,0
+269,wildfly_wildfly,b19048b72669fc0e96665b1b125dc1fda21f5993.testUnbind,test order dependency,4,yes,yes,similar,0.97,yes,1,3,2,no,,yes,od.class_fixture;od.lifecycle;od.shared_resource,no,,yes,3
 271,ReactiveX_RxJava,TestSchedulers.testSchedulingWithDueTime,concurrency,1,yes,yes,similar,0.979,yes,1,0,0,yes,async.latch_await;conc.atomic;conc.interrupt;conc.thread_lifecycle;time.date_obj;time.wall_clock,no,,no,,yes,6
 273,wildfly_wildfly,b19048b72669fc0e96665b1b125dc1fda21f5993.testFireMultipleLevelEvent,test order dependency,4,yes,no,unknown,0.0,no,0,0,0,yes,async.latch_await,no,,no,,yes,1
 274,jReddit_jReddit,KeyValueFormatterTest.testFormatMultipleUTF8,unordered collections,3,yes,yes,similar,0.993,yes,1,0,0,yes,uc.hash_container,no,,no,,yes,1
 275,androidx_androidx,testOneTimeRequest_noInitialDelay,time,2,yes,no,unknown,0.0,no,0,0,0,no,,no,,no,,no,0
-276,tbsalling_aismessages,7b0c4c708b6bb9a6da3d5737bcad1857ade8a931.canHandleUnfragmentedMessageReceived,test order dependency,4,yes,no,unknown,0.0,no,0,0,0,no,,no,,no,,no,0
+276,tbsalling_aismessages,7b0c4c708b6bb9a6da3d5737bcad1857ade8a931.canHandleUnfragmentedMessageReceived,test order dependency,4,yes,yes,exact,1.0,yes,1,1,3,no,,yes,od.class_fixture,no,,yes,1
 277,androidx_androidx,testGettersAfterConnected,time,2,yes,no,unknown,0.0,no,0,0,0,yes,conc.interrupt;conc.thread_lifecycle;time.duration;time.wall_clock,no,,no,,yes,4
-278,wildfly_wildfly,b19048b72669fc0e96665b1b125dc1fda21f5993.testFireSubTreeEvent,test order dependency,4,yes,no,unknown,0.0,no,0,0,0,yes,async.latch_await,no,,no,,yes,1
+278,wildfly_wildfly,b19048b72669fc0e96665b1b125dc1fda21f5993.testFireSubTreeEvent,test order dependency,4,yes,yes,exact,1.0,yes,1,1,1,yes,async.latch_await,yes,od.shared_resource,no,,yes,2
 281,soot-oss_soot,TestDominance.TestSimpleDiamond,unordered collections,3,yes,yes,similar,0.986,yes,1,0,0,yes,uc.index_access;uc.map_set_type;uc.sequence_assert,no,,no,,yes,3
-282,apache_shardingsphere-elasticjob,b022898ef1b8c984e17efb2a422ee45f6b13e46e.assertIsShutdownAlready,test order dependency,4,yes,no,unknown,0.0,no,0,0,0,no,,no,,no,,no,0
+282,apache_shardingsphere-elasticjob,b022898ef1b8c984e17efb2a422ee45f6b13e46e.assertIsShutdownAlready,test order dependency,4,yes,yes,exact,1.0,yes,1,1,6,no,,yes,od.singleton_cache,no,,yes,1
 283,Ericsson_ecchronos,TestRepairTask.testPartialRepair,unordered collections,3,yes,yes,similar,0.93,yes,1,2,11,yes,async.latch_await;conc.interrupt;conc.thread_lifecycle;conc.thread_obj;uc.list_container;uc.map_set_type;uc.sequence_assert,no,,yes,conc.concurrent_coll;uc.hash_container;uc.map_set_type,yes,9
 284,apache_cassandra,testWithMismatchingPending,concurrency,1,yes,no,unknown,0.0,no,0,0,0,yes,conc.thread_lifecycle;conc.thread_obj;od.shared_resource;uc.index_access,no,,no,,yes,4
-285,neo4j_neo4j,shouldBuildUpGracefullyUntilReachedMinPoolSize,concurrency,1,yes,no,unknown,0.0,no,0,0,0,yes,conc.executor;conc.interrupt;conc.thread_lifecycle;od.lifecycle;uc.list_container,no,,no,,yes,5
+285,neo4j_neo4j,shouldBuildUpGracefullyUntilReachedMinPoolSize,concurrency,1,yes,yes,differs,0.633,no,0,0,0,yes,conc.executor;conc.interrupt;conc.thread_lifecycle;od.lifecycle;uc.list_container,no,,no,,yes,5
 287,apache_commons-lang,RecursiveToStringStyleTest.testPerson,unordered collections,3,yes,yes,similar,0.992,yes,1,2,2,no,,yes,od.global_write;od.lifecycle,no,,yes,2
 288,apache_pulsar,MessageIdTest.producerSendAsync,async wait,0,yes,yes,similar,0.966,yes,3,0,23,no,,no,,yes,async.future_get;conc.executor;od.static_field;uc.map_set_type,yes,4
-289,opensearch-project_OpenSearch,testListenerFailures,async wait,0,yes,no,unknown,0.0,no,0,0,0,yes,async.latch_await;async.poll_loop;conc.atomic;conc.executor;conc.interrupt;conc.thread_lifecycle,no,,no,,yes,6
-290,wildfly_wildfly,b19048b72669fc0e96665b1b125dc1fda21f5993.testListBindingsNameNotFound,test order dependency,4,yes,no,unknown,0.0,no,0,0,0,no,,no,,no,,no,0
+289,opensearch-project_OpenSearch,testListenerFailures,async wait,0,yes,yes,differs,0.783,no,0,0,0,yes,async.latch_await;async.poll_loop;conc.atomic;conc.executor;conc.interrupt;conc.thread_lifecycle,no,,no,,yes,6
+290,wildfly_wildfly,b19048b72669fc0e96665b1b125dc1fda21f5993.testListBindingsNameNotFound,test order dependency,4,yes,yes,similar,0.962,yes,1,3,2,no,,yes,od.class_fixture;od.lifecycle;od.shared_resource,no,,yes,3
 291,trinodb_trino,testAuthenticationFromMultipleThreadsWithCachedToken,concurrency,1,yes,no,unknown,0.0,no,0,0,0,yes,conc.executor,no,,no,,yes,1
-292,Alluxio_alluxio,journalBlockCreation,async wait,0,yes,no,unknown,0.0,no,0,0,0,yes,uc.index_access,no,,no,,yes,1
+292,Alluxio_alluxio,journalBlockCreation,async wait,0,yes,yes,exact,1.0,yes,1,1,2,yes,uc.index_access,no,,no,,yes,1
 293,neo4j_neo4j,schema.IndexPopulationIT.shutdownDatabaseDuringIndexPopulations,concurrency,1,yes,no,unknown,0.0,no,0,0,0,yes,od.lifecycle,no,,no,,yes,1
-294,realm_realm-java,executeTransactionAsync_callbacksShouldBeClearedBeforeCalling,async wait,0,yes,no,unknown,0.0,no,0,0,0,yes,async.callback;conc.atomic;conc.thread_obj;od.shared_resource,no,,no,,yes,4
+294,realm_realm-java,executeTransactionAsync_callbacksShouldBeClearedBeforeCalling,async wait,0,yes,yes,differs,0.553,no,0,0,0,yes,async.callback;conc.atomic;conc.thread_obj;od.shared_resource,no,,no,,yes,4
 296,apache_pulsar,MessageIdTest.testChecksumReconnection,async wait,0,yes,yes,differs,0.781,no,0,0,0,yes,async.future_get;od.lifecycle,no,,no,,yes,2
-297,wildfly_wildfly,b19048b72669fc0e96665b1b125dc1fda21f5993.testRegisterURLSchemeHandler,test order dependency,4,yes,no,unknown,0.0,no,0,0,0,no,,no,,no,,no,0
+297,wildfly_wildfly,b19048b72669fc0e96665b1b125dc1fda21f5993.testRegisterURLSchemeHandler,test order dependency,4,yes,yes,similar,0.991,yes,1,1,0,no,,yes,od.shared_resource,no,,yes,1
 301,apache_hadoop,TestFairScheduler.testContinuousScheduling,async wait,0,yes,no,unknown,0.0,no,0,0,0,yes,async.sleep;uc.list_container,no,,no,,yes,2
 303,graylog2_graylog2-server,ContentPackTest.shouldDeserializeSerializedContentPack,unordered collections,3,yes,yes,exact,1.0,yes,1,1,1,yes,conc.thread_lifecycle;uc.to_sequence,no,,no,,yes,2
 305,apache_ignite,IgnitePdsThreadInterruptionTest.testInterruptsOnLFSRead,concurrency,1,yes,yes,differs,0.689,no,0,0,0,yes,async.future_get;async.sleep;conc.atomic;conc.interrupt;conc.thread_lifecycle;conc.thread_obj;od.singleton_cache,no,,no,,yes,7
-306,apache_pulsar,shouldTerminateWhenFutureIsCancelled,concurrency,1,yes,no,unknown,0.0,no,0,0,0,yes,async.explicit_wait;async.future_get;async.latch_await;async.sleep;async.timeout_param;conc.atomic;conc.executor;conc.interrupt;conc.thread_lifecycle;od.lifecycle;time.duration,no,,no,,yes,11
+306,apache_pulsar,shouldTerminateWhenFutureIsCancelled,concurrency,1,yes,yes,similar,0.886,yes,1,0,0,yes,async.explicit_wait;async.future_get;async.latch_await;async.sleep;async.timeout_param;conc.atomic;conc.executor;conc.interrupt;conc.thread_lifecycle;od.lifecycle;time.duration,no,,no,,yes,11
 308,apache_camel,FtpReconnectAttemptServerStoppedIT.testFromFileToFtp,async wait,0,yes,yes,differs,0.761,no,0,0,0,yes,async.sleep;od.singleton_cache,no,,no,,yes,2
 309,apache_kafka,testForceMetadataRefreshForPatternSubscriptionDuringRebalance,concurrency,1,yes,no,unknown,0.0,no,0,0,0,yes,async.poll_loop;od.singleton_cache;uc.hash_container;uc.map_set_type;uc.to_sequence,no,,no,,yes,5
-310,apache_cassandra,testTrackMetadata_rowMarkerDelete,time,2,yes,no,unknown,0.0,no,0,0,0,yes,time.wall_clock;uc.unordered_iter,no,,no,,yes,2
-311,apache_cassandra,testTrackMetadata_rowTombstone,time,2,yes,no,unknown,0.0,no,0,0,0,yes,time.wall_clock;uc.unordered_iter,no,,no,,yes,2
+310,apache_cassandra,testTrackMetadata_rowMarkerDelete,time,2,yes,yes,exact,1.0,yes,2,5,30,yes,time.wall_clock;uc.unordered_iter,yes,async.latch_await;async.sleep;conc.executor;conc.thread_obj;od.class_fixture;od.lifecycle;od.shared_resource;uc.list_container;uc.sequence_assert;uc.unordered_iter,yes,conc.atomic;od.shared_resource;od.static_field;uc.hash_container;uc.list_container;uc.map_set_type,yes,15
+311,apache_cassandra,testTrackMetadata_rowTombstone,time,2,yes,yes,similar,0.966,yes,2,5,30,yes,time.wall_clock;uc.unordered_iter,yes,async.latch_await;async.sleep;conc.executor;conc.thread_obj;od.class_fixture;od.lifecycle;od.shared_resource;uc.list_container;uc.sequence_assert;uc.unordered_iter,yes,conc.atomic;od.shared_resource;od.static_field;uc.hash_container;uc.list_container;uc.map_set_type,yes,15
 312,androidx_androidx,testPredictiveLayoutAdd2,async wait,0,yes,no,unknown,0.0,no,0,0,0,yes,async.explicit_wait;conc.thread_obj,no,,no,,yes,2
 313,androidx_androidx,onReceive,async wait,0,yes,no,unknown,0.0,no,0,0,0,yes,async.latch_await;od.global_write,no,,no,,yes,2
 314,apache_hadoop,TestWritableName.testSetName,test order dependency,4,yes,yes,exact,1.0,yes,1,0,1,no,,no,,no,,no,0
@@ -243,7 +243,7 @@ id,project,test_name,label,category,is_flaky,located,body_match,body_similarity,
 317,apache_druid,KafkaLookupExtractorFactoryTest.testStartStop,concurrency,1,yes,yes,differs,0.337,no,0,0,0,yes,conc.atomic;conc.concurrent_coll;conc.thread_lifecycle;conc.thread_obj;od.lifecycle;uc.map_set_type;uc.unordered_iter,no,,no,,yes,7
 319,liquibase_liquibase,DependencyUtilTest.testIndependentBranchesCase,unordered collections,3,yes,yes,similar,0.854,yes,1,1,2,yes,uc.list_container;uc.to_sequence,yes,od.singleton_cache,yes,uc.list_container,yes,3
 321,apache_hadoop,TestPeerCache.testAddAndRetrieve,test order dependency,4,yes,yes,similar,0.959,yes,1,0,1,yes,od.lifecycle;od.singleton_cache,no,,yes,od.static_field,yes,3
-322,triplea-game_triplea,close,async wait,0,yes,no,unknown,0.0,no,0,0,0,yes,async.sleep;od.lifecycle,no,,no,,yes,2
+322,triplea-game_triplea,close,async wait,0,yes,yes,differs,0.26,no,0,0,0,yes,async.sleep;od.lifecycle,no,,no,,yes,2
 325,cdapio_cdap,MetadataHttpHandlerTestRun.testSystemMetadataRetrieval,async wait,0,yes,no,,,no,0,0,0,yes,time.wall_clock;uc.map_set_type,no,,no,,yes,2
 326,hwang-pku_ormlite-core,QueryBuilderTest.testQueryRaw,unordered collections,3,yes,yes,exact,1.0,yes,3,3,9,yes,uc.index_access;uc.list_container,yes,od.lifecycle,no,,yes,3
 327,apache_hadoop,TestDFSIO.testRead,test order dependency,4,yes,yes,similar,0.972,yes,1,3,11,yes,od.shared_resource;time.wall_clock,yes,od.class_fixture;od.lifecycle;od.shared_resource,yes,od.shared_resource;od.static_field,yes,5
@@ -252,9 +252,9 @@ id,project,test_name,label,category,is_flaky,located,body_match,body_similarity,
 331,androidx_androidx,testSetCallbackWithNull,async wait,0,yes,no,unknown,0.0,no,0,0,0,yes,od.singleton_cache,no,,no,,yes,1
 332,ConsenSys_teku,SyncCommitteeGossipAcceptanceTest.shouldContainSyncCommitteeAggregates,async wait,0,yes,yes,differs,0.27,no,0,0,0,yes,async.explicit_wait;conc.thread_lifecycle;conc.thread_obj;od.lifecycle,no,,no,,yes,4
 335,epimorphics_appbase,TestMonitor.testMonitor,async wait,0,yes,yes,similar,0.914,yes,1,2,5,yes,async.sleep;conc.interrupt;conc.sync_kw;conc.thread_lifecycle;od.fs_state;uc.index_access;uc.map_set_type;uc.to_sequence,yes,conc.sync_kw;od.fs_state,yes,conc.sync_kw,yes,8
-337,wildfly_wildfly,b19048b72669fc0e96665b1b125dc1fda21f5993.testOnlyExternalContextAllowsCache,test order dependency,4,yes,no,unknown,0.0,no,0,0,0,yes,od.singleton_cache;uc.list_container,no,,no,,yes,2
+337,wildfly_wildfly,b19048b72669fc0e96665b1b125dc1fda21f5993.testOnlyExternalContextAllowsCache,test order dependency,4,yes,yes,similar,0.943,yes,1,0,0,yes,od.singleton_cache;uc.list_container,no,,no,,yes,2
 338,apache_hadoop,TestHftpFileSystem.testHftpCustomUriPortWithDefaultPorts,test order dependency,4,yes,no,unknown,0.0,no,0,0,0,no,,no,,no,,no,0
-339,testcontainers_testcontainers-java,appliesOuterTimeout,async wait,0,yes,no,unknown,0.0,no,0,0,0,yes,time.duration,no,,no,,yes,1
+339,testcontainers_testcontainers-java,appliesOuterTimeout,async wait,0,yes,yes,similar,0.991,yes,1,1,3,yes,time.duration,no,,no,,yes,1
 340,apache_dubbo,737f7a7ea67832d7f17517326fb2491d0a086dd7.testListDetail,test order dependency,4,yes,no,unknown,0.0,no,0,0,0,no,,no,,no,,no,0
 341,open-telemetry_opentelemetry-java-instrumentation,OpenTelemetryAppenderConfigTest.logWithExtras,time,2,yes,yes,differs,0.417,no,0,0,0,yes,time.date_obj;time.now_call;uc.index_access;uc.list_container;uc.sequence_assert,no,,no,,yes,5
 342,cdapio_cdap,TestFrameworkTestRun.testAppWithServices,concurrency,1,yes,no,,,no,0,0,0,yes,async.explicit_wait;conc.executor;conc.thread_lifecycle;conc.thread_obj;od.lifecycle;uc.map_set_type;uc.sequence_assert,no,,no,,yes,7
@@ -263,22 +263,22 @@ id,project,test_name,label,category,is_flaky,located,body_match,body_similarity,
 346,eclipse_jetty.project,project.MavenMetadataTest.testIsExpiredTimestampYesterday,time,2,yes,no,unknown,0.0,no,0,0,0,yes,time.date_obj;time.now_call;time.timestamp,no,,no,,yes,3
 349,GoogleCloudPlatform_google-cloud-eclipse,CreateAppEngineStandardWtpProjectTest.testNoTestClassesInDeploymentAssembly,async wait,0,yes,no,unknown,0.0,no,0,0,0,yes,async.explicit_wait;conc.executor;conc.sync_kw;uc.list_container,no,,no,,yes,4
 351,androidx_androidx,testStopTimer_withCleanUp,async wait,0,yes,no,unknown,0.0,no,0,0,0,yes,async.sleep;conc.interrupt;conc.thread_lifecycle,no,,no,,yes,3
-352,ctco_cukes,b483e1a8f261b80a66291a42fc455256b0b5059c.shouldReturnBodyWhenEnabledAndNoMax,test order dependency,4,yes,no,unknown,0.0,no,0,0,0,no,,no,,no,,no,0
+352,ctco_cukes,b483e1a8f261b80a66291a42fc455256b0b5059c.shouldReturnBodyWhenEnabledAndNoMax,test order dependency,4,yes,yes,exact,1.0,yes,1,0,3,no,,no,,yes,od.singleton_cache,yes,1
 354,apache_struts,13d9053050c9e4fb2ef049db6a37d3f6eebf48fa.testRender_ok.2,test order dependency,4,yes,no,unknown,0.0,no,0,0,0,yes,uc.hash_container;uc.map_set_type,no,,no,,yes,2
 355,ReactiveX_RxJava,OperatorRetryTest.testRetryWithBackpressure,concurrency,1,yes,no,unknown,0.0,no,0,0,0,yes,async.poll_loop;conc.interrupt;conc.thread_lifecycle,no,,no,,yes,3
 356,cdapio_cdap,MetricsQueryTestRun.testingUserServiceGaugeMetrics,async wait,0,yes,no,,,no,0,0,0,yes,async.sleep,no,,no,,yes,1
-357,wildfly_wildfly,b19048b72669fc0e96665b1b125dc1fda21f5993.testLookup,test order dependency,4,yes,no,unknown,0.0,no,0,0,0,no,,no,,no,,no,0
+357,wildfly_wildfly,b19048b72669fc0e96665b1b125dc1fda21f5993.testLookup,test order dependency,4,yes,yes,similar,0.952,yes,1,3,2,no,,yes,od.class_fixture;od.lifecycle;od.shared_resource,no,,yes,3
 358,OryxProject_oryx,ALSServingInputProducerIT.testALSInputProducer,async wait,0,yes,yes,similar,0.954,yes,2,2,6,yes,async.sleep;conc.thread_lifecycle;conc.thread_obj;uc.hash_container;uc.list_container;uc.map_set_type;uc.unordered_iter,yes,od.lifecycle,yes,od.static_field,yes,9
 360,apache_hadoop,TestPeerCache.testExpiry,test order dependency,4,yes,yes,similar,0.857,yes,1,0,1,yes,async.sleep;od.lifecycle;od.singleton_cache,no,,yes,od.static_field,yes,4
 361,wildfly_wildfly,b19048b72669fc0e96665b1b125dc1fda21f5993.testListBindings.2.,test order dependency,4,yes,no,unknown,0.0,no,0,0,0,yes,uc.list_container,no,,no,,yes,1
 362,line_armeria,ServiceRequestCancellationTest.shouldCompleteLogWhenCancelledByClient,test order dependency,4,yes,yes,similar,0.954,yes,1,0,2,yes,async.future_get;conc.thread_lifecycle;od.lifecycle;od.shared_resource,no,,yes,conc.atomic;od.shared_resource;od.static_field,yes,6
 363,aosp-mirror_platform_frameworks_support,basicSwipeTest,async wait,0,yes,no,unknown,0.0,no,0,0,0,yes,async.explicit_wait;async.sleep,no,,no,,yes,2
 364,abel533_Mapper,IdTest.testCompositeKeys,unordered collections,3,yes,yes,similar,0.987,yes,1,1,2,yes,uc.index_access;uc.map_set_type;uc.sequence_assert,no,,no,,yes,3
-365,wildfly_wildfly,b19048b72669fc0e96665b1b125dc1fda21f5993.testListBindingsWithContinuation,test order dependency,4,yes,no,unknown,0.0,no,0,0,0,yes,uc.to_sequence,no,,no,,yes,1
+365,wildfly_wildfly,b19048b72669fc0e96665b1b125dc1fda21f5993.testListBindingsWithContinuation,test order dependency,4,yes,yes,similar,0.934,yes,1,3,2,yes,uc.to_sequence,yes,od.class_fixture;od.lifecycle;od.shared_resource,no,,yes,4
 366,GoogleCloudPlatform_google-cloud-eclipse,XmlValidatorTest.testValidate_badXml,async wait,0,yes,yes,differs,0.325,no,0,0,0,no,,no,,no,,no,0
 367,apache_hadoop,TestSecurityUtil.testBuildTokenServiceSockAddr,test order dependency,4,yes,yes,differs,0.593,no,0,0,0,no,,no,,no,,no,0
 368,apache_hadoop,TestDFSIO.testWrite,test order dependency,4,yes,yes,similar,0.977,yes,1,3,11,yes,od.shared_resource;time.wall_clock,yes,od.class_fixture;od.lifecycle;od.shared_resource,yes,od.shared_resource;od.static_field,yes,5
-369,apache_pulsar,socketTest,async wait,0,yes,no,unknown,0.0,no,0,0,0,yes,async.future_get;async.sleep;conc.thread_lifecycle;conc.thread_obj;od.lifecycle,no,,no,,yes,5
+369,apache_pulsar,socketTest,async wait,0,yes,yes,similar,0.971,yes,3,2,24,yes,async.future_get;async.sleep;conc.thread_lifecycle;conc.thread_obj;od.lifecycle,yes,od.class_fixture;od.lifecycle;uc.hash_container,yes,async.future_get,yes,7
 281,apache_hadoop,TestOffsetRange.testConstructor1,non-flaky,5,no,yes,exact,1.0,yes,1,0,0,no,,no,,no,,no,0
 282,apache_hadoop,TestOffsetRange.testConstructor2,non-flaky,5,no,yes,exact,1.0,yes,1,0,0,no,,no,,no,,no,0
 283,apache_hadoop,TestOffsetRange.testConstructor3,non-flaky,5,no,yes,exact,1.0,yes,1,0,0,no,,no,,no,,no,0
@@ -2755,10 +2755,10 @@ id,project,test_name,label,category,is_flaky,located,body_match,body_similarity,
 77534,dropwizard_dropwizard,ResourceTestRuleWithGrizzlyTest.testResource,non-flaky,5,no,yes,exact,1.0,yes,1,0,1,no,,no,,no,,no,0
 77535,dropwizard_dropwizard,ResourceTestRuleWithGrizzlyTest.testExceptionMapper,non-flaky,5,no,yes,exact,1.0,yes,1,0,1,no,,no,,no,,no,0
 77536,dropwizard_dropwizard,ResourceTestRuleWithGrizzlyTest.testClientSupportsPatchMethod,non-flaky,5,no,yes,exact,1.0,yes,1,0,1,no,,no,,no,,no,0
-77537,dropwizard_dropwizard,PersonResourceExceptionMapperTest.testDefaultConstraintViolation,non-flaky,5,no,yes,exact,1.0,yes,1,0,3,no,,no,,yes,od.global_write;od.static_field,yes,2
-77538,dropwizard_dropwizard,PersonResourceExceptionMapperTest.testDefaultJsonProcessingMapper,non-flaky,5,no,yes,exact,1.0,yes,1,0,3,no,,no,,yes,od.global_write;od.static_field,yes,2
-77539,dropwizard_dropwizard,PersonResourceExceptionMapperTest.testDefaultExceptionMapper,non-flaky,5,no,yes,exact,1.0,yes,1,0,3,no,,no,,yes,od.global_write;od.static_field,yes,2
-77540,dropwizard_dropwizard,PersonResourceExceptionMapperTest.testDefaultEofExceptionMapper,non-flaky,5,no,yes,exact,1.0,yes,1,0,3,no,,no,,yes,od.global_write;od.static_field,yes,2
+77537,dropwizard_dropwizard,PersonResourceExceptionMapperTest.testDefaultConstraintViolation,non-flaky,5,no,yes,exact,1.0,yes,1,0,3,no,,no,,yes,od.class_fixture;od.global_write;od.static_field,yes,3
+77538,dropwizard_dropwizard,PersonResourceExceptionMapperTest.testDefaultJsonProcessingMapper,non-flaky,5,no,yes,exact,1.0,yes,1,0,3,no,,no,,yes,od.class_fixture;od.global_write;od.static_field,yes,3
+77539,dropwizard_dropwizard,PersonResourceExceptionMapperTest.testDefaultExceptionMapper,non-flaky,5,no,yes,exact,1.0,yes,1,0,3,no,,no,,yes,od.class_fixture;od.global_write;od.static_field,yes,3
+77540,dropwizard_dropwizard,PersonResourceExceptionMapperTest.testDefaultEofExceptionMapper,non-flaky,5,no,yes,exact,1.0,yes,1,0,3,no,,no,,yes,od.class_fixture;od.global_write;od.static_field,yes,3
 77541,dropwizard_dropwizard,ResourceTestRuleTest.testGetPerson,non-flaky,5,no,yes,exact,1.0,yes,1,1,5,no,,no,,yes,od.global_write,yes,1
 77542,dropwizard_dropwizard,ResourceTestRuleTest.testGetImmutableListOfPersons,non-flaky,5,no,yes,exact,1.0,yes,1,1,5,yes,uc.list_container,no,,yes,od.global_write,yes,2
 77543,dropwizard_dropwizard,ResourceTestRuleTest.testGetPersonWithQueryParam,non-flaky,5,no,yes,exact,1.0,yes,1,1,5,no,,no,,yes,od.global_write,yes,1
@@ -2767,7 +2767,7 @@ id,project,test_name,label,category,is_flaky,located,body_match,body_similarity,
 77546,dropwizard_dropwizard,ResourceTestRuleTest.testDefaultEofExceptionMapper,non-flaky,5,no,yes,exact,1.0,yes,1,1,5,no,,no,,yes,od.global_write,yes,1
 77547,dropwizard_dropwizard,ResourceTestRuleTest.testValidationGroupsException,non-flaky,5,no,yes,exact,1.0,yes,1,1,5,no,,no,,yes,od.global_write,yes,1
 77548,dropwizard_dropwizard,ResourceTestRuleTest.testCustomClientConfiguration,non-flaky,5,no,yes,exact,1.0,yes,1,1,5,no,,no,,yes,od.global_write,yes,1
-77549,dropwizard_dropwizard,GzipDefaultVaryBehaviourTest.testDefaultVaryHeader,non-flaky,5,no,yes,exact,1.0,yes,1,0,1,no,,no,,no,,no,0
+77549,dropwizard_dropwizard,GzipDefaultVaryBehaviourTest.testDefaultVaryHeader,non-flaky,5,no,yes,exact,1.0,yes,1,0,1,no,,no,,yes,od.class_fixture,yes,1
 77550,dropwizard_dropwizard,LogbackExcludedTest.testBuildConfigurationMetadata,non-flaky,5,no,yes,contains,1.0,yes,1,0,0,no,,no,,no,,no,0
 77551,dropwizard_dropwizard,DropwizardAppExtensionWithoutConfigTest.run,non-flaky,5,no,no,unknown,0.0,no,0,0,0,yes,od.global_write,no,,no,,yes,1
 77552,dropwizard_dropwizard,ResourceExtensionMocksTest.getPersonName,non-flaky,5,no,no,unknown,0.0,no,0,0,0,no,,no,,no,,no,0
@@ -5482,11 +5482,11 @@ id,project,test_name,label,category,is_flaky,located,body_match,body_similarity,
 110926,pushtorefresh_storio,InsertQueryTest.completeBuilderShouldNotAllowNullTable,non-flaky,5,no,yes,exact,1.0,yes,1,0,1,no,,no,,no,,no,0
 110927,pushtorefresh_storio,InsertQueryTest.completeBuilderShouldNotAllowEmptyTable,non-flaky,5,no,yes,exact,1.0,yes,1,0,1,no,,no,,no,,no,0
 110928,pushtorefresh_storio,InsertQueryTest.completeBuilderShouldUpdateTable,non-flaky,5,no,yes,exact,1.0,yes,1,0,1,no,,no,,no,,no,0
-110929,pushtorefresh_storio,InsertQueryTest.createdThroughToBuilderQueryShouldBeEqual,non-flaky,5,no,yes,exact,1.0,yes,1,0,0,no,,no,,no,,no,0
+110929,pushtorefresh_storio,InsertQueryTest.createdThroughToBuilderQueryShouldBeEqual,non-flaky,5,no,yes,exact,1.0,yes,1,0,1,no,,no,,no,,no,0
 110930,pushtorefresh_storio,InsertQueryTest.affectsTagsCollectionShouldRewrite,non-flaky,5,no,yes,exact,1.0,yes,1,0,1,yes,od.singleton_cache;uc.hash_container,no,,no,,yes,2
 110931,pushtorefresh_storio,InsertQueryTest.affectsTagsVarargShouldRewrite,non-flaky,5,no,yes,exact,1.0,yes,1,0,1,yes,od.singleton_cache,no,,no,,yes,1
 110932,pushtorefresh_storio,InsertQueryTest.affectsTagsCollectionAllowsNull,non-flaky,5,no,yes,exact,1.0,yes,1,0,1,yes,uc.hash_container,no,,no,,yes,1
-110933,pushtorefresh_storio,InsertQueryTest.buildWithNormalValues,non-flaky,5,no,yes,exact,1.0,yes,1,0,0,yes,od.singleton_cache;uc.map_set_type,no,,no,,yes,2
+110933,pushtorefresh_storio,InsertQueryTest.buildWithNormalValues,non-flaky,5,no,yes,exact,1.0,yes,1,0,1,yes,od.singleton_cache;uc.map_set_type,no,,no,,yes,2
 110934,pushtorefresh_storio,InsertQueryTest.shouldNotAllowNullTag,non-flaky,5,no,yes,exact,1.0,yes,1,0,1,no,,no,,no,,no,0
 110935,pushtorefresh_storio,InsertQueryTest.shouldNotAllowEmptyTag,non-flaky,5,no,yes,exact,1.0,yes,1,0,1,no,,no,,no,,no,0
 112063,apache_shardingsphere-elasticjob,HomeFolderUtilsTest.assertGetFilePathInHomeFolder,non-flaky,5,no,yes,exact,1.0,yes,1,0,1,no,,no,,no,,no,0
