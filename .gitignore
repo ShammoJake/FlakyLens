@@ -13,3 +13,7 @@ runs_fb/
 # scratch / tool config
 .claude/
 .code-review-graph/
+
+# python bytecode
+__pycache__/
+*.pyc
