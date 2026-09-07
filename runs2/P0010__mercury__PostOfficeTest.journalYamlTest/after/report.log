@@ -1,7 +1,0 @@
-$ java -jar D:/FSE-2027/FlakyLens/runs/tools/jacococli.jar report D:\FSE-2027\FlakyLens\runs2\P0010__mercury__PostOfficeTest.journalYamlTest\after\jacoco.exec --classfiles D:\FSE-2027\FlakyLens\runs2\_bp\mercury@2528e2354296\source\system\platform-core\target\classes --sourcefiles D:\FSE-2027\FlakyLens\runs2\_bp\mercury@2528e2354296\source\system\platform-core\src\main\java --xml D:\FSE-2027\FlakyLens\runs2\P0010__mercury__PostOfficeTest.journalYamlTest\after\coverage.xml
-
-[INFO] Loading execution data file D:\FSE-2027\FlakyLens\runs2\P0010__mercury__PostOfficeTest.journalYamlTest\after\jacoco.exec.
-[INFO] Analyzing 119 classes.
-
-
-*** rc=0 elapsed=1.3s

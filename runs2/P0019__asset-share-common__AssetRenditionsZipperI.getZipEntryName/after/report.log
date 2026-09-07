@@ -1,7 +1,0 @@
-$ java -jar D:/FSE-2027/FlakyLens/runs/tools/jacococli.jar report D:\FSE-2027\FlakyLens\runs2\P0019__asset-share-common__AssetRenditionsZipperI.getZipEntryName\after\jacoco.exec --classfiles D:\FSE-2027\FlakyLens\runs2\_bp\asset-share-commons@a7b1dece99b3\source\core\target\classes --sourcefiles D:\FSE-2027\FlakyLens\runs2\_bp\asset-share-commons@a7b1dece99b3\source\core\src\main\java --xml D:\FSE-2027\FlakyLens\runs2\P0019__asset-share-common__AssetRenditionsZipperI.getZipEntryName\after\coverage.xml
-
-[INFO] Loading execution data file D:\FSE-2027\FlakyLens\runs2\P0019__asset-share-common__AssetRenditionsZipperI.getZipEntryName\after\jacoco.exec.
-[INFO] Analyzing 194 classes.
-
-
-*** rc=0 elapsed=1.3s

@@ -4,8 +4,11 @@
 # investigation 3 evidence runs (large, regenerable)
 runs/
 
-# working checkouts inside a build point: regenerable with `git fetch <sha>`
-runs2/_bp/*/source/
+# investigation-3 pair evidence: archived on branch investigation3/pairs-evidence
+runs2/
+
+# FlakeBench evidence runs (large, regenerable)
+runs_fb/
 
 # scratch / tool config
 .claude/

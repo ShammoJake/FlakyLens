@@ -1,5 +1,0 @@
-$ git fetch -q --depth 1 https://github.com/google/TestParameterInjector 5d67f8cb66481638bcd117227bd0103c32c84491
-
-
-
-*** rc=0 elapsed=7.1s
