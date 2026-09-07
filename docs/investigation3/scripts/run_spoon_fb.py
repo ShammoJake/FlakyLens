@@ -51,26 +51,52 @@ import run_pair as rp                                            # noqa: E402
 SKIP_DIRS = {".git", "target", "build", "node_modules", ".gradle", ".idea"}
 
 
-def index_test_roots(src):
-    """simple class name -> [java files], plus the module root of each test root.
+PACKAGE = re.compile(r"^\s*package\s+([\w.]+)\s*;", re.M)
 
-    One walk, pruned at the directories that never hold sources, because these
-    trees are large and this runs 175 times.
+
+def index_test_roots(src):
+    """simple class name -> [java files], over the whole tree.
+
+    An earlier version only indexed directories ending in src/test/java or
+    src/main/java. That is the Maven convention, not a rule, and requiring it
+    lost 26 of the first 77 build points outright: cassandra keeps tests under
+    test/unit, CoreNLP under test/src, and androidx - 16 SHAs of the corpus by
+    itself - does not match either. Those came back as no_test_class_found with
+    an empty model, which looks like a missing test rather than a layout we
+    refused to read.
     """
     by_name = collections.defaultdict(list)
-    module_of = {}
     for dirpath, dirnames, filenames in os.walk(src):
         dirnames[:] = [d for d in dirnames if d not in SKIP_DIRS]
-        norm = dirpath.replace("\\", "/")
-        if not (norm.endswith("/src/test/java") or norm.endswith("/src/main/java")):
-            continue
-        module = os.path.dirname(os.path.dirname(os.path.dirname(dirpath)))
-        module_of[dirpath] = module
-        for sub, _, files in os.walk(dirpath):
-            for f in files:
-                if f.endswith(".java"):
-                    by_name[f[:-5]].append(os.path.join(sub, f))
-    return by_name, module_of
+        for f in filenames:
+            if f.endswith(".java"):
+                by_name[f[:-5]].append(os.path.join(dirpath, f))
+    return by_name, {}
+
+
+def source_root_of(java_file):
+    """The package root above a .java file, derived from its own declaration.
+
+    a/b/src/test/java/com/x/FooTest.java declaring `package com.x;` gives
+    a/b/src/test/java. This works for any layout, including the ones that do not
+    follow the Maven convention at all, because the file states its own package
+    rather than the path implying it.
+    """
+    try:
+        with open(java_file, encoding="utf-8", errors="replace") as fh:
+            head = fh.read(8192)
+    except Exception:
+        return None
+    m = PACKAGE.search(head)
+    d = os.path.dirname(java_file)
+    if not m:
+        return d                              # default package: the file sits at the root
+    parts = m.group(1).split(".")
+    for want in reversed(parts):
+        if os.path.basename(d) != want:
+            return None                       # path and package disagree; skip it
+        d = os.path.dirname(d)
+    return d
 
 
 def roots_for(src, classes, by_name):
@@ -85,16 +111,17 @@ def roots_for(src, classes, by_name):
         files = by_name.get(cls, [])
         matches[cls] = len(files)
         for f in files:
-            norm = f.replace("\\", "/")
-            for marker in ("/src/test/java/", "/src/main/java/"):
-                if marker in norm:
-                    module = norm.split(marker)[0]
-                    for sub in ("test", "main"):
-                        r = os.path.join(module.replace("/", os.sep),
-                                         "src", sub, "java")
-                        if os.path.isdir(r) and r not in roots:
-                            roots.append(r)
-                    break
+            root = source_root_of(f)
+            if root and root not in roots:
+                roots.append(root)
+            # the production sources that go with a test root, where the Maven
+            # convention does hold; harmless when it does not
+            norm = (root or "").replace("\\", "/")
+            if norm.endswith("/src/test/java"):
+                sibling = os.path.join(os.path.dirname(os.path.dirname(
+                    root)), "main", "java")
+                if os.path.isdir(sibling) and sibling not in roots:
+                    roots.append(sibling)
     return roots, matches
 
 
