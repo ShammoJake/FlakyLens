@@ -1,0 +1,1672 @@
+{
+ "covered": {
+  "uc.hash_container": [
+   [
+    "hazard",
+    "type:HashMap",
+    6.29
+   ],
+   [
+    "hazard",
+    "new:HashMap",
+    6.15
+   ],
+   [
+    "hazard",
+    "type:HashSet",
+    3.62
+   ],
+   [
+    "hazard",
+    "new:HashSet",
+    3.05
+   ],
+   [
+    "hazard",
+    "type:LinkedHashMap",
+    0.68
+   ],
+   [
+    "control",
+    "type:LinkedHashMap",
+    8.18
+   ],
+   [
+    "control",
+    "new:LinkedHashMap",
+    7.92
+   ],
+   [
+    "control",
+    "type:HashSet",
+    2.0
+   ],
+   [
+    "control",
+    "new:HashSet",
+    1.74
+   ],
+   [
+    "control",
+    "type:HashMap",
+    0.64
+   ],
+   [
+    "control",
+    "new:HashMap",
+    0.04
+   ]
+  ],
+  "od.singleton_cache": [
+   [
+    "hazard",
+    "call:reset",
+    2.97
+   ],
+   [
+    "hazard",
+    "call:getInstance",
+    0.57
+   ],
+   [
+    "control",
+    "call:reset",
+    2.84
+   ]
+  ],
+  "uc.sequence_assert": [
+   [
+    "hazard",
+    "call:containsExactly",
+    2.42
+   ],
+   [
+    "hazard",
+    "call:contains",
+    0.13
+   ],
+   [
+    "control",
+    "call:containsExactlyInAnyOrder",
+    2.4
+   ],
+   [
+    "control",
+    "call:contains",
+    2.09
+   ]
+  ],
+  "uc.list_container": [
+   [
+    "hazard",
+    "type:ArrayList",
+    2.3
+   ],
+   [
+    "hazard",
+    "static:Lists.newArrayList",
+    1.71
+   ],
+   [
+    "hazard",
+    "type:LinkedList",
+    1.32
+   ],
+   [
+    "hazard",
+    "new:ArrayList",
+    0.44
+   ],
+   [
+    "control",
+    "type:ArrayList",
+    0.5
+   ],
+   [
+    "control",
+    "new:ArrayList",
+    0.49
+   ]
+  ],
+  "uc.to_sequence": [
+   [
+    "hazard",
+    "static:Arrays.asList",
+    2.0
+   ],
+   [
+    "hazard",
+    "call:toArray",
+    0.91
+   ],
+   [
+    "hazard",
+    "static:Collectors.toList",
+    -0.13
+   ],
+   [
+    "control",
+    "static:Arrays.asList",
+    2.57
+   ],
+   [
+    "control",
+    "static:Collectors.toList",
+    0.61
+   ]
+  ],
+  "uc.unordered_iter": [
+   [
+    "hazard",
+    "call:keySet",
+    1.76
+   ],
+   [
+    "hazard",
+    "call:iterator",
+    1.73
+   ],
+   [
+    "hazard",
+    "call:entrySet",
+    0.65
+   ],
+   [
+    "hazard",
+    "call:values",
+    0.42
+   ],
+   [
+    "control",
+    "call:keySet",
+    1.21
+   ],
+   [
+    "control",
+    "call:entrySet",
+    0.33
+   ]
+  ],
+  "conc.atomic": [
+   [
+    "hazard",
+    "type:AtomicReference",
+    0.33
+   ]
+  ],
+  "od.fs_state": [
+   [
+    "hazard",
+    "new:File",
+    0.29
+   ]
+  ],
+  "uc.map_set_type": [
+   [
+    "hazard",
+    "type:Properties",
+    -0.07
+   ]
+  ],
+  "conc.concurrent_coll": [
+   [
+    "hazard",
+    "type:ConcurrentHashMap",
+    -0.25
+   ]
+  ],
+  "od.lifecycle": [
+   [
+    "hazard",
+    "call:close",
+    -0.49
+   ]
+  ]
+ },
+ "uncovered": {
+  "hazard": [
+   {
+    "construct": "type:Test",
+    "z": 8.08,
+    "fix_commits": 301,
+    "fix_projects": 146,
+    "bg_commits": 395,
+    "bg_projects": 195,
+    "fix_rate": 0.4943,
+    "bg_rate": 0.3246,
+    "projects_overlapping_flakebench": 35,
+    "projects_independent": 111
+   },
+   {
+    "construct": "annot:Test",
+    "z": 7.83,
+    "fix_commits": 266,
+    "fix_projects": 130,
+    "bg_commits": 332,
+    "bg_projects": 183,
+    "fix_rate": 0.4368,
+    "bg_rate": 0.2728,
+    "projects_overlapping_flakebench": 32,
+    "projects_independent": 98
+   },
+   {
+    "construct": "call:assertEquals",
+    "z": 7.22,
+    "fix_commits": 96,
+    "fix_projects": 52,
+    "bg_commits": 39,
+    "bg_projects": 28,
+    "fix_rate": 0.1576,
+    "bg_rate": 0.032,
+    "projects_overlapping_flakebench": 16,
+    "projects_independent": 36
+   },
+   {
+    "construct": "static:Assert.assertEquals",
+    "z": 6.63,
+    "fix_commits": 69,
+    "fix_projects": 39,
+    "bg_commits": 18,
+    "bg_projects": 15,
+    "fix_rate": 0.1133,
+    "bg_rate": 0.0148,
+    "projects_overlapping_flakebench": 14,
+    "projects_independent": 25
+   },
+   {
+    "construct": "type:Assert",
+    "z": 6.37,
+    "fix_commits": 114,
+    "fix_projects": 62,
+    "bg_commits": 92,
+    "bg_projects": 60,
+    "fix_rate": 0.1872,
+    "bg_rate": 0.0756,
+    "projects_overlapping_flakebench": 20,
+    "projects_independent": 42
+   },
+   {
+    "construct": "type:Map",
+    "z": 4.86,
+    "fix_commits": 158,
+    "fix_projects": 105,
+    "bg_commits": 264,
+    "bg_projects": 152,
+    "fix_rate": 0.2594,
+    "bg_rate": 0.2169,
+    "projects_overlapping_flakebench": 27,
+    "projects_independent": 78
+   },
+   {
+    "construct": "call:toJSONString",
+    "z": 4.42,
+    "fix_commits": 25,
+    "fix_projects": 7,
+    "bg_commits": 2,
+    "bg_projects": 2,
+    "fix_rate": 0.0411,
+    "bg_rate": 0.0016,
+    "projects_overlapping_flakebench": 1,
+    "projects_independent": 6
+   },
+   {
+    "construct": "call:writeValueAsString",
+    "z": 4.34,
+    "fix_commits": 29,
+    "fix_projects": 18,
+    "bg_commits": 7,
+    "bg_projects": 5,
+    "fix_rate": 0.0476,
+    "bg_rate": 0.0058,
+    "projects_overlapping_flakebench": 5,
+    "projects_independent": 13
+   },
+   {
+    "construct": "type:String",
+    "z": 4.3,
+    "fix_commits": 275,
+    "fix_projects": 152,
+    "bg_commits": 667,
+    "bg_projects": 233,
+    "fix_rate": 0.4516,
+    "bg_rate": 0.5481,
+    "projects_overlapping_flakebench": 36,
+    "projects_independent": 116
+   },
+   {
+    "construct": "call:toString",
+    "z": 3.6,
+    "fix_commits": 87,
+    "fix_projects": 63,
+    "bg_commits": 145,
+    "bg_projects": 103,
+    "fix_rate": 0.1429,
+    "bg_rate": 0.1191,
+    "projects_overlapping_flakebench": 16,
+    "projects_independent": 47
+   },
+   {
+    "construct": "call:toJson",
+    "z": 3.27,
+    "fix_commits": 19,
+    "fix_projects": 17,
+    "bg_commits": 7,
+    "bg_projects": 7,
+    "fix_rate": 0.0312,
+    "bg_rate": 0.0058,
+    "projects_overlapping_flakebench": 3,
+    "projects_independent": 14
+   },
+   {
+    "construct": "type:Assertions",
+    "z": 3.21,
+    "fix_commits": 83,
+    "fix_projects": 37,
+    "bg_commits": 153,
+    "bg_projects": 92,
+    "fix_rate": 0.1363,
+    "bg_rate": 0.1257,
+    "projects_overlapping_flakebench": 8,
+    "projects_independent": 29
+   },
+   {
+    "construct": "call:put",
+    "z": 3.11,
+    "fix_commits": 78,
+    "fix_projects": 54,
+    "bg_commits": 144,
+    "bg_projects": 107,
+    "fix_rate": 0.1281,
+    "bg_rate": 0.1183,
+    "projects_overlapping_flakebench": 14,
+    "projects_independent": 40
+   },
+   {
+    "construct": "type:List",
+    "z": 3.09,
+    "fix_commits": 150,
+    "fix_projects": 101,
+    "bg_commits": 369,
+    "bg_projects": 180,
+    "fix_rate": 0.2463,
+    "bg_rate": 0.3032,
+    "projects_overlapping_flakebench": 29,
+    "projects_independent": 72
+   },
+   {
+    "construct": "type:TestCase",
+    "z": 2.99,
+    "fix_commits": 16,
+    "fix_projects": 6,
+    "bg_commits": 6,
+    "bg_projects": 4,
+    "fix_rate": 0.0263,
+    "bg_rate": 0.0049,
+    "projects_overlapping_flakebench": 1,
+    "projects_independent": 5
+   },
+   {
+    "construct": "static:Assertions.assertEquals",
+    "z": 2.99,
+    "fix_commits": 25,
+    "fix_projects": 11,
+    "bg_commits": 20,
+    "bg_projects": 14,
+    "fix_rate": 0.0411,
+    "bg_rate": 0.0164,
+    "projects_overlapping_flakebench": 2,
+    "projects_independent": 9
+   },
+   {
+    "construct": "call:size",
+    "z": 2.77,
+    "fix_commits": 71,
+    "fix_projects": 56,
+    "bg_commits": 140,
+    "bg_projects": 95,
+    "fix_rate": 0.1166,
+    "bg_rate": 0.115,
+    "projects_overlapping_flakebench": 19,
+    "projects_independent": 37
+   },
+   {
+    "construct": "call:getStatus",
+    "z": 2.71,
+    "fix_commits": 18,
+    "fix_projects": 6,
+    "bg_commits": 12,
+    "bg_projects": 10,
+    "fix_rate": 0.0296,
+    "bg_rate": 0.0099,
+    "projects_overlapping_flakebench": 2,
+    "projects_independent": 4
+   },
+   {
+    "construct": "type:Arrays",
+    "z": 2.64,
+    "fix_commits": 62,
+    "fix_projects": 53,
+    "bg_commits": 120,
+    "bg_projects": 86,
+    "fix_rate": 0.1018,
+    "bg_rate": 0.0986,
+    "projects_overlapping_flakebench": 15,
+    "projects_independent": 38
+   },
+   {
+    "construct": "type:JsonInclude",
+    "z": 2.61,
+    "fix_commits": 10,
+    "fix_projects": 9,
+    "bg_commits": 2,
+    "bg_projects": 2,
+    "fix_rate": 0.0164,
+    "bg_rate": 0.0016,
+    "projects_overlapping_flakebench": 3,
+    "projects_independent": 6
+   },
+   {
+    "construct": "type:Matchers",
+    "z": 2.6,
+    "fix_commits": 20,
+    "fix_projects": 14,
+    "bg_commits": 17,
+    "bg_projects": 12,
+    "fix_rate": 0.0328,
+    "bg_rate": 0.014,
+    "projects_overlapping_flakebench": 4,
+    "projects_independent": 10
+   },
+   {
+    "construct": "type:JSON",
+    "z": 2.59,
+    "fix_commits": 26,
+    "fix_projects": 5,
+    "bg_commits": 29,
+    "bg_projects": 24,
+    "fix_rate": 0.0427,
+    "bg_rate": 0.0238,
+    "projects_overlapping_flakebench": 2,
+    "projects_independent": 3
+   },
+   {
+    "construct": "call:get",
+    "z": 2.54,
+    "fix_commits": 113,
+    "fix_projects": 73,
+    "bg_commits": 288,
+    "bg_projects": 161,
+    "fix_rate": 0.1856,
+    "bg_rate": 0.2366,
+    "projects_overlapping_flakebench": 21,
+    "projects_independent": 52
+   },
+   {
+    "construct": "type:Integer",
+    "z": 2.5,
+    "fix_commits": 53,
+    "fix_projects": 47,
+    "bg_commits": 100,
+    "bg_projects": 74,
+    "fix_rate": 0.087,
+    "bg_rate": 0.0822,
+    "projects_overlapping_flakebench": 11,
+    "projects_independent": 36
+   },
+   {
+    "construct": "call:isEqualTo",
+    "z": 2.49,
+    "fix_commits": 32,
+    "fix_projects": 21,
+    "bg_commits": 45,
+    "bg_projects": 34,
+    "fix_rate": 0.0525,
+    "bg_rate": 0.037,
+    "projects_overlapping_flakebench": 3,
+    "projects_independent": 18
+   },
+   {
+    "construct": "type:Gson",
+    "z": 2.37,
+    "fix_commits": 13,
+    "fix_projects": 11,
+    "bg_commits": 8,
+    "bg_projects": 8,
+    "fix_rate": 0.0213,
+    "bg_rate": 0.0066,
+    "projects_overlapping_flakebench": 2,
+    "projects_independent": 9
+   },
+   {
+    "construct": "type:Json",
+    "z": 2.37,
+    "fix_commits": 13,
+    "fix_projects": 7,
+    "bg_commits": 8,
+    "bg_projects": 5,
+    "fix_rate": 0.0213,
+    "bg_rate": 0.0066,
+    "projects_overlapping_flakebench": 2,
+    "projects_independent": 5
+   },
+   {
+    "construct": "call:getMethods",
+    "z": 2.3,
+    "fix_commits": 9,
+    "fix_projects": 9,
+    "bg_commits": 3,
+    "bg_projects": 3,
+    "fix_rate": 0.0148,
+    "bg_rate": 0.0025,
+    "projects_overlapping_flakebench": 3,
+    "projects_independent": 6
+   },
+   {
+    "construct": "type:JSONObject",
+    "z": 2.29,
+    "fix_commits": 17,
+    "fix_projects": 10,
+    "bg_commits": 16,
+    "bg_projects": 10,
+    "fix_rate": 0.0279,
+    "bg_rate": 0.0131,
+    "projects_overlapping_flakebench": 1,
+    "projects_independent": 9
+   },
+   {
+    "construct": "call:getDeclaredFields",
+    "z": 2.26,
+    "fix_commits": 11,
+    "fix_projects": 9,
+    "bg_commits": 6,
+    "bg_projects": 5,
+    "fix_rate": 0.0181,
+    "bg_rate": 0.0049,
+    "projects_overlapping_flakebench": 7,
+    "projects_independent": 2
+   },
+   {
+    "construct": "call:annotationType",
+    "z": 2.25,
+    "fix_commits": 7,
+    "fix_projects": 7,
+    "bg_commits": 1,
+    "bg_projects": 1,
+    "fix_rate": 0.0115,
+    "bg_rate": 0.0008,
+    "projects_overlapping_flakebench": 3,
+    "projects_independent": 4
+   },
+   {
+    "construct": "type:Before",
+    "z": 2.2,
+    "fix_commits": 27,
+    "fix_projects": 20,
+    "bg_commits": 40,
+    "bg_projects": 32,
+    "fix_rate": 0.0443,
+    "bg_rate": 0.0329,
+    "projects_overlapping_flakebench": 5,
+    "projects_independent": 15
+   },
+   {
+    "construct": "type:CoreMatchers",
+    "z": 2.19,
+    "fix_commits": 13,
+    "fix_projects": 9,
+    "bg_commits": 10,
+    "bg_projects": 8,
+    "fix_rate": 0.0213,
+    "bg_rate": 0.0082,
+    "projects_overlapping_flakebench": 3,
+    "projects_independent": 6
+   },
+   {
+    "construct": "call:asList",
+    "z": 2.06,
+    "fix_commits": 31,
+    "fix_projects": 28,
+    "bg_commits": 54,
+    "bg_projects": 41,
+    "fix_rate": 0.0509,
+    "bg_rate": 0.0444,
+    "projects_overlapping_flakebench": 7,
+    "projects_independent": 21
+   },
+   {
+    "construct": "type:Set",
+    "z": 2.05,
+    "fix_commits": 59,
+    "fix_projects": 50,
+    "bg_commits": 139,
+    "bg_projects": 94,
+    "fix_rate": 0.0969,
+    "bg_rate": 0.1142,
+    "projects_overlapping_flakebench": 18,
+    "projects_independent": 32
+   },
+   {
+    "construct": "type:ObjectMapper",
+    "z": 2.01,
+    "fix_commits": 22,
+    "fix_projects": 17,
+    "bg_commits": 32,
+    "bg_projects": 26,
+    "fix_rate": 0.0361,
+    "bg_rate": 0.0263,
+    "projects_overlapping_flakebench": 5,
+    "projects_independent": 12
+   },
+   {
+    "construct": "type:Object",
+    "z": 1.99,
+    "fix_commits": 79,
+    "fix_projects": 58,
+    "bg_commits": 209,
+    "bg_projects": 125,
+    "fix_rate": 0.1297,
+    "bg_rate": 0.1717,
+    "projects_overlapping_flakebench": 19,
+    "projects_independent": 39
+   },
+   {
+    "construct": "kw:static",
+    "z": 1.99,
+    "fix_commits": 176,
+    "fix_projects": 101,
+    "bg_commits": 569,
+    "bg_projects": 231,
+    "fix_rate": 0.289,
+    "bg_rate": 0.4675,
+    "projects_overlapping_flakebench": 28,
+    "projects_independent": 73
+   },
+   {
+    "construct": "type:TypeReference",
+    "z": 1.98,
+    "fix_commits": 8,
+    "fix_projects": 5,
+    "bg_commits": 4,
+    "bg_projects": 4,
+    "fix_rate": 0.0131,
+    "bg_rate": 0.0033,
+    "projects_overlapping_flakebench": 2,
+    "projects_independent": 3
+   },
+   {
+    "construct": "call:getType",
+    "z": 1.95,
+    "fix_commits": 25,
+    "fix_projects": 14,
+    "bg_commits": 41,
+    "bg_projects": 36,
+    "fix_rate": 0.0411,
+    "bg_rate": 0.0337,
+    "projects_overlapping_flakebench": 3,
+    "projects_independent": 11
+   },
+   {
+    "construct": "call:assertThat",
+    "z": 1.92,
+    "fix_commits": 7,
+    "fix_projects": 5,
+    "bg_commits": 3,
+    "bg_projects": 3,
+    "fix_rate": 0.0115,
+    "bg_rate": 0.0025,
+    "projects_overlapping_flakebench": 0,
+    "projects_independent": 5
+   },
+   {
+    "construct": "type:MatcherAssert",
+    "z": 1.9,
+    "fix_commits": 16,
+    "fix_projects": 11,
+    "bg_commits": 20,
+    "bg_projects": 14,
+    "fix_rate": 0.0263,
+    "bg_rate": 0.0164,
+    "projects_overlapping_flakebench": 2,
+    "projects_independent": 9
+   },
+   {
+    "construct": "static:Assertions.assertNull",
+    "z": 1.88,
+    "fix_commits": 6,
+    "fix_projects": 5,
+    "bg_commits": 2,
+    "bg_projects": 2,
+    "fix_rate": 0.0099,
+    "bg_rate": 0.0016,
+    "projects_overlapping_flakebench": 1,
+    "projects_independent": 4
+   },
+   {
+    "construct": "type:Collections",
+    "z": 1.83,
+    "fix_commits": 55,
+    "fix_projects": 41,
+    "bg_commits": 137,
+    "bg_projects": 101,
+    "fix_rate": 0.0903,
+    "bg_rate": 0.1126,
+    "projects_overlapping_flakebench": 11,
+    "projects_independent": 30
+   },
+   {
+    "construct": "call:getAnnotations",
+    "z": 1.78,
+    "fix_commits": 7,
+    "fix_projects": 7,
+    "bg_commits": 4,
+    "bg_projects": 4,
+    "fix_rate": 0.0115,
+    "bg_rate": 0.0033,
+    "projects_overlapping_flakebench": 2,
+    "projects_independent": 5
+   },
+   {
+    "construct": "call:assertNotNull",
+    "z": 1.73,
+    "fix_commits": 8,
+    "fix_projects": 7,
+    "bg_commits": 6,
+    "bg_projects": 6,
+    "fix_rate": 0.0131,
+    "bg_rate": 0.0049,
+    "projects_overlapping_flakebench": 2,
+    "projects_independent": 5
+   },
+   {
+    "construct": "call:assertNull",
+    "z": 1.73,
+    "fix_commits": 8,
+    "fix_projects": 7,
+    "bg_commits": 6,
+    "bg_projects": 5,
+    "fix_rate": 0.0131,
+    "bg_rate": 0.0049,
+    "projects_overlapping_flakebench": 1,
+    "projects_independent": 6
+   },
+   {
+    "construct": "new:String",
+    "z": 1.72,
+    "fix_commits": 25,
+    "fix_projects": 19,
+    "bg_commits": 47,
+    "bg_projects": 40,
+    "fix_rate": 0.0411,
+    "bg_rate": 0.0386,
+    "projects_overlapping_flakebench": 5,
+    "projects_independent": 14
+   },
+   {
+    "construct": "call:readValue",
+    "z": 1.71,
+    "fix_commits": 9,
+    "fix_projects": 6,
+    "bg_commits": 8,
+    "bg_projects": 8,
+    "fix_rate": 0.0148,
+    "bg_rate": 0.0066,
+    "projects_overlapping_flakebench": 3,
+    "projects_independent": 3
+   },
+   {
+    "construct": "type:Include",
+    "z": 1.71,
+    "fix_commits": 6,
+    "fix_projects": 6,
+    "bg_commits": 3,
+    "bg_projects": 3,
+    "fix_rate": 0.0099,
+    "bg_rate": 0.0025,
+    "projects_overlapping_flakebench": 2,
+    "projects_independent": 4
+   },
+   {
+    "construct": "call:newArrayList",
+    "z": 1.65,
+    "fix_commits": 7,
+    "fix_projects": 7,
+    "bg_commits": 5,
+    "bg_projects": 4,
+    "fix_rate": 0.0115,
+    "bg_rate": 0.0041,
+    "projects_overlapping_flakebench": 3,
+    "projects_independent": 4
+   },
+   {
+    "construct": "type:Field",
+    "z": 1.62,
+    "fix_commits": 14,
+    "fix_projects": 13,
+    "bg_commits": 20,
+    "bg_projects": 18,
+    "fix_rate": 0.023,
+    "bg_rate": 0.0164,
+    "projects_overlapping_flakebench": 7,
+    "projects_independent": 6
+   },
+   {
+    "construct": "call:encode",
+    "z": 1.62,
+    "fix_commits": 8,
+    "fix_projects": 5,
+    "bg_commits": 7,
+    "bg_projects": 7,
+    "fix_rate": 0.0131,
+    "bg_rate": 0.0058,
+    "projects_overlapping_flakebench": 1,
+    "projects_independent": 4
+   },
+   {
+    "construct": "type:URL",
+    "z": 1.59,
+    "fix_commits": 15,
+    "fix_projects": 9,
+    "bg_commits": 23,
+    "bg_projects": 19,
+    "fix_rate": 0.0246,
+    "bg_rate": 0.0189,
+    "projects_overlapping_flakebench": 2,
+    "projects_independent": 7
+   },
+   {
+    "construct": "type:Mockito",
+    "z": 1.54,
+    "fix_commits": 31,
+    "fix_projects": 20,
+    "bg_commits": 71,
+    "bg_projects": 45,
+    "fix_rate": 0.0509,
+    "bg_rate": 0.0583,
+    "projects_overlapping_flakebench": 3,
+    "projects_independent": 17
+   },
+   {
+    "construct": "type:Date",
+    "z": 1.54,
+    "fix_commits": 18,
+    "fix_projects": 14,
+    "bg_commits": 32,
+    "bg_projects": 28,
+    "fix_rate": 0.0296,
+    "bg_rate": 0.0263,
+    "projects_overlapping_flakebench": 3,
+    "projects_independent": 11
+   },
+   {
+    "construct": "type:After",
+    "z": 1.54,
+    "fix_commits": 10,
+    "fix_projects": 8,
+    "bg_commits": 12,
+    "bg_projects": 9,
+    "fix_rate": 0.0164,
+    "bg_rate": 0.0099,
+    "projects_overlapping_flakebench": 2,
+    "projects_independent": 6
+   },
+   {
+    "construct": "call:assertTrue",
+    "z": 1.51,
+    "fix_commits": 14,
+    "fix_projects": 10,
+    "bg_commits": 22,
+    "bg_projects": 18,
+    "fix_rate": 0.023,
+    "bg_rate": 0.0181,
+    "projects_overlapping_flakebench": 2,
+    "projects_independent": 8
+   },
+   {
+    "construct": "type:Annotation",
+    "z": 1.46,
+    "fix_commits": 10,
+    "fix_projects": 9,
+    "bg_commits": 13,
+    "bg_projects": 11,
+    "fix_rate": 0.0164,
+    "bg_rate": 0.0107,
+    "projects_overlapping_flakebench": 2,
+    "projects_independent": 7
+   },
+   {
+    "construct": "call:next",
+    "z": 1.45,
+    "fix_commits": 19,
+    "fix_projects": 18,
+    "bg_commits": 37,
+    "bg_projects": 32,
+    "fix_rate": 0.0312,
+    "bg_rate": 0.0304,
+    "projects_overlapping_flakebench": 4,
+    "projects_independent": 14
+   }
+  ],
+  "control": [
+   {
+    "construct": "call:sort",
+    "z": 6.38,
+    "fix_commits": 50,
+    "fix_projects": 40,
+    "bg_commits": 17,
+    "bg_projects": 15,
+    "fix_rate": 0.0821,
+    "bg_rate": 0.014,
+    "projects_overlapping_flakebench": 17,
+    "projects_independent": 23
+   },
+   {
+    "construct": "type:String",
+    "z": 6.09,
+    "fix_commits": 207,
+    "fix_projects": 112,
+    "bg_commits": 616,
+    "bg_projects": 226,
+    "fix_rate": 0.3399,
+    "bg_rate": 0.5062,
+    "projects_overlapping_flakebench": 27,
+    "projects_independent": 85
+   },
+   {
+    "construct": "call:assertEquals",
+    "z": 6.04,
+    "fix_commits": 70,
+    "fix_projects": 41,
+    "bg_commits": 67,
+    "bg_projects": 44,
+    "fix_rate": 0.1149,
+    "bg_rate": 0.0551,
+    "projects_overlapping_flakebench": 11,
+    "projects_independent": 30
+   },
+   {
+    "construct": "type:JSONAssert",
+    "z": 5.88,
+    "fix_commits": 32,
+    "fix_projects": 17,
+    "bg_commits": 0,
+    "bg_projects": 0,
+    "fix_rate": 0.0525,
+    "bg_rate": 0.0,
+    "projects_overlapping_flakebench": 4,
+    "projects_independent": 13
+   },
+   {
+    "construct": "type:Map",
+    "z": 5.8,
+    "fix_commits": 108,
+    "fix_projects": 80,
+    "bg_commits": 198,
+    "bg_projects": 129,
+    "fix_rate": 0.1773,
+    "bg_rate": 0.1627,
+    "projects_overlapping_flakebench": 20,
+    "projects_independent": 60
+   },
+   {
+    "construct": "static:JSONAssert.assertEquals",
+    "z": 5.7,
+    "fix_commits": 30,
+    "fix_projects": 16,
+    "bg_commits": 0,
+    "bg_projects": 0,
+    "fix_rate": 0.0493,
+    "bg_rate": 0.0,
+    "projects_overlapping_flakebench": 4,
+    "projects_independent": 12
+   },
+   {
+    "construct": "static:Arrays.sort",
+    "z": 5.34,
+    "fix_commits": 28,
+    "fix_projects": 26,
+    "bg_commits": 2,
+    "bg_projects": 2,
+    "fix_rate": 0.046,
+    "bg_rate": 0.0016,
+    "projects_overlapping_flakebench": 13,
+    "projects_independent": 13
+   },
+   {
+    "construct": "type:Comparator",
+    "z": 4.78,
+    "fix_commits": 33,
+    "fix_projects": 27,
+    "bg_commits": 18,
+    "bg_projects": 18,
+    "fix_rate": 0.0542,
+    "bg_rate": 0.0148,
+    "projects_overlapping_flakebench": 10,
+    "projects_independent": 17
+   },
+   {
+    "construct": "call:comparing",
+    "z": 4.69,
+    "fix_commits": 25,
+    "fix_projects": 21,
+    "bg_commits": 6,
+    "bg_projects": 6,
+    "fix_rate": 0.0411,
+    "bg_rate": 0.0049,
+    "projects_overlapping_flakebench": 7,
+    "projects_independent": 14
+   },
+   {
+    "construct": "static:Comparator.comparing",
+    "z": 4.58,
+    "fix_commits": 24,
+    "fix_projects": 20,
+    "bg_commits": 6,
+    "bg_projects": 6,
+    "fix_rate": 0.0394,
+    "bg_rate": 0.0049,
+    "projects_overlapping_flakebench": 6,
+    "projects_independent": 14
+   },
+   {
+    "construct": "type:Arrays",
+    "z": 4.38,
+    "fix_commits": 62,
+    "fix_projects": 49,
+    "bg_commits": 114,
+    "bg_projects": 89,
+    "fix_rate": 0.1018,
+    "bg_rate": 0.0937,
+    "projects_overlapping_flakebench": 18,
+    "projects_independent": 31
+   },
+   {
+    "construct": "type:JSONException",
+    "z": 4.27,
+    "fix_commits": 20,
+    "fix_projects": 11,
+    "bg_commits": 4,
+    "bg_projects": 3,
+    "fix_rate": 0.0328,
+    "bg_rate": 0.0033,
+    "projects_overlapping_flakebench": 4,
+    "projects_independent": 7
+   },
+   {
+    "construct": "annot:JsonPropertyOrder",
+    "z": 4.05,
+    "fix_commits": 16,
+    "fix_projects": 13,
+    "bg_commits": 1,
+    "bg_projects": 1,
+    "fix_rate": 0.0263,
+    "bg_rate": 0.0008,
+    "projects_overlapping_flakebench": 4,
+    "projects_independent": 9
+   },
+   {
+    "construct": "type:Assert",
+    "z": 3.99,
+    "fix_commits": 56,
+    "fix_projects": 36,
+    "bg_commits": 112,
+    "bg_projects": 66,
+    "fix_rate": 0.092,
+    "bg_rate": 0.092,
+    "projects_overlapping_flakebench": 11,
+    "projects_independent": 25
+   },
+   {
+    "construct": "type:JsonPropertyOrder",
+    "z": 3.94,
+    "fix_commits": 16,
+    "fix_projects": 13,
+    "bg_commits": 2,
+    "bg_projects": 2,
+    "fix_rate": 0.0263,
+    "bg_rate": 0.0016,
+    "projects_overlapping_flakebench": 4,
+    "projects_independent": 9
+   },
+   {
+    "construct": "call:toJSONString",
+    "z": 3.8,
+    "fix_commits": 15,
+    "fix_projects": 5,
+    "bg_commits": 2,
+    "bg_projects": 2,
+    "fix_rate": 0.0246,
+    "bg_rate": 0.0016,
+    "projects_overlapping_flakebench": 1,
+    "projects_independent": 4
+   },
+   {
+    "construct": "call:toString",
+    "z": 3.71,
+    "fix_commits": 66,
+    "fix_projects": 49,
+    "bg_commits": 173,
+    "bg_projects": 120,
+    "fix_rate": 0.1084,
+    "bg_rate": 0.1422,
+    "projects_overlapping_flakebench": 12,
+    "projects_independent": 37
+   },
+   {
+    "construct": "type:Matchers",
+    "z": 3.65,
+    "fix_commits": 21,
+    "fix_projects": 14,
+    "bg_commits": 14,
+    "bg_projects": 12,
+    "fix_rate": 0.0345,
+    "bg_rate": 0.0115,
+    "projects_overlapping_flakebench": 4,
+    "projects_independent": 10
+   },
+   {
+    "construct": "call:readTree",
+    "z": 3.65,
+    "fix_commits": 20,
+    "fix_projects": 15,
+    "bg_commits": 12,
+    "bg_projects": 9,
+    "fix_rate": 0.0328,
+    "bg_rate": 0.0099,
+    "projects_overlapping_flakebench": 6,
+    "projects_independent": 9
+   },
+   {
+    "construct": "type:LinkedHashSet",
+    "z": 3.65,
+    "fix_commits": 22,
+    "fix_projects": 21,
+    "bg_commits": 16,
+    "bg_projects": 16,
+    "fix_rate": 0.0361,
+    "bg_rate": 0.0131,
+    "projects_overlapping_flakebench": 6,
+    "projects_independent": 15
+   },
+   {
+    "construct": "new:LinkedHashSet",
+    "z": 3.59,
+    "fix_commits": 21,
+    "fix_projects": 20,
+    "bg_commits": 15,
+    "bg_projects": 15,
+    "fix_rate": 0.0345,
+    "bg_rate": 0.0123,
+    "projects_overlapping_flakebench": 6,
+    "projects_independent": 14
+   },
+   {
+    "construct": "static:Assert.assertEquals",
+    "z": 3.41,
+    "fix_commits": 30,
+    "fix_projects": 19,
+    "bg_commits": 43,
+    "bg_projects": 27,
+    "fix_rate": 0.0493,
+    "bg_rate": 0.0353,
+    "projects_overlapping_flakebench": 7,
+    "projects_independent": 12
+   },
+   {
+    "construct": "call:clear",
+    "z": 3.3,
+    "fix_commits": 28,
+    "fix_projects": 8,
+    "bg_commits": 40,
+    "bg_projects": 34,
+    "fix_rate": 0.046,
+    "bg_rate": 0.0329,
+    "projects_overlapping_flakebench": 3,
+    "projects_independent": 5
+   },
+   {
+    "construct": "type:JsonParser",
+    "z": 3.24,
+    "fix_commits": 15,
+    "fix_projects": 13,
+    "bg_commits": 8,
+    "bg_projects": 7,
+    "fix_rate": 0.0246,
+    "bg_rate": 0.0066,
+    "projects_overlapping_flakebench": 0,
+    "projects_independent": 13
+   },
+   {
+    "construct": "call:split",
+    "z": 3.1,
+    "fix_commits": 25,
+    "fix_projects": 15,
+    "bg_commits": 36,
+    "bg_projects": 30,
+    "fix_rate": 0.0411,
+    "bg_rate": 0.0296,
+    "projects_overlapping_flakebench": 4,
+    "projects_independent": 11
+   },
+   {
+    "construct": "new:ObjectMapper",
+    "z": 2.94,
+    "fix_commits": 15,
+    "fix_projects": 12,
+    "bg_commits": 12,
+    "bg_projects": 11,
+    "fix_rate": 0.0246,
+    "bg_rate": 0.0099,
+    "projects_overlapping_flakebench": 3,
+    "projects_independent": 9
+   },
+   {
+    "construct": "annot:After",
+    "z": 2.84,
+    "fix_commits": 13,
+    "fix_projects": 8,
+    "bg_commits": 9,
+    "bg_projects": 8,
+    "fix_rate": 0.0213,
+    "bg_rate": 0.0074,
+    "projects_overlapping_flakebench": 5,
+    "projects_independent": 3
+   },
+   {
+    "construct": "call:annotationType",
+    "z": 2.79,
+    "fix_commits": 8,
+    "fix_projects": 8,
+    "bg_commits": 1,
+    "bg_projects": 1,
+    "fix_rate": 0.0131,
+    "bg_rate": 0.0008,
+    "projects_overlapping_flakebench": 3,
+    "projects_independent": 5
+   },
+   {
+    "construct": "new:JsonParser",
+    "z": 2.79,
+    "fix_commits": 8,
+    "fix_projects": 8,
+    "bg_commits": 1,
+    "bg_projects": 1,
+    "fix_rate": 0.0131,
+    "bg_rate": 0.0008,
+    "projects_overlapping_flakebench": 0,
+    "projects_independent": 8
+   },
+   {
+    "construct": "call:writeValueAsString",
+    "z": 2.75,
+    "fix_commits": 15,
+    "fix_projects": 9,
+    "bg_commits": 15,
+    "bg_projects": 11,
+    "fix_rate": 0.0246,
+    "bg_rate": 0.0123,
+    "projects_overlapping_flakebench": 3,
+    "projects_independent": 6
+   },
+   {
+    "construct": "call:containsAll",
+    "z": 2.71,
+    "fix_commits": 9,
+    "fix_projects": 8,
+    "bg_commits": 3,
+    "bg_projects": 3,
+    "fix_rate": 0.0148,
+    "bg_rate": 0.0025,
+    "projects_overlapping_flakebench": 1,
+    "projects_independent": 7
+   },
+   {
+    "construct": "call:equals",
+    "z": 2.67,
+    "fix_commits": 55,
+    "fix_projects": 44,
+    "bg_commits": 200,
+    "bg_projects": 141,
+    "fix_rate": 0.0903,
+    "bg_rate": 0.1643,
+    "projects_overlapping_flakebench": 10,
+    "projects_independent": 34
+   },
+   {
+    "construct": "call:compareTo",
+    "z": 2.6,
+    "fix_commits": 12,
+    "fix_projects": 11,
+    "bg_commits": 10,
+    "bg_projects": 8,
+    "fix_rate": 0.0197,
+    "bg_rate": 0.0082,
+    "projects_overlapping_flakebench": 4,
+    "projects_independent": 7
+   },
+   {
+    "construct": "call:parseString",
+    "z": 2.59,
+    "fix_commits": 7,
+    "fix_projects": 5,
+    "bg_commits": 1,
+    "bg_projects": 1,
+    "fix_rate": 0.0115,
+    "bg_rate": 0.0008,
+    "projects_overlapping_flakebench": 0,
+    "projects_independent": 5
+   },
+   {
+    "construct": "type:ObjectMapper",
+    "z": 2.59,
+    "fix_commits": 18,
+    "fix_projects": 14,
+    "bg_commits": 27,
+    "bg_projects": 19,
+    "fix_rate": 0.0296,
+    "bg_rate": 0.0222,
+    "projects_overlapping_flakebench": 3,
+    "projects_independent": 11
+   },
+   {
+    "construct": "static:JsonParser.parseString",
+    "z": 2.59,
+    "fix_commits": 7,
+    "fix_projects": 5,
+    "bg_commits": 1,
+    "bg_projects": 1,
+    "fix_rate": 0.0115,
+    "bg_rate": 0.0008,
+    "projects_overlapping_flakebench": 0,
+    "projects_independent": 5
+   },
+   {
+    "construct": "call:assertThat",
+    "z": 2.59,
+    "fix_commits": 9,
+    "fix_projects": 6,
+    "bg_commits": 4,
+    "bg_projects": 4,
+    "fix_rate": 0.0148,
+    "bg_rate": 0.0033,
+    "projects_overlapping_flakebench": 2,
+    "projects_independent": 4
+   },
+   {
+    "construct": "type:Integer",
+    "z": 2.58,
+    "fix_commits": 38,
+    "fix_projects": 34,
+    "bg_commits": 113,
+    "bg_projects": 88,
+    "fix_rate": 0.0624,
+    "bg_rate": 0.0929,
+    "projects_overlapping_flakebench": 8,
+    "projects_independent": 26
+   },
+   {
+    "construct": "call:asList",
+    "z": 2.57,
+    "fix_commits": 30,
+    "fix_projects": 24,
+    "bg_commits": 75,
+    "bg_projects": 63,
+    "fix_rate": 0.0493,
+    "bg_rate": 0.0616,
+    "projects_overlapping_flakebench": 8,
+    "projects_independent": 16
+   },
+   {
+    "construct": "call:assertTrue",
+    "z": 2.57,
+    "fix_commits": 21,
+    "fix_projects": 18,
+    "bg_commits": 38,
+    "bg_projects": 28,
+    "fix_rate": 0.0345,
+    "bg_rate": 0.0312,
+    "projects_overlapping_flakebench": 5,
+    "projects_independent": 13
+   },
+   {
+    "construct": "type:After",
+    "z": 2.56,
+    "fix_commits": 13,
+    "fix_projects": 8,
+    "bg_commits": 13,
+    "bg_projects": 12,
+    "fix_rate": 0.0213,
+    "bg_rate": 0.0107,
+    "projects_overlapping_flakebench": 5,
+    "projects_independent": 3
+   },
+   {
+    "construct": "type:Field",
+    "z": 2.53,
+    "fix_commits": 16,
+    "fix_projects": 12,
+    "bg_commits": 22,
+    "bg_projects": 22,
+    "fix_rate": 0.0263,
+    "bg_rate": 0.0181,
+    "projects_overlapping_flakebench": 7,
+    "projects_independent": 5
+   },
+   {
+    "construct": "type:Gson",
+    "z": 2.51,
+    "fix_commits": 8,
+    "fix_projects": 8,
+    "bg_commits": 3,
+    "bg_projects": 3,
+    "fix_rate": 0.0131,
+    "bg_rate": 0.0025,
+    "projects_overlapping_flakebench": 2,
+    "projects_independent": 6
+   },
+   {
+    "construct": "type:TreeMap",
+    "z": 2.43,
+    "fix_commits": 11,
+    "fix_projects": 11,
+    "bg_commits": 10,
+    "bg_projects": 8,
+    "fix_rate": 0.0181,
+    "bg_rate": 0.0082,
+    "projects_overlapping_flakebench": 2,
+    "projects_independent": 9
+   },
+   {
+    "construct": "type:Set",
+    "z": 2.43,
+    "fix_commits": 35,
+    "fix_projects": 30,
+    "bg_commits": 107,
+    "bg_projects": 81,
+    "fix_rate": 0.0575,
+    "bg_rate": 0.0879,
+    "projects_overlapping_flakebench": 8,
+    "projects_independent": 22
+   },
+   {
+    "construct": "type:CoreMatchers",
+    "z": 2.39,
+    "fix_commits": 8,
+    "fix_projects": 7,
+    "bg_commits": 4,
+    "bg_projects": 4,
+    "fix_rate": 0.0131,
+    "bg_rate": 0.0033,
+    "projects_overlapping_flakebench": 3,
+    "projects_independent": 4
+   },
+   {
+    "construct": "new:TreeMap",
+    "z": 2.32,
+    "fix_commits": 10,
+    "fix_projects": 10,
+    "bg_commits": 9,
+    "bg_projects": 8,
+    "fix_rate": 0.0164,
+    "bg_rate": 0.0074,
+    "projects_overlapping_flakebench": 1,
+    "projects_independent": 9
+   },
+   {
+    "construct": "type:TreeSet",
+    "z": 2.3,
+    "fix_commits": 7,
+    "fix_projects": 7,
+    "bg_commits": 3,
+    "bg_projects": 3,
+    "fix_rate": 0.0115,
+    "bg_rate": 0.0025,
+    "projects_overlapping_flakebench": 1,
+    "projects_independent": 6
+   },
+   {
+    "construct": "new:Comparator",
+    "z": 2.21,
+    "fix_commits": 6,
+    "fix_projects": 5,
+    "bg_commits": 2,
+    "bg_projects": 2,
+    "fix_rate": 0.0099,
+    "bg_rate": 0.0016,
+    "projects_overlapping_flakebench": 2,
+    "projects_independent": 3
+   },
+   {
+    "construct": "type:Json",
+    "z": 2.21,
+    "fix_commits": 9,
+    "fix_projects": 5,
+    "bg_commits": 8,
+    "bg_projects": 7,
+    "fix_rate": 0.0148,
+    "bg_rate": 0.0066,
+    "projects_overlapping_flakebench": 2,
+    "projects_independent": 3
+   },
+   {
+    "construct": "new:TreeSet",
+    "z": 2.21,
+    "fix_commits": 6,
+    "fix_projects": 6,
+    "bg_commits": 2,
+    "bg_projects": 2,
+    "fix_rate": 0.0099,
+    "bg_rate": 0.0016,
+    "projects_overlapping_flakebench": 1,
+    "projects_independent": 5
+   },
+   {
+    "construct": "static:Collections.sort",
+    "z": 2.18,
+    "fix_commits": 7,
+    "fix_projects": 6,
+    "bg_commits": 4,
+    "bg_projects": 4,
+    "fix_rate": 0.0115,
+    "bg_rate": 0.0033,
+    "projects_overlapping_flakebench": 2,
+    "projects_independent": 4
+   },
+   {
+    "construct": "call:getDeclaredFields",
+    "z": 2.07,
+    "fix_commits": 6,
+    "fix_projects": 5,
+    "bg_commits": 3,
+    "bg_projects": 3,
+    "fix_rate": 0.0099,
+    "bg_rate": 0.0025,
+    "projects_overlapping_flakebench": 3,
+    "projects_independent": 2
+   },
+   {
+    "construct": "type:JsonNode",
+    "z": 2.06,
+    "fix_commits": 12,
+    "fix_projects": 10,
+    "bg_commits": 19,
+    "bg_projects": 15,
+    "fix_rate": 0.0197,
+    "bg_rate": 0.0156,
+    "projects_overlapping_flakebench": 5,
+    "projects_independent": 5
+   },
+   {
+    "construct": "static:Assert.assertTrue",
+    "z": 2.04,
+    "fix_commits": 13,
+    "fix_projects": 13,
+    "bg_commits": 23,
+    "bg_projects": 17,
+    "fix_rate": 0.0213,
+    "bg_rate": 0.0189,
+    "projects_overlapping_flakebench": 4,
+    "projects_independent": 9
+   },
+   {
+    "construct": "type:Object",
+    "z": 2.04,
+    "fix_commits": 50,
+    "fix_projects": 35,
+    "bg_commits": 231,
+    "bg_projects": 139,
+    "fix_rate": 0.0821,
+    "bg_rate": 0.1898,
+    "projects_overlapping_flakebench": 11,
+    "projects_independent": 24
+   },
+   {
+    "construct": "kw:static",
+    "z": 1.99,
+    "fix_commits": 93,
+    "fix_projects": 62,
+    "bg_commits": 568,
+    "bg_projects": 221,
+    "fix_rate": 0.1527,
+    "bg_rate": 0.4667,
+    "projects_overlapping_flakebench": 17,
+    "projects_independent": 45
+   },
+   {
+    "construct": "type:Annotation",
+    "z": 1.97,
+    "fix_commits": 7,
+    "fix_projects": 7,
+    "bg_commits": 6,
+    "bg_projects": 6,
+    "fix_rate": 0.0115,
+    "bg_rate": 0.0049,
+    "projects_overlapping_flakebench": 2,
+    "projects_independent": 5
+   },
+   {
+    "construct": "type:JSONObject",
+    "z": 1.77,
+    "fix_commits": 10,
+    "fix_projects": 7,
+    "bg_commits": 18,
+    "bg_projects": 10,
+    "fix_rate": 0.0164,
+    "bg_rate": 0.0148,
+    "projects_overlapping_flakebench": 2,
+    "projects_independent": 5
+   },
+   {
+    "construct": "new:String",
+    "z": 1.76,
+    "fix_commits": 21,
+    "fix_projects": 13,
+    "bg_commits": 70,
+    "bg_projects": 54,
+    "fix_rate": 0.0345,
+    "bg_rate": 0.0575,
+    "projects_overlapping_flakebench": 6,
+    "projects_independent": 7
+   }
+  ]
+ }
+}

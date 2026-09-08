@@ -17,3 +17,6 @@ runs_fb/
 # python bytecode
 __pycache__/
 *.pyc
+
+# fix-diff mining cache (large, regenerable from the GitHub API)
+mining/
